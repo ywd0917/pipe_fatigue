@@ -1,0 +1,28 @@
+{
+  "area": "0520",
+  "total_records": 205164,
+  "total_gaps_filled": 2,
+  "gaps": [
+    {
+      "gap_id": 1,
+      "start_idx": 6902,
+      "end_idx": 6903,
+      "length": 1,
+      "length_hours": 0.08333333333333333,
+      "method": "xgboost",
+      "start_time": "2023-01-12 14:10:00",
+      "end_time": "2023-01-12 14:10:00"
+    },
+    {
+      "gap_id": 2,
+      "start_idx": 6906,
+      "end_idx": 6908,
+      "length": 2,
+      "length_hours": 0.16666666666666666,
+      "method": "xgboost",
+      "start_time": "2023-01-12 14:30:00",
+      "end_time": "2023-01-12 14:35:00"
+    }
+  ],
+  "timestamp": "2025-12-12T14:46:31.855563"
+}

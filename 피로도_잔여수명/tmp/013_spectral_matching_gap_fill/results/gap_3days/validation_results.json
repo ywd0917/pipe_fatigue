@@ -1,0 +1,47 @@
+{
+  "psd": {
+    "psd_correlation": 0.8529257575321838,
+    "psd_pvalue": 1.1603241704615733e-37,
+    "psd_similarity": 0.9529077138518618,
+    "energy_ratio": 1.2925470040472662,
+    "energy_preservation_pct": 129.2547004047266
+  },
+  "variance": {
+    "variance_true": 0.00954783950617284,
+    "variance_pred": 0.010706073538295927,
+    "variance_ratio": 1.1213084940707547,
+    "std_true": 0.0977130467551434,
+    "std_pred": 0.10347015771852253,
+    "std_ratio": 1.0589185493090367
+  },
+  "acf": {
+    "acf_correlation": 0.9619188895873712,
+    "acf_pvalue": 1.420293461545198e-57,
+    "acf_rmse": 0.1075273622868138,
+    "nlags": 100
+  },
+  "rainflow": {
+    "rainflow_match": 0.6999781732197604,
+    "hist_correlation": 0.6509919474681266,
+    "hist_pvalue": 0.002538075084842539,
+    "hist_similarity": 0.7209722699704607,
+    "chi2_distance": 0.6695299450101686,
+    "cycles_true": 740,
+    "cycles_pred": 1441,
+    "amplitude_mean_true": 0.05452702702702703,
+    "amplitude_mean_pred": 0.08257335543914085,
+    "amplitude_std_true": 0.059358444599024715,
+    "amplitude_std_pred": 0.05996005771290725
+  },
+  "overall_judgment": {
+    "overall_score": 0.8386948911615998,
+    "scores": {
+      "psd": 0.9529077138518618,
+      "variance": 0.8786915059292453,
+      "acf": 0.9619188895873712,
+      "rainflow": 0.6999781732197604
+    },
+    "judgment": "FAIL",
+    "summary": "✗ 실패 - Gap 허용 정책 수립 필요"
+  }
+}

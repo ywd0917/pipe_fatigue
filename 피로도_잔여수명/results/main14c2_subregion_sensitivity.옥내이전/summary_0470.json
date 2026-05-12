@@ -1,0 +1,70 @@
+{
+  "region": "0470",
+  "optimal_distances": {
+    "STD_DIP": {
+      "distance": 50,
+      "correlation": -0.17388346051413217,
+      "p_value": 0.01222037546890281,
+      "r_squared": 0.03023545784036976,
+      "strategy": "max"
+    },
+    "K_age": {
+      "distance": 20,
+      "correlation": -0.12570609727494939,
+      "p_value": 0.07179881109029294,
+      "r_squared": 0.015802022892099036,
+      "strategy": "max"
+    },
+    "K_soil": {
+      "distance": 20,
+      "correlation": 0.07481439812793081,
+      "p_value": 0.2851808927351484,
+      "r_squared": 0.005597194167244537,
+      "strategy": "avg"
+    },
+    "K_traffic": {
+      "distance": 50,
+      "correlation": -0.04225977523057816,
+      "p_value": 0.5454443726488103,
+      "r_squared": 0.0017858886025389875,
+      "strategy": "max"
+    },
+    "hoop_stress": {
+      "distance": 10,
+      "correlation": 0.14138895954927613,
+      "p_value": 0.04693181082512186,
+      "r_squared": 0.019990837882426844,
+      "strategy": "max"
+    },
+    "K_stress": {
+      "distance": 50,
+      "correlation": -0.16626913256644701,
+      "p_value": 0.01664753324861207,
+      "r_squared": 0.02764542444439873,
+      "strategy": "max"
+    },
+    "K_total": {
+      "distance": 10,
+      "correlation": 0.3391501134191966,
+      "p_value": 1.0202624685612474e-06,
+      "r_squared": 0.11502279943225392,
+      "strategy": "avg"
+    },
+    "D_final": {
+      "distance": 10,
+      "correlation": 0.3391501134191963,
+      "p_value": 1.0202624685613e-06,
+      "r_squared": 0.11502279943225373,
+      "strategy": "avg"
+    },
+    "K_repair": {
+      "distance": 20,
+      "correlation": 0.3627455207879182,
+      "p_value": 8.399612669183125e-08,
+      "r_squared": 0.131584312851698,
+      "strategy": "avg"
+    }
+  },
+  "avg_matching_rate": 98.93719806763285,
+  "num_distances_tested": 5
+}

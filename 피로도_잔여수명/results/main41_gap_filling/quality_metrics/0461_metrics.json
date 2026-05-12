@@ -1,0 +1,18 @@
+{
+  "area": "0461",
+  "total_records": 231372,
+  "total_gaps_filled": 1,
+  "gaps": [
+    {
+      "gap_id": 1,
+      "start_idx": 147115,
+      "end_idx": 147116,
+      "length": 1,
+      "length_hours": 0.08333333333333333,
+      "method": "xgboost",
+      "start_time": "2024-11-12 10:35:00",
+      "end_time": "2024-11-12 10:35:00"
+    }
+  ],
+  "timestamp": "2025-12-12T14:45:11.626706"
+}

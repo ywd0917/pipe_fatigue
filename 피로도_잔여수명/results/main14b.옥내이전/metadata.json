@@ -1,0 +1,20 @@
+{
+  "total_clusters": 981,
+  "matched_clusters": 981,
+  "matching_rate": 100.0,
+  "avg_pipes_per_cluster": 163.1855249745158,
+  "distance_threshold": 100.0,
+  "min_repairs_for_frequent": 4,
+  "analysis_factors": [
+    "STD_DIP",
+    "K_age",
+    "K_soil",
+    "K_traffic",
+    "hoop_stress",
+    "K_stress",
+    "K_total",
+    "D_final",
+    "K_repair"
+  ],
+  "timestamp": "2025-08-27T21:45:18.815587"
+}

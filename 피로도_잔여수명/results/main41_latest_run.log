@@ -1,0 +1,102 @@
+사용자 설정 파일 로드 실패: Expecting value: line 1 column 1 (char 0)
+XGBoost version: 3.1.2
+2025-12-12 14:45:10,623 - root - INFO - ======================================================================
+2025-12-12 14:45:10,623 - root - INFO - Starting main41_fill_pressure_gaps.py
+2025-12-12 14:45:10,623 - root - INFO - ======================================================================
+2025-12-12 14:45:10,623 - root - INFO - Processing areas: ['0243', '0461', '0470', '0480', '0490', '0520']
+2025-12-12 14:45:10,623 - root - INFO - 
+Processing area: 0243
+2025-12-12 14:45:10,623 - root - INFO - --------------------------------------------------
+2025-12-12 14:45:10,623 - root - INFO - Matched: 0243 소구역 압력 데이터.csv
+2025-12-12 14:45:10,623 - root - INFO - Found file: 0243 소구역 압력 데이터.csv
+2025-12-12 14:45:10,856 - root - INFO - Loaded 0243: 231372 records, 0 missing values
+2025-12-12 14:45:10,856 - root - INFO - 0243: No gaps detected
+2025-12-12 14:45:10,856 - root - INFO - 
+Processing area: 0461
+2025-12-12 14:45:10,856 - root - INFO - --------------------------------------------------
+2025-12-12 14:45:10,857 - root - INFO - Matched: 0461 소구역 압력 데이터.csv
+2025-12-12 14:45:10,857 - root - INFO - Found file: 0461 소구역 압력 데이터.csv
+2025-12-12 14:45:11,056 - root - INFO - Loaded 0461: 231372 records, 1 missing values
+2025-12-12 14:45:11,057 - root - INFO - 0461: Found 1 gaps
+2025-12-12 14:45:11,057 - root - INFO -   Gap 1: 1 points (0.08h) - Using XGBoost
+2025-12-12 14:45:11,210 - root - INFO - 0461: Validation - {'no_new_nans': True, 'all_gaps_filled': True, 'continuity_preserved': True, 'variance_ratio': np.float64(0.9999962504375896), 'mean_shift': np.float64(-3.726452635244293e-06)}
+2025-12-12 14:45:11,626 - root - INFO - Saved filled data: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/filled_data/0461_filled.csv
+2025-12-12 14:45:11,626 - root - INFO - Saved metrics: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/quality_metrics/0461_metrics.json
+한글 폰트 설정: Apple SD Gothic Neo
+2025-12-12 14:45:12,191 - root - INFO - Saved visualization: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/visualizations/0461_gap_comparison.png
+2025-12-12 14:45:12,192 - root - INFO - 
+Processing area: 0470
+2025-12-12 14:45:12,192 - root - INFO - --------------------------------------------------
+2025-12-12 14:45:12,192 - root - INFO - Matched: 0470 소구역 압력 데이터.csv
+2025-12-12 14:45:12,192 - root - INFO - Found file: 0470 소구역 압력 데이터.csv
+2025-12-12 14:45:12,356 - root - INFO - Loaded 0470: 205164 records, 2 missing values
+2025-12-12 14:45:12,357 - root - INFO - 0470: Found 1 gaps
+2025-12-12 14:45:12,357 - root - INFO -   Gap 1: 2 points (0.17h) - Using XGBoost
+2025-12-12 14:45:12,479 - root - INFO - 0470: Validation - {'no_new_nans': True, 'all_gaps_filled': True, 'continuity_preserved': True, 'variance_ratio': np.float64(0.9999917211492496), 'mean_shift': np.float64(-9.534161926616491e-07)}
+2025-12-12 14:45:12,772 - root - INFO - Saved filled data: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/filled_data/0470_filled.csv
+2025-12-12 14:45:12,773 - root - INFO - Saved metrics: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/quality_metrics/0470_metrics.json
+한글 폰트 설정: Apple SD Gothic Neo
+2025-12-12 14:45:13,204 - root - INFO - Saved visualization: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/visualizations/0470_gap_comparison.png
+2025-12-12 14:45:13,204 - root - INFO - 
+Processing area: 0480
+2025-12-12 14:45:13,204 - root - INFO - --------------------------------------------------
+2025-12-12 14:45:13,205 - root - INFO - Matched: 0480 소구역 압력 데이터.csv
+2025-12-12 14:45:13,205 - root - INFO - Found file: 0480 소구역 압력 데이터.csv
+2025-12-12 14:45:13,374 - root - INFO - Loaded 0480: 223308 records, 6925 missing values
+2025-12-12 14:45:13,374 - root - INFO - 0480: Found 1 gaps
+2025-12-12 14:45:13,375 - root - INFO -   Gap 1: 6925 points (577.08h) - Using Spectral
+2025-12-12 14:45:51,997 - common.gap_fill_utils - WARNING - ARMA fitting failed: Prediction must have `end` after `start`.. Using linear interpolation.
+2025-12-12 14:45:52,019 - root - INFO - 0480: Validation - {'no_new_nans': True, 'all_gaps_filled': True, 'continuity_preserved': True, 'variance_ratio': np.float64(0.9914467902167393), 'mean_shift': np.float64(-0.005085159862823652)}
+2025-12-12 14:45:52,350 - root - INFO - Saved filled data: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/filled_data/0480_filled.csv
+2025-12-12 14:45:52,351 - root - INFO - Saved metrics: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/quality_metrics/0480_metrics.json
+한글 폰트 설정: Apple SD Gothic Neo
+2025-12-12 14:45:52,841 - root - INFO - Saved visualization: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/visualizations/0480_gap_comparison.png
+2025-12-12 14:45:52,841 - root - INFO - 
+Processing area: 0490
+2025-12-12 14:45:52,841 - root - INFO - --------------------------------------------------
+2025-12-12 14:45:52,841 - root - INFO - Matched: 0490 소구역 압력 데이터.csv
+2025-12-12 14:45:52,841 - root - INFO - Found file: 0490 소구역 압력 데이터.csv
+2025-12-12 14:45:52,979 - root - INFO - Loaded 0490: 197100 records, 6926 missing values
+2025-12-12 14:45:52,980 - root - INFO - 0490: Found 1 gaps
+2025-12-12 14:45:52,980 - root - INFO -   Gap 1: 6926 points (577.17h) - Using Spectral
+2025-12-12 14:46:30,366 - common.gap_fill_utils - WARNING - ARMA fitting failed: Prediction must have `end` after `start`.. Using linear interpolation.
+2025-12-12 14:46:30,373 - root - INFO - 0490: Validation - {'no_new_nans': True, 'all_gaps_filled': True, 'continuity_preserved': True, 'variance_ratio': np.float64(0.969094534913673), 'mean_shift': np.float64(-0.002928752248374522)}
+2025-12-12 14:46:30,670 - root - INFO - Saved filled data: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/filled_data/0490_filled.csv
+2025-12-12 14:46:30,671 - root - INFO - Saved metrics: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/quality_metrics/0490_metrics.json
+한글 폰트 설정: Apple SD Gothic Neo
+2025-12-12 14:46:31,129 - root - INFO - Saved visualization: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/visualizations/0490_gap_comparison.png
+2025-12-12 14:46:31,129 - root - INFO - 
+Processing area: 0520
+2025-12-12 14:46:31,129 - root - INFO - --------------------------------------------------
+2025-12-12 14:46:31,129 - root - INFO - Looking in directory: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/data/raw
+2025-12-12 14:46:31,129 - root - INFO - Found 13 CSV files
+2025-12-12 14:46:31,130 - root - INFO -   - 0520_pipe_soil.csv
+2025-12-12 14:46:31,130 - root - INFO -   - 0520 중구역 압력 데이터.csv
+2025-12-12 14:46:31,130 - root - INFO -   - 0520_supply_soil.csv
+2025-12-12 14:46:31,130 - root - INFO - Matched: 0520 중구역 압력 데이터.csv
+2025-12-12 14:46:31,130 - root - INFO - Found file: 0520 중구역 압력 데이터.csv
+2025-12-12 14:46:31,290 - root - INFO - Loaded 0520: 205164 records, 3 missing values
+2025-12-12 14:46:31,291 - root - INFO - 0520: Found 2 gaps
+2025-12-12 14:46:31,291 - root - INFO -   Gap 1: 1 points (0.08h) - Using XGBoost
+2025-12-12 14:46:31,426 - root - INFO -   Gap 2: 2 points (0.17h) - Using XGBoost
+2025-12-12 14:46:31,563 - root - INFO - 0520: Validation - {'no_new_nans': True, 'all_gaps_filled': True, 'continuity_preserved': False, 'variance_ratio': np.float64(1.0001127191804902), 'mean_shift': np.float64(5.459315805977916e-06)}
+2025-12-12 14:46:31,855 - root - INFO - Saved filled data: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/filled_data/0520_filled.csv
+2025-12-12 14:46:31,855 - root - INFO - Saved metrics: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/quality_metrics/0520_metrics.json
+한글 폰트 설정: Apple SD Gothic Neo
+2025-12-12 14:46:32,166 - root - INFO - Saved visualization: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/visualizations/0520_gap_comparison.png
+2025-12-12 14:46:32,166 - root - INFO - Report saved: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/gap_filling_report.md
+2025-12-12 14:46:32,166 - root - INFO - 
+======================================================================
+2025-12-12 14:46:32,166 - root - INFO - Processing completed
+2025-12-12 14:46:32,166 - root - INFO - Report: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/gap_filling_report.md
+2025-12-12 14:46:32,166 - root - INFO - ======================================================================
+2025-12-12 14:46:32,166 - __main__ - INFO - main took 81.54 seconds
+
+Processing Summary:
+--------------------------------------------------
+0243: ✅ No gaps
+0461: ✅ 1 gaps filled
+0470: ✅ 1 gaps filled
+0480: ✅ 1 gaps filled
+0490: ✅ 1 gaps filled
+0520: ✅ 2 gaps filled

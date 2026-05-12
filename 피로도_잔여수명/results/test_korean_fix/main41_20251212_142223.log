@@ -1,0 +1,16 @@
+2025-12-12 14:22:23,115 - root - INFO - ======================================================================
+2025-12-12 14:22:23,115 - root - INFO - Starting main41_fill_pressure_gaps.py
+2025-12-12 14:22:23,115 - root - INFO - ======================================================================
+2025-12-12 14:22:23,115 - root - INFO - Processing areas: ['0470']
+2025-12-12 14:22:23,115 - root - INFO - 
+Processing area: 0470
+2025-12-12 14:22:23,115 - root - INFO - --------------------------------------------------
+2025-12-12 14:22:23,116 - root - WARNING - No pressure data file found for area 0470
+2025-12-12 14:22:23,116 - root - WARNING - Skipping 0470: Failed to load data
+2025-12-12 14:22:23,116 - root - INFO - Report saved: results/test_korean_fix/gap_filling_report.md
+2025-12-12 14:22:23,116 - root - INFO - 
+======================================================================
+2025-12-12 14:22:23,116 - root - INFO - Processing completed
+2025-12-12 14:22:23,116 - root - INFO - Report: results/test_korean_fix/gap_filling_report.md
+2025-12-12 14:22:23,116 - root - INFO - ======================================================================
+2025-12-12 14:22:23,116 - __main__ - INFO - main took 0.00 seconds

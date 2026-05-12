@@ -1,0 +1,10 @@
+{
+  "region_code": "0461",
+  "total_clusters": 217,
+  "matched_clusters": 217,
+  "matching_rate": 100.0,
+  "avg_pipes_per_cluster": 135.05990783410138,
+  "total_repairs": 471,
+  "total_pipes": 913,
+  "timestamp": "2025-09-04T22:25:35.414938"
+}

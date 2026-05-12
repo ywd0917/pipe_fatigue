@@ -1,0 +1,76 @@
+{
+  "region": "0480",
+  "distance": 20,
+  "execution_time": 4.946659088134766,
+  "matching_stats": {
+    "total_clusters": 128,
+    "matched_clusters": 128,
+    "matching_rate": 100.0,
+    "avg_pipes_per_cluster": 0.0,
+    "total_repairs": 157
+  },
+  "correlations": {
+    "STD_DIP": 0.0546292251856846,
+    "K_age": 0.07836123932490612,
+    "K_traffic": -0.11149993684812376,
+    "hoop_stress": -0.10898021571450087,
+    "K_stress": 0.03641248542338536,
+    "K_total": 0.1599911352775666,
+    "D_final": 0.15999113527756786,
+    "K_repair": 0.1589535457929278
+  },
+  "p_values": {
+    "STD_DIP": 0.5402376169955391,
+    "K_age": 0.3792862010092207,
+    "K_traffic": 0.21020056584901053,
+    "hoop_stress": 0.22075384094773823,
+    "K_stress": 0.68323375445613,
+    "K_total": 0.07123513342386711,
+    "D_final": 0.07123513342386545,
+    "K_repair": 0.07311299496850789
+  },
+  "r_squared": {
+    "STD_DIP": 0.002984352244388237,
+    "K_age": 0.006140483828535212,
+    "K_traffic": 0.012432235917135586,
+    "hoop_stress": 0.011876687417179142,
+    "K_stress": 0.0013258690947082516,
+    "K_total": 0.025597163367404613,
+    "D_final": 0.02559716336740502,
+    "K_repair": 0.025266229720144397
+  },
+  "strategies": {
+    "STD_DIP": "max",
+    "K_age": "nearest",
+    "K_traffic": "nearest",
+    "hoop_stress": "nearest",
+    "K_stress": "max",
+    "K_total": "avg",
+    "D_final": "avg",
+    "K_repair": "avg"
+  },
+  "significant_factors": [
+    {
+      "factor": "K_total",
+      "strategy": "avg",
+      "r": 0.1599911352775666,
+      "p": 0.07123513342386711,
+      "r_squared": 0.025597163367404613
+    },
+    {
+      "factor": "D_final",
+      "strategy": "avg",
+      "r": 0.15999113527756786,
+      "p": 0.07123513342386545,
+      "r_squared": 0.02559716336740502
+    },
+    {
+      "factor": "K_repair",
+      "strategy": "avg",
+      "r": 0.1589535457929278,
+      "p": 0.07311299496850789,
+      "r_squared": 0.025266229720144397
+    }
+  ],
+  "timestamp": "2025-08-25T16:43:42.280881"
+}

@@ -1,0 +1,87 @@
+{
+  "region": "0470",
+  "distance": 20,
+  "execution_time": 6.167848110198975,
+  "matching_stats": {
+    "total_clusters": 206,
+    "matched_clusters": 205,
+    "matching_rate": 99.51456310679612,
+    "avg_pipes_per_cluster": 9.970731707317073,
+    "total_repairs": 382
+  },
+  "correlations": {
+    "STD_DIP": -0.08659913202962756,
+    "K_age": -0.1266061460207412,
+    "K_soil": 0.07518485388272413,
+    "K_traffic": -0.0451711968655328,
+    "hoop_stress": 0.10419018179810773,
+    "K_stress": -0.06311481808521832,
+    "K_total": 0.32214674519373604,
+    "D_final": 0.3221467451937359,
+    "K_repair": 0.3577465654505496
+  },
+  "p_values": {
+    "STD_DIP": 0.21696080848045665,
+    "K_age": 0.07046252572500601,
+    "K_soil": 0.2839814763023044,
+    "K_traffic": 0.5201418418723248,
+    "hoop_stress": 0.1370930541267961,
+    "K_stress": 0.36863257395840954,
+    "K_total": 2.4721023335498767e-06,
+    "D_final": 2.4721023335499187e-06,
+    "K_repair": 1.3930898486471557e-07
+  },
+  "r_squared": {
+    "STD_DIP": 0.007499409668284866,
+    "K_age": 0.01602911621022524,
+    "K_soil": 0.005652762253366577,
+    "K_traffic": 0.0020404370262647204,
+    "hoop_stress": 0.010855593983122738,
+    "K_stress": 0.003983480261930202,
+    "K_total": 0.1037785254389179,
+    "D_final": 0.10377852543891779,
+    "K_repair": 0.12798260509166437
+  },
+  "strategies": {
+    "STD_DIP": "avg",
+    "K_age": "max",
+    "K_soil": "avg",
+    "K_traffic": "nearest",
+    "hoop_stress": "max",
+    "K_stress": "avg",
+    "K_total": "avg",
+    "D_final": "avg",
+    "K_repair": "avg"
+  },
+  "significant_factors": [
+    {
+      "factor": "K_age",
+      "strategy": "max",
+      "r": -0.1266061460207412,
+      "p": 0.07046252572500601,
+      "r_squared": 0.01602911621022524
+    },
+    {
+      "factor": "K_total",
+      "strategy": "avg",
+      "r": 0.32214674519373604,
+      "p": 2.4721023335498767e-06,
+      "r_squared": 0.1037785254389179
+    },
+    {
+      "factor": "D_final",
+      "strategy": "avg",
+      "r": 0.3221467451937359,
+      "p": 2.4721023335499187e-06,
+      "r_squared": 0.10377852543891779
+    },
+    {
+      "factor": "K_repair",
+      "strategy": "avg",
+      "r": 0.3577465654505496,
+      "p": 1.3930898486471557e-07,
+      "r_squared": 0.12798260509166437
+    }
+  ],
+  "timestamp": "2025-09-01T18:28:55.183006"
+}

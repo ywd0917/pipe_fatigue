@@ -1,0 +1,335 @@
+{
+    "src": {
+        "bacon": 1,
+        "imported_by": [
+            "src.analysis.analyze_road_attributes",
+            "src.analysis.check_road_fields",
+            "src.analysis.ftr_cde",
+            "src.analysis.ftr_cde_distribution",
+            "src.analysis.valve_codes",
+            "src.analysis.valve_ftc_relationship",
+            "src.analysis.valve_material_relationship",
+            "src.common.shapefile_loader",
+            "src.main10_cmp_recovery",
+            "src.main1_read_gis_files",
+            "src.main2_draw_zone",
+            "src.main3_draw_soil",
+            "src.main4_list_soil",
+            "src.main5_match_K_soil",
+            "src.main6_draw_road",
+            "src.main7_pipe_traffic",
+            "src.main8_verify_overlap_samples",
+            "src.main9_draw_recovery"
+        ],
+        "name": "src",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/__init__.py"
+    },
+    "src.analysis": {
+        "bacon": 1,
+        "name": "src.analysis",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/analysis/__init__.py"
+    },
+    "src.analysis.analyze_road_attributes": {
+        "bacon": 1,
+        "imports": [
+            "src",
+            "src.common",
+            "src.common.config",
+            "src.common.road_loader"
+        ],
+        "name": "src.analysis.analyze_road_attributes",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/analysis/analyze_road_attributes.py"
+    },
+    "src.analysis.check_road_fields": {
+        "bacon": 1,
+        "imports": [
+            "src",
+            "src.common",
+            "src.common.config"
+        ],
+        "name": "src.analysis.check_road_fields",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/analysis/check_road_fields.py"
+    },
+    "src.analysis.ftr_cde": {
+        "bacon": 1,
+        "imports": [
+            "src",
+            "src.common",
+            "src.common.config"
+        ],
+        "name": "src.analysis.ftr_cde",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/analysis/ftr_cde.py"
+    },
+    "src.analysis.ftr_cde_distribution": {
+        "bacon": 1,
+        "imports": [
+            "src",
+            "src.common",
+            "src.common.config"
+        ],
+        "name": "src.analysis.ftr_cde_distribution",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/analysis/ftr_cde_distribution.py"
+    },
+    "src.analysis.valve_codes": {
+        "bacon": 1,
+        "imports": [
+            "src",
+            "src.common",
+            "src.common.config"
+        ],
+        "name": "src.analysis.valve_codes",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/analysis/valve_codes.py"
+    },
+    "src.analysis.valve_ftc_relationship": {
+        "bacon": 1,
+        "imports": [
+            "src",
+            "src.common",
+            "src.common.config"
+        ],
+        "name": "src.analysis.valve_ftc_relationship",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/analysis/valve_ftc_relationship.py"
+    },
+    "src.analysis.valve_material_relationship": {
+        "bacon": 1,
+        "imports": [
+            "src",
+            "src.common",
+            "src.common.config"
+        ],
+        "name": "src.analysis.valve_material_relationship",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/analysis/valve_material_relationship.py"
+    },
+    "src.common": {
+        "bacon": 1,
+        "imported_by": [
+            "src.analysis.analyze_road_attributes",
+            "src.analysis.check_road_fields",
+            "src.analysis.ftr_cde",
+            "src.analysis.ftr_cde_distribution",
+            "src.analysis.valve_codes",
+            "src.analysis.valve_ftc_relationship",
+            "src.analysis.valve_material_relationship",
+            "src.common.shapefile_loader",
+            "src.main10_cmp_recovery",
+            "src.main1_read_gis_files",
+            "src.main2_draw_zone",
+            "src.main3_draw_soil",
+            "src.main4_list_soil",
+            "src.main5_match_K_soil",
+            "src.main6_draw_road",
+            "src.main7_pipe_traffic",
+            "src.main8_verify_overlap_samples",
+            "src.main9_draw_recovery"
+        ],
+        "name": "src.common",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/common/__init__.py"
+    },
+    "src.common.config": {
+        "bacon": 1,
+        "imported_by": [
+            "src.analysis.analyze_road_attributes",
+            "src.analysis.check_road_fields",
+            "src.analysis.ftr_cde",
+            "src.analysis.ftr_cde_distribution",
+            "src.analysis.valve_codes",
+            "src.analysis.valve_ftc_relationship",
+            "src.analysis.valve_material_relationship",
+            "src.common.shapefile_loader",
+            "src.main10_cmp_recovery",
+            "src.main1_read_gis_files",
+            "src.main2_draw_zone",
+            "src.main3_draw_soil",
+            "src.main4_list_soil",
+            "src.main5_match_K_soil",
+            "src.main6_draw_road",
+            "src.main7_pipe_traffic",
+            "src.main8_verify_overlap_samples",
+            "src.main9_draw_recovery"
+        ],
+        "name": "src.common.config",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/common/config.py"
+    },
+    "src.common.fatigue_loader": {
+        "bacon": 1,
+        "imported_by": [
+            "src.main10_cmp_recovery"
+        ],
+        "name": "src.common.fatigue_loader",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/common/fatigue_loader.py"
+    },
+    "src.common.korean_font_utils": {
+        "bacon": 1,
+        "imported_by": [
+            "src.main10_cmp_recovery",
+            "src.main2_draw_zone",
+            "src.main3_draw_soil",
+            "src.main6_draw_road",
+            "src.main8_verify_overlap_samples",
+            "src.main9_draw_recovery"
+        ],
+        "name": "src.common.korean_font_utils",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/common/korean_font_utils.py"
+    },
+    "src.common.recovery_loader": {
+        "bacon": 1,
+        "imported_by": [
+            "src.main10_cmp_recovery",
+            "src.main9_draw_recovery"
+        ],
+        "name": "src.common.recovery_loader",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/common/recovery_loader.py"
+    },
+    "src.common.road_loader": {
+        "bacon": 1,
+        "imported_by": [
+            "src.analysis.analyze_road_attributes",
+            "src.main6_draw_road",
+            "src.main7_pipe_traffic",
+            "src.main8_verify_overlap_samples"
+        ],
+        "name": "src.common.road_loader",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/common/road_loader.py"
+    },
+    "src.common.shapefile_loader": {
+        "bacon": 1,
+        "imported_by": [
+            "src.main10_cmp_recovery",
+            "src.main9_draw_recovery"
+        ],
+        "imports": [
+            "src",
+            "src.common",
+            "src.common.config"
+        ],
+        "name": "src.common.shapefile_loader",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/common/shapefile_loader.py"
+    },
+    "src.common.soil_loader": {
+        "bacon": 1,
+        "imported_by": [
+            "src.main3_draw_soil",
+            "src.main4_list_soil",
+            "src.main5_match_K_soil"
+        ],
+        "name": "src.common.soil_loader",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/common/soil_loader.py"
+    },
+    "src.main10_cmp_recovery": {
+        "bacon": 1,
+        "imports": [
+            "src",
+            "src.common",
+            "src.common.config",
+            "src.common.fatigue_loader",
+            "src.common.korean_font_utils",
+            "src.common.recovery_loader",
+            "src.common.shapefile_loader"
+        ],
+        "name": "src.main10_cmp_recovery",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/main10_cmp_recovery.py"
+    },
+    "src.main1_read_gis_files": {
+        "bacon": 1,
+        "imports": [
+            "src",
+            "src.common",
+            "src.common.config"
+        ],
+        "name": "src.main1_read_gis_files",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/main1_read_gis_files.py"
+    },
+    "src.main2_draw_zone": {
+        "bacon": 1,
+        "imports": [
+            "src",
+            "src.common",
+            "src.common.config",
+            "src.common.korean_font_utils"
+        ],
+        "name": "src.main2_draw_zone",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/main2_draw_zone.py"
+    },
+    "src.main3_draw_soil": {
+        "bacon": 1,
+        "imports": [
+            "src",
+            "src.common",
+            "src.common.config",
+            "src.common.korean_font_utils",
+            "src.common.soil_loader"
+        ],
+        "name": "src.main3_draw_soil",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/main3_draw_soil.py"
+    },
+    "src.main4_list_soil": {
+        "bacon": 1,
+        "imports": [
+            "src",
+            "src.common",
+            "src.common.config",
+            "src.common.soil_loader"
+        ],
+        "name": "src.main4_list_soil",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/main4_list_soil.py"
+    },
+    "src.main5_match_K_soil": {
+        "bacon": 1,
+        "imports": [
+            "src",
+            "src.common",
+            "src.common.config",
+            "src.common.soil_loader"
+        ],
+        "name": "src.main5_match_K_soil",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/main5_match_K_soil.py"
+    },
+    "src.main6_draw_road": {
+        "bacon": 1,
+        "imports": [
+            "src",
+            "src.common",
+            "src.common.config",
+            "src.common.korean_font_utils",
+            "src.common.road_loader"
+        ],
+        "name": "src.main6_draw_road",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/main6_draw_road.py"
+    },
+    "src.main7_pipe_traffic": {
+        "bacon": 1,
+        "imports": [
+            "src",
+            "src.common",
+            "src.common.config",
+            "src.common.road_loader"
+        ],
+        "name": "src.main7_pipe_traffic",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/main7_pipe_traffic.py"
+    },
+    "src.main8_verify_overlap_samples": {
+        "bacon": 1,
+        "imports": [
+            "src",
+            "src.common",
+            "src.common.config",
+            "src.common.korean_font_utils",
+            "src.common.road_loader"
+        ],
+        "name": "src.main8_verify_overlap_samples",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/main8_verify_overlap_samples.py"
+    },
+    "src.main9_draw_recovery": {
+        "bacon": 1,
+        "imports": [
+            "src",
+            "src.common",
+            "src.common.config",
+            "src.common.korean_font_utils",
+            "src.common.recovery_loader",
+            "src.common.shapefile_loader"
+        ],
+        "name": "src.main9_draw_recovery",
+        "path": "/Users/jhpark/development/eroumtech/fatigue-qgis/src/main9_draw_recovery.py"
+    }
+}

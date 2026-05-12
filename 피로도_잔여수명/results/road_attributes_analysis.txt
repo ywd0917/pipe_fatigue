@@ -1,0 +1,18 @@
+대구광역시 도로 네트워크 속성 분석 (TL_SPRD_INTRVL)
+================================================================================
+
+### 필드 설명
+- **BSI_INT_SN**: 기초구간 일련번호 (Basic Section Internal Serial Number)
+- **EVE_BSI_MN**: 짝수쪽 기초번호 (Even side Basic Main Number)
+- **EVE_BSI_SL**: 짝수쪽 기초번호 보조번호 (Even side Basic Sub Number)
+- **ODD_BSI_MN**: 홀수쪽 기초번호 (Odd side Basic Main Number)
+- **ODD_BSI_SL**: 홀수쪽 기초번호 보조번호 (Odd side Basic Sub Number)
+- **OPERT_DE**: 운영일자 (Operation Date)
+- **RDS_MAN_NO**: 도로관리번호 (Road Management Number)
+- **SIG_CD**: 시군구코드 (City/County/District Code)
+
+### 데이터 요약
+- 전체 도로 구간 수: 357,643
+- 전체 도로 총 길이: 5,643.3 km
+- 고유 도로 수: 5,732
+- 시군구 수: 9

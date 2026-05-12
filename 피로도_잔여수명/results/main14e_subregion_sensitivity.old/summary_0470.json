@@ -1,0 +1,42 @@
+{
+  "region": "0470",
+  "optimal_distances": {
+    "K_age": {
+      "distance": 20,
+      "correlation": 0.0704,
+      "p_value": 0.3809
+    },
+    "K_traffic": {
+      "distance": 10,
+      "correlation": -0.0862,
+      "p_value": 0.2944
+    },
+    "hoop_stress": {
+      "distance": 20,
+      "correlation": -0.0596,
+      "p_value": 0.4584
+    },
+    "K_stress": {
+      "distance": 20,
+      "correlation": -0.0959,
+      "p_value": 0.2321
+    },
+    "K_total": {
+      "distance": 10,
+      "correlation": 0.1865,
+      "p_value": 0.0223
+    },
+    "STD_DIP": {
+      "distance": 20,
+      "correlation": -0.1019,
+      "p_value": 0.2041
+    },
+    "D_final": {
+      "distance": 10,
+      "correlation": 0.1865,
+      "p_value": 0.0223
+    }
+  },
+  "avg_matching_rate": 99.1,
+  "num_distances_tested": 5
+}

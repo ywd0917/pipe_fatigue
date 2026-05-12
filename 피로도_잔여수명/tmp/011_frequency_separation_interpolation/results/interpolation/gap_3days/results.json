@@ -1,0 +1,22 @@
+{
+  "gap_start": "2025-05-19 13:40",
+  "gap_end": "2025-05-22 13:40",
+  "gap_days": 3,
+  "n_points": 865,
+  "methods": {
+    "low": "spline",
+    "high": "mean"
+  },
+  "predictability_scores": {
+    "low": 40.46,
+    "high": 26.88
+  },
+  "metrics": {
+    "mae": 0.05058504497478134,
+    "rmse": 0.07708262383875003,
+    "mape": 2.6828434828384093,
+    "r2": -0.027862407858767035
+  },
+  "grade": "D",
+  "conservation_rate": 0.2797237264152723
+}

@@ -1,0 +1,18 @@
+2025-12-12 13:53:17,579 - root - INFO - ======================================================================
+2025-12-12 13:53:17,579 - root - INFO - Starting main41_fill_pressure_gaps.py
+2025-12-12 13:53:17,579 - root - INFO - ======================================================================
+2025-12-12 13:53:17,579 - root - INFO - Processing areas: ['0243', '0461', '0470', '0480', '0490', '0520']
+2025-12-12 13:53:17,579 - root - INFO - 
+Processing area: 0243
+2025-12-12 13:53:17,579 - root - INFO - --------------------------------------------------
+2025-12-12 13:53:17,836 - root - INFO - Loaded 0243: 231372 records, 0 missing values
+2025-12-12 13:53:17,836 - root - INFO - 0243: No gaps detected
+2025-12-12 13:53:17,836 - root - INFO - 
+Processing area: 0461
+2025-12-12 13:53:17,836 - root - INFO - --------------------------------------------------
+2025-12-12 13:53:18,046 - root - INFO - Loaded 0461: 231372 records, 1 missing values
+2025-12-12 13:53:18,048 - root - INFO - 0461: Found 1 gaps
+2025-12-12 13:53:18,048 - root - INFO -   Gap 1: 1 points (0.08h) - Using XGBoost
+2025-12-12 13:53:18,190 - root - INFO - 0461: Validation - {'no_new_nans': True, 'all_gaps_filled': True, 'continuity_preserved': True, 'variance_ratio': np.float64(0.9999962504375896), 'mean_shift': np.float64(-3.726452635244293e-06)}
+2025-12-12 13:53:18,564 - root - INFO - Saved filled data: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/filled_data/0461_filled.csv
+2025-12-12 13:53:18,565 - __main__ - ERROR - main failed after 0.99 seconds: Object of type int64 is not JSON serializable

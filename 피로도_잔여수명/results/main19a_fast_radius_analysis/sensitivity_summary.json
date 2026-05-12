@@ -1,0 +1,140 @@
+{
+  "results": [
+    {
+      "radius": 10,
+      "infrastructure": {
+        "SPLY_LS": {
+          "correlation": -0.014723483738881828,
+          "p_value": 0.6461079544886463
+        },
+        "밸브": {
+          "correlation": -0.02936554930414351,
+          "p_value": 0.35968773914282787
+        },
+        "소화전": {
+          "correlation": -0.022149887030810583,
+          "p_value": 0.4896739360543517
+        },
+        "총 인프라": {
+          "correlation": -0.02758836381035165,
+          "p_value": 0.3895106732854048
+        }
+      },
+      "d_final": {},
+      "clusters": {
+        "total_repairs": 1943,
+        "total_clusters": 975,
+        "frequent_clusters": 105
+      }
+    },
+    {
+      "radius": 20,
+      "infrastructure": {
+        "SPLY_LS": {
+          "correlation": 0.060816607134518946,
+          "p_value": 0.057654038833968704
+        },
+        "밸브": {
+          "correlation": -0.050507262985196776,
+          "p_value": 0.11500929236037459
+        },
+        "소화전": {
+          "correlation": -0.03134201336384249,
+          "p_value": 0.3282529969993926
+        },
+        "총 인프라": {
+          "correlation": 0.01851862003340979,
+          "p_value": 0.5635669762698198
+        }
+      },
+      "d_final": {},
+      "clusters": {
+        "total_repairs": 1943,
+        "total_clusters": 975,
+        "frequent_clusters": 105
+      }
+    },
+    {
+      "radius": 30,
+      "infrastructure": {
+        "SPLY_LS": {
+          "correlation": 0.051623477310197244,
+          "p_value": 0.10719084643924555
+        },
+        "밸브": {
+          "correlation": -0.0746027230080106,
+          "p_value": 0.019820524432987457
+        },
+        "소화전": {
+          "correlation": -0.02884267492529613,
+          "p_value": 0.36830968686014315
+        },
+        "총 인프라": {
+          "correlation": 0.0011466287457100547,
+          "p_value": 0.971475678503405
+        }
+      },
+      "d_final": {},
+      "clusters": {
+        "total_repairs": 1943,
+        "total_clusters": 975,
+        "frequent_clusters": 105
+      }
+    },
+    {
+      "radius": 50,
+      "infrastructure": {
+        "SPLY_LS": {
+          "correlation": 0.025966155644194137,
+          "p_value": 0.41800373765293924
+        },
+        "밸브": {
+          "correlation": -0.053160198678323306,
+          "p_value": 0.09712174946191018
+        },
+        "소화전": {
+          "correlation": -0.014173296498902461,
+          "p_value": 0.6584779738376637
+        },
+        "총 인프라": {
+          "correlation": -0.0006552049284108928,
+          "p_value": 0.9836983381821172
+        }
+      },
+      "d_final": {},
+      "clusters": {
+        "total_repairs": 1943,
+        "total_clusters": 975,
+        "frequent_clusters": 105
+      }
+    },
+    {
+      "radius": 100,
+      "infrastructure": {
+        "SPLY_LS": {
+          "correlation": 0.010965221449210766,
+          "p_value": 0.732381001733911
+        },
+        "밸브": {
+          "correlation": -0.03121392021499143,
+          "p_value": 0.3302346742576369
+        },
+        "소화전": {
+          "correlation": -0.025221838360609185,
+          "p_value": 0.4314771111472072
+        },
+        "총 인프라": {
+          "correlation": 0.0012539997459417966,
+          "p_value": 0.968805945018967
+        }
+      },
+      "d_final": {},
+      "clusters": {
+        "total_repairs": 1943,
+        "total_clusters": 975,
+        "frequent_clusters": 105
+      }
+    }
+  ],
+  "timestamp": "2025-09-01T14:48:15.943107"
+}

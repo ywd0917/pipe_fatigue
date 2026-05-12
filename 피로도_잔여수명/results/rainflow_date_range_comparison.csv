@@ -1,0 +1,9 @@
+File,Data_Type,Data_Points,Period_Start,Period_End,Total_Cycles,Full_Cycles,Half_Cycles,Mean_Range,Max_Range,Std_Range
+test.csv,Low Pass,1000,2022-01-01,2022-12-31,0.0,0,0,0.0,0.0,0.0
+test.csv,High Pass,1000,2022-01-01,2022-12-31,0.0,0,0,0.0,0.0,0.0
+test.csv,Low Pass,1000,2022-01-01,2022-12-31,0.0,0,0,0.0,0.0,0.0
+test.csv,High Pass,1000,2022-01-01,2022-12-31,0.0,0,0,0.0,0.0,0.0
+test.csv,Low Pass,1000,2022-01-01,2022-12-31,0.0,0,0,0.0,0.0,0.0
+test.csv,High Pass,1000,2022-01-01,2022-12-31,0.0,0,0,0.0,0.0,0.0
+test.csv,Low Pass,1000,2022-01-01,2022-12-31,0.0,0,0,0.0,0.0,0.0
+test.csv,High Pass,1000,2022-01-01,2022-12-31,0.0,0,0,0.0,0.0,0.0

@@ -1,0 +1,61 @@
+{
+  "metrics": {
+    "mae": 0.05948546438207299,
+    "rmse": 0.08815896632976696,
+    "mape": 3.201311976020689,
+    "r2": -0.039952103667163064
+  },
+  "criteria": {
+    "mae_pass": true,
+    "mape_pass": true,
+    "r2_pass": false,
+    "all_pass": false
+  },
+  "grade": "D",
+  "feature_count": 17,
+  "train_size": 201293,
+  "gap_size": 3868,
+  "feature_importance": [
+    {
+      "feature": "pressure_other_min",
+      "importance": 0.11581537872552872
+    },
+    {
+      "feature": "pressure_other_std",
+      "importance": 0.10463280975818634
+    },
+    {
+      "feature": "month_cos",
+      "importance": 0.09826339781284332
+    },
+    {
+      "feature": "month",
+      "importance": 0.06540854275226593
+    },
+    {
+      "feature": "month_sin",
+      "importance": 0.06509312242269516
+    },
+    {
+      "feature": "dow_cos",
+      "importance": 0.060419224202632904
+    },
+    {
+      "feature": "pressure_0461",
+      "importance": 0.05930744484066963
+    },
+    {
+      "feature": "quarter",
+      "importance": 0.055978283286094666
+    },
+    {
+      "feature": "hour_sin",
+      "importance": 0.0488247312605381
+    },
+    {
+      "feature": "hour_cos",
+      "importance": 0.044694121927022934
+    }
+  ],
+  "timestamp": "2025-12-10T15:45:15.731304"
+}

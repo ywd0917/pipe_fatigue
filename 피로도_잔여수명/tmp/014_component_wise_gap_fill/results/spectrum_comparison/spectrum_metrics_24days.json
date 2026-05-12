@@ -1,0 +1,9 @@
+{
+  "spectral_correlation": 0.39492816715353113,
+  "energy_ratio": 1.3631057686291201,
+  "normalized_rmse": 4.668395730738186,
+  "wasserstein_distance": 0.0002107745221053603,
+  "low_freq_energy_ratio": 3.91136336872078,
+  "high_freq_energy_ratio": 1.0064957572810265,
+  "v_valley_freq_hz": 3.0111412225233363e-05
+}

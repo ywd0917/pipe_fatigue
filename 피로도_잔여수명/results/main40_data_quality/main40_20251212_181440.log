@@ -1,0 +1,71 @@
+2025-12-12 18:14:40,962 - root - INFO - === main40_analyze_pressure_gaps 시작 ===
+2025-12-12 18:14:40,963 - root - INFO - 출력 디렉토리: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main40_data_quality
+2025-12-12 18:14:40,963 - root - INFO - 임계값: {'missing_ratio_warning': 1.0, 'missing_ratio_critical': 3.0, 'consecutive_hours_warning': 24, 'consecutive_days_critical': 7}
+2025-12-12 18:14:40,965 - root - WARNING - ! 한글 폰트를 찾을 수 없습니다. 영문 레이블을 사용합니다.
+2025-12-12 18:14:40,966 - root - INFO - 유효한 압력 데이터 파일: 6/6
+2025-12-12 18:14:40,966 - root - INFO - 처리 중: 0243 (0243 소구역 압력 데이터.csv)
+2025-12-12 18:14:41,219 - __main__ - INFO - load_pressure_data took 0.25 seconds
+2025-12-12 18:14:41,289 - root - INFO -   - 원본 레코드: 231,372, 예상 레코드: 319,103
+2025-12-12 18:14:41,289 - root - INFO -   - NaN 결측: 0, Time Gap 결측: 87,731, 총 결측: 87,731 (27.493%)
+2025-12-12 18:14:41,289 - root - INFO -   - 불규칙 간격: 2개
+2025-12-12 18:14:41,289 - root - INFO - 압력 데이터 분석: 16% (1/6)
+2025-12-12 18:14:41,289 - root - INFO - 처리 중: 0461 (0461 소구역 압력 데이터.csv)
+2025-12-12 18:14:41,498 - __main__ - INFO - load_pressure_data took 0.21 seconds
+2025-12-12 18:14:41,567 - root - INFO -   - 원본 레코드: 231,372, 예상 레코드: 319,103
+2025-12-12 18:14:41,567 - root - INFO -   - NaN 결측: 1, Time Gap 결측: 87,731, 총 결측: 87,732 (27.493%)
+2025-12-12 18:14:41,567 - root - INFO -   - 불규칙 간격: 2개
+2025-12-12 18:14:41,567 - root - INFO - 압력 데이터 분석: 33% (2/6)
+2025-12-12 18:14:41,567 - root - INFO - 처리 중: 0470 (0470 소구역 압력 데이터.csv)
+2025-12-12 18:14:41,736 - __main__ - INFO - load_pressure_data took 0.17 seconds
+2025-12-12 18:14:41,796 - root - INFO -   - 원본 레코드: 205,164, 예상 레코드: 292,895
+2025-12-12 18:14:41,796 - root - INFO -   - NaN 결측: 2, Time Gap 결측: 87,731, 총 결측: 87,733 (29.954%)
+2025-12-12 18:14:41,796 - root - INFO -   - 불규칙 간격: 2개
+2025-12-12 18:14:41,796 - root - INFO - 압력 데이터 분석: 50% (3/6)
+2025-12-12 18:14:41,796 - root - INFO - 처리 중: 0480 (0480 소구역 압력 데이터.csv)
+2025-12-12 18:14:41,978 - __main__ - INFO - load_pressure_data took 0.18 seconds
+2025-12-12 18:14:42,053 - root - INFO -   - 원본 레코드: 223,308, 예상 레코드: 311,039
+2025-12-12 18:14:42,053 - root - INFO -   - NaN 결측: 6,925, Time Gap 결측: 87,731, 총 결측: 94,656 (30.432%)
+2025-12-12 18:14:42,053 - root - INFO -   - 불규칙 간격: 2개
+2025-12-12 18:14:42,053 - root - INFO - 압력 데이터 분석: 66% (4/6)
+2025-12-12 18:14:42,054 - root - INFO - 처리 중: 0490 (0490 소구역 압력 데이터.csv)
+2025-12-12 18:14:42,194 - __main__ - INFO - load_pressure_data took 0.14 seconds
+2025-12-12 18:14:42,263 - root - INFO -   - 원본 레코드: 197,100, 예상 레코드: 311,039
+2025-12-12 18:14:42,263 - root - INFO -   - NaN 결측: 6,926, Time Gap 결측: 113,939, 총 결측: 120,865 (38.858%)
+2025-12-12 18:14:42,263 - root - INFO -   - 불규칙 간격: 2개
+2025-12-12 18:14:42,263 - root - INFO - 압력 데이터 분석: 83% (5/6)
+2025-12-12 18:14:42,264 - root - INFO - 처리 중: 0520 (0520 중구역 압력 데이터.csv)
+2025-12-12 18:14:42,431 - __main__ - INFO - load_pressure_data took 0.17 seconds
+2025-12-12 18:14:42,493 - root - INFO -   - 원본 레코드: 205,164, 예상 레코드: 292,895
+2025-12-12 18:14:42,493 - root - INFO -   - NaN 결측: 3, Time Gap 결측: 87,731, 총 결측: 87,734 (29.954%)
+2025-12-12 18:14:42,493 - root - INFO -   - 불규칙 간격: 2개
+2025-12-12 18:14:42,493 - root - INFO - 압력 데이터 분석: 100% (6/6)
+2025-12-12 18:14:42,493 - root - INFO - 압력 데이터 분석: 100% completed (6/6)
+2025-12-12 18:14:42,493 - root - INFO - 경고 메시지 생성 중...
+2025-12-12 18:14:42,494 - root - WARNING - 🔴 CRITICAL: 0243 지역 결측 비율 27.49% (총 87,731개: NaN 0개 + Time Gap 87,731개, 임계값: 3.0%)
+2025-12-12 18:14:42,494 - root - WARNING - 🔴 CRITICAL: 0243 지역 최대 연속 결측 183.0일 (2024-04-01 ~ 2024-09-30)
+2025-12-12 18:14:42,494 - root - WARNING - 🔴 CRITICAL: 0461 지역 결측 비율 27.49% (총 87,732개: NaN 1개 + Time Gap 87,731개, 임계값: 3.0%)
+2025-12-12 18:14:42,494 - root - WARNING - 🔴 CRITICAL: 0461 지역 최대 연속 결측 183.0일 (2024-04-01 ~ 2024-09-30)
+2025-12-12 18:14:42,494 - root - WARNING - 🔴 CRITICAL: 0470 지역 결측 비율 29.95% (총 87,733개: NaN 2개 + Time Gap 87,731개, 임계값: 3.0%)
+2025-12-12 18:14:42,494 - root - WARNING - 🔴 CRITICAL: 0470 지역 최대 연속 결측 183.0일 (2024-04-01 ~ 2024-09-30)
+2025-12-12 18:14:42,494 - root - WARNING - 🔴 CRITICAL: 0480 지역 결측 비율 30.43% (총 94,656개: NaN 6,925개 + Time Gap 87,731개, 임계값: 3.0%)
+2025-12-12 18:14:42,494 - root - WARNING - 🔴 CRITICAL: 0480 지역 최대 연속 결측 183.0일 (2024-04-01 ~ 2024-09-30)
+2025-12-12 18:14:42,494 - root - WARNING - 🔴 CRITICAL: 0490 지역 결측 비율 38.86% (총 120,865개: NaN 6,926개 + Time Gap 113,939개, 임계값: 3.0%)
+2025-12-12 18:14:42,494 - root - WARNING - 🔴 CRITICAL: 0490 지역 최대 연속 결측 274.0일 (2024-01-01 ~ 2024-09-30)
+2025-12-12 18:14:42,494 - root - WARNING - 🔴 CRITICAL: 0520 지역 결측 비율 29.95% (총 87,734개: NaN 3개 + Time Gap 87,731개, 임계값: 3.0%)
+2025-12-12 18:14:42,494 - root - WARNING - 🔴 CRITICAL: 0520 지역 최대 연속 결측 183.0일 (2024-04-01 ~ 2024-09-30)
+2025-12-12 18:14:42,494 - root - INFO - 시각화 생성 중...
+2025-12-12 18:14:42,682 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-12-12 18:14:42,683 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-12-12 18:14:42,916 - root - INFO -   ✓ 결측 비율 비교 그래프 생성 완료
+2025-12-12 18:14:43,446 - root - INFO -   ✓ 0243 타임라인 생성 완료
+2025-12-12 18:14:43,790 - root - INFO -   ✓ 0461 타임라인 생성 완료
+2025-12-12 18:14:44,113 - root - INFO -   ✓ 0470 타임라인 생성 완료
+2025-12-12 18:14:44,434 - root - INFO -   ✓ 0480 타임라인 생성 완료
+2025-12-12 18:14:44,743 - root - INFO -   ✓ 0490 타임라인 생성 완료
+2025-12-12 18:14:45,026 - root - INFO -   ✓ 0520 타임라인 생성 완료
+2025-12-12 18:14:45,330 - root - INFO -   ✓ 시간 간격 분포 생성 완료
+2025-12-12 18:14:45,330 - root - INFO - Markdown 보고서 생성 중...
+2025-12-12 18:14:45,330 - root - INFO -   ✓ 보고서 생성 완료: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main40_data_quality/data_quality_report.md
+2025-12-12 18:14:45,330 - root - INFO - === main40 완료 ===
+2025-12-12 18:14:45,330 - root - INFO - 결과 디렉토리: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main40_data_quality
+2025-12-12 18:14:45,330 - __main__ - INFO - main took 4.37 seconds

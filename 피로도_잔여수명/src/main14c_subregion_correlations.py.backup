@@ -1,0 +1,1658 @@
+"""
+하위 지역별 재작업 위치와 파이프 위험 요인 상관관계 분석
+- 0470, 0480, 0490 하위 지역별 개별 분석
+- K-factors: K_age, K_soil, K_traffic, hoop_stress, K_stress, K_total, STD_DIP
+- D_final: 피로 손상 지수 (지역별 컬럼 사용)
+- 지역 간 비교 및 통합 보고서 생성
+"""
+
+import argparse
+import sys
+import time
+import warnings
+from datetime import datetime
+from math import asin, cos, radians, sin, sqrt
+from pathlib import Path
+from typing import Any
+
+import geopandas as gpd
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
+from scipy import stats
+from scipy.spatial import cKDTree
+from shapely.geometry import Point
+from shapely.strtree import STRtree
+
+# 프로젝트 루트 경로 추가
+sys.path.append(str(Path(__file__).parent.parent.parent))
+
+from src.common.config import RAW_DATA_DIR, RESULTS_DIR, FATIGUE_PIPE_LM_CSV, FATIGUE_SPLY_LS_CSV, REPAIR_FILES
+from src.common.korean_font_utils import setup_korean_font
+from src.common.shapefile_loader import (
+    ShapefileLoader,
+    get_subregion_boundary as get_subregion_boundary_from_loader, 
+    get_subregion_label, 
+    get_smlz_shapefile_path
+)
+
+# 경고 메시지 무시
+warnings.filterwarnings("ignore", category=UserWarning)
+
+# 상수 정의
+DISTANCE_THRESHOLD_METERS = 30.0  # 파이프 매칭 거리 임계값 (미터)
+MIN_REPAIRS_FOR_FREQUENT = 4  # 빈번한 재작업 판단 기준
+CLUSTER_DISTANCE_METERS = 10.0  # 클러스터링 거리 임계값 (미터)
+
+# 분석 대상 하위 지역
+VALID_SUBREGIONS = ["0470", "0480", "0490"]
+PARENT_REGION = "0520"
+
+# K-factors 정의 (CSV 파일 컬럼 순서와 동일)
+# 기본 K-factors - 항상 존재하는 컬럼들
+BASE_K_FACTORS = [
+    "STD_DIP",      # 관경
+    "K_age",        # 파이프 연령 계수
+    "K_soil",       # 토양 조건 계수
+    "K_traffic",    # 교통 하중 계수
+    "hoop_stress",  # 원주 응력
+    "K_stress",     # 응력 계수
+    "K_total"       # 총 위험도 계수
+]
+
+# 선택적 K-factors - 별도 파일에서 조인되는 컬럼
+OPTIONAL_K_FACTORS = ["K_repair"]  # 재작업 이력 계수
+
+# 피로 손상 지수
+DAMAGE_FACTOR = "D_final"
+
+# 분석 요인 리스트 - load_pipe_factors_for_subregion에서 설정됨
+ANALYSIS_FACTORS = []  # 초기화, 실행 시 업데이트
+
+# 요인 이름 매핑 (한글 표시용)
+FACTOR_NAMES = {
+    "STD_DIP": "관경",
+    "K_age": "파이프 연령 계수",
+    "K_soil": "토양 조건 계수",
+    "K_traffic": "교통 하중 계수",
+    "hoop_stress": "원주 응력",
+    "K_stress": "응력 계수",
+    "K_total": "총 위험도 계수",
+    "D_final": "피로 손상 지수",
+    "K_repair": "재작업 이력 계수",
+}
+
+
+def validate_region_code(region_code: str) -> None:
+    """지역 코드 유효성 검증"""
+    if region_code not in VALID_SUBREGIONS:
+        raise ValueError(f"유효하지 않은 지역 코드: {region_code}. 유효한 코드: {', '.join(VALID_SUBREGIONS)}")
+
+
+def get_subregion_boundary(region_code: str) -> gpd.GeoDataFrame:
+    """WEA_SMLZ_AS.shp에서 하위 지역 경계 추출"""
+    validate_region_code(region_code)
+    # SMLZ shapefile 경로 가져오기
+    smlz_path = get_smlz_shapefile_path(RAW_DATA_DIR, PARENT_REGION)
+    if not smlz_path:
+        raise FileNotFoundError(f"{PARENT_REGION} 지역의 SMLZ shapefile을 찾을 수 없습니다.")
+    
+    # 하위 지역 라벨 가져오기
+    label = get_subregion_label(region_code)
+    
+    # 경계 추출
+    boundary = get_subregion_boundary_from_loader(smlz_path, label)
+    if boundary is None:
+        raise ValueError(f"{region_code} 지역의 경계를 찾을 수 없습니다.")
+    
+    return boundary
+
+
+def calculate_haversine_distance(
+    lat1: float, lon1: float, lat2: float, lon2: float
+) -> float:
+    """두 지점 간의 거리를 Haversine 공식으로 계산 (미터 단위)"""
+    R = 6371000  # 지구 반지름 (미터)
+    lat1, lon1, lat2, lon2 = map(radians, [lat1, lon1, lat2, lon2])
+
+    dlat = lat2 - lat1
+    dlon = lon2 - lon1
+    a = sin(dlat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dlon / 2) ** 2
+    c = 2 * asin(sqrt(a))
+
+    return R * c
+
+
+def load_repair_data_for_subregion(region_code: str) -> pd.DataFrame:
+    """하위 지역 복구 데이터 로드 - 부모 지역 데이터에서 경계 내 필터링"""
+    validate_region_code(region_code)
+    print(f"\n=== {region_code} 지역 복구 작업 데이터 로드 중 ===")
+    
+    # 부모 지역 데이터 로드 (config에서 정의된 파일 사용)
+    all_repairs = []
+    
+    for file in REPAIR_FILES:
+        file_path = RESULTS_DIR / file
+        if file_path.exists():
+            df = pd.read_csv(file_path)
+            df["작업타입"] = file.split("_")[0]
+            all_repairs.append(df)
+            print(f"{file}: {len(df)}개 레코드")
+    
+    df_repairs = pd.concat(all_repairs, ignore_index=True)
+    
+    # 필요한 컬럼만 선택
+    df_repairs = df_repairs[["작업타입", "작업종료일", "주소", "위도", "경도"]].copy()
+    
+    # 결측값 제거
+    df_repairs = df_repairs.dropna(subset=["위도", "경도"])
+    
+    # WGS84 좌표를 GeoDataFrame으로 변환
+    geometry = [Point(lon, lat) for lon, lat in zip(df_repairs["경도"], df_repairs["위도"], strict=False)]
+    gdf_repairs = gpd.GeoDataFrame(df_repairs, geometry=geometry, crs="EPSG:4326")
+    gdf_repairs = gdf_repairs.to_crs("EPSG:5179")
+    
+    # 하위 지역 경계 가져오기
+    boundary = get_subregion_boundary(region_code)
+    
+    # 경계 내 데이터만 필터링
+    gdf_filtered = gdf_repairs[gdf_repairs.within(boundary.geometry.iloc[0])]
+    
+    # 다시 WGS84로 변환하여 DataFrame으로 반환
+    gdf_filtered = gdf_filtered.to_crs("EPSG:4326")
+    df_filtered = pd.DataFrame(gdf_filtered.drop(columns=["geometry"]))
+    
+    print(f"{region_code} 지역 복구 작업: {len(df_filtered)}개 (전체 {len(df_repairs)}개 중)")
+    
+    return df_filtered
+
+
+def load_repair_data() -> pd.DataFrame:
+    """3개 복구 작업 CSV 파일 로드 및 통합 (기존 함수, 호환성 유지)"""
+    print("\n=== 복구 작업 데이터 로드 중 ===")
+
+    all_repairs = []
+
+    for file in REPAIR_FILES:
+        file_path = RESULTS_DIR / file
+        if file_path.exists():
+            df = pd.read_csv(file_path)
+            df["작업타입"] = file.split("_")[0]
+            all_repairs.append(df)
+            print(f"{file}: {len(df)}개 레코드")
+
+    df_repairs = pd.concat(all_repairs, ignore_index=True)
+
+    # 필요한 컬럼만 선택
+    df_repairs = df_repairs[["작업타입", "작업종료일", "주소", "위도", "경도"]].copy()
+
+    # 결측값 제거
+    df_repairs = df_repairs.dropna(subset=["위도", "경도"])
+
+    print(f"전체 복구 작업: {len(df_repairs)}개")
+
+    return df_repairs
+
+
+def load_pipe_factors_for_subregion(region_code: str) -> gpd.GeoDataFrame:
+    """하위 지역 파이프 K-factors 및 D_final 데이터 로드 - LineString 유지"""
+    validate_region_code(region_code)
+    print(f"\n=== {region_code} 지역 파이프 위험 요인 데이터 로드 중 ===")
+    
+    # CSV 파일에서 데이터 로드
+    pipe_lm_csv = FATIGUE_PIPE_LM_CSV
+    sply_ls_csv = FATIGUE_SPLY_LS_CSV
+    
+    df_pipe_lm = pd.read_csv(pipe_lm_csv)
+    df_sply_ls = pd.read_csv(sply_ls_csv)
+    
+    # 기본 K-factors는 항상 존재
+    k_factors = BASE_K_FACTORS.copy()
+    
+    # K_repair 컬럼 존재 여부 확인 (선택적)
+    has_k_repair = "K_repair" in df_pipe_lm.columns and "K_repair" in df_sply_ls.columns
+    if has_k_repair:
+        k_factors.extend(OPTIONAL_K_FACTORS)
+        print("K_repair 컬럼을 포함하여 분석합니다.")
+    else:
+        print("주의: K_repair 컬럼이 없어 분석에서 제외됩니다.")
+    
+    # 필요한 컬럼 선택 (K-factors + 지역별 D_final)
+    # D_final은 '0470_D_final', '0480_D_final', '0490_D_final' 컬럼명으로 저장
+    d_final_col = f"{region_code}_D_final"
+    cols_needed = ["FTR_IDN", *k_factors, d_final_col]
+    
+    # 컬럼 존재 확인
+    if d_final_col not in df_pipe_lm.columns:
+        raise ValueError(f"{d_final_col} 컬럼이 PIPE_LM CSV에 없습니다.")
+    if d_final_col not in df_sply_ls.columns:
+        raise ValueError(f"{d_final_col} 컬럼이 SPLY_LS CSV에 없습니다.")
+    
+    df_pipe_lm = df_pipe_lm[cols_needed].copy()
+    df_sply_ls = df_sply_ls[cols_needed].copy()
+    
+    # D_final 컬럼명 변경
+    df_pipe_lm.rename(columns={d_final_col: DAMAGE_FACTOR}, inplace=True)
+    df_sply_ls.rename(columns={d_final_col: DAMAGE_FACTOR}, inplace=True)
+    
+    # 파이프 타입 추가
+    df_pipe_lm["pipe_type"] = "PIPE_LM"
+    df_sply_ls["pipe_type"] = "SPLY_LS"
+    
+    # 전역 ANALYSIS_FACTORS 업데이트
+    global ANALYSIS_FACTORS
+    # 기본 순서: BASE_K_FACTORS + D_final + OPTIONAL_K_FACTORS (있는 경우)
+    ANALYSIS_FACTORS = BASE_K_FACTORS + [DAMAGE_FACTOR]
+    if has_k_repair:
+        ANALYSIS_FACTORS.extend(OPTIONAL_K_FACTORS)
+    
+    # ShapefileLoader를 사용하여 geometry 정보 로드
+    loader = ShapefileLoader(RAW_DATA_DIR, verbose=False)
+    
+    # PIPE_LM과 SPLY_LS shapefile 로드 (0520 지역)
+    gdf_pipe_lm = loader.load_pipe_shapefile(PARENT_REGION, "PIPE_LM")
+    gdf_sply_ls = loader.load_pipe_shapefile(PARENT_REGION, "SPLY_LS")
+    
+    if gdf_pipe_lm is None or gdf_sply_ls is None:
+        raise FileNotFoundError(f"{region_code} 지역의 파이프 shapefile을 찾을 수 없습니다.")
+    
+    # 하위 지역 경계 가져오기
+    boundary = get_subregion_boundary(region_code)
+    
+    # FTR_IDN을 기준으로 K-factors 데이터와 매칭 + 경계 내 필터링 (LineString 유지)
+    pipe_lm_factors = []
+    for ftr_idn in df_pipe_lm["FTR_IDN"].unique():
+        segments = gdf_pipe_lm[gdf_pipe_lm["FTR_IDN"] == ftr_idn]
+        if not segments.empty:
+            # 경계 내 세그먼트만 선택
+            segments_in_boundary = segments[segments.within(boundary.geometry.iloc[0])]
+            if not segments_in_boundary.empty:
+                # CSV 데이터에서 매칭되는 K-factors 찾기
+                factors_match = df_pipe_lm[df_pipe_lm["FTR_IDN"] == ftr_idn]
+                if not factors_match.empty:
+                    factors = factors_match.iloc[0].to_dict()
+                    # 모든 세그먼트의 geometry를 하나로 합치기 (MultiLineString 또는 LineString)
+                    from shapely.ops import unary_union
+                    combined_geom = unary_union(segments_in_boundary.geometry.tolist())
+                    factors["geometry"] = combined_geom  # LineString/MultiLineString 유지
+                    factors["segment_id"] = ftr_idn
+                    pipe_lm_factors.append(factors)
+    
+    sply_ls_factors = []
+    for ftr_idn in df_sply_ls["FTR_IDN"].unique():
+        segments = gdf_sply_ls[gdf_sply_ls["FTR_IDN"] == ftr_idn]
+        if not segments.empty:
+            # 경계 내 세그먼트만 선택
+            segments_in_boundary = segments[segments.within(boundary.geometry.iloc[0])]
+            if not segments_in_boundary.empty:
+                # CSV 데이터에서 매칭되는 K-factors 찾기
+                factors_match = df_sply_ls[df_sply_ls["FTR_IDN"] == ftr_idn]
+                if not factors_match.empty:
+                    factors = factors_match.iloc[0].to_dict()
+                    # 모든 세그먼트의 geometry를 하나로 합치기 (MultiLineString 또는 LineString)
+                    from shapely.ops import unary_union
+                    combined_geom = unary_union(segments_in_boundary.geometry.tolist())
+                    factors["geometry"] = combined_geom  # LineString/MultiLineString 유지
+                    factors["segment_id"] = ftr_idn
+                    sply_ls_factors.append(factors)
+    
+    # GeoDataFrame 생성
+    if pipe_lm_factors:
+        gdf_pipe_lm_factors = gpd.GeoDataFrame(pipe_lm_factors, crs="EPSG:5179")
+    else:
+        gdf_pipe_lm_factors = gpd.GeoDataFrame(columns=["FTR_IDN", *ANALYSIS_FACTORS, "pipe_type", "geometry"], crs="EPSG:5179")
+    
+    if sply_ls_factors:
+        gdf_sply_ls_factors = gpd.GeoDataFrame(sply_ls_factors, crs="EPSG:5179")
+    else:
+        gdf_sply_ls_factors = gpd.GeoDataFrame(columns=["FTR_IDN", *ANALYSIS_FACTORS, "pipe_type", "geometry"], crs="EPSG:5179")
+    
+    # 통합
+    gdf_all_pipes = pd.concat([gdf_pipe_lm_factors, gdf_sply_ls_factors], ignore_index=True)
+    
+    # 유효한 데이터만 필터링 (D_final이 0보다 큰 경우)
+    if len(gdf_all_pipes) > 0:
+        gdf_all_pipes = gdf_all_pipes[gdf_all_pipes["D_final"] > 0]
+    
+    print(f"{region_code} 지역 PIPE_LM: {len(gdf_pipe_lm_factors)}개 세그먼트")
+    print(f"{region_code} 지역 SPLY_LS: {len(gdf_sply_ls_factors)}개 세그먼트")
+    print(f"유효한 파이프 세그먼트: {len(gdf_all_pipes)}개")
+    
+    # 분석 요인 통계 출력
+    print(f"\n=== {region_code} 지역 분석 요인 범위 ===")
+    for factor in ANALYSIS_FACTORS:
+        if factor in gdf_all_pipes.columns:
+            factor_min = gdf_all_pipes[factor].min()
+            factor_max = gdf_all_pipes[factor].max()
+            factor_mean = gdf_all_pipes[factor].mean()
+            
+            if factor == "D_final":
+                print(f"{factor}: {factor_min:.6f} ~ {factor_max:.6f} (평균: {factor_mean:.6f})")
+            else:
+                print(f"{factor}: {factor_min:.4f} ~ {factor_max:.4f} (평균: {factor_mean:.4f})")
+    
+    return gdf_all_pipes
+
+
+def load_pipe_factors_data() -> pd.DataFrame:
+    """PIPE_LM과 SPLY_LS의 K-factors 및 D_final 데이터 로드 및 통합"""
+    print("\n=== 파이프 위험 요인 데이터 로드 중 ===")
+
+    # CSV 파일에서 데이터 로드
+    pipe_lm_csv = FATIGUE_PIPE_LM_CSV
+    sply_ls_csv = FATIGUE_SPLY_LS_CSV
+
+    df_pipe_lm = pd.read_csv(pipe_lm_csv)
+    df_sply_ls = pd.read_csv(sply_ls_csv)
+
+    # 기본 K-factors는 항상 존재
+    k_factors = BASE_K_FACTORS.copy()
+    
+    # K_repair 컬럼 존재 여부 확인 (선택적)
+    has_k_repair = "K_repair" in df_pipe_lm.columns and "K_repair" in df_sply_ls.columns
+    if has_k_repair:
+        k_factors.extend(OPTIONAL_K_FACTORS)
+        print("K_repair 컬럼을 포함하여 분석합니다.")
+    else:
+        print("주의: K_repair 컬럼이 없어 분석에서 제외됩니다.")
+    
+    # 필요한 컬럼 선택
+    # D_final은 '0520_D_final' 컬럼명으로 저장되어 있음
+    cols_needed = ["FTR_IDN", *k_factors, "0520_D_final"]
+    df_pipe_lm = df_pipe_lm[cols_needed].copy()
+    df_sply_ls = df_sply_ls[cols_needed].copy()
+    
+    # D_final 컬럼명 변경
+    df_pipe_lm.rename(columns={"0520_D_final": DAMAGE_FACTOR}, inplace=True)
+    df_sply_ls.rename(columns={"0520_D_final": DAMAGE_FACTOR}, inplace=True)
+
+    # 파이프 타입 추가
+    df_pipe_lm["pipe_type"] = "PIPE_LM"
+    df_sply_ls["pipe_type"] = "SPLY_LS"
+
+    print(f"PIPE_LM: {len(df_pipe_lm)}개 레코드")
+    print(f"SPLY_LS: {len(df_sply_ls)}개 레코드")
+    
+    # 전역 ANALYSIS_FACTORS 업데이트 (이 함수에서도 필요)
+    global ANALYSIS_FACTORS
+    # 기본 순서: BASE_K_FACTORS + D_final + OPTIONAL_K_FACTORS (있는 경우)
+    ANALYSIS_FACTORS = BASE_K_FACTORS + [DAMAGE_FACTOR]
+    if has_k_repair:
+        ANALYSIS_FACTORS.extend(OPTIONAL_K_FACTORS)
+
+    # 분석 요인 통계 출력
+    print("\n=== 분석 요인 범위 ===")
+    for factor in ANALYSIS_FACTORS:
+        if factor in df_pipe_lm.columns and factor in df_sply_ls.columns:
+            pipe_min = df_pipe_lm[factor].min()
+            pipe_max = df_pipe_lm[factor].max()
+            sply_min = df_sply_ls[factor].min()
+            sply_max = df_sply_ls[factor].max()
+            
+            # D_final은 다른 형식으로 출력
+            if factor == "D_final":
+                print(f"{factor}: {min(pipe_min, sply_min):.6f} ~ {max(pipe_max, sply_max):.6f}")
+            else:
+                print(f"{factor}: {min(pipe_min, sply_min):.4f} ~ {max(pipe_max, sply_max):.4f}")
+
+    # ShapefileLoader를 사용하여 geometry 정보 로드
+    loader = ShapefileLoader(RAW_DATA_DIR, verbose=False)
+    
+    # PIPE_LM과 SPLY_LS shapefile 로드 (0520 지역)
+    gdf_pipe_lm = loader.load_pipe_shapefile(PARENT_REGION, "PIPE_LM")
+    gdf_sply_ls = loader.load_pipe_shapefile(PARENT_REGION, "SPLY_LS")
+    
+    if gdf_pipe_lm is None or gdf_sply_ls is None:
+        raise FileNotFoundError("0520 지역의 파이프 shapefile을 찾을 수 없습니다.")
+
+    # FTR_IDN을 기준으로 K-factors 데이터와 매칭
+    pipe_lm_geom = []
+    for ftr_idn in df_pipe_lm["FTR_IDN"].unique():
+        segments = gdf_pipe_lm[gdf_pipe_lm["FTR_IDN"] == ftr_idn]
+        if not segments.empty:
+            centroids = segments.geometry.centroid
+            avg_x = centroids.x.mean()
+            avg_y = centroids.y.mean()
+            pipe_lm_geom.append({"FTR_IDN": ftr_idn, "geometry": Point(avg_x, avg_y)})
+
+    sply_ls_geom = []
+    for ftr_idn in df_sply_ls["FTR_IDN"].unique():
+        segments = gdf_sply_ls[gdf_sply_ls["FTR_IDN"] == ftr_idn]
+        if not segments.empty:
+            centroids = segments.geometry.centroid
+            avg_x = centroids.x.mean()
+            avg_y = centroids.y.mean()
+            sply_ls_geom.append({"FTR_IDN": ftr_idn, "geometry": Point(avg_x, avg_y)})
+
+    # GeoDataFrame 생성
+    gdf_pipe_lm_factors = gpd.GeoDataFrame(
+        pd.merge(df_pipe_lm, pd.DataFrame(pipe_lm_geom), on="FTR_IDN"), crs="EPSG:5179"
+    )
+
+    gdf_sply_ls_factors = gpd.GeoDataFrame(
+        pd.merge(df_sply_ls, pd.DataFrame(sply_ls_geom), on="FTR_IDN"), crs="EPSG:5179"
+    )
+
+    # WGS84로 변환
+    gdf_pipe_lm_factors = gdf_pipe_lm_factors.to_crs("EPSG:4326")
+    gdf_sply_ls_factors = gdf_sply_ls_factors.to_crs("EPSG:4326")
+
+    # 위도/경도 추출
+    gdf_pipe_lm_factors["경도"] = gdf_pipe_lm_factors.geometry.x
+    gdf_pipe_lm_factors["위도"] = gdf_pipe_lm_factors.geometry.y
+
+    gdf_sply_ls_factors["경도"] = gdf_sply_ls_factors.geometry.x
+    gdf_sply_ls_factors["위도"] = gdf_sply_ls_factors.geometry.y
+
+    # 통합
+    cols_to_concat = ["FTR_IDN", *ANALYSIS_FACTORS, "pipe_type", "위도", "경도"]
+    df_pipes = pd.concat(
+        [
+            gdf_pipe_lm_factors[cols_to_concat],
+            gdf_sply_ls_factors[cols_to_concat],
+        ],
+        ignore_index=True,
+    )
+
+    # 유효한 데이터만 필터링 (D_final이 0보다 큰 경우)
+    df_pipes = df_pipes[df_pipes["D_final"] > 0]
+
+    print(f"\n유효한 파이프: {len(df_pipes)}개")
+
+    return df_pipes  # type: ignore[no-any-return]
+
+
+def create_repair_clusters(df_repairs: pd.DataFrame) -> pd.DataFrame:
+    """재작업 위치 클러스터링"""
+    print("\n=== 재작업 위치 클러스터링 중 ===")
+    
+    # 인덱스를 리셋하여 정수 인덱스 보장
+    df_repairs = df_repairs.reset_index(drop=True)
+
+    clusters = []
+    visited = set()
+
+    for i, row1 in df_repairs.iterrows():
+        if i in visited:
+            continue
+
+        cluster = [i]
+        visited.add(i)
+
+        for j, row2 in df_repairs.iterrows():
+            if j <= i or j in visited:
+                continue
+
+            dist = calculate_haversine_distance(
+                row1["위도"], row1["경도"], row2["위도"], row2["경도"]
+            )
+
+            if dist <= CLUSTER_DISTANCE_METERS:
+                cluster.append(j)
+                visited.add(j)
+
+        clusters.append(cluster)
+
+    # 클러스터 정보 생성
+    cluster_data = []
+    for cluster_id, indices in enumerate(clusters):
+        cluster_df = df_repairs.iloc[indices]
+
+        cluster_data.append(
+            {
+                "cluster_id": cluster_id,
+                "repair_count": len(indices),
+                "avg_lat": cluster_df["위도"].mean(),
+                "avg_lon": cluster_df["경도"].mean(),
+                "repair_types": cluster_df["작업타입"].value_counts().to_dict(),
+            }
+        )
+
+    df_clusters = pd.DataFrame(cluster_data)
+
+    print(f"생성된 클러스터: {len(df_clusters)}개")
+    print(
+        f"4회 이상 재작업 클러스터: {len(df_clusters[df_clusters['repair_count'] >= MIN_REPAIRS_FOR_FREQUENT])}개"
+    )
+
+    return df_clusters
+
+
+def match_clusters_to_pipes(
+    df_clusters: pd.DataFrame, gdf_pipes: gpd.GeoDataFrame, distance_threshold: float
+) -> pd.DataFrame:
+    """클러스터와 파이프 매칭 - 파이프 LineString에 대한 최단거리 계산"""
+    print("\n=== 클러스터-파이프 매칭 중 (최단거리 방식) ===")
+    print(f"클러스터 수: {len(df_clusters)}, 파이프 세그먼트 수: {len(gdf_pipes)}")
+    print(f"매칭 거리 임계값: {distance_threshold}m")
+    
+    # 빈 데이터 처리
+    if len(df_clusters) == 0 or len(gdf_pipes) == 0:
+        return pd.DataFrame()
+    
+    start_time = time.time()
+    
+    # 클러스터 좌표를 EPSG:5179로 변환 (미터 단위)
+    cluster_points = [Point(lon, lat) for lon, lat in zip(df_clusters["avg_lon"], df_clusters["avg_lat"])]
+    cluster_gdf = gpd.GeoDataFrame(df_clusters, geometry=cluster_points, crs="EPSG:4326")
+    cluster_gdf = cluster_gdf.to_crs("EPSG:5179")
+    
+    # 파이프도 EPSG:5179로 통일 (이미 5179일 수 있음)
+    if gdf_pipes.crs != "EPSG:5179":
+        gdf_pipes = gdf_pipes.to_crs("EPSG:5179")
+    
+    matched_data = []
+    total_clusters = len(df_clusters)
+    
+    # STRtree를 사용한 공간 인덱싱으로 사전 필터링 (성능 최적화)
+    pipe_tree = STRtree(gdf_pipes.geometry.tolist())
+    
+    for cluster_idx, cluster in cluster_gdf.iterrows():
+        if cluster_idx % 50 == 0:
+            print(f"  처리 중: {cluster_idx}/{total_clusters} ({cluster_idx/total_clusters*100:.1f}%)")
+        
+        cluster_point = cluster.geometry
+        
+        # 거리 임계값보다 넓은 버퍼로 후보 파이프 먼저 필터링
+        buffer = cluster_point.buffer(distance_threshold * 1.5)
+        candidate_indices = pipe_tree.query(buffer)
+        
+        # 실제 거리 계산
+        pipes_within_range = []
+        for pipe_idx in candidate_indices:
+            pipe = gdf_pipes.iloc[pipe_idx]
+            # Shapely의 distance 메서드 - LineString의 최단거리 자동 계산
+            distance = pipe.geometry.distance(cluster_point)
+            
+            if distance <= distance_threshold:
+                pipes_within_range.append({
+                    'pipe_idx': pipe_idx,
+                    'distance': distance,
+                    'FTR_IDN': pipe['FTR_IDN'],
+                    'pipe_type': pipe['pipe_type'],
+                    **{factor: pipe[factor] for factor in ANALYSIS_FACTORS}
+                })
+        
+        if pipes_within_range:
+            # 거리순 정렬
+            pipes_within_range.sort(key=lambda x: x['distance'])
+            
+            # 가장 가까운 파이프
+            nearest_pipe = pipes_within_range[0]
+            
+            result = {
+                "cluster_id": cluster["cluster_id"],
+                "repair_count": cluster["repair_count"],
+                "avg_lat": cluster["avg_lat"],
+                "avg_lon": cluster["avg_lon"],
+                "nearest_pipe": nearest_pipe['FTR_IDN'],
+                "nearest_type": nearest_pipe['pipe_type'],
+                "nearest_dist": nearest_pipe['distance'],
+                "pipe_count": len(pipes_within_range),
+            }
+            
+            # 각 분석 요인에 대해 nearest, max, avg 계산
+            for factor in ANALYSIS_FACTORS:
+                # 가장 가까운 파이프의 값
+                result[f"nearest_{factor}"] = nearest_pipe[factor]
+                
+                # 최대값
+                result[f"max_{factor}"] = max(p[factor] for p in pipes_within_range)
+                
+                # 거리 가중 평균
+                total_weight = 0
+                weighted_sum = 0
+                for p in pipes_within_range:
+                    weight = 1 / (p['distance'] + 1)  # 거리가 0일 때를 위해 1 추가
+                    weighted_sum += weight * p[factor]
+                    total_weight += weight
+                result[f"avg_{factor}"] = weighted_sum / total_weight if total_weight > 0 else 0
+            
+            matched_data.append(result)
+    
+    df_matched = pd.DataFrame(matched_data)
+    
+    elapsed = time.time() - start_time
+    print(f"\n매칭 완료: {elapsed:.2f}초")
+    print(f"매칭된 클러스터: {len(df_matched)}개 / {len(df_clusters)}개")
+    
+    if len(df_matched) > 0:
+        print(f"매칭률: {len(df_matched) / len(df_clusters) * 100:.1f}%")
+    
+    return df_matched
+
+
+def analyze_correlation(df_matched: pd.DataFrame) -> dict[str, Any]:
+    """분석 요인들과 재작업 횟수 상관관계 분석"""
+    print("\n=== 상관관계 분석 중 ===")
+
+    results: dict[str, Any] = {}
+
+    # 각 요인과 전략별 상관계수 - max를 우선으로
+    strategies = ["max", "nearest", "avg"]
+
+    print("\n상관계수 (Pearson):")
+    print("-" * 60)
+
+    for factor in ANALYSIS_FACTORS:
+        print(f"\n{FACTOR_NAMES[factor]} ({factor}):")
+        for strategy in strategies:
+            col_name = f"{strategy}_{factor}"
+            if col_name in df_matched.columns:
+                corr, p_value = stats.pearsonr(
+                    df_matched[col_name], df_matched["repair_count"]
+                )
+                results[f"{col_name}_corr"] = corr
+                results[f"{col_name}_p"] = p_value
+
+                sig = "*" if p_value < 0.05 else ""
+                print(f"  {strategy:8s}: r={corr:7.4f}, p={p_value:.4f} {sig}")
+
+    # 빈번한 재작업 그룹 vs 일반 그룹
+    df_frequent = df_matched[df_matched["repair_count"] >= MIN_REPAIRS_FOR_FREQUENT]
+    df_normal = df_matched[df_matched["repair_count"] < MIN_REPAIRS_FOR_FREQUENT]
+
+    results["frequent_count"] = len(df_frequent)
+    results["normal_count"] = len(df_normal)
+
+    print(
+        f"\n그룹 비교: 빈번한 재작업({len(df_frequent)}개) vs 일반({len(df_normal)}개)"
+    )
+    print("-" * 60)
+
+    for factor in ANALYSIS_FACTORS:
+        print(f"\n{FACTOR_NAMES[factor]}:")
+        for strategy in strategies:
+            col_name = f"{strategy}_{factor}"
+            if (
+                col_name in df_matched.columns
+                and len(df_frequent) > 0
+                and len(df_normal) > 0
+            ):
+                # t-test
+                t_stat, t_p = stats.ttest_ind(
+                    df_frequent[col_name], df_normal[col_name]
+                )
+
+                results[f"{col_name}_t_stat"] = t_stat
+                results[f"{col_name}_t_p"] = t_p
+                results[f"{col_name}_frequent_mean"] = df_frequent[col_name].mean()
+                results[f"{col_name}_normal_mean"] = df_normal[col_name].mean()
+
+                diff = df_frequent[col_name].mean() - df_normal[col_name].mean()
+                diff_pct = (
+                    (diff / df_normal[col_name].mean() * 100)
+                    if df_normal[col_name].mean() != 0
+                    else 0
+                )
+
+                sig = "*" if t_p < 0.05 else ""
+                print(
+                    f"  {strategy:8s}: 빈번={df_frequent[col_name].mean():.4f}, "
+                    f"일반={df_normal[col_name].mean():.4f}, "
+                    f"차이={diff_pct:+.1f}%, p={t_p:.4f} {sig}"
+                )
+
+    # 가장 강한 상관관계 찾기
+    best_corr: float = 0.0
+    best_factor = ""
+    best_strategy = ""
+
+    for factor in ANALYSIS_FACTORS:
+        for strategy in strategies:
+            col_name = f"{strategy}_{factor}"
+            corr_key = f"{col_name}_corr"
+            if (
+                corr_key in results
+                and isinstance(results[corr_key], int | float)
+                and abs(results[corr_key]) > abs(best_corr)
+            ):
+                best_corr = float(results[corr_key])
+                best_factor = factor
+                best_strategy = strategy
+
+    results["best_factor"] = best_factor
+    results["best_strategy"] = best_strategy
+    results["best_corr"] = best_corr
+
+    print(
+        f"\n가장 강한 상관관계: {FACTOR_NAMES.get(best_factor, best_factor)} "
+        f"({best_strategy}), r={best_corr:.4f}"
+    )
+
+    return results
+
+
+def create_visualizations(df_matched: pd.DataFrame, results: dict[str, Any]) -> None:
+    """결과 시각화"""
+    print("\n=== 시각화 생성 중 ===")
+
+    setup_korean_font()
+
+    # 1. 산점도 - 모든 분석 요인 (3x3 그리드, 9개 요인)
+    fig, axes = plt.subplots(3, 3, figsize=(18, 15))
+    axes = axes.flatten()
+
+    for idx, factor in enumerate(ANALYSIS_FACTORS):
+        if idx >= len(axes):  # 9개 축, 9개 요인이므로 모두 들어감
+            break
+        ax = axes[idx]
+
+        # 최대값 사용 (최악의 경우 고려)
+        col_name = f"max_{factor}"
+        if col_name in df_matched.columns:
+            ax.scatter(
+                df_matched[col_name],
+                df_matched["repair_count"],
+                c=df_matched["repair_count"],
+                cmap="coolwarm",
+                alpha=0.6,
+                s=50,
+            )
+
+            # 회귀선 (데이터의 분산이 있을 때만)
+            if df_matched[col_name].std() > 0:
+                try:
+                    z = np.polyfit(df_matched[col_name], df_matched["repair_count"], 1)
+                    p = np.poly1d(z)
+                    x_line = np.linspace(
+                        df_matched[col_name].min(), df_matched[col_name].max(), 100
+                    )
+                    ax.plot(x_line, p(x_line), "r--", alpha=0.8, linewidth=2)
+                except np.linalg.LinAlgError:
+                    # 회귀선을 그릴 수 없는 경우 건너뛰기
+                    pass
+
+            # 상관계수 표시
+            corr_key = f"{col_name}_corr"
+            p_key = f"{col_name}_p"
+            if corr_key in results:
+                corr = results[corr_key]
+                p_val = results[p_key]
+                sig = "*" if p_val < 0.05 else ""
+                ax.set_title(
+                    f"{FACTOR_NAMES[factor]}\nr={corr:.4f}, p={p_val:.4f}{sig}"
+                )
+            else:
+                ax.set_title(FACTOR_NAMES[factor])
+
+            ax.set_xlabel(factor)
+            ax.set_ylabel("재작업 횟수")
+            ax.grid(True, alpha=0.3)
+
+            # 4회 이상 재작업 위치 강조
+            frequent = df_matched[
+                df_matched["repair_count"] >= MIN_REPAIRS_FOR_FREQUENT
+            ]
+            if len(frequent) > 0:
+                ax.scatter(
+                    frequent[col_name],
+                    frequent["repair_count"],
+                    color="red",
+                    s=100,
+                    alpha=0.8,
+                    edgecolors="black",
+                    linewidths=2,
+                    label="4회 이상",
+                    zorder=5,
+                )
+                ax.legend()
+
+    # 9개 요인이므로 모든 축을 사용함
+    
+    plt.suptitle(
+        "파이프 위험 요인과 재작업 횟수 상관관계",
+        fontsize=16,
+        fontweight="bold",
+    )
+    plt.tight_layout()
+    plt.savefig(
+        RESULTS_DIR / "repair_k_factors_scatter.png", dpi=300, bbox_inches="tight"
+    )
+    plt.close()
+
+    # 2. 박스플롯 - 그룹 비교 (3x3 그리드)
+    fig, axes = plt.subplots(3, 3, figsize=(18, 15))
+    axes = axes.flatten()
+
+    for idx, factor in enumerate(ANALYSIS_FACTORS):
+        if idx >= len(axes):
+            break
+        ax = axes[idx]
+        col_name = f"max_{factor}"
+
+        if col_name in df_matched.columns:
+            data_to_plot = []
+            labels = []
+
+            df_frequent = df_matched[
+                df_matched["repair_count"] >= MIN_REPAIRS_FOR_FREQUENT
+            ]
+            df_normal = df_matched[
+                df_matched["repair_count"] < MIN_REPAIRS_FOR_FREQUENT
+            ]
+
+            if len(df_normal) > 0:
+                data_to_plot.append(df_normal[col_name])
+                labels.append(f"일반\n(n={len(df_normal)})")
+
+            if len(df_frequent) > 0:
+                data_to_plot.append(df_frequent[col_name])
+                labels.append(f"빈번\n(n={len(df_frequent)})")
+
+            if data_to_plot:
+                bp = ax.boxplot(data_to_plot, labels=labels, patch_artist=True)
+
+                # 색상 설정
+                colors = ["lightblue", "lightcoral"]
+                for patch, color in zip(
+                    bp["boxes"], colors[: len(bp["boxes"])], strict=False
+                ):
+                    patch.set_facecolor(color)
+
+                ax.set_ylabel(factor)
+                ax.set_title(FACTOR_NAMES[factor])
+                ax.grid(True, alpha=0.3)
+
+                # 통계 검정 결과 표시
+                t_p_key = f"{col_name}_t_p"
+                if t_p_key in results:
+                    p_value = results[t_p_key]
+                    sig = "*" if p_value < 0.05 else ""
+                    ax.text(
+                        0.5,
+                        0.95,
+                        f"p={p_value:.4f}{sig}",
+                        transform=ax.transAxes,
+                        ha="center",
+                        va="top",
+                        bbox=dict(
+                            boxstyle="round",
+                            facecolor="yellow" if p_value < 0.05 else "white",
+                            alpha=0.5,
+                        ),
+                    )
+
+    # 9개 요인이므로 모든 축을 사용함
+    
+    plt.suptitle("재작업 빈도별 위험 요인 분포 비교", fontsize=16, fontweight="bold")
+    plt.tight_layout()
+    plt.savefig(
+        RESULTS_DIR / "repair_k_factors_boxplot.png", dpi=300, bbox_inches="tight"
+    )
+    plt.close()
+
+    # 3. 상관계수 히트맵
+    # 상관계수 매트릭스 생성
+    corr_data = []
+    for factor in ANALYSIS_FACTORS:
+        row = []
+        for strategy in ["max", "nearest", "avg"]:
+            col_name = f"{strategy}_{factor}"
+            corr_key = f"{col_name}_corr"
+            if corr_key in results:
+                row.append(results[corr_key])
+            else:
+                row.append(0)
+        corr_data.append(row)
+
+    corr_matrix = pd.DataFrame(
+        corr_data,
+        index=[FACTOR_NAMES[f] for f in ANALYSIS_FACTORS],
+        columns=["최대값", "가장 가까운", "평균값"],
+    )
+
+    # 히트맵 그리기
+    fig, ax = plt.subplots(figsize=(10, 8))
+    sns.heatmap(
+        corr_matrix,
+        annot=True,
+        fmt=".4f",
+        cmap="coolwarm",
+        center=0,
+        vmin=-0.3,
+        vmax=0.3,
+        square=True,
+        linewidths=1,
+        cbar_kws={"shrink": 0.8, "label": "상관계수"},
+        ax=ax,
+    )
+
+    plt.title(
+        "위험 요인과 재작업 횟수 상관계수 히트맵",
+        fontsize=14,
+        fontweight="bold",
+        pad=20,
+    )
+    plt.xlabel("매칭 전략", fontsize=12)
+    plt.ylabel("위험 요인", fontsize=12)
+    plt.tight_layout()
+    plt.savefig(
+        RESULTS_DIR / "repair_k_factors_heatmap.png", dpi=300, bbox_inches="tight"
+    )
+    plt.close()
+
+    print("시각화 파일 생성 완료")
+
+
+def analyze_subregion_correlation(
+    region_code: str,
+    distance_threshold: float = DISTANCE_THRESHOLD_METERS
+) -> dict[str, Any]:
+    """하위 지역별 상관관계 분석"""
+    print(f"\n{'=' * 70}")
+    print(f"{region_code} 지역 상관관계 분석")
+    print("=" * 70)
+    
+    # 데이터 로드
+    df_repairs = load_repair_data_for_subregion(region_code)
+    gdf_pipes = load_pipe_factors_for_subregion(region_code)
+    
+    if len(df_repairs) == 0:
+        print(f"경고: {region_code} 지역에 복구 작업 데이터가 없습니다.")
+        return {}
+    
+    if len(gdf_pipes) == 0:
+        print(f"경고: {region_code} 지역에 파이프 데이터가 없습니다.")
+        return {}
+    
+    # 클러스터링
+    df_clusters = create_repair_clusters(df_repairs)
+    
+    # 매칭
+    df_matched = match_clusters_to_pipes(df_clusters, gdf_pipes, distance_threshold)
+    
+    if len(df_matched) == 0:
+        print(f"경고: {region_code} 지역에 매칭된 데이터가 없습니다.")
+        return {}
+    
+    # 상관관계 분석
+    results = analyze_correlation(df_matched)
+    results["region_code"] = region_code
+    results["matched_count"] = len(df_matched)
+    results["total_repairs"] = len(df_repairs)
+    results["total_pipes"] = len(gdf_pipes)
+    
+    return {
+        "region_code": region_code,
+        "results": results,
+        "df_matched": df_matched,
+        "df_pipes": gdf_pipes,
+        "df_repairs": df_repairs
+    }
+
+
+def save_subregion_results(
+    region_data: dict[str, Any],
+    output_dir: Path
+) -> None:
+    """하위 지역 결과 저장"""
+    region_code = region_data["region_code"]
+    df_matched = region_data["df_matched"]
+    results = region_data["results"]
+    gdf_pipes = region_data["df_pipes"]
+    
+    # 지역별 디렉토리 생성
+    region_dir = output_dir / region_code
+    region_dir.mkdir(parents=True, exist_ok=True)
+    
+    # CSV 저장
+    csv_path = region_dir / "repair_k_factors_matched.csv"
+    df_matched.to_csv(csv_path, index=False, encoding="utf-8-sig")
+    print(f"{region_code} 매칭 결과 저장: {csv_path}")
+    
+    # 분석 결과 텍스트 저장
+    txt_path = region_dir / "correlation_analysis.txt"
+    save_analysis_report(txt_path, results, df_matched, gdf_pipes, region_code)
+    print(f"{region_code} 분석 보고서 저장: {txt_path}")
+
+
+def create_subregion_visualizations(
+    region_data: dict[str, Any],
+    output_dir: Path
+) -> None:
+    """하위 지역별 시각화"""
+    region_code = region_data["region_code"]
+    df_matched = region_data["df_matched"]
+    results = region_data["results"]
+    
+    region_dir = output_dir / region_code
+    region_dir.mkdir(parents=True, exist_ok=True)
+    
+    # 시각화 생성 (기존 create_visualizations 수정)
+    create_visualizations_for_region(df_matched, results, region_dir, region_code)
+
+
+def create_visualizations_for_region(
+    df_matched: pd.DataFrame, 
+    results: dict[str, Any],
+    output_dir: Path,
+    region_code: str
+) -> None:
+    """지역별 시각화 (기존 create_visualizations 함수 수정)"""
+    print(f"\n=== {region_code} 지역 시각화 생성 중 ===")
+    
+    setup_korean_font()
+    
+    # 산점도
+    fig, axes = plt.subplots(3, 3, figsize=(18, 15))
+    fig.suptitle(f"{region_code} 지역 재작업-위험요인 상관관계", fontsize=16, fontweight='bold')
+    axes = axes.flatten()
+    
+    for idx, factor in enumerate(ANALYSIS_FACTORS):
+        if idx >= len(axes):
+            break
+        ax = axes[idx]
+        
+        col_name = f"nearest_{factor}"
+        if col_name in df_matched.columns:
+            ax.scatter(
+                df_matched[col_name],
+                df_matched["repair_count"],
+                c=df_matched["repair_count"],
+                cmap="coolwarm",
+                alpha=0.6,
+                s=50,
+            )
+            
+            # 회귀선
+            if df_matched[col_name].std() > 0:
+                try:
+                    z = np.polyfit(df_matched[col_name], df_matched["repair_count"], 1)
+                    p = np.poly1d(z)
+                    x_line = np.linspace(
+                        df_matched[col_name].min(), df_matched[col_name].max(), 100
+                    )
+                    ax.plot(x_line, p(x_line), "r--", alpha=0.8, linewidth=2)
+                except np.linalg.LinAlgError:
+                    pass
+            
+            # 상관계수 표시
+            corr_key = f"{col_name}_corr"
+            p_key = f"{col_name}_p"
+            if corr_key in results:
+                corr = results[corr_key]
+                p_val = results[p_key]
+                sig = "*" if p_val < 0.05 else ""
+                ax.set_title(
+                    f"{FACTOR_NAMES[factor]}\nr={corr:.4f}, p={p_val:.4f}{sig}"
+                )
+            else:
+                ax.set_title(FACTOR_NAMES[factor])
+            
+            ax.set_xlabel(factor)
+            ax.set_ylabel("재작업 횟수")
+            ax.grid(True, alpha=0.3)
+    
+    plt.tight_layout()
+    scatter_path = output_dir / "scatter_plot.png"
+    plt.savefig(scatter_path, dpi=300, bbox_inches="tight")
+    plt.close()
+    print(f"산점도 저장: {scatter_path}")
+    
+    # 박스플롯
+    fig, axes = plt.subplots(3, 3, figsize=(18, 15))
+    fig.suptitle(f"{region_code} 지역 빈번한 재작업 vs 일반", fontsize=16, fontweight='bold')
+    axes = axes.flatten()
+    
+    for idx, factor in enumerate(ANALYSIS_FACTORS):
+        if idx >= len(axes):
+            break
+        ax = axes[idx]
+        
+        col_name = f"nearest_{factor}"
+        if col_name in df_matched.columns:
+            frequent = df_matched[df_matched["repair_count"] >= MIN_REPAIRS_FOR_FREQUENT]
+            normal = df_matched[df_matched["repair_count"] < MIN_REPAIRS_FOR_FREQUENT]
+            
+            data_to_plot = []
+            labels = []
+            
+            if len(normal) > 0:
+                data_to_plot.append(normal[col_name].values)
+                labels.append(f"일반\n(n={len(normal)})")
+            
+            if len(frequent) > 0:
+                data_to_plot.append(frequent[col_name].values)
+                labels.append(f"빈번\n(n={len(frequent)})")
+            
+            if data_to_plot:
+                bp = ax.boxplot(data_to_plot, labels=labels, patch_artist=True)
+                colors = ["lightblue", "lightcoral"]
+                for patch, color in zip(bp["boxes"], colors[:len(bp["boxes"])]):
+                    patch.set_facecolor(color)
+                    patch.set_alpha(0.7)
+            
+            ax.set_title(FACTOR_NAMES[factor])
+            ax.set_ylabel(factor)
+            ax.grid(True, alpha=0.3)
+    
+    plt.tight_layout()
+    boxplot_path = output_dir / "boxplot.png"
+    plt.savefig(boxplot_path, dpi=300, bbox_inches="tight")
+    plt.close()
+    print(f"박스플롯 저장: {boxplot_path}")
+
+
+def save_analysis_report(
+    filepath: Path,
+    results: dict[str, Any],
+    df_matched: pd.DataFrame,
+    gdf_pipes: gpd.GeoDataFrame,
+    region_code: str
+) -> None:
+    """분석 보고서 저장"""
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(f"{'=' * 70}\n")
+        f.write(f"{region_code} 지역 재작업-위험 요인 상관관계 분석 보고서\n")
+        f.write(f"분석 일시: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+        f.write(f"{'=' * 70}\n\n")
+        
+        f.write(f"1. 데이터 요약\n")
+        f.write("-" * 70 + "\n")
+        f.write(f"지역 코드: {region_code}\n")
+        f.write(f"전체 복구 작업: {results.get('total_repairs', 0)}개\n")
+        f.write(f"전체 파이프: {results.get('total_pipes', 0)}개\n")
+        f.write(f"매칭된 클러스터: {results.get('matched_count', 0)}개\n\n")
+        
+        # 2. 상관관계 분석
+        f.write("2. 상관관계 분석 결과\n")
+        f.write("-" * 70 + "\n\n")
+        
+        strategies = ["nearest", "max", "weighted_avg"]
+        strategy_names = {
+            "nearest": "가장 가까운 파이프",
+            "max": "최대값",
+            "weighted_avg": "거리 가중 평균",
+        }
+        
+        for strategy in strategies:
+            f.write(f"전략: {strategy_names[strategy]}\n")
+            for factor in ANALYSIS_FACTORS:
+                col_name = f"{strategy}_{factor}"
+                corr_key = f"{col_name}_corr"
+                p_key = f"{col_name}_p"
+                
+                if corr_key in results:
+                    corr = results[corr_key]
+                    p_val = results[p_key]
+                    sig = "**" if p_val < 0.01 else "*" if p_val < 0.05 else ""
+                    f.write(f"  {FACTOR_NAMES[factor]} ({factor}): r={corr:.4f}, p={p_val:.4f} {sig}\n")
+            f.write("\n")
+        
+        # 최선의 상관관계
+        if "best_factor" in results:
+            factor_korean = FACTOR_NAMES.get(results['best_factor'], results['best_factor'])
+            f.write(f"가장 강한 상관관계: {factor_korean} ({results['best_factor']})\n")
+            f.write(f"  전략: {strategy_names.get(results['best_strategy'], results['best_strategy'])}\n")
+            f.write(f"  상관계수: r={results['best_corr']:.4f}\n\n")
+
+
+def save_results(
+    df_matched: pd.DataFrame, results: dict[str, Any], df_pipes: pd.DataFrame
+) -> None:
+    """분석 결과 저장 (기존 함수, 전체 분석용)"""
+    print("\n=== 결과 저장 중 ===")
+
+    # 매칭 데이터 저장
+    df_matched.to_csv(RESULTS_DIR / "0520_repair_k_factors_matched.csv", index=False)
+
+    # 분석 요약 저장
+    with (RESULTS_DIR / "0520_repair_correlations_analysis.txt").open(
+        "w", encoding="utf-8"
+    ) as f:
+        f.write("=" * 70 + "\n")
+        f.write("0520 지역 - 재작업 위치와 파이프 위험 요인 상관관계 통합 분석\n")
+        f.write("=" * 70 + "\n\n")
+
+        f.write(f"분석 일시: {datetime.now()}\n")
+        f.write(f"분석 대상: {len(df_matched)}개 클러스터\n")
+        f.write(f"빈번한 재작업 기준: {MIN_REPAIRS_FOR_FREQUENT}회 이상\n")
+        f.write(f"파이프 검색 반경: {DISTANCE_THRESHOLD_METERS}m\n")
+        # K-factors 개수 계산
+        base_count = len(BASE_K_FACTORS)
+        optional_count = len([f for f in OPTIONAL_K_FACTORS if f in ANALYSIS_FACTORS])
+        k_repair_text = f" + K_repair ({optional_count}개)" if optional_count > 0 else ""
+        
+        f.write(f"분석 요인: 총 {len(ANALYSIS_FACTORS)}개\n")
+        f.write(f"  - 기본 K-factors: {base_count}개 (STD_DIP, K_age, K_soil, K_traffic, hoop_stress, K_stress, K_total)\n")
+        f.write(f"  - 피로 손상 지수: 1개 (D_final)\n")
+        if optional_count > 0:
+            f.write(f"  - 선택적 K-factors: {optional_count}개 (K_repair)\n")
+        f.write("\n")
+
+        f.write("-" * 70 + "\n")
+        f.write("1. 상관계수 분석 (가장 가까운 파이프 기준)\n")
+        f.write("-" * 70 + "\n\n")
+
+        for factor in ANALYSIS_FACTORS:
+            col_name = f"nearest_{factor}"
+            if f"{col_name}_corr" in results:
+                f.write(f"{FACTOR_NAMES[factor]} ({factor}):\n")
+                f.write(f"  상관계수: {results[f'{col_name}_corr']:.4f}\n")
+                f.write(f"  p-value: {results[f'{col_name}_p']:.4f}\n")
+                sig = "유의미" if results[f"{col_name}_p"] < 0.05 else "유의미하지 않음"
+                f.write(f"  통계적 유의성: {sig}\n\n")
+
+        f.write("-" * 70 + "\n")
+        f.write("2. 전략별 상관계수 비교\n")
+        f.write("-" * 70 + "\n\n")
+
+        # 테이블 형식으로 출력
+        f.write(
+            f"{'K-factor':20s} {'가장 가까운':>12s} {'최대값':>12s} {'평균값':>12s}\n"
+        )
+        f.write("-" * 60 + "\n")
+
+        for factor in ANALYSIS_FACTORS:
+            row = f"{FACTOR_NAMES[factor]:20s}"
+            for strategy in ["nearest", "max", "avg"]:
+                col_name = f"{strategy}_{factor}"
+                corr_key = f"{col_name}_corr"
+                if corr_key in results:
+                    row += f" {results[corr_key]:11.4f}"
+                else:
+                    row += f" {'N/A':>11s}"
+            f.write(row + "\n")
+
+        f.write("\n")
+        f.write("-" * 70 + "\n")
+        f.write("3. 그룹별 비교 (뺈번한 재작업 vs 일반)\n")
+        f.write("-" * 70 + "\n\n")
+
+        f.write(
+            f"빈번한 재작업 그룹 (≥{MIN_REPAIRS_FOR_FREQUENT}회): {results.get('frequent_count', 0)}개\n"
+        )
+        f.write(
+            f"일반 재작업 그룹 (<{MIN_REPAIRS_FOR_FREQUENT}회): {results.get('normal_count', 0)}개\n\n"
+        )
+
+        for factor in ANALYSIS_FACTORS:
+            col_name = f"nearest_{factor}"
+            if f"{col_name}_frequent_mean" in results:
+                f.write(f"{FACTOR_NAMES[factor]} ({factor}):\n")
+                freq_mean = results[f"{col_name}_frequent_mean"]
+                norm_mean = results[f"{col_name}_normal_mean"]
+                diff = freq_mean - norm_mean
+                diff_pct = (diff / norm_mean * 100) if norm_mean != 0 else 0
+
+                f.write(f"  빈번한 재작업 평균: {freq_mean:.4f}\n")
+                f.write(f"  일반 재작업 평균: {norm_mean:.4f}\n")
+                f.write(f"  차이: {diff:+.4f} ({diff_pct:+.1f}%)\n")
+                f.write(
+                    f"  t-test: t={results[f'{col_name}_t_stat']:.4f}, p={results[f'{col_name}_t_p']:.4f}\n"
+                )
+                sig = (
+                    "유의미" if results[f"{col_name}_t_p"] < 0.05 else "유의미하지 않음"
+                )
+                f.write(f"  통계적 유의성: {sig}\n\n")
+
+        f.write("-" * 70 + "\n")
+        f.write("4. 위험 요인 분포 통계\n")
+        f.write("-" * 70 + "\n\n")
+
+        f.write(f"전체 파이프 수: {len(df_pipes)}개\n")
+        f.write(f"  PIPE_LM: {len(df_pipes[df_pipes['pipe_type'] == 'PIPE_LM'])}개\n")
+        f.write(f"  SPLY_LS: {len(df_pipes[df_pipes['pipe_type'] == 'SPLY_LS'])}개\n\n")
+
+        for factor in ANALYSIS_FACTORS:
+            f.write(f"{FACTOR_NAMES[factor]} ({factor}) 통계:\n")
+            f.write(f"  최소값: {df_pipes[factor].min():.4f}\n")
+            f.write(f"  25%: {df_pipes[factor].quantile(0.25):.4f}\n")
+            f.write(f"  중앙값: {df_pipes[factor].median():.4f}\n")
+            f.write(f"  75%: {df_pipes[factor].quantile(0.75):.4f}\n")
+            f.write(f"  최대값: {df_pipes[factor].max():.4f}\n")
+            f.write(f"  평균: {df_pipes[factor].mean():.4f}\n")
+            f.write(f"  표준편차: {df_pipes[factor].std():.4f}\n\n")
+
+        f.write("-" * 70 + "\n")
+        f.write("5. 주요 발견사항\n")
+        f.write("-" * 70 + "\n\n")
+
+        # 가장 강한 상관관계
+        if "best_factor" in results:
+            f.write("가장 강한 상관관계:\n")
+            f.write(
+                f"  요인: {FACTOR_NAMES.get(results['best_factor'], results['best_factor'])}\n"
+            )
+            f.write(f"  전략: {results['best_strategy']}\n")
+            f.write(f"  상관계수: {results['best_corr']:.4f}\n\n")
+
+        # 유의미한 차이가 있는 요인들
+        significant_factors = []
+        for factor in ANALYSIS_FACTORS:
+            col_name = f"nearest_{factor}"
+            t_p_key = f"{col_name}_t_p"
+            if t_p_key in results and results[t_p_key] < 0.05:
+                significant_factors.append(FACTOR_NAMES[factor])
+
+        if significant_factors:
+            f.write("빈번한 재작업 그룹에서 유의미한 차이를 보이는 요인:\n")
+            for sf in significant_factors:
+                f.write(f"  - {sf}\n")
+        else:
+            f.write(
+                "빈번한 재작업 그룹과 일반 그룹 간 유의미한 차이를 보이는 요인 없음\n"
+            )
+
+        f.write("\n" + "=" * 70 + "\n")
+        f.write("분석 완료\n")
+        f.write("=" * 70 + "\n")
+
+    print("결과 파일 저장 완료")
+
+
+def analyze_all_subregions(
+    distance_threshold: float = DISTANCE_THRESHOLD_METERS,
+    output_dir: Path = RESULTS_DIR / "main14c"
+) -> list[dict[str, Any]]:
+    """모든 하위 지역 순차 분석"""
+    all_results = []
+    
+    for region_code in VALID_SUBREGIONS:
+        region_data = analyze_subregion_correlation(region_code, distance_threshold)
+        if region_data:
+            all_results.append(region_data)
+            # 결과 저장
+            save_subregion_results(region_data, output_dir)
+            # 시각화 생성
+            create_subregion_visualizations(region_data, output_dir)
+    
+    return all_results
+
+
+def compare_subregions(all_results: list[dict[str, Any]]) -> pd.DataFrame:
+    """하위 지역 간 비교"""
+    if not all_results:
+        return pd.DataFrame()
+    
+    comparison_data = []
+    
+    for region_data in all_results:
+        region_code = region_data["region_code"]
+        results = region_data["results"]
+        
+        row = {
+            "region_code": region_code,
+            "total_repairs": results.get("total_repairs", 0),
+            "total_pipes": results.get("total_pipes", 0),
+            "matched_count": results.get("matched_count", 0),
+        }
+        
+        # 각 요인별 최선의 상관계수 추가
+        for factor in ANALYSIS_FACTORS:
+            # nearest 전략의 상관계수 사용
+            corr_key = f"nearest_{factor}_corr"
+            if corr_key in results:
+                row[f"{factor}_corr"] = results[corr_key]
+                row[f"{factor}_p"] = results[f"nearest_{factor}_p"]
+        
+        # 최선의 요인
+        if "best_factor" in results:
+            row["best_factor"] = results["best_factor"]
+            row["best_corr"] = results["best_corr"]
+            row["best_strategy"] = results["best_strategy"]
+        
+        comparison_data.append(row)
+    
+    df_comparison = pd.DataFrame(comparison_data)
+    return df_comparison
+
+
+def create_comparison_report(
+    all_results: list[dict[str, Any]],
+    output_dir: Path = RESULTS_DIR / "main14c",
+    distance_threshold: float = 30.0
+) -> None:
+    """통합 비교 보고서 생성"""
+    if not all_results:
+        print("비교할 결과가 없습니다.")
+        return
+    
+    comparison_dir = output_dir / "comparison"
+    comparison_dir.mkdir(parents=True, exist_ok=True)
+    
+    # 비교 데이터프레임 생성
+    df_comparison = compare_subregions(all_results)
+    
+    # CSV 저장
+    csv_path = comparison_dir / "subregion_comparison.csv"
+    df_comparison.to_csv(csv_path, index=False, encoding="utf-8-sig")
+    print(f"비교 데이터 저장: {csv_path}")
+    
+    # 상관계수 매트릭스 생성
+    corr_matrix = []
+    for region_code in VALID_SUBREGIONS:
+        row = {"region": region_code}
+        region_row = df_comparison[df_comparison["region_code"] == region_code]
+        if not region_row.empty:
+            for factor in ANALYSIS_FACTORS:
+                if f"{factor}_corr" in region_row.columns:
+                    row[factor] = region_row[f"{factor}_corr"].values[0]
+        corr_matrix.append(row)
+    
+    df_corr_matrix = pd.DataFrame(corr_matrix)
+    matrix_path = comparison_dir / "correlation_matrix.csv"
+    df_corr_matrix.to_csv(matrix_path, index=False, encoding="utf-8-sig")
+    print(f"상관계수 매트릭스 저장: {matrix_path}")
+    
+    # 히트맵 생성
+    setup_korean_font()
+    fig, ax = plt.subplots(figsize=(12, 6))
+    
+    # 데이터 준비
+    heatmap_data = df_corr_matrix.set_index("region")[ANALYSIS_FACTORS].T
+    
+    # 히트맵 그리기
+    sns.heatmap(
+        heatmap_data,
+        annot=True,
+        fmt=".3f",
+        cmap="coolwarm",
+        center=0,
+        vmin=-0.5,
+        vmax=0.5,
+        square=True,
+        ax=ax,
+        cbar_kws={"label": "상관계수"},
+    )
+    
+    ax.set_title("하위 지역별 K-factors 상관계수 히트맵", fontsize=14, fontweight="bold")
+    ax.set_xlabel("지역 코드", fontsize=12)
+    ax.set_ylabel("위험 요인", fontsize=12)
+    
+    # Y축 라벨을 한글명으로 변경
+    y_labels = [FACTOR_NAMES[factor] for factor in ANALYSIS_FACTORS]
+    ax.set_yticklabels(y_labels, rotation=0)
+    
+    plt.tight_layout()
+    heatmap_path = comparison_dir / "correlation_heatmap.png"
+    plt.savefig(heatmap_path, dpi=300, bbox_inches="tight")
+    plt.close()
+    print(f"히트맵 저장: {heatmap_path}")
+    
+    # 요인 중요도 그래프
+    fig, ax = plt.subplots(figsize=(10, 6))
+    
+    # 각 요인별 평균 절대 상관계수 계산
+    factor_importance = {}
+    for factor in ANALYSIS_FACTORS:
+        col_name = f"{factor}_corr"
+        if col_name in df_comparison.columns:
+            factor_importance[factor] = df_comparison[col_name].abs().mean()
+    
+    if factor_importance:
+        factors = list(factor_importance.keys())
+        importances = list(factor_importance.values())
+        
+        bars = ax.bar(range(len(factors)), importances, color="steelblue", alpha=0.8)
+        ax.set_xticks(range(len(factors)))
+        ax.set_xticklabels([FACTOR_NAMES[f] for f in factors], rotation=45, ha="right")
+        ax.set_ylabel("평균 |상관계수|", fontsize=12)
+        ax.set_title("하위 지역 평균 요인 중요도", fontsize=14, fontweight="bold")
+        ax.grid(True, alpha=0.3, axis="y")
+        
+        # 값 표시
+        for bar, val in zip(bars, importances):
+            ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.005,
+                   f"{val:.3f}", ha="center", va="bottom", fontsize=10)
+    
+    plt.tight_layout()
+    importance_path = comparison_dir / "factor_importance.png"
+    plt.savefig(importance_path, dpi=300, bbox_inches="tight")
+    plt.close()
+    print(f"요인 중요도 그래프 저장: {importance_path}")
+    
+    # 통합 보고서 작성
+    report_path = comparison_dir / "integrated_report.md"
+    with open(report_path, "w", encoding="utf-8") as f:
+        f.write("# 하위 지역 K-factors 상관관계 분석 통합 보고서\n\n")
+        f.write(f"분석 일시: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+        
+        f.write("## 1. 분석 개요\n\n")
+        f.write(f"- 분석 지역: {', '.join(VALID_SUBREGIONS)}\n")
+        f.write(f"- 분석 요인: {len(ANALYSIS_FACTORS)}개 (K-factors 7개 + D_final)\n")
+        f.write(f"- 매칭 거리 임계값: {distance_threshold}m\n\n")
+        
+        f.write("## 2. 지역별 데이터 요약\n\n")
+        f.write("| 지역 | 복구작업 | 파이프 | 매칭 클러스터 | 매칭률 |\n")
+        f.write("|------|----------|--------|---------------|--------|\n")
+        
+        for _, row in df_comparison.iterrows():
+            match_rate = row["matched_count"] / row["total_repairs"] * 100 if row["total_repairs"] > 0 else 0
+            f.write(f"| {row['region_code']} | {row['total_repairs']} | {row['total_pipes']} | "
+                   f"{row['matched_count']} | {match_rate:.1f}% |\n")
+        
+        f.write("\n## 3. 지역별 최강 상관관계\n\n")
+        f.write("| 지역 | 최선 요인 | 상관계수 | 전략 |\n")
+        f.write("|------|-----------|----------|------|\n")
+        
+        for _, row in df_comparison.iterrows():
+            if "best_factor" in row and pd.notna(row["best_factor"]):
+                f.write(f"| {row['region_code']} | {FACTOR_NAMES.get(row['best_factor'], row['best_factor'])} | "
+                       f"{row['best_corr']:.4f} | {row['best_strategy']} |\n")
+        
+        f.write("\n## 4. 요인별 중요도 순위\n\n")
+        
+        if factor_importance:
+            sorted_factors = sorted(factor_importance.items(), key=lambda x: x[1], reverse=True)
+            f.write("| 순위 | 요인 | 평균 |상관계수| |\n")
+            f.write("|------|------|----------------|\n")
+            
+            for i, (factor, importance) in enumerate(sorted_factors, 1):
+                f.write(f"| {i} | {FACTOR_NAMES[factor]} | {importance:.4f} |\n")
+        
+        f.write("\n## 5. 주요 발견사항\n\n")
+        
+        # 가장 강한 상관관계 찾기
+        best_overall = df_comparison.loc[df_comparison["best_corr"].abs().idxmax()] if "best_corr" in df_comparison.columns else None
+        if best_overall is not None:
+            f.write(f"- **가장 강한 상관관계**: {best_overall['region_code']} 지역의 "
+                   f"{FACTOR_NAMES.get(best_overall['best_factor'], best_overall['best_factor'])} "
+                   f"(r={best_overall['best_corr']:.4f})\n")
+        
+        # 지역별 특성
+        f.write("\n### 지역별 특성:\n\n")
+        for region_code in VALID_SUBREGIONS:
+            region_row = df_comparison[df_comparison["region_code"] == region_code]
+            if not region_row.empty:
+                row = region_row.iloc[0]
+                f.write(f"- **{region_code}**: ")
+                if "best_factor" in row and pd.notna(row["best_factor"]):
+                    f.write(f"{FACTOR_NAMES.get(row['best_factor'], row['best_factor'])}가 가장 영향력 있음 ")
+                    f.write(f"(r={row['best_corr']:.4f})\n")
+                else:
+                    f.write("유의미한 상관관계 없음\n")
+        
+        f.write("\n## 6. 결론 및 제언\n\n")
+        f.write("- 지역별로 다른 위험 요인이 재작업과 연관됨\n")
+        f.write("- 맞춤형 유지관리 전략 수립 필요\n")
+        f.write("- 추가 데이터 수집 및 장기 모니터링 권장\n")
+    
+    print(f"통합 보고서 저장: {report_path}")
+
+
+def parse_arguments() -> argparse.Namespace:
+    """명령줄 인자 파싱"""
+    parser = argparse.ArgumentParser(
+        description="하위 지역별 재작업-위험요인 상관관계 분석"
+    )
+    parser.add_argument(
+        "--region",
+        type=str,
+        choices=VALID_SUBREGIONS,
+        help="분석할 하위 지역 코드 (0470, 0480, 0490)"
+    )
+    parser.add_argument(
+        "--all-subregions",
+        action="store_true",
+        help="모든 하위 지역 분석 및 비교"
+    )
+    parser.add_argument(
+        "--distance",
+        type=float,
+        default=DISTANCE_THRESHOLD_METERS,
+        help=f"파이프 매칭 거리 임계값 (기본값: {DISTANCE_THRESHOLD_METERS}m)"
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=str,
+        help="출력 디렉토리 (기본값: results/main14c)"
+    )
+    return parser.parse_args()
+
+
+def main() -> None:
+    """메인 실행 함수"""
+    args = parse_arguments()
+    
+    # 출력 디렉토리 설정
+    output_dir = Path(args.output_dir) if args.output_dir else RESULTS_DIR / "main14c"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    print("\n" + "=" * 70)
+    print("하위 지역별 재작업-위험요인 상관관계 분석")
+    print("=" * 70)
+    
+    if args.all_subregions:
+        # 모든 하위 지역 분석
+        print("\n모든 하위 지역 분석 시작...")
+        all_results = analyze_all_subregions(args.distance, output_dir)
+        
+        if all_results:
+            # 비교 보고서 생성
+            print("\n=== 지역 간 비교 분석 ===")
+            create_comparison_report(all_results, output_dir, args.distance)
+            
+            print("\n모든 분석이 완료되었습니다.")
+            print(f"결과 파일 위치: {output_dir}")
+        else:
+            print("\n분석 가능한 지역이 없습니다.")
+    
+    elif args.region:
+        # 특정 지역만 분석
+        print(f"\n{args.region} 지역 분석 시작...")
+        region_data = analyze_subregion_correlation(args.region, args.distance)
+        
+        if region_data:
+            save_subregion_results(region_data, output_dir)
+            create_subregion_visualizations(region_data, output_dir)
+            
+            print(f"\n{args.region} 지역 분석 완료")
+            print(f"결과 파일 위치: {output_dir / args.region}")
+        else:
+            print(f"\n{args.region} 지역 분석 실패")
+    
+    else:
+        # 인자가 없으면 도움말 표시
+        print("\n사용법:")
+        print("  개별 지역 분석: python src/main14c_subregion_correlations.py --region 0470")
+        print("  모든 지역 분석: python src/main14c_subregion_correlations.py --all-subregions")
+        print("\n추가 옵션:")
+        print(f"  --distance N: 매칭 거리 임계값 (기본값: {DISTANCE_THRESHOLD_METERS}m)")
+        print("  --output-dir PATH: 출력 디렉토리 지정")
+
+
+if __name__ == "__main__":
+    main()

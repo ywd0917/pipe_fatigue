@@ -1,0 +1,35 @@
+# 기본 의존성
+numpy
+pandas
+matplotlib
+plotly
+
+# 통계 및 과학 계산
+scipy
+scikit-learn
+statsmodels
+seaborn
+
+# GIS 관련
+geopandas
+shapely
+fiona
+pyproj
+
+# 개발 도구
+pytest
+mypy
+ruff
+black
+pytest-cov
+flake8
+
+# 타입 스텁
+types-setuptools
+pandas-stubs
+scipy-stubs
+types-seaborn
+
+# API 및 환경 변수
+python-dotenv
+requests

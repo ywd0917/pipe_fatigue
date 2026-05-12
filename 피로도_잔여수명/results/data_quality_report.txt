@@ -1,0 +1,26 @@
+============================================================
+520 지역 데이터 품질 검사 보고서
+생성 일시: 2025-09-17 13:50:36.346035
+데이터 파일: /private/var/folders/8f/2sp8y0tj1tb6q2prlcvlc5dw0000gn/T/pytest-of-jhpark/pytest-39/test_main_function_with_output0/test_data.csv
+============================================================
+
+[COORDINATES]
+상태: PASS
+무효 좌표: 0개
+
+[DATES]
+상태: FAIL
+날짜 범위: NaT ~ NaT
+무효 날짜: 1개
+
+[DUPLICATES]
+상태: PASS
+중복 항목: 0개
+
+[ENCODING]
+상태: PASS
+주소 컬럼: 주소
+
+[REPAIR_TYPES]
+상태: FAIL
+

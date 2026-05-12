@@ -1,0 +1,12 @@
+{
+  "region": "0480",
+  "distance": 10,
+  "execution_time": 5.139894962310791,
+  "matching_stats": {
+    "matched_clusters": 132
+  },
+  "correlations": {},
+  "p_values": {},
+  "significant_factors": [],
+  "timestamp": "2025-08-19T16:51:21.452559"
+}

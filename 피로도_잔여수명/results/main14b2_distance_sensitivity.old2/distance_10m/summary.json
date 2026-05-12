@@ -1,0 +1,15 @@
+{
+  "distance": 10,
+  "execution_time": 32.292086,
+  "matching_stats": {
+    "total_clusters": 975,
+    "matched_clusters": 932,
+    "matching_rate": 95.58974358974359,
+    "avg_pipes_per_cluster": 3.726394849785408
+  },
+  "correlations": {},
+  "p_values": {},
+  "significant_factors": [],
+  "best_strategies": {},
+  "timestamp": "2025-09-01T18:22:21.506402"
+}

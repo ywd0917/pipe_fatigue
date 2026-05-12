@@ -1,0 +1,38 @@
+{
+  "distance": 30,
+  "execution_time": 16.274294,
+  "matching_stats": {
+    "total_clusters": 0,
+    "matched_clusters": 812,
+    "matching_rate": 99.8,
+    "avg_pipes_per_cluster": 0
+  },
+  "correlations": {
+    "K_age": -0.0221,
+    "K_soil": 0.0325,
+    "K_traffic": -0.0294,
+    "hoop_stress": -0.0233,
+    "K_stress": -0.0422,
+    "K_total": 0.0687,
+    "STD_DIP": -0.0361,
+    "D_final": 0.0323
+  },
+  "p_values": {
+    "K_age": 0.5291,
+    "K_soil": 0.3545,
+    "K_traffic": 0.4033,
+    "hoop_stress": 0.508,
+    "K_stress": 0.2298,
+    "K_total": 0.0504,
+    "STD_DIP": 0.3044,
+    "D_final": 0.3583
+  },
+  "significant_factors": [
+    {
+      "factor": "K_total",
+      "r": 0.0687,
+      "p": 0.0504
+    }
+  ],
+  "timestamp": "2025-08-21T00:57:57.609610"
+}

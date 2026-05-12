@@ -1,0 +1,54 @@
+{
+  "region": "0480",
+  "distance": 50,
+  "execution_time": 5.526011943817139,
+  "matching_stats": {
+    "total_clusters": 128,
+    "matched_clusters": 128,
+    "matching_rate": 100.0,
+    "avg_pipes_per_cluster": 0.0,
+    "total_repairs": 157
+  },
+  "correlations": {
+    "STD_DIP": -0.012374609270077476,
+    "K_age": 0.07836123932490612,
+    "K_traffic": -0.11149993684812376,
+    "hoop_stress": -0.10898021571450087,
+    "K_stress": -0.034442625802447044,
+    "K_total": 0.10449926843078391,
+    "D_final": 0.10449926843078447,
+    "K_repair": 0.1094012865723761
+  },
+  "p_values": {
+    "STD_DIP": 0.8897388788927604,
+    "K_age": 0.3792862010092207,
+    "K_traffic": 0.21020056584901053,
+    "hoop_stress": 0.22075384094773823,
+    "K_stress": 0.6995220205979547,
+    "K_total": 0.24043769200203213,
+    "D_final": 0.24043769200203005,
+    "K_repair": 0.21896464312407077
+  },
+  "r_squared": {
+    "STD_DIP": 0.0001531309545870874,
+    "K_age": 0.006140483828535212,
+    "K_traffic": 0.012432235917135586,
+    "hoop_stress": 0.011876687417179142,
+    "K_stress": 0.001186294472167391,
+    "K_total": 0.010920097102569032,
+    "D_final": 0.010920097102569148,
+    "K_repair": 0.01196864150369116
+  },
+  "strategies": {
+    "STD_DIP": "max",
+    "K_age": "nearest",
+    "K_traffic": "nearest",
+    "hoop_stress": "nearest",
+    "K_stress": "avg",
+    "K_total": "nearest",
+    "D_final": "nearest",
+    "K_repair": "avg"
+  },
+  "significant_factors": [],
+  "timestamp": "2025-08-25T16:44:16.175500"
+}

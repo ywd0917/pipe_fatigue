@@ -1,0 +1,10 @@
+{
+  "region_code": "0243",
+  "total_clusters": 145,
+  "matched_clusters": 145,
+  "matching_rate": 100.0,
+  "avg_pipes_per_cluster": 47.227586206896554,
+  "total_repairs": 285,
+  "total_pipes": 716,
+  "timestamp": "2025-09-04T22:24:53.215265"
+}

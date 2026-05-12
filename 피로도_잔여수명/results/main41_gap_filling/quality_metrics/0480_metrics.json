@@ -1,0 +1,18 @@
+{
+  "area": "0480",
+  "total_records": 223308,
+  "total_gaps_filled": 1,
+  "gaps": [
+    {
+      "gap_id": 1,
+      "start_idx": 201296,
+      "end_idx": 208221,
+      "length": 6925,
+      "length_hours": 577.0833333333334,
+      "method": "spectral",
+      "start_time": "2025-05-19 13:40:00",
+      "end_time": "2025-06-12 14:40:00"
+    }
+  ],
+  "timestamp": "2025-12-12T14:45:52.350868"
+}

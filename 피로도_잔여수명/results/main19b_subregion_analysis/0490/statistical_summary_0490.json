@@ -1,0 +1,163 @@
+{
+  "region": "0490",
+  "analysis_date": "2025-09-01T15:32:28.686370",
+  "radii": [
+    10,
+    20,
+    30,
+    50,
+    100
+  ],
+  "results": {
+    "10m": {
+      "sply_ls": {
+        "correlation": -0.020107133258229895,
+        "p_value": 0.7497973446296081,
+        "significant": false
+      },
+      "valve": {
+        "correlation": 0.09545570161540146,
+        "p_value": 0.1291969129906092,
+        "significant": false
+      },
+      "fire": {
+        "correlation": 0.021442103700424223,
+        "p_value": 0.7337929402779112,
+        "significant": false
+      },
+      "total_infra": {
+        "correlation": 0.02494408460728297,
+        "p_value": 0.6923676688142976,
+        "significant": false
+      },
+      "summary": {
+        "total_repairs": 510,
+        "total_clusters": 254,
+        "frequent_clusters": 31,
+        "avg_sply_ls": 1.5,
+        "avg_valve": 0.16666666666666666,
+        "avg_fire": 0.011764705882352941
+      }
+    },
+    "20m": {
+      "sply_ls": {
+        "correlation": 0.14491239684206875,
+        "p_value": 0.020869327053323505,
+        "significant": true
+      },
+      "valve": {
+        "correlation": 0.04829836965628431,
+        "p_value": 0.4434383300833534,
+        "significant": false
+      },
+      "fire": {
+        "correlation": -0.00944282280275486,
+        "p_value": 0.8809580178277392,
+        "significant": false
+      },
+      "total_infra": {
+        "correlation": 0.15289775523465243,
+        "p_value": 0.01472273558997526,
+        "significant": true
+      },
+      "summary": {
+        "total_repairs": 510,
+        "total_clusters": 254,
+        "frequent_clusters": 31,
+        "avg_sply_ls": 5.741176470588235,
+        "avg_valve": 0.8725490196078431,
+        "avg_fire": 0.06274509803921569
+      }
+    },
+    "30m": {
+      "sply_ls": {
+        "correlation": 0.15803462878906174,
+        "p_value": 0.011665546065914835,
+        "significant": true
+      },
+      "valve": {
+        "correlation": -0.0107398166613615,
+        "p_value": 0.8647544212486139,
+        "significant": false
+      },
+      "fire": {
+        "correlation": -0.07197670925372732,
+        "p_value": 0.2530614654076614,
+        "significant": false
+      },
+      "total_infra": {
+        "correlation": 0.12557046734908084,
+        "p_value": 0.045574471494441965,
+        "significant": true
+      },
+      "summary": {
+        "total_repairs": 510,
+        "total_clusters": 254,
+        "frequent_clusters": 31,
+        "avg_sply_ls": 12.533333333333333,
+        "avg_valve": 2.019607843137255,
+        "avg_fire": 0.11960784313725491
+      }
+    },
+    "50m": {
+      "sply_ls": {
+        "correlation": 0.13578309251939083,
+        "p_value": 0.030511847481645194,
+        "significant": true
+      },
+      "valve": {
+        "correlation": -0.03348240880674777,
+        "p_value": 0.5953226780269822,
+        "significant": false
+      },
+      "fire": {
+        "correlation": -0.05371850329298851,
+        "p_value": 0.3939227759276815,
+        "significant": false
+      },
+      "total_infra": {
+        "correlation": 0.10580938059287334,
+        "p_value": 0.09242675478127732,
+        "significant": false
+      },
+      "summary": {
+        "total_repairs": 510,
+        "total_clusters": 254,
+        "frequent_clusters": 31,
+        "avg_sply_ls": 33.17254901960784,
+        "avg_valve": 5.592156862745098,
+        "avg_fire": 0.3627450980392157
+      }
+    },
+    "100m": {
+      "sply_ls": {
+        "correlation": 0.17529093849087754,
+        "p_value": 0.005084628695920917,
+        "significant": true
+      },
+      "valve": {
+        "correlation": 0.10008953536942955,
+        "p_value": 0.11154319333400688,
+        "significant": false
+      },
+      "fire": {
+        "correlation": -0.06117665744659978,
+        "p_value": 0.3315003432192668,
+        "significant": false
+      },
+      "total_infra": {
+        "correlation": 0.17835556646883377,
+        "p_value": 0.004352754779534033,
+        "significant": true
+      },
+      "summary": {
+        "total_repairs": 510,
+        "total_clusters": 254,
+        "frequent_clusters": 31,
+        "avg_sply_ls": 119.41960784313726,
+        "avg_valve": 21.225490196078432,
+        "avg_fire": 1.4666666666666666
+      }
+    }
+  }
+}

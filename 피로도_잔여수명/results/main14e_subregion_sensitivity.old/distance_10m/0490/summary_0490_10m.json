@@ -1,0 +1,42 @@
+{
+  "region": "0490",
+  "distance": 10,
+  "execution_time": 5.685410022735596,
+  "matching_stats": {
+    "matched_clusters": 221,
+    "total_clusters": 226,
+    "matching_rate": 97.8,
+    "total_repairs": 306
+  },
+  "correlations": {
+    "K_age": 0.0621,
+    "K_traffic": -0.0275,
+    "hoop_stress": 0.0318,
+    "K_stress": 0.0417,
+    "K_total": 0.1351,
+    "STD_DIP": 0.044,
+    "D_final": 0.1351
+  },
+  "p_values": {
+    "K_age": 0.3578,
+    "K_traffic": 0.6847,
+    "hoop_stress": 0.6385,
+    "K_stress": 0.5378,
+    "K_total": 0.0448,
+    "STD_DIP": 0.5151,
+    "D_final": 0.0448
+  },
+  "significant_factors": [
+    {
+      "factor": "K_total",
+      "r": 0.1351,
+      "p": 0.0448
+    },
+    {
+      "factor": "D_final",
+      "r": 0.1351,
+      "p": 0.0448
+    }
+  ],
+  "timestamp": "2025-08-21T01:00:47.001759"
+}

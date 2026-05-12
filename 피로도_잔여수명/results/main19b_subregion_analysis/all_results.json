@@ -1,0 +1,473 @@
+{
+  "analysis_date": "2025-09-01T15:32:28.685230",
+  "regions": [
+    "0470",
+    "0480",
+    "0490"
+  ],
+  "radii": [
+    10,
+    20,
+    30,
+    50,
+    100
+  ],
+  "results": {
+    "0470": {
+      "10m": {
+        "sply_ls": {
+          "correlation": 0.044137679930893944,
+          "p_value": 0.5287291414824976,
+          "significant": false
+        },
+        "valve": {
+          "correlation": -0.05726652774697571,
+          "p_value": 0.4135861366719672,
+          "significant": false
+        },
+        "fire": {
+          "correlation": -0.03154255414743849,
+          "p_value": 0.6526541642157552,
+          "significant": false
+        },
+        "total_infra": {
+          "correlation": 0.015627058865008144,
+          "p_value": 0.8235827470763827,
+          "significant": false
+        },
+        "summary": {
+          "total_repairs": 382,
+          "total_clusters": 206,
+          "frequent_clusters": 16,
+          "avg_sply_ls": 1.62565445026178,
+          "avg_valve": 0.16753926701570682,
+          "avg_fire": 0.005235602094240838
+        }
+      },
+      "20m": {
+        "sply_ls": {
+          "correlation": 0.1450984078895866,
+          "p_value": 0.03744243970675952,
+          "significant": true
+        },
+        "valve": {
+          "correlation": -0.13231864453544484,
+          "p_value": 0.05797083800677008,
+          "significant": false
+        },
+        "fire": {
+          "correlation": -0.018320219677445175,
+          "p_value": 0.7938098524792826,
+          "significant": false
+        },
+        "total_infra": {
+          "correlation": 0.03980051678380726,
+          "p_value": 0.5700390431157359,
+          "significant": false
+        },
+        "summary": {
+          "total_repairs": 382,
+          "total_clusters": 206,
+          "frequent_clusters": 16,
+          "avg_sply_ls": 6.054973821989528,
+          "avg_valve": 0.8586387434554974,
+          "avg_fire": 0.04712041884816754
+        }
+      },
+      "30m": {
+        "sply_ls": {
+          "correlation": 0.15237240502809868,
+          "p_value": 0.02878409663090738,
+          "significant": true
+        },
+        "valve": {
+          "correlation": -0.09244086858208334,
+          "p_value": 0.18632333655502933,
+          "significant": false
+        },
+        "fire": {
+          "correlation": -0.021391149986187255,
+          "p_value": 0.7602233711280456,
+          "significant": false
+        },
+        "total_infra": {
+          "correlation": 0.07340816798159254,
+          "p_value": 0.29435777582582684,
+          "significant": false
+        },
+        "summary": {
+          "total_repairs": 382,
+          "total_clusters": 206,
+          "frequent_clusters": 16,
+          "avg_sply_ls": 13.43717277486911,
+          "avg_valve": 2.141361256544503,
+          "avg_fire": 0.10732984293193717
+        }
+      },
+      "50m": {
+        "sply_ls": {
+          "correlation": 0.17004972662640921,
+          "p_value": 0.014539702337411541,
+          "significant": true
+        },
+        "valve": {
+          "correlation": -0.0520862611735512,
+          "p_value": 0.45715821048189037,
+          "significant": false
+        },
+        "fire": {
+          "correlation": -0.062424065978343754,
+          "p_value": 0.37272977121434414,
+          "significant": false
+        },
+        "total_infra": {
+          "correlation": 0.12409227555777178,
+          "p_value": 0.07555234355547896,
+          "significant": false
+        },
+        "summary": {
+          "total_repairs": 382,
+          "total_clusters": 206,
+          "frequent_clusters": 16,
+          "avg_sply_ls": 34.84816753926702,
+          "avg_valve": 6.518324607329843,
+          "avg_fire": 0.3219895287958115
+        }
+      },
+      "100m": {
+        "sply_ls": {
+          "correlation": 0.12077441689261144,
+          "p_value": 0.08376856699031676,
+          "significant": false
+        },
+        "valve": {
+          "correlation": -0.042900363395006524,
+          "p_value": 0.5403582848047197,
+          "significant": false
+        },
+        "fire": {
+          "correlation": -0.11085570501177655,
+          "p_value": 0.11267352608761583,
+          "significant": false
+        },
+        "total_infra": {
+          "correlation": 0.09295701342013758,
+          "p_value": 0.1838661328097617,
+          "significant": false
+        },
+        "summary": {
+          "total_repairs": 382,
+          "total_clusters": 206,
+          "frequent_clusters": 16,
+          "avg_sply_ls": 121.92670157068063,
+          "avg_valve": 24.732984293193716,
+          "avg_fire": 1.2303664921465969
+        }
+      }
+    },
+    "0480": {
+      "10m": {
+        "sply_ls": {
+          "correlation": -0.0015329791298837256,
+          "p_value": 0.985348590098877,
+          "significant": false
+        },
+        "valve": {
+          "correlation": -0.15288074782261618,
+          "p_value": 0.06544125813788912,
+          "significant": false
+        },
+        "fire": {
+          "correlation": -0.110849393954017,
+          "p_value": 0.18286206765667345,
+          "significant": false
+        },
+        "total_infra": {
+          "correlation": -0.106634723722526,
+          "p_value": 0.20017503392330951,
+          "significant": false
+        },
+        "summary": {
+          "total_repairs": 280,
+          "total_clusters": 146,
+          "frequent_clusters": 10,
+          "avg_sply_ls": 1.75,
+          "avg_valve": 0.20714285714285716,
+          "avg_fire": 0.007142857142857143
+        }
+      },
+      "20m": {
+        "sply_ls": {
+          "correlation": 0.07931982456948336,
+          "p_value": 0.34125554666639385,
+          "significant": false
+        },
+        "valve": {
+          "correlation": -0.06848581466753029,
+          "p_value": 0.411435980956759,
+          "significant": false
+        },
+        "fire": {
+          "correlation": -0.06133215143064966,
+          "p_value": 0.46209475102317427,
+          "significant": false
+        },
+        "total_infra": {
+          "correlation": 0.0073236971420797825,
+          "p_value": 0.9300888115290488,
+          "significant": false
+        },
+        "summary": {
+          "total_repairs": 280,
+          "total_clusters": 146,
+          "frequent_clusters": 10,
+          "avg_sply_ls": 6.725,
+          "avg_valve": 1.0642857142857143,
+          "avg_fire": 0.02857142857142857
+        }
+      },
+      "30m": {
+        "sply_ls": {
+          "correlation": 0.07958683776319264,
+          "p_value": 0.3396276477697825,
+          "significant": false
+        },
+        "valve": {
+          "correlation": -0.08855350905345954,
+          "p_value": 0.2878324837497678,
+          "significant": false
+        },
+        "fire": {
+          "correlation": -0.02914415907572291,
+          "p_value": 0.7269410560559553,
+          "significant": false
+        },
+        "total_infra": {
+          "correlation": 0.0032438825051834333,
+          "p_value": 0.9690026690773618,
+          "significant": false
+        },
+        "summary": {
+          "total_repairs": 280,
+          "total_clusters": 146,
+          "frequent_clusters": 10,
+          "avg_sply_ls": 14.557142857142857,
+          "avg_valve": 2.6035714285714286,
+          "avg_fire": 0.07142857142857142
+        }
+      },
+      "50m": {
+        "sply_ls": {
+          "correlation": 0.041952472905686086,
+          "p_value": 0.6151204360036187,
+          "significant": false
+        },
+        "valve": {
+          "correlation": -0.06666169102233284,
+          "p_value": 0.4240338578250272,
+          "significant": false
+        },
+        "fire": {
+          "correlation": -0.11426663624757787,
+          "p_value": 0.1696517087973049,
+          "significant": false
+        },
+        "total_infra": {
+          "correlation": -0.0067916241158626,
+          "p_value": 0.9351564066301097,
+          "significant": false
+        },
+        "summary": {
+          "total_repairs": 280,
+          "total_clusters": 146,
+          "frequent_clusters": 10,
+          "avg_sply_ls": 38.32142857142857,
+          "avg_valve": 7.35,
+          "avg_fire": 0.21785714285714286
+        }
+      },
+      "100m": {
+        "sply_ls": {
+          "correlation": -0.07254628934872175,
+          "p_value": 0.3841950548566631,
+          "significant": false
+        },
+        "valve": {
+          "correlation": 0.05011787172023535,
+          "p_value": 0.5480071845949429,
+          "significant": false
+        },
+        "fire": {
+          "correlation": -0.1405781554394505,
+          "p_value": 0.09056461893343987,
+          "significant": false
+        },
+        "total_infra": {
+          "correlation": -0.06057820027309996,
+          "p_value": 0.46762733913167304,
+          "significant": false
+        },
+        "summary": {
+          "total_repairs": 280,
+          "total_clusters": 146,
+          "frequent_clusters": 10,
+          "avg_sply_ls": 140.44285714285715,
+          "avg_valve": 27.035714285714285,
+          "avg_fire": 0.8785714285714286
+        }
+      }
+    },
+    "0490": {
+      "10m": {
+        "sply_ls": {
+          "correlation": -0.020107133258229895,
+          "p_value": 0.7497973446296081,
+          "significant": false
+        },
+        "valve": {
+          "correlation": 0.09545570161540146,
+          "p_value": 0.1291969129906092,
+          "significant": false
+        },
+        "fire": {
+          "correlation": 0.021442103700424223,
+          "p_value": 0.7337929402779112,
+          "significant": false
+        },
+        "total_infra": {
+          "correlation": 0.02494408460728297,
+          "p_value": 0.6923676688142976,
+          "significant": false
+        },
+        "summary": {
+          "total_repairs": 510,
+          "total_clusters": 254,
+          "frequent_clusters": 31,
+          "avg_sply_ls": 1.5,
+          "avg_valve": 0.16666666666666666,
+          "avg_fire": 0.011764705882352941
+        }
+      },
+      "20m": {
+        "sply_ls": {
+          "correlation": 0.14491239684206875,
+          "p_value": 0.020869327053323505,
+          "significant": true
+        },
+        "valve": {
+          "correlation": 0.04829836965628431,
+          "p_value": 0.4434383300833534,
+          "significant": false
+        },
+        "fire": {
+          "correlation": -0.00944282280275486,
+          "p_value": 0.8809580178277392,
+          "significant": false
+        },
+        "total_infra": {
+          "correlation": 0.15289775523465243,
+          "p_value": 0.01472273558997526,
+          "significant": true
+        },
+        "summary": {
+          "total_repairs": 510,
+          "total_clusters": 254,
+          "frequent_clusters": 31,
+          "avg_sply_ls": 5.741176470588235,
+          "avg_valve": 0.8725490196078431,
+          "avg_fire": 0.06274509803921569
+        }
+      },
+      "30m": {
+        "sply_ls": {
+          "correlation": 0.15803462878906174,
+          "p_value": 0.011665546065914835,
+          "significant": true
+        },
+        "valve": {
+          "correlation": -0.0107398166613615,
+          "p_value": 0.8647544212486139,
+          "significant": false
+        },
+        "fire": {
+          "correlation": -0.07197670925372732,
+          "p_value": 0.2530614654076614,
+          "significant": false
+        },
+        "total_infra": {
+          "correlation": 0.12557046734908084,
+          "p_value": 0.045574471494441965,
+          "significant": true
+        },
+        "summary": {
+          "total_repairs": 510,
+          "total_clusters": 254,
+          "frequent_clusters": 31,
+          "avg_sply_ls": 12.533333333333333,
+          "avg_valve": 2.019607843137255,
+          "avg_fire": 0.11960784313725491
+        }
+      },
+      "50m": {
+        "sply_ls": {
+          "correlation": 0.13578309251939083,
+          "p_value": 0.030511847481645194,
+          "significant": true
+        },
+        "valve": {
+          "correlation": -0.03348240880674777,
+          "p_value": 0.5953226780269822,
+          "significant": false
+        },
+        "fire": {
+          "correlation": -0.05371850329298851,
+          "p_value": 0.3939227759276815,
+          "significant": false
+        },
+        "total_infra": {
+          "correlation": 0.10580938059287334,
+          "p_value": 0.09242675478127732,
+          "significant": false
+        },
+        "summary": {
+          "total_repairs": 510,
+          "total_clusters": 254,
+          "frequent_clusters": 31,
+          "avg_sply_ls": 33.17254901960784,
+          "avg_valve": 5.592156862745098,
+          "avg_fire": 0.3627450980392157
+        }
+      },
+      "100m": {
+        "sply_ls": {
+          "correlation": 0.17529093849087754,
+          "p_value": 0.005084628695920917,
+          "significant": true
+        },
+        "valve": {
+          "correlation": 0.10008953536942955,
+          "p_value": 0.11154319333400688,
+          "significant": false
+        },
+        "fire": {
+          "correlation": -0.06117665744659978,
+          "p_value": 0.3315003432192668,
+          "significant": false
+        },
+        "total_infra": {
+          "correlation": 0.17835556646883377,
+          "p_value": 0.004352754779534033,
+          "significant": true
+        },
+        "summary": {
+          "total_repairs": 510,
+          "total_clusters": 254,
+          "frequent_clusters": 31,
+          "avg_sply_ls": 119.41960784313726,
+          "avg_valve": 21.225490196078432,
+          "avg_fire": 1.4666666666666666
+        }
+      }
+    }
+  }
+}

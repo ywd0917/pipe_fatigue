@@ -1,0 +1,31 @@
+{
+  "area": "0243",
+  "analysis_window_days": 30,
+  "n_records": 8640,
+  "valley_period_min": 553.5,
+  "low_pass": {
+    "score": 40.46,
+    "acf": 0.9997,
+    "acf_contribution": 40,
+    "periodicity": 0.0046,
+    "periodicity_contribution": 0.46,
+    "consistency": 0.0,
+    "consistency_contribution": 0.0
+  },
+  "high_pass": {
+    "score": 26.88,
+    "acf": 0.0746,
+    "acf_contribution": 7.46,
+    "periodicity": 0.006,
+    "periodicity_contribution": 0.6,
+    "consistency": 0.6276,
+    "consistency_contribution": 18.83
+  },
+  "score_difference": 13.58,
+  "better_component": "Low Pass",
+  "recommendation": {
+    "low": "spline (정밀 보간)",
+    "high": "mean (평균값)"
+  },
+  "proceed_phase2": true
+}

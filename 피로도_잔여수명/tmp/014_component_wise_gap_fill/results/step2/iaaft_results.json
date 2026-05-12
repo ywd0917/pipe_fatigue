@@ -1,0 +1,151 @@
+{
+  "area": "0243",
+  "method": "ARMA + IAAFT",
+  "timestamp": "2025-12-12T12:23:27.120471",
+  "gap_results": {
+    "7days": {
+      "low": {
+        "component": "low",
+        "cycles_true": 16,
+        "cycles_pred": 18,
+        "CCR": 0.8889,
+        "ADS": 0.646,
+        "FDR": 17.6637,
+        "damage_true": 0.0002584566749728206,
+        "damage_pred": 0.004565301877402719,
+        "pass": false,
+        "amplitude_stats": {
+          "true_mean": 0.014927325421467519,
+          "true_std": 0.01462693598353456,
+          "true_max": 0.05211955607775576,
+          "pred_mean": 0.05265812990751303,
+          "pred_std": 0.02581443650664918,
+          "pred_max": 0.10659605736462724
+        }
+      },
+      "high": {
+        "component": "high",
+        "cycles_true": 2714,
+        "cycles_pred": 3415,
+        "CCR": 0.7947,
+        "ADS": 0.9683,
+        "FDR": 0.9991,
+        "damage_true": 3.6831250960016133,
+        "damage_pred": 3.6799643833552995,
+        "pass": false,
+        "amplitude_stats": {
+          "true_mean": 0.07743609998943224,
+          "true_std": 0.05157845697007193,
+          "true_max": 0.4999824057117047,
+          "pred_mean": 0.06566756011081597,
+          "pred_std": 0.05042588017330545,
+          "pred_max": 0.479729669301647
+        }
+      },
+      "overall_pass": false,
+      "v_valley_minutes": 553.5,
+      "signal_length": 10080,
+      "evaluation_summary": {
+        "low_pass": false,
+        "high_pass": false,
+        "critical_component": "high"
+      }
+    },
+    "14days": {
+      "low": {
+        "component": "low",
+        "cycles_true": 34,
+        "cycles_pred": 36,
+        "CCR": 0.9444,
+        "ADS": 0.689,
+        "FDR": 33.8885,
+        "damage_true": 0.0003119802645618292,
+        "damage_pred": 0.010572553910999436,
+        "pass": false,
+        "amplitude_stats": {
+          "true_mean": 0.011467989008089227,
+          "true_std": 0.01226171409900842,
+          "true_max": 0.05211955539701918,
+          "pred_mean": 0.054231787126241784,
+          "pred_std": 0.0269212850613832,
+          "pred_max": 0.1374921619135831
+        }
+      },
+      "high": {
+        "component": "high",
+        "cycles_true": 5350,
+        "cycles_pred": 6749,
+        "CCR": 0.7927,
+        "ADS": 0.9716,
+        "FDR": 1.2671,
+        "damage_true": 6.064211961775662,
+        "damage_pred": 7.683809264628598,
+        "pass": false,
+        "amplitude_stats": {
+          "true_mean": 0.07502544895873048,
+          "true_std": 0.047446780508429494,
+          "true_max": 0.4999824057142773,
+          "pred_mean": 0.06963507451412984,
+          "pred_std": 0.051197515907791986,
+          "pred_max": 0.42231559156337
+        }
+      },
+      "overall_pass": false,
+      "v_valley_minutes": 553.5,
+      "signal_length": 20160,
+      "evaluation_summary": {
+        "low_pass": false,
+        "high_pass": false,
+        "critical_component": "high"
+      }
+    },
+    "24days": {
+      "low": {
+        "component": "low",
+        "cycles_true": 59,
+        "cycles_pred": 72,
+        "CCR": 0.8194,
+        "ADS": 0.6514,
+        "FDR": 20.5943,
+        "damage_true": 0.00046902022251977334,
+        "damage_pred": 0.009659130989290672,
+        "pass": false,
+        "amplitude_stats": {
+          "true_mean": 0.012063754132896449,
+          "true_std": 0.011196884684249096,
+          "true_max": 0.04888504050700071,
+          "pred_mean": 0.04035030041619942,
+          "pred_std": 0.02366316675879973,
+          "pred_max": 0.08114670728446866
+        }
+      },
+      "high": {
+        "component": "high",
+        "cycles_true": 9175,
+        "cycles_pred": 11743,
+        "CCR": 0.7813,
+        "ADS": 0.9713,
+        "FDR": 1.2761,
+        "damage_true": 11.853804059819552,
+        "damage_pred": 15.126699414776853,
+        "pass": false,
+        "amplitude_stats": {
+          "true_mean": 0.07606708711286889,
+          "true_std": 0.05009695102497802,
+          "true_max": 0.5000946484509469,
+          "pred_mean": 0.07406687347743234,
+          "pred_std": 0.053357900015709496,
+          "pred_max": 0.433022665899208
+        }
+      },
+      "overall_pass": false,
+      "v_valley_minutes": 553.5,
+      "signal_length": 34560,
+      "evaluation_summary": {
+        "low_pass": false,
+        "high_pass": false,
+        "critical_component": "high"
+      }
+    }
+  }
+}

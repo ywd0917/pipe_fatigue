@@ -1,0 +1,47 @@
+{
+  "psd": {
+    "psd_correlation": 0.5825290439661184,
+    "psd_pvalue": 4.427293691718878e-13,
+    "psd_similarity": 0.9370731182170375,
+    "energy_ratio": 1.0280769593015995,
+    "energy_preservation_pct": 102.80769593015995
+  },
+  "variance": {
+    "variance_true": 0.008291184405207796,
+    "variance_pred": 0.007738759451673195,
+    "variance_ratio": 0.933372009771292,
+    "std_true": 0.09105594107584522,
+    "std_pred": 0.08797021911802423,
+    "std_ratio": 0.9661117998302743
+  },
+  "acf": {
+    "acf_correlation": 0.9546908616220213,
+    "acf_pvalue": 6.490953843549531e-54,
+    "acf_rmse": 0.0849737745264849,
+    "nlags": 100
+  },
+  "rainflow": {
+    "rainflow_match": 0.8611719954301031,
+    "hist_correlation": 0.8414515550662649,
+    "hist_pvalue": 6.331918766362346e-06,
+    "hist_similarity": 0.869623612728891,
+    "chi2_distance": 0.36723983059612214,
+    "cycles_true": 5754,
+    "cycles_pred": 12013,
+    "amplitude_mean_true": 0.054005908932916236,
+    "amplitude_mean_pred": 0.07083032263308708,
+    "amplitude_std_true": 0.05644146062447139,
+    "amplitude_std_pred": 0.0520065715260032
+  },
+  "overall_judgment": {
+    "overall_score": 0.9094959960941116,
+    "scores": {
+      "psd": 0.9370731182170375,
+      "variance": 0.933372009771292,
+      "acf": 0.9546908616220213,
+      "rainflow": 0.8611719954301031
+    },
+    "judgment": "MARGINAL",
+    "summary": "✓ 한계적 성공 - 신중한 사용 필요"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "region": "0490",
+  "distance": 100,
+  "execution_time": 8.845396995544434,
+  "matching_stats": {
+    "total_clusters": 254,
+    "matched_clusters": 254,
+    "matching_rate": 100.0,
+    "avg_pipes_per_cluster": 136.4251968503937,
+    "total_repairs": 510
+  },
+  "correlations": {
+    "STD_DIP": -0.09364614320803706,
+    "K_age": -0.07514192307628406,
+    "K_traffic": -0.1826151132643299,
+    "hoop_stress": -0.05549581423460226,
+    "K_stress": -0.07832869820596082,
+    "K_total": 0.09092344014625961,
+    "D_final": -0.1046018909686091,
+    "K_repair": 0.16883555515049867
+  },
+  "p_values": {
+    "STD_DIP": 0.13664939305185217,
+    "K_age": 0.23273385242498515,
+    "K_traffic": 0.0034930252883623378,
+    "hoop_stress": 0.3784400562569269,
+    "K_stress": 0.21345947824079337,
+    "K_total": 0.14847804710338777,
+    "D_final": 0.09622773929947934,
+    "K_repair": 0.006998584219315407
+  },
+  "r_squared": {
+    "STD_DIP": 0.008769600137740186,
+    "K_age": 0.005646308603602191,
+    "K_traffic": 0.033348279592544036,
+    "hoop_stress": 0.0030797853975614827,
+    "K_stress": 0.00613538496264049,
+    "K_total": 0.008267071968030454,
+    "D_final": 0.010941555594208785,
+    "K_repair": 0.028505444682977076
+  },
+  "strategies": {
+    "STD_DIP": "avg",
+    "K_age": "max",
+    "K_traffic": "avg",
+    "hoop_stress": "max",
+    "K_stress": "avg",
+    "K_total": "nearest",
+    "D_final": "max",
+    "K_repair": "avg"
+  },
+  "significant_factors": [
+    {
+      "factor": "K_traffic",
+      "strategy": "avg",
+      "r": -0.1826151132643299,
+      "p": 0.0034930252883623378,
+      "r_squared": 0.033348279592544036
+    },
+    {
+      "factor": "D_final",
+      "strategy": "max",
+      "r": -0.1046018909686091,
+      "p": 0.09622773929947934,
+      "r_squared": 0.010941555594208785
+    },
+    {
+      "factor": "K_repair",
+      "strategy": "avg",
+      "r": 0.16883555515049867,
+      "p": 0.006998584219315407,
+      "r_squared": 0.028505444682977076
+    }
+  ],
+  "timestamp": "2025-09-01T18:30:09.177525"
+}

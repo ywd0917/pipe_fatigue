@@ -1,0 +1,31 @@
+2025-12-12 14:31:29,670 - root - INFO - ======================================================================
+2025-12-12 14:31:29,670 - root - INFO - Starting main41_fill_pressure_gaps.py
+2025-12-12 14:31:29,670 - root - INFO - ======================================================================
+2025-12-12 14:31:29,670 - root - INFO - Processing areas: ['0461', '0470', '0480', '0490']
+2025-12-12 14:31:29,670 - root - INFO - 
+Processing area: 0461
+2025-12-12 14:31:29,670 - root - INFO - --------------------------------------------------
+2025-12-12 14:31:29,671 - root - WARNING - No pressure data file found for area 0461
+2025-12-12 14:31:29,671 - root - WARNING - Skipping 0461: Failed to load data
+2025-12-12 14:31:29,671 - root - INFO - 
+Processing area: 0470
+2025-12-12 14:31:29,671 - root - INFO - --------------------------------------------------
+2025-12-12 14:31:29,671 - root - WARNING - No pressure data file found for area 0470
+2025-12-12 14:31:29,671 - root - WARNING - Skipping 0470: Failed to load data
+2025-12-12 14:31:29,671 - root - INFO - 
+Processing area: 0480
+2025-12-12 14:31:29,671 - root - INFO - --------------------------------------------------
+2025-12-12 14:31:29,671 - root - WARNING - No pressure data file found for area 0480
+2025-12-12 14:31:29,671 - root - WARNING - Skipping 0480: Failed to load data
+2025-12-12 14:31:29,671 - root - INFO - 
+Processing area: 0490
+2025-12-12 14:31:29,671 - root - INFO - --------------------------------------------------
+2025-12-12 14:31:29,671 - root - WARNING - No pressure data file found for area 0490
+2025-12-12 14:31:29,671 - root - WARNING - Skipping 0490: Failed to load data
+2025-12-12 14:31:29,672 - root - INFO - Report saved: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/gap_filling_report.md
+2025-12-12 14:31:29,672 - root - INFO - 
+======================================================================
+2025-12-12 14:31:29,672 - root - INFO - Processing completed
+2025-12-12 14:31:29,672 - root - INFO - Report: /Users/jhpark/development/eroumtech/fatigue/fatigue-qgis/results/main41_gap_filling/gap_filling_report.md
+2025-12-12 14:31:29,672 - root - INFO - ======================================================================
+2025-12-12 14:31:29,672 - __main__ - INFO - main took 0.00 seconds

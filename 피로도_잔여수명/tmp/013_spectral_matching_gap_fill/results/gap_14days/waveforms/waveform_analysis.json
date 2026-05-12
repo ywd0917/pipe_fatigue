@@ -1,0 +1,45 @@
+{
+  "gap_days": 14,
+  "correlation_analysis": {
+    "true": {
+      "pearson_r": 0.0075258312662625036,
+      "p_value": 0.28529011177783,
+      "coherent_pct": 30.239595218016767
+    },
+    "pred": {
+      "pearson_r": -0.018309552114435915,
+      "p_value": 0.009329027904225505,
+      "coherent_pct": 50.190981695520605
+    }
+  },
+  "peak_analysis": {
+    "true": {
+      "original": 4816,
+      "low": 14,
+      "high": 4816,
+      "combined": 4816
+    },
+    "pred": {
+      "original": 6604,
+      "low": 2,
+      "high": 6604,
+      "combined": 6604
+    },
+    "ratio_pred_over_true": {
+      "original": 1.3712624584717608,
+      "combined": 1.3712624584717608
+    }
+  },
+  "direction_analysis": {
+    "true": {
+      "same_direction_pct": 30.0,
+      "opposite_direction_pct": 70.0,
+      "cancellation_ratio": 0.0
+    },
+    "pred": {
+      "same_direction_pct": 50.16369047619048,
+      "opposite_direction_pct": 49.83630952380952,
+      "cancellation_ratio": 0.0
+    }
+  }
+}

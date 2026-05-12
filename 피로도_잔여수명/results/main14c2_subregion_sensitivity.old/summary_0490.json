@@ -1,0 +1,63 @@
+{
+  "region": "0490",
+  "optimal_distances": {
+    "STD_DIP": {
+      "distance": 10,
+      "correlation": -0.15151958469687749,
+      "p_value": 0.02427496373264139,
+      "r_squared": 0.02295818454671423,
+      "strategy": "max"
+    },
+    "K_age": {
+      "distance": 100,
+      "correlation": -0.12246338606615866,
+      "p_value": 0.06610029581373347,
+      "r_squared": 0.014997280926789022,
+      "strategy": "max"
+    },
+    "K_traffic": {
+      "distance": 10,
+      "correlation": -0.15130771547450234,
+      "p_value": 0.024476735089089898,
+      "r_squared": 0.022894024762112955,
+      "strategy": "avg"
+    },
+    "hoop_stress": {
+      "distance": 20,
+      "correlation": 0.06354932168849048,
+      "p_value": 0.34159427219914007,
+      "r_squared": 0.0040385162870672465,
+      "strategy": "avg"
+    },
+    "K_stress": {
+      "distance": 10,
+      "correlation": -0.13701298111986332,
+      "p_value": 0.04186091386170771,
+      "r_squared": 0.018772556995352022,
+      "strategy": "max"
+    },
+    "K_total": {
+      "distance": 50,
+      "correlation": 0.20121613050399678,
+      "p_value": 0.002371168166032303,
+      "r_squared": 0.04048793117500146,
+      "strategy": "avg"
+    },
+    "D_final": {
+      "distance": 30,
+      "correlation": 0.18082136235372898,
+      "p_value": 0.006415109952843791,
+      "r_squared": 0.03269636508345856,
+      "strategy": "avg"
+    },
+    "K_repair": {
+      "distance": 30,
+      "correlation": 0.31460841401356804,
+      "p_value": 1.389574510287519e-06,
+      "r_squared": 0.09897845416813264,
+      "strategy": "avg"
+    }
+  },
+  "avg_matching_rate": 99.56,
+  "num_distances_tested": 5
+}

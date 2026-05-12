@@ -1,0 +1,6 @@
+distance,execution_time,total_clusters,matched_clusters,matching_rate,avg_pipes_per_cluster
+10,16.239545,0,778,95.6,0
+20,15.881241,0,809,99.4,0
+30,16.274294,0,812,99.8,0
+50,17.985012,0,814,100.0,0
+100,23.544093,0,814,100.0,0

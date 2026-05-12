@@ -1,0 +1,83 @@
+{
+  "region": "0480",
+  "distance": 20,
+  "execution_time": 5.371675252914429,
+  "matching_stats": {
+    "total_clusters": 146,
+    "matched_clusters": 146,
+    "matching_rate": 100.0,
+    "avg_pipes_per_cluster": 10.91095890410959,
+    "total_repairs": 280
+  },
+  "correlations": {
+    "STD_DIP": -0.09125317339533903,
+    "K_age": 0.10154149524249831,
+    "K_traffic": -0.15339615512001595,
+    "hoop_stress": -0.1024480141994406,
+    "K_stress": -0.10363678358651299,
+    "K_repair": 0.43213757197273517,
+    "K_total": 0.4379952072704275,
+    "D_final": 0.4379952072704274
+  },
+  "p_values": {
+    "STD_DIP": 0.27333006183318836,
+    "K_age": 0.22263958725372557,
+    "K_traffic": 0.0645275990221258,
+    "hoop_stress": 0.218515843397006,
+    "K_stress": 0.21319084644191455,
+    "K_repair": 5.136557917280345e-08,
+    "K_total": 3.2255760531953794e-08,
+    "D_final": 3.2255760531953794e-08
+  },
+  "r_squared": {
+    "STD_DIP": 0.008327141654719811,
+    "K_age": 0.010310675256082306,
+    "K_traffic": 0.023530380405603995,
+    "hoop_stress": 0.010495595613408784,
+    "K_stress": 0.010740582912157728,
+    "K_repair": 0.18674288111049087,
+    "K_total": 0.19183980159186476,
+    "D_final": 0.19183980159186467
+  },
+  "strategies": {
+    "STD_DIP": "nearest",
+    "K_age": "nearest",
+    "K_traffic": "avg",
+    "hoop_stress": "nearest",
+    "K_stress": "nearest",
+    "K_repair": "avg",
+    "K_total": "nearest",
+    "D_final": "nearest"
+  },
+  "significant_factors": [
+    {
+      "factor": "K_traffic",
+      "strategy": "avg",
+      "r": -0.15339615512001595,
+      "p": 0.0645275990221258,
+      "r_squared": 0.023530380405603995
+    },
+    {
+      "factor": "K_repair",
+      "strategy": "avg",
+      "r": 0.43213757197273517,
+      "p": 5.136557917280345e-08,
+      "r_squared": 0.18674288111049087
+    },
+    {
+      "factor": "K_total",
+      "strategy": "nearest",
+      "r": 0.4379952072704275,
+      "p": 3.2255760531953794e-08,
+      "r_squared": 0.19183980159186476
+    },
+    {
+      "factor": "D_final",
+      "strategy": "nearest",
+      "r": 0.4379952072704274,
+      "p": 3.2255760531953794e-08,
+      "r_squared": 0.19183980159186467
+    }
+  ],
+  "timestamp": "2025-09-04T22:24:12.041820"
+}

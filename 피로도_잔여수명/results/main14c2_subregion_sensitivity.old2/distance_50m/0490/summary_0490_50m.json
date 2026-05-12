@@ -1,0 +1,76 @@
+{
+  "region": "0490",
+  "distance": 50,
+  "execution_time": 8.205809116363525,
+  "matching_stats": {
+    "total_clusters": 254,
+    "matched_clusters": 254,
+    "matching_rate": 100.0,
+    "avg_pipes_per_cluster": 44.43700787401575,
+    "total_repairs": 510
+  },
+  "correlations": {
+    "STD_DIP": -0.06359278303566689,
+    "K_age": 0.03692405862329986,
+    "K_traffic": -0.1786536946811221,
+    "hoop_stress": -0.046248057356415545,
+    "K_stress": -0.054172561238315736,
+    "K_total": 0.11025175656127251,
+    "D_final": 0.0909234401462595,
+    "K_repair": 0.22670179489781048
+  },
+  "p_values": {
+    "STD_DIP": 0.3127227612902713,
+    "K_age": 0.5580301852743996,
+    "K_traffic": 0.004286887888088138,
+    "hoop_stress": 0.4630523880920218,
+    "K_stress": 0.38993152501574363,
+    "K_total": 0.07946353006717335,
+    "D_final": 0.14847804710338777,
+    "K_repair": 0.0002697387972071206
+  },
+  "r_squared": {
+    "STD_DIP": 0.004044042054221402,
+    "K_age": 0.0013633861052168848,
+    "K_traffic": 0.0319171426232156,
+    "hoop_stress": 0.002138882809242302,
+    "K_stress": 0.0029346663911190684,
+    "K_total": 0.012155449824846095,
+    "D_final": 0.008267071968030433,
+    "K_repair": 0.051393703809888926
+  },
+  "strategies": {
+    "STD_DIP": "avg",
+    "K_age": "max",
+    "K_traffic": "avg",
+    "hoop_stress": "nearest",
+    "K_stress": "avg",
+    "K_total": "avg",
+    "D_final": "nearest",
+    "K_repair": "avg"
+  },
+  "significant_factors": [
+    {
+      "factor": "K_traffic",
+      "strategy": "avg",
+      "r": -0.1786536946811221,
+      "p": 0.004286887888088138,
+      "r_squared": 0.0319171426232156
+    },
+    {
+      "factor": "K_total",
+      "strategy": "avg",
+      "r": 0.11025175656127251,
+      "p": 0.07946353006717335,
+      "r_squared": 0.012155449824846095
+    },
+    {
+      "factor": "K_repair",
+      "strategy": "avg",
+      "r": 0.22670179489781048,
+      "p": 0.0002697387972071206,
+      "r_squared": 0.051393703809888926
+    }
+  ],
+  "timestamp": "2025-09-01T18:29:46.033298"
+}

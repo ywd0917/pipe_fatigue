@@ -1,0 +1,5112 @@
+{
+  "서울시종로구세종대로209": {
+    "status": "success",
+    "latitude": 37.5749078897065,
+    "longitude": 126.975207341063,
+    "cached_at": 1754284898.431421,
+    "original_address": "서울시 종로구 세종대로 209"
+  },
+  "서울시강남구테헤란로152": {
+    "status": "success",
+    "latitude": 37.5000242405515,
+    "longitude": 127.036508620542,
+    "cached_at": 1754284898.588065,
+    "original_address": "서울시 강남구 테헤란로 152"
+  },
+  "서울시서초구강남대로465": {
+    "status": "success",
+    "latitude": 37.5037560541254,
+    "longitude": 127.024109539913,
+    "cached_at": 1754284898.7455292,
+    "original_address": "서울시 서초구 강남대로 465"
+  },
+  "달서구본리동66-6": {
+    "status": "success",
+    "latitude": 35.8430765048034,
+    "longitude": 128.538880123724,
+    "cached_at": 1754284898.891079,
+    "original_address": "달서구 본리동 66-6"
+  },
+  "달성군하빈면하산리590": {
+    "status": "success",
+    "latitude": 35.8852568383914,
+    "longitude": 128.405509829829,
+    "cached_at": 1754284899.040542,
+    "original_address": "달성군 하빈면 하산리 590"
+  },
+  "달성군화원읍성산리493-6": {
+    "status": "success",
+    "latitude": 35.8017860657593,
+    "longitude": 128.491485446357,
+    "cached_at": 1754284899.200257,
+    "original_address": "달성군 화원읍 성산리 493-6"
+  },
+  "중구동인동1가250-125": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284899.349317,
+    "original_address": "중구 동인동1가 250-125"
+  },
+  "북구읍내동1236-4폐전(06.04.06)": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284899.507015,
+    "original_address": "북구 읍내동 1236-4 폐전(06.04.06)"
+  },
+  "수성구범어동63-26": {
+    "status": "success",
+    "latitude": 35.8578669908699,
+    "longitude": 128.643005064091,
+    "cached_at": 1754284899.672608,
+    "original_address": "수성구 범어동 63-26"
+  },
+  "북구산격동1427-12층": {
+    "status": "success",
+    "latitude": 35.8936610685778,
+    "longitude": 128.603424346021,
+    "cached_at": 1754284899.831372,
+    "original_address": "북구 산격동 1427-1 2층"
+  },
+  "수성구중동393-7아름다운헤어": {
+    "status": "success",
+    "latitude": 35.8389159861991,
+    "longitude": 128.610879415747,
+    "cached_at": 1754284899.988704,
+    "original_address": "수성구 중동 393-7 아름다운헤어"
+  },
+  "수성구성동333": {
+    "status": "success",
+    "latitude": 35.8493984243648,
+    "longitude": 128.720318434389,
+    "cached_at": 1754284900.148624,
+    "original_address": "수성구 성동 333"
+  },
+  "북구침산동1443": {
+    "status": "success",
+    "latitude": 35.8926615989448,
+    "longitude": 128.580417634467,
+    "cached_at": 1754284900.31719,
+    "original_address": "북구 침산동 1443"
+  },
+  "달서구이곡동1000-111": {
+    "status": "success",
+    "latitude": 35.8497885122056,
+    "longitude": 128.511370956591,
+    "cached_at": 1754284900.491284,
+    "original_address": "달서구 이곡동 1000-111"
+  },
+  "달서구용산동573-5(고지서전달:정대감능이백숙)": {
+    "status": "success",
+    "latitude": 35.8602526338064,
+    "longitude": 128.52153701439,
+    "cached_at": 1754284900.656024,
+    "original_address": "달서구 용산동 573-5 (고지서전달:정대감능이백숙)"
+  },
+  "북구노원동3가763-4": {
+    "status": "success",
+    "latitude": 35.8892921444031,
+    "longitude": 128.566421908961,
+    "cached_at": 1754284900.821976,
+    "original_address": "북구 노원동3가 763-4"
+  },
+  "동구지저동465-148": {
+    "status": "success",
+    "latitude": 35.8980828477039,
+    "longitude": 128.642570488639,
+    "cached_at": 1754284900.98437,
+    "original_address": "동구 지저동 465-148"
+  },
+  "동구방촌동1101-1": {
+    "status": "success",
+    "latitude": 35.8790441240248,
+    "longitude": 128.669320035643,
+    "cached_at": 1754284901.1348531,
+    "original_address": "동구 방촌동 1101-1"
+  },
+  "달성군하빈면묘리91": {
+    "status": "success",
+    "latitude": 35.9062579587012,
+    "longitude": 128.436171936992,
+    "cached_at": 1754284901.290188,
+    "original_address": "달성군 하빈면 묘리 91"
+  },
+  "달서구송현동798-30": {
+    "status": "success",
+    "latitude": 35.8271505617936,
+    "longitude": 128.549371647559,
+    "cached_at": 1754284901.457696,
+    "original_address": "달서구 송현동 798-30"
+  },
+  "달서구이곡동1000-125": {
+    "status": "success",
+    "latitude": 35.8506253062293,
+    "longitude": 128.51252538425,
+    "cached_at": 1754284901.617054,
+    "original_address": "달서구 이곡동 1000-125"
+  },
+  "달서구감삼동50-5": {
+    "status": "success",
+    "latitude": 35.8543600915793,
+    "longitude": 128.543791597889,
+    "cached_at": 1754284901.7712178,
+    "original_address": "달서구 감삼동 50-5"
+  },
+  "달서구장동141": {
+    "status": "success",
+    "latitude": 35.8382897570608,
+    "longitude": 128.517089861571,
+    "cached_at": 1754284901.937597,
+    "original_address": "달서구 장동 141"
+  },
+  "달서구죽전동218-17": {
+    "status": "success",
+    "latitude": 35.8537657694221,
+    "longitude": 128.537869858581,
+    "cached_at": 1754284902.0934331,
+    "original_address": "달서구 죽전동 218-17"
+  },
+  "달성군다사읍이천리403": {
+    "status": "success",
+    "latitude": 35.8895270114706,
+    "longitude": 128.46498382429,
+    "cached_at": 1754284902.241319,
+    "original_address": "달성군 다사읍 이천리 403"
+  },
+  "달성군하빈면하산리703-2": {
+    "status": "success",
+    "latitude": 35.8853309202534,
+    "longitude": 128.412927753769,
+    "cached_at": 1754284902.407433,
+    "original_address": "달성군 하빈면 하산리 703-2"
+  },
+  "달성군하빈면현내리943-6": {
+    "status": "success",
+    "latitude": 35.8987208908372,
+    "longitude": 128.445749569322,
+    "cached_at": 1754284902.5608478,
+    "original_address": "달성군 하빈면 현내리 943-6"
+  },
+  "수성구만촌동429-9": {
+    "status": "success",
+    "latitude": 35.8708209081498,
+    "longitude": 128.641767463987,
+    "cached_at": 1754284902.714113,
+    "original_address": "수성구 만촌동 429-9"
+  },
+  "달성군가창면대일리472-1": {
+    "status": "success",
+    "latitude": 35.7697179308812,
+    "longitude": 128.643108192464,
+    "cached_at": 1754284902.905814,
+    "original_address": "달성군 가창면 대일리 472-1"
+  },
+  "수성구범어동214-6메이퀸피부": {
+    "status": "success",
+    "latitude": 35.8578209066874,
+    "longitude": 128.6388915113,
+    "cached_at": 1754284903.067347,
+    "original_address": "수성구 범어동 214-6 메이퀸피부"
+  },
+  "북구침산동1061-11": {
+    "status": "success",
+    "latitude": 35.8980125943775,
+    "longitude": 128.581306052133,
+    "cached_at": 1754284903.225896,
+    "original_address": "북구 침산동 1061-11"
+  },
+  "서구이현동50-1": {
+    "status": "success",
+    "latitude": 35.8773576332373,
+    "longitude": 128.547068926886,
+    "cached_at": 1754284903.378011,
+    "original_address": "서구 이현동 50-1"
+  },
+  "달성군가창면우록리155-1": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284903.527717,
+    "original_address": "달성군 가창면 우록리 155-1"
+  },
+  "달서구상인동1591": {
+    "status": "success",
+    "latitude": 35.8076442927791,
+    "longitude": 128.553024679598,
+    "cached_at": 1754284903.6953542,
+    "original_address": "달서구 상인동 1591"
+  },
+  "달서구월성동1800": {
+    "status": "success",
+    "latitude": 35.8339935021729,
+    "longitude": 128.522033818711,
+    "cached_at": 1754284903.8458822,
+    "original_address": "달서구 월성동 1800"
+  },
+  "달성군가창면삼산리865": {
+    "status": "success",
+    "latitude": 35.7350148447515,
+    "longitude": 128.66028157427,
+    "cached_at": 1754284903.995125,
+    "original_address": "달성군 가창면 삼산리 865"
+  },
+  "수성구범어동173-1": {
+    "status": "success",
+    "latitude": 35.862193307474,
+    "longitude": 128.627333497027,
+    "cached_at": 1754284904.156201,
+    "original_address": "수성구 범어동 173-1"
+  },
+  "달서구두류동476-10": {
+    "status": "success",
+    "latitude": 35.8548029461763,
+    "longitude": 128.558250840538,
+    "cached_at": 1754284904.316293,
+    "original_address": "달서구 두류동 476-10"
+  },
+  "달성군하빈면현내리107": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284904.478815,
+    "original_address": "달성군 하빈면 현내리 107"
+  },
+  "달성군다사읍세천리892": {
+    "status": "success",
+    "latitude": 35.8764273883149,
+    "longitude": 128.474749470115,
+    "cached_at": 1754284904.635073,
+    "original_address": "달성군 다사읍 세천리 892"
+  },
+  "달성군다사읍세천리1087": {
+    "status": "success",
+    "latitude": 35.8751010340055,
+    "longitude": 128.473305407967,
+    "cached_at": 1754284904.7867992,
+    "original_address": "달성군 다사읍 세천리 1087"
+  },
+  "달서구상인동253-6": {
+    "status": "success",
+    "latitude": 35.8173692329075,
+    "longitude": 128.534933266436,
+    "cached_at": 1754284904.965845,
+    "original_address": "달서구 상인동 253-6"
+  },
+  "달서구감삼동206-17": {
+    "status": "success",
+    "latitude": 35.846812277894,
+    "longitude": 128.54409541624,
+    "cached_at": 1754284905.1265652,
+    "original_address": "달서구 감삼동 206-17"
+  },
+  "달성군하빈면봉촌리95": {
+    "status": "success",
+    "latitude": 35.8637120546433,
+    "longitude": 128.409267004655,
+    "cached_at": 1754284905.284788,
+    "original_address": "달성군 하빈면 봉촌리 95"
+  },
+  "달서구송현동1916-11": {
+    "status": "success",
+    "latitude": 35.8256045856883,
+    "longitude": 128.545736393565,
+    "cached_at": 1754284905.447396,
+    "original_address": "달서구 송현동 1916-11"
+  },
+  "달서구신당동1695-10": {
+    "status": "success",
+    "latitude": 35.8595126151284,
+    "longitude": 128.500120455959,
+    "cached_at": 1754284905.709868,
+    "original_address": "달서구 신당동 1695-10"
+  },
+  "북구관음동467": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284905.860542,
+    "original_address": "북구 관음동 467"
+  },
+  "중구달성동12-11": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284906.0040278,
+    "original_address": "중구 달성동 12-11"
+  },
+  "달서구두류동1241-32": {
+    "status": "success",
+    "latitude": 35.857605550968,
+    "longitude": 128.568019972754,
+    "cached_at": 1754284906.1553311,
+    "original_address": "달서구 두류동 1241-32"
+  },
+  "북구검단동1067-4": {
+    "status": "success",
+    "latitude": 35.913565543768,
+    "longitude": 128.62677454598,
+    "cached_at": 1754284906.316758,
+    "original_address": "북구 검단동 1067-4"
+  },
+  "달서구송현동498-5": {
+    "status": "success",
+    "latitude": 35.8327397429694,
+    "longitude": 128.54760646076,
+    "cached_at": 1754284906.476544,
+    "original_address": "달서구 송현동 498-5"
+  },
+  "수성구중동145-6": {
+    "status": "success",
+    "latitude": 35.8431975342972,
+    "longitude": 128.614958339986,
+    "cached_at": 1754284906.636085,
+    "original_address": "수성구 중동 145-6"
+  },
+  "달서구송현동2002-27": {
+    "status": "success",
+    "latitude": 35.8307647528462,
+    "longitude": 128.553843551515,
+    "cached_at": 1754284906.800121,
+    "original_address": "달서구 송현동 2002-27"
+  },
+  "달서구이곡동133": {
+    "status": "success",
+    "latitude": 35.8566326255322,
+    "longitude": 128.509169707788,
+    "cached_at": 1754284906.979435,
+    "original_address": "달서구 이곡동 133"
+  },
+  "달서구신당동1757-6": {
+    "status": "success",
+    "latitude": 35.8579036169422,
+    "longitude": 128.498675068012,
+    "cached_at": 1754284907.12881,
+    "original_address": "달서구 신당동 1757-6"
+  },
+  "달서구이곡동1000-268": {
+    "status": "success",
+    "latitude": 35.8508593379041,
+    "longitude": 128.506845830598,
+    "cached_at": 1754284907.284,
+    "original_address": "달서구 이곡동 1000-268"
+  },
+  "달서구진천동436": {
+    "status": "success",
+    "latitude": 35.8085780460532,
+    "longitude": 128.523375121154,
+    "cached_at": 1754284907.442888,
+    "original_address": "달서구 진천동 436"
+  },
+  "달서구호산동707-3": {
+    "status": "success",
+    "latitude": 35.8440274060708,
+    "longitude": 128.487376255939,
+    "cached_at": 1754284907.60254,
+    "original_address": "달서구 호산동 707-3"
+  },
+  "달서구본동1120": {
+    "status": "success",
+    "latitude": 35.832060638922,
+    "longitude": 128.538800030335,
+    "cached_at": 1754284907.758153,
+    "original_address": "달서구 본동 1120"
+  },
+  "달서구두류동833-7": {
+    "status": "success",
+    "latitude": 35.8577803795712,
+    "longitude": 128.567273770675,
+    "cached_at": 1754284907.933101,
+    "original_address": "달서구 두류동 833-7"
+  },
+  "달서구신당동321-199": {
+    "status": "success",
+    "latitude": 35.8496619671511,
+    "longitude": 128.498532006357,
+    "cached_at": 1754284908.0848289,
+    "original_address": "달서구 신당동 321-199"
+  },
+  "달서구상인동1595-96층건물": {
+    "status": "success",
+    "latitude": 35.8227670628852,
+    "longitude": 128.532654031085,
+    "cached_at": 1754284908.242369,
+    "original_address": "달서구 상인동 1595-9 6층건물"
+  },
+  "달서구두류동804-122": {
+    "status": "success",
+    "latitude": 35.8563520058627,
+    "longitude": 128.571078935365,
+    "cached_at": 1754284908.399638,
+    "original_address": "달서구 두류동 804-122"
+  },
+  "수성구수성동2가258-2비어사케": {
+    "status": "success",
+    "latitude": 35.8548325736995,
+    "longitude": 128.613857156124,
+    "cached_at": 1754284908.568862,
+    "original_address": "수성구 수성동2가 258-2 비어사케"
+  },
+  "달서구송현동1991-17": {
+    "status": "success",
+    "latitude": 35.8283447159955,
+    "longitude": 128.559074375132,
+    "cached_at": 1754284908.734581,
+    "original_address": "달서구 송현동 1991-17"
+  },
+  "달서구감삼동112-6": {
+    "status": "success",
+    "latitude": 35.8521752084256,
+    "longitude": 128.547324866218,
+    "cached_at": 1754284908.894068,
+    "original_address": "달서구 감삼동 112-6"
+  },
+  "달서구월배로250(상인동)/1500번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284909.0441759,
+    "original_address": "달서구 월배로 250 (상인동) / 1500번지"
+  },
+  "달성군하빈면기곡리752": {
+    "status": "success",
+    "latitude": 35.9212183554035,
+    "longitude": 128.435854902699,
+    "cached_at": 1754284909.198604,
+    "original_address": "달성군 하빈면 기곡리 752"
+  },
+  "달서구이곡동1191-2": {
+    "status": "success",
+    "latitude": 35.8567656338778,
+    "longitude": 128.500667454459,
+    "cached_at": 1754284909.3569322,
+    "original_address": "달서구 이곡동 1191-2"
+  },
+  "달서구상인동806-1": {
+    "status": "success",
+    "latitude": 35.8224676433239,
+    "longitude": 128.547054357359,
+    "cached_at": 1754284909.5104482,
+    "original_address": "달서구 상인동 806-1"
+  },
+  "달서구상인동1558": {
+    "status": "success",
+    "latitude": 35.811982340269,
+    "longitude": 128.547689955599,
+    "cached_at": 1754284909.6679628,
+    "original_address": "달서구 상인동 1558"
+  },
+  "달서구두류동477-8": {
+    "status": "success",
+    "latitude": 35.8550229963717,
+    "longitude": 128.557661051943,
+    "cached_at": 1754284909.817566,
+    "original_address": "달서구 두류동 477-8"
+  },
+  "달서구두류동828-39": {
+    "status": "success",
+    "latitude": 35.8549444172952,
+    "longitude": 128.567864392021,
+    "cached_at": 1754284909.9824362,
+    "original_address": "달서구 두류동 828-39"
+  },
+  "달서구송현동1923-5": {
+    "status": "success",
+    "latitude": 35.8281810835431,
+    "longitude": 128.54623342096,
+    "cached_at": 1754284910.138131,
+    "original_address": "달서구 송현동 1923-5"
+  },
+  "달서구송현동1949-9": {
+    "status": "success",
+    "latitude": 35.821718418188,
+    "longitude": 128.549132280911,
+    "cached_at": 1754284910.293916,
+    "original_address": "달서구 송현동 1949-9"
+  },
+  "달서구감삼동110-12": {
+    "status": "success",
+    "latitude": 35.8519510203034,
+    "longitude": 128.547659221091,
+    "cached_at": 1754284910.451029,
+    "original_address": "달서구 감삼동 110-12"
+  },
+  "달서구이곡동139": {
+    "status": "success",
+    "latitude": 35.856901898544,
+    "longitude": 128.508932384765,
+    "cached_at": 1754284910.601542,
+    "original_address": "달서구 이곡동 139"
+  },
+  "남구대명동3007-13": {
+    "status": "success",
+    "latitude": 35.8464195751406,
+    "longitude": 128.577822059755,
+    "cached_at": 1754284910.7574441,
+    "original_address": "남구 대명동 3007-13"
+  },
+  "북구노원동3가1205-194층": {
+    "status": "success",
+    "latitude": 35.8998747831008,
+    "longitude": 128.578869801965,
+    "cached_at": 1754284910.925927,
+    "original_address": "북구 노원동3가 1205-19 4층"
+  },
+  "북구침산동1381-72": {
+    "status": "success",
+    "latitude": 35.8921055737132,
+    "longitude": 128.581363754154,
+    "cached_at": 1754284911.089757,
+    "original_address": "북구 침산동 1381-72"
+  },
+  "수성구황금동690-12": {
+    "status": "success",
+    "latitude": 35.8464837446142,
+    "longitude": 128.624002223274,
+    "cached_at": 1754284911.2450922,
+    "original_address": "수성구 황금동 690-12"
+  },
+  "수성구파동17-9": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284911.3925939,
+    "original_address": "수성구 파동 17-9"
+  },
+  "북구관음동1364-11": {
+    "status": "success",
+    "latitude": 35.9367279366044,
+    "longitude": 128.54606650622,
+    "cached_at": 1754284911.5537438,
+    "original_address": "북구 관음동 1364-11"
+  },
+  "북구침산동1552-8": {
+    "status": "success",
+    "latitude": 35.8904435077385,
+    "longitude": 128.580343864478,
+    "cached_at": 1754284911.717271,
+    "original_address": "북구 침산동 1552-8"
+  },
+  "달서구상인동196-16": {
+    "status": "success",
+    "latitude": 35.8188565477572,
+    "longitude": 128.535070997999,
+    "cached_at": 1754284911.874291,
+    "original_address": "달서구 상인동 196-16"
+  },
+  "달서구성당동645-8": {
+    "status": "success",
+    "latitude": 35.8433812438202,
+    "longitude": 128.554360146179,
+    "cached_at": 1754284912.036206,
+    "original_address": "달서구 성당동 645-8"
+  },
+  "달서구두류동474-7삼보장여관": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284912.18243,
+    "original_address": "달서구 두류동 474-7 삼보장여관"
+  },
+  "달서구용산동946-9": {
+    "status": "success",
+    "latitude": 35.8545981212235,
+    "longitude": 128.525604215205,
+    "cached_at": 1754284912.3388538,
+    "original_address": "달서구 용산동 946-9"
+  },
+  "북구침산동1381-154": {
+    "status": "success",
+    "latitude": 35.8928139684426,
+    "longitude": 128.580678813321,
+    "cached_at": 1754284912.4945679,
+    "original_address": "북구 침산동 1381-154"
+  },
+  "북구침산동1466-1": {
+    "status": "success",
+    "latitude": 35.893013930475,
+    "longitude": 128.579227023576,
+    "cached_at": 1754284912.655863,
+    "original_address": "북구 침산동 1466-1"
+  },
+  "달서구호산동278": {
+    "status": "success",
+    "latitude": 35.8552636876893,
+    "longitude": 128.476353629553,
+    "cached_at": 1754284912.815238,
+    "original_address": "달서구 호산동 278"
+  },
+  "달서구감삼동599-58": {
+    "status": "success",
+    "latitude": 35.8493158978242,
+    "longitude": 128.532494424114,
+    "cached_at": 1754284912.971424,
+    "original_address": "달서구 감삼동 599-58"
+  },
+  "달서구장기동104-41층": {
+    "status": "success",
+    "latitude": 35.8499638889342,
+    "longitude": 128.520354498457,
+    "cached_at": 1754284913.143323,
+    "original_address": "달서구 장기동 104-4 1층"
+  },
+  "달서구신당동321-35": {
+    "status": "success",
+    "latitude": 35.8474029917919,
+    "longitude": 128.495700468549,
+    "cached_at": 1754284913.300832,
+    "original_address": "달서구 신당동 321-35"
+  },
+  "북구칠성동2가378-4": {
+    "status": "success",
+    "latitude": 35.8814556556818,
+    "longitude": 128.594363230718,
+    "cached_at": 1754284913.4632251,
+    "original_address": "북구 칠성동2가 378-4"
+  },
+  "북구매천동399": {
+    "status": "success",
+    "latitude": 35.9085432475972,
+    "longitude": 128.539216474558,
+    "cached_at": 1754284913.633832,
+    "original_address": "북구 매천동 399"
+  },
+  "달성군현풍읍비슬로130길7/원교리94번지": {
+    "status": "success",
+    "latitude": 35.6946987894466,
+    "longitude": 128.439943704295,
+    "cached_at": 1754284913.79328,
+    "original_address": "달성군 현풍읍  비슬로130길 7 / 원교리 94번지"
+  },
+  "달서구두류동833-46": {
+    "status": "success",
+    "latitude": 35.8575698428497,
+    "longitude": 128.56704800911,
+    "cached_at": 1754284914.05733,
+    "original_address": "달서구 두류동 833-46"
+  },
+  "수성구상동617-9101동201호": {
+    "status": "success",
+    "latitude": 35.827612337514,
+    "longitude": 128.609624568725,
+    "cached_at": 1754284914.2150872,
+    "original_address": "수성구 상동 617-9 101동 201호"
+  },
+  "수성구시지동176-1la골프존": {
+    "status": "success",
+    "latitude": 35.8435072503481,
+    "longitude": 128.691126550963,
+    "cached_at": 1754284914.371796,
+    "original_address": "수성구 시지동 176-1 LA골프존"
+  },
+  "수성구범어동428-9리치빌": {
+    "status": "success",
+    "latitude": 35.866251468904,
+    "longitude": 128.63613112392,
+    "cached_at": 1754284914.522603,
+    "original_address": "수성구 범어동 428-9 리치빌"
+  },
+  "북구산격동481-44": {
+    "status": "success",
+    "latitude": 35.901331291979,
+    "longitude": 128.613292095609,
+    "cached_at": 1754284914.683127,
+    "original_address": "북구 산격동 481-44"
+  },
+  "달서구이곡동1356-6": {
+    "status": "success",
+    "latitude": 35.8593257281512,
+    "longitude": 128.513538985895,
+    "cached_at": 1754284914.844327,
+    "original_address": "달서구 이곡동 1356-6"
+  },
+  "달서구진천동92-15": {
+    "status": "success",
+    "latitude": 35.8152036294762,
+    "longitude": 128.527565596041,
+    "cached_at": 1754284915.000788,
+    "original_address": "달서구 진천동 92-15"
+  },
+  "동구방촌동중구역0227": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284915.146303,
+    "original_address": "동구 방촌동 중구역 0227"
+  },
+  "북구산격동1125-1": {
+    "status": "success",
+    "latitude": 35.8945293341982,
+    "longitude": 128.599017125371,
+    "cached_at": 1754284915.305484,
+    "original_address": "북구 산격동 1125-1"
+  },
+  "동구신천동268-4제수변철개입상": {
+    "status": "success",
+    "latitude": 35.8725373483525,
+    "longitude": 128.619068854448,
+    "cached_at": 1754284915.454269,
+    "original_address": "동구 신천동 268-4 제수변 철개입상"
+  },
+  "달서구죽전동371-14": {
+    "status": "success",
+    "latitude": 35.8566325725468,
+    "longitude": 128.536125861325,
+    "cached_at": 1754284915.617572,
+    "original_address": "달서구 죽전동 371-14"
+  },
+  "수성구만촌동972-27": {
+    "status": "success",
+    "latitude": 35.8662876881962,
+    "longitude": 128.645130028579,
+    "cached_at": 1754284915.773238,
+    "original_address": "수성구 만촌동 972-27"
+  },
+  "수성구두산동207-4": {
+    "status": "success",
+    "latitude": 35.8315866338678,
+    "longitude": 128.622751400222,
+    "cached_at": 1754284915.932414,
+    "original_address": "수성구 두산동 207-4"
+  },
+  "북구산격동1139-4": {
+    "status": "success",
+    "latitude": 35.8949028392706,
+    "longitude": 128.598368671789,
+    "cached_at": 1754284916.094521,
+    "original_address": "북구 산격동 1139-4"
+  },
+  "동구신암동166-19sts.d=40mml=40m노후배수관정비공사": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284916.229514,
+    "original_address": "동구 신암동 166-19 STS. D=40mm L=40m 노후 배수관 정비공사"
+  },
+  "달성군다사읍죽곡리603": {
+    "status": "success",
+    "latitude": 35.8446748417588,
+    "longitude": 128.465956061179,
+    "cached_at": 1754284916.39092,
+    "original_address": "달성군 다사읍 죽곡리 603"
+  },
+  "수성구황금동849-1궁중안마": {
+    "status": "success",
+    "latitude": 35.8406638108656,
+    "longitude": 128.622641250967,
+    "cached_at": 1754284916.605563,
+    "original_address": "수성구 황금동 849-1 궁중안마"
+  },
+  "동구동호동354": {
+    "status": "success",
+    "latitude": 35.8653545362137,
+    "longitude": 128.715375998264,
+    "cached_at": 1754284916.758849,
+    "original_address": "동구 동호동 354"
+  },
+  "북구동호동519-1": {
+    "status": "success",
+    "latitude": 35.9565025510865,
+    "longitude": 128.555845981561,
+    "cached_at": 1754284916.9293199,
+    "original_address": "북구 동호동 519-1"
+  },
+  "수성구중동617-2세덴카센타": {
+    "status": "success",
+    "latitude": 35.8408214038221,
+    "longitude": 128.608542784509,
+    "cached_at": 1754284917.096891,
+    "original_address": "수성구 중동 617-2 세덴카센타"
+  },
+  "수성구지산동986-10": {
+    "status": "success",
+    "latitude": 35.8361483864356,
+    "longitude": 128.627310161217,
+    "cached_at": 1754284917.258765,
+    "original_address": "수성구 지산동 986-10"
+  },
+  "수성구매호동1322-7퀸스빌": {
+    "status": "success",
+    "latitude": 35.8444213702518,
+    "longitude": 128.702704956845,
+    "cached_at": 1754284917.438912,
+    "original_address": "수성구 매호동 1322-7 퀸스빌"
+  },
+  "수성구두산동745-13두산아름빌": {
+    "status": "success",
+    "latitude": 35.8239301539864,
+    "longitude": 128.624444900668,
+    "cached_at": 1754284917.6062431,
+    "original_address": "수성구 두산동 745-13 두산아름빌"
+  },
+  "북구산격동1135-28": {
+    "status": "success",
+    "latitude": 35.8945264578067,
+    "longitude": 128.598014793564,
+    "cached_at": 1754284917.765078,
+    "original_address": "북구 산격동 1135-28"
+  },
+  "북구침산로167,b54유량계교체(침산동)/341-5번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284917.9103239,
+    "original_address": "북구 침산로 167, B54유량계교체 (침산동) / 341-5번지"
+  },
+  "수성구수성동1가254-26105동202호": {
+    "status": "success",
+    "latitude": 35.8568395554487,
+    "longitude": 128.612766642673,
+    "cached_at": 1754284918.0944781,
+    "original_address": "수성구 수성동1가 254-26 105동 202호"
+  },
+  "북구화담길117(동변동)/73-1번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284918.242528,
+    "original_address": "북구 화담길 117 (동변동) / 73-1번지"
+  },
+  "수성구수성동2가262-2": {
+    "status": "success",
+    "latitude": 35.8542298108026,
+    "longitude": 128.613802653035,
+    "cached_at": 1754284918.401846,
+    "original_address": "수성구 수성동2가 262-2"
+  },
+  "북구산격동1401-11": {
+    "status": "success",
+    "latitude": 35.8908494443297,
+    "longitude": 128.602822231016,
+    "cached_at": 1754284918.565231,
+    "original_address": "북구 산격동 1401-11"
+  },
+  "동구신암동67번지앞노후배수관교체공사": {
+    "status": "success",
+    "latitude": 35.8905332946651,
+    "longitude": 128.634470741404,
+    "cached_at": 1754284918.729153,
+    "original_address": "동구 신암동 67번지 앞 노후배수관 교체공사"
+  },
+  "동구신암동67신암보성2차아파트": {
+    "status": "success",
+    "latitude": 35.8905332946651,
+    "longitude": 128.634470741404,
+    "cached_at": 1754284918.8942862,
+    "original_address": "동구 신암동 67 신암보성2차아파트"
+  },
+  "북구태전동508-3소망세탁": {
+    "status": "success",
+    "latitude": 35.9158498627172,
+    "longitude": 128.546756761438,
+    "cached_at": 1754284919.074244,
+    "original_address": "북구 태전동 508-3 소망세탁"
+  },
+  "달성군가창면단산리720-3": {
+    "status": "success",
+    "latitude": 35.7679051365478,
+    "longitude": 128.659287327594,
+    "cached_at": 1754284919.237632,
+    "original_address": "달성군 가창면 단산리 720-3"
+  },
+  "서구평리동678-4": {
+    "status": "success",
+    "latitude": 35.8775440170999,
+    "longitude": 128.558518035861,
+    "cached_at": 1754284919.3963578,
+    "original_address": "서구 평리동 678-4"
+  },
+  "불로동1146-1번지선노후배수관교체공사": {
+    "status": "success",
+    "latitude": 35.9139584024258,
+    "longitude": 128.64208571303,
+    "cached_at": 1754284919.5635772,
+    "original_address": "불로동 1146-1번지선 노후배수관 교체공사"
+  },
+  "중구동인동3가14": {
+    "status": "success",
+    "latitude": 35.8711649138809,
+    "longitude": 128.606513111651,
+    "cached_at": 1754284919.726332,
+    "original_address": "중구 동인동3가 14"
+  },
+  "수성구만촌동442-19": {
+    "status": "success",
+    "latitude": 35.8717104742066,
+    "longitude": 128.642231451782,
+    "cached_at": 1754284919.8967419,
+    "original_address": "수성구 만촌동 442-19"
+  },
+  "수성구두산동77-13": {
+    "status": "success",
+    "latitude": 35.8357282531253,
+    "longitude": 128.620671235038,
+    "cached_at": 1754284920.07267,
+    "original_address": "수성구 두산동 77-13"
+  },
+  "남구봉덕동666-18탑부동산": {
+    "status": "success",
+    "latitude": 35.8402693530581,
+    "longitude": 128.595533989859,
+    "cached_at": 1754284920.224843,
+    "original_address": "남구 봉덕동 666-18 탑부동산"
+  },
+  "서구상리동284": {
+    "status": "success",
+    "latitude": 35.8773079041909,
+    "longitude": 128.52880666435,
+    "cached_at": 1754284920.3851619,
+    "original_address": "서구 상리동 284"
+  },
+  "서구평리동612-3": {
+    "status": "success",
+    "latitude": 35.8776519502741,
+    "longitude": 128.551909050378,
+    "cached_at": 1754284920.553613,
+    "original_address": "서구 평리동 612-3"
+  },
+  "수성구만촌동615-5": {
+    "status": "success",
+    "latitude": 35.8755080707849,
+    "longitude": 128.644731539544,
+    "cached_at": 1754284920.7175941,
+    "original_address": "수성구 만촌동 615-5"
+  },
+  "북구동북로36길14-1(산격동)/1264-26번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284920.8668349,
+    "original_address": "북구 동북로36길 14-1 (산격동) / 1264-26번지"
+  },
+  "서구평리동1037-3": {
+    "status": "success",
+    "latitude": 35.8755490750042,
+    "longitude": 128.560321156615,
+    "cached_at": 1754284921.039103,
+    "original_address": "서구 평리동 1037-3"
+  },
+  "동구신암동806-3": {
+    "status": "success",
+    "latitude": 35.8811781477029,
+    "longitude": 128.613501190345,
+    "cached_at": 1754284921.201917,
+    "original_address": "동구 신암동 806-3"
+  },
+  "서구비산동1287-10": {
+    "status": "success",
+    "latitude": 35.8873861232176,
+    "longitude": 128.560477314284,
+    "cached_at": 1754284921.367785,
+    "original_address": "서구 비산동 1287-10"
+  },
+  "달서구성서로71길66(이곡동)/1000-2번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284921.5201,
+    "original_address": "달서구 성서로71길 66 (이곡동) / 1000-2번지"
+  },
+  "달성군가창면대일리431-1": {
+    "status": "success",
+    "latitude": 35.7695855635719,
+    "longitude": 128.645473080629,
+    "cached_at": 1754284921.688999,
+    "original_address": "달성군 가창면 대일리 431-1"
+  },
+  "수성구만촌동448-5c동302": {
+    "status": "success",
+    "latitude": 35.8722382311055,
+    "longitude": 128.642385834132,
+    "cached_at": 1754284921.8503098,
+    "original_address": "수성구 만촌동 448-5 C동302"
+  },
+  "달성군화원읍구라리1017": {
+    "status": "success",
+    "latitude": 35.815084726167,
+    "longitude": 128.492445144217,
+    "cached_at": 1754284922.0079732,
+    "original_address": "달성군 화원읍 구라리 1017"
+  },
+  "달서구감삼동452-1": {
+    "status": "success",
+    "latitude": 35.8495230397015,
+    "longitude": 128.535743197228,
+    "cached_at": 1754284922.163979,
+    "original_address": "달서구 감삼동 452-1"
+  },
+  "북구산격동1401-65": {
+    "status": "success",
+    "latitude": 35.890572835992,
+    "longitude": 128.603291631118,
+    "cached_at": 1754284922.316022,
+    "original_address": "북구 산격동 1401-65"
+  },
+  "수성구범어동899-3": {
+    "status": "success",
+    "latitude": 35.8538304867124,
+    "longitude": 128.626845633731,
+    "cached_at": 1754284922.478414,
+    "original_address": "수성구 범어동 899-3"
+  },
+  "수성구신매동568-5": {
+    "status": "success",
+    "latitude": 35.8390036716797,
+    "longitude": 128.706490789653,
+    "cached_at": 1754284922.638792,
+    "original_address": "수성구 신매동 568-5"
+  },
+  "달서구송현동299-1": {
+    "status": "success",
+    "latitude": 35.8305157990363,
+    "longitude": 128.559371149022,
+    "cached_at": 1754284922.818615,
+    "original_address": "달서구 송현동 299-1"
+  },
+  "달성군하빈면대평리12": {
+    "status": "success",
+    "latitude": 35.9366778651432,
+    "longitude": 128.468895937433,
+    "cached_at": 1754284922.981649,
+    "original_address": "달성군 하빈면 대평리 12"
+  },
+  "수성구두산동105트럼프월드수성": {
+    "status": "success",
+    "latitude": 35.8364930921015,
+    "longitude": 128.622878228302,
+    "cached_at": 1754284923.143944,
+    "original_address": "수성구 두산동 105 트럼프월드 수성"
+  },
+  "달성군논공읍남리224-113개미이용소": {
+    "status": "success",
+    "latitude": 35.7277866337444,
+    "longitude": 128.439454230053,
+    "cached_at": 1754284923.31219,
+    "original_address": "달성군 논공읍 남리 224-113 개미이용소"
+  },
+  "수성구만촌동960-1다원빌": {
+    "status": "success",
+    "latitude": 35.8632352931821,
+    "longitude": 128.639717705872,
+    "cached_at": 1754284923.484173,
+    "original_address": "수성구 만촌동 960-1 다원빌"
+  },
+  "수성구만촌동671-14현대카클리닉": {
+    "status": "success",
+    "latitude": 35.8677386294693,
+    "longitude": 128.645194234788,
+    "cached_at": 1754284923.649976,
+    "original_address": "수성구 만촌동 671-14 현대카클리닉"
+  },
+  "수성구만촌동671-10": {
+    "status": "success",
+    "latitude": 35.8677066924668,
+    "longitude": 128.64494691187,
+    "cached_at": 1754284923.8014631,
+    "original_address": "수성구 만촌동 671-10"
+  },
+  "수성구두산동108-2": {
+    "status": "success",
+    "latitude": 35.8378361367075,
+    "longitude": 128.622466010537,
+    "cached_at": 1754284923.951676,
+    "original_address": "수성구 두산동 108-2"
+  },
+  "서구내당동923-58": {
+    "status": "success",
+    "latitude": 35.8663462923069,
+    "longitude": 128.567628888799,
+    "cached_at": 1754284924.108468,
+    "original_address": "서구 내당동 923-58"
+  },
+  "달성군다사읍매곡리303-4(대명쟉크공업사)": {
+    "status": "success",
+    "latitude": 35.8642308280571,
+    "longitude": 128.463853914284,
+    "cached_at": 1754284924.26689,
+    "original_address": "달성군 다사읍 매곡리 303-4 (대명쟉크공업사)"
+  },
+  "수성구범어동1481시장마차": {
+    "status": "success",
+    "latitude": 35.8656612137316,
+    "longitude": 128.61898773317,
+    "cached_at": 1754284924.423852,
+    "original_address": "수성구 범어동 1481 시장마차"
+  },
+  "수성구파동206-2한국맨션가동계단등": {
+    "status": "success",
+    "latitude": 35.8129384770319,
+    "longitude": 128.617613064598,
+    "cached_at": 1754284924.5963562,
+    "original_address": "수성구 파동 206-2 한국맨션 가동 계단등"
+  },
+  "수성구중동366-21구.중동새마을금고": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284924.752063,
+    "original_address": "수성구 중동 366-21 구.중동새마을금고"
+  },
+  "수성구신매동608-6푸른빌": {
+    "status": "success",
+    "latitude": 35.8305697189785,
+    "longitude": 128.704699856016,
+    "cached_at": 1754284924.9157171,
+    "original_address": "수성구 신매동 608-6 푸른빌"
+  },
+  "동구효목동958-6세진시스템": {
+    "status": "success",
+    "latitude": 35.883896790394,
+    "longitude": 128.635073476623,
+    "cached_at": 1754284925.0780852,
+    "original_address": "동구 효목동 958-6 세진시스템"
+  },
+  "동구신암동220-17대화여관": {
+    "status": "success",
+    "latitude": 35.8824959669461,
+    "longitude": 128.622590626117,
+    "cached_at": 1754284925.24161,
+    "original_address": "동구 신암동 220-17 대화여관"
+  },
+  "수성구신매동607-14호수빌": {
+    "status": "success",
+    "latitude": 35.8311877856082,
+    "longitude": 128.703951638255,
+    "cached_at": 1754284925.403784,
+    "original_address": "수성구 신매동 607-14 호수빌"
+  },
+  "수성구매호동1322-6아림건강원": {
+    "status": "success",
+    "latitude": 35.8443991366424,
+    "longitude": 128.702849468184,
+    "cached_at": 1754284925.5706398,
+    "original_address": "수성구 매호동 1322-6 아림건강원"
+  },
+  "서구비산동585-13": {
+    "status": "success",
+    "latitude": 35.8809102616927,
+    "longitude": 128.571358813931,
+    "cached_at": 1754284925.742442,
+    "original_address": "서구 비산동 585-13"
+  },
+  "달서구본리동1215-11럭키하이츠": {
+    "status": "success",
+    "latitude": 35.8380303805185,
+    "longitude": 128.529672099573,
+    "cached_at": 1754284925.9038012,
+    "original_address": "달서구 본리동 1215-11 럭키하이츠"
+  },
+  "달성군가창면단산리293-4": {
+    "status": "success",
+    "latitude": 35.7654292578783,
+    "longitude": 128.665347758331,
+    "cached_at": 1754284926.057844,
+    "original_address": "달성군 가창면 단산리 293-4"
+  },
+  "서구내당동911-13": {
+    "status": "success",
+    "latitude": 35.8644817691801,
+    "longitude": 128.567998567519,
+    "cached_at": 1754284926.218674,
+    "original_address": "서구 내당동 911-13"
+  },
+  "달서구진천동383-7": {
+    "status": "success",
+    "latitude": 35.8095186709264,
+    "longitude": 128.523304583962,
+    "cached_at": 1754284926.363598,
+    "original_address": "달서구 진천동 383-7"
+  },
+  "북구팔거천동로90(동천동)/873번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284926.5120199,
+    "original_address": "북구 팔거천동로 90 (동천동) / 873번지"
+  },
+  "서구중리동36-2": {
+    "status": "success",
+    "latitude": 35.8684791756544,
+    "longitude": 128.549632567302,
+    "cached_at": 1754284926.6753302,
+    "original_address": "서구 중리동 36-2"
+  },
+  "서구평리동1050-25(대흥)": {
+    "status": "success",
+    "latitude": 35.8728109958485,
+    "longitude": 128.564659894795,
+    "cached_at": 1754284926.8424802,
+    "original_address": "서구 평리동 1050-25 (대흥)"
+  },
+  "서구원대동3가1237": {
+    "status": "success",
+    "latitude": 35.8843468907759,
+    "longitude": 128.576794913008,
+    "cached_at": 1754284927.005772,
+    "original_address": "서구 원대동3가 1237"
+  },
+  "수성구만촌동990-56": {
+    "status": "success",
+    "latitude": 35.865128354796,
+    "longitude": 128.646578350877,
+    "cached_at": 1754284927.181817,
+    "original_address": "수성구 만촌동 990-56"
+  },
+  "달서구도원동1468": {
+    "status": "success",
+    "latitude": 35.802437659005,
+    "longitude": 128.535983751036,
+    "cached_at": 1754284927.3534348,
+    "original_address": "달서구 도원동 1468"
+  },
+  "달서구감삼동141-5알리앙스": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284927.496193,
+    "original_address": "달서구 감삼동 141-5 알리앙스"
+  },
+  "동구동호동122-7마차이짬뽕": {
+    "status": "success",
+    "latitude": 35.8718989830609,
+    "longitude": 128.714156515781,
+    "cached_at": 1754284927.653585,
+    "original_address": "동구 동호동 122-7 마차이 짬뽕"
+  },
+  "달서구송현동1034-26": {
+    "status": "success",
+    "latitude": 35.8357157782346,
+    "longitude": 128.555104550087,
+    "cached_at": 1754284927.803757,
+    "original_address": "달서구 송현동 1034-26"
+  },
+  "달성군다사읍세천리1586세천유치원": {
+    "status": "success",
+    "latitude": 35.8742012902437,
+    "longitude": 128.481527139282,
+    "cached_at": 1754284927.986442,
+    "original_address": "달성군 다사읍 세천리 1586 세천유치원"
+  },
+  "서구비산동2049-5": {
+    "status": "success",
+    "latitude": 35.8902422481344,
+    "longitude": 128.543174574628,
+    "cached_at": 1754284928.146535,
+    "original_address": "서구 비산동 2049-5"
+  },
+  "서구비산동88-19": {
+    "status": "success",
+    "latitude": 35.8769474798371,
+    "longitude": 128.573244561734,
+    "cached_at": 1754284928.3059552,
+    "original_address": "서구 비산동 88-19"
+  },
+  "달서구신당동321-8": {
+    "status": "success",
+    "latitude": 35.8511927547389,
+    "longitude": 128.495452090876,
+    "cached_at": 1754284928.455719,
+    "original_address": "달서구 신당동 321-8"
+  },
+  "수성구이천동447": {
+    "status": "success",
+    "latitude": 35.8388588574982,
+    "longitude": 128.655298038857,
+    "cached_at": 1754284928.620511,
+    "original_address": "수성구 이천동 447"
+  },
+  "동구신암동612-18": {
+    "status": "success",
+    "latitude": 35.8846401137971,
+    "longitude": 128.622145149157,
+    "cached_at": 1754284928.787967,
+    "original_address": "동구 신암동 612-18"
+  },
+  "서구비산동1228-3": {
+    "status": "success",
+    "latitude": 35.8888045722879,
+    "longitude": 128.565188947062,
+    "cached_at": 1754284928.9624078,
+    "original_address": "서구 비산동 1228-3"
+  },
+  "서구비산동816-33": {
+    "status": "success",
+    "latitude": 35.8816773554596,
+    "longitude": 128.560817858866,
+    "cached_at": 1754284929.1179368,
+    "original_address": "서구 비산동 816-33"
+  },
+  "서구비산동1258-7": {
+    "status": "success",
+    "latitude": 35.8882602612997,
+    "longitude": 128.56224250597,
+    "cached_at": 1754284929.2744582,
+    "original_address": "서구 비산동 1258-7"
+  },
+  "서구평리동1174-82": {
+    "status": "success",
+    "latitude": 35.8691762473205,
+    "longitude": 128.565881666698,
+    "cached_at": 1754284929.430163,
+    "original_address": "서구 평리동 1174-82"
+  },
+  "방촌동871-25번지앞감압변철개주변asp복구공사": {
+    "status": "success",
+    "latitude": 35.8802661244075,
+    "longitude": 128.669042954124,
+    "cached_at": 1754284929.59441,
+    "original_address": "방촌동 871-25번지 앞 감압변 철개 주변 ASP 복구공사"
+  },
+  "서구평리동790-4수영빌라502호": {
+    "status": "success",
+    "latitude": 35.8760540140817,
+    "longitude": 128.566811698023,
+    "cached_at": 1754284929.767467,
+    "original_address": "서구 평리동 790-4 수영빌라 502호"
+  },
+  "중구화전동12-2": {
+    "status": "success",
+    "latitude": 35.8731624408742,
+    "longitude": 128.595510364222,
+    "cached_at": 1754284929.9295151,
+    "original_address": "중구 화전동 12-2"
+  },
+  "남구대명동2277-1공동화장실": {
+    "status": "success",
+    "latitude": 35.8579872530691,
+    "longitude": 128.57685411083,
+    "cached_at": 1754284930.096627,
+    "original_address": "남구 대명동 2277-1 공동화장실"
+  },
+  "수성구시지동503-5상용스튜디오": {
+    "status": "success",
+    "latitude": 35.8397919164447,
+    "longitude": 128.698852490456,
+    "cached_at": 1754284930.26446,
+    "original_address": "수성구 시지동 503-5 상용스튜디오"
+  },
+  "수성구신매동579-1천마공원공원계": {
+    "status": "success",
+    "latitude": 35.8368883063523,
+    "longitude": 128.706322966507,
+    "cached_at": 1754284930.425793,
+    "original_address": "수성구 신매동 579-1 천마공원 공원계"
+  },
+  "수성구신매동571-1": {
+    "status": "success",
+    "latitude": 35.8378427640246,
+    "longitude": 128.710627244647,
+    "cached_at": 1754284930.583041,
+    "original_address": "수성구 신매동 571-1"
+  },
+  "동구율하동45-22번지선노후배수관교체공사": {
+    "status": "success",
+    "latitude": 35.8722109895723,
+    "longitude": 128.695643850566,
+    "cached_at": 1754284930.7415512,
+    "original_address": "동구 율하동 45-22번지 선 노후배수관 교체공사"
+  },
+  "달성군다사읍방천리54환경자원사업소": {
+    "status": "success",
+    "latitude": 35.889098678839,
+    "longitude": 128.510868614644,
+    "cached_at": 1754284930.8967512,
+    "original_address": "달성군 다사읍 방천리 54 환경자원사업소"
+  },
+  "동구방촌동964-31주070-4029-3465": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284931.058818,
+    "original_address": "동구 방촌동 964-31 주070-4029-3465"
+  },
+  "서구비산동541-22b-18호": {
+    "status": "success",
+    "latitude": 35.8787995373271,
+    "longitude": 128.568288952001,
+    "cached_at": 1754284931.227574,
+    "original_address": "서구 비산동 541-22 B-18호"
+  },
+  "서구원대동1가337": {
+    "status": "success",
+    "latitude": 35.8803029006361,
+    "longitude": 128.576809966807,
+    "cached_at": 1754284931.397272,
+    "original_address": "서구 원대동1가 337"
+  },
+  "수성구수성동3가86-2": {
+    "status": "success",
+    "latitude": 35.8527914912726,
+    "longitude": 128.620169723936,
+    "cached_at": 1754284931.5704682,
+    "original_address": "수성구 수성동3가 86-2"
+  },
+  "서구내당동457-9": {
+    "status": "success",
+    "latitude": 35.8556611763903,
+    "longitude": 128.547916094085,
+    "cached_at": 1754284931.738163,
+    "original_address": "서구 내당동 457-9"
+  },
+  "남구대명동7-12우주슈퍼": {
+    "status": "success",
+    "latitude": 35.8497208888665,
+    "longitude": 128.595524006597,
+    "cached_at": 1754284931.9067972,
+    "original_address": "남구 대명동 7-12 우주슈퍼"
+  },
+  "달성군구지면평촌리616": {
+    "status": "success",
+    "latitude": 35.643989352261,
+    "longitude": 128.447327326835,
+    "cached_at": 1754284932.0830688,
+    "original_address": "달성군 구지면 평촌리 616"
+  },
+  "서구평리동1214-26": {
+    "status": "success",
+    "latitude": 35.8699153288032,
+    "longitude": 128.560185762921,
+    "cached_at": 1754284932.239827,
+    "original_address": "서구 평리동 1214-26"
+  },
+  "서구이현동48-7": {
+    "status": "success",
+    "latitude": 35.873725949329,
+    "longitude": 128.546331434389,
+    "cached_at": 1754284932.390483,
+    "original_address": "서구 이현동 48-7"
+  },
+  "서구비산동795-7": {
+    "status": "success",
+    "latitude": 35.8808054639974,
+    "longitude": 128.562774400434,
+    "cached_at": 1754284932.5546591,
+    "original_address": "서구 비산동 795-7"
+  },
+  "서구비산동434-113": {
+    "status": "success",
+    "latitude": 35.8753199539309,
+    "longitude": 128.573668550449,
+    "cached_at": 1754284932.7123132,
+    "original_address": "서구 비산동 434-113"
+  },
+  "달서구두류동622-11": {
+    "status": "success",
+    "latitude": 35.852557538836,
+    "longitude": 128.554154394945,
+    "cached_at": 1754284932.8686779,
+    "original_address": "달서구 두류동 622-11"
+  },
+  "북구침산동157-7": {
+    "status": "success",
+    "latitude": 35.8824329477775,
+    "longitude": 128.597725922541,
+    "cached_at": 1754284933.031651,
+    "original_address": "북구 침산동 157-7"
+  },
+  "서구평리동1499-10": {
+    "status": "success",
+    "latitude": 35.8719046327824,
+    "longitude": 128.551767599658,
+    "cached_at": 1754284933.1923368,
+    "original_address": "서구 평리동 1499-10"
+  },
+  "달서구성당동489": {
+    "status": "success",
+    "latitude": 35.8431174176984,
+    "longitude": 128.5530825363,
+    "cached_at": 1754284933.343848,
+    "original_address": "달서구 성당동 489"
+  },
+  "중구문화동2-14터보사운드": {
+    "status": "success",
+    "latitude": 35.8725649477836,
+    "longitude": 128.597817701257,
+    "cached_at": 1754284933.5162492,
+    "original_address": "중구 문화동 2-14 터보사운드"
+  },
+  "서구내당동1020-32": {
+    "status": "success",
+    "latitude": 35.8682291958568,
+    "longitude": 128.576451889061,
+    "cached_at": 1754284933.6751082,
+    "original_address": "서구 내당동 1020-32"
+  },
+  "남구대명동780-5": {
+    "status": "success",
+    "latitude": 35.8395438533504,
+    "longitude": 128.576548589354,
+    "cached_at": 1754284933.83773,
+    "original_address": "남구 대명동 780-5"
+  },
+  "수성구두산동26-1": {
+    "status": "success",
+    "latitude": 35.8383020423668,
+    "longitude": 128.619165032775,
+    "cached_at": 1754284933.990994,
+    "original_address": "수성구 두산동 26-1"
+  },
+  "달성군가창면상원리267-2": {
+    "status": "success",
+    "latitude": 35.7737188962986,
+    "longitude": 128.657248290456,
+    "cached_at": 1754284934.1513789,
+    "original_address": "달성군 가창면 상원리 267-2"
+  },
+  "서구내당동895-8": {
+    "status": "success",
+    "latitude": 35.8635823495673,
+    "longitude": 128.571266044445,
+    "cached_at": 1754284934.309133,
+    "original_address": "서구 내당동 895-8"
+  },
+  "서구중리동115-6": {
+    "status": "success",
+    "latitude": 35.8630524435493,
+    "longitude": 128.551573844549,
+    "cached_at": 1754284934.473144,
+    "original_address": "서구 중리동 115-6"
+  },
+  "서구평리동433-11": {
+    "status": "success",
+    "latitude": 35.8796068790778,
+    "longitude": 128.550354805005,
+    "cached_at": 1754284934.6358242,
+    "original_address": "서구 평리동 433-11"
+  },
+  "달서구죽전동200-1": {
+    "status": "success",
+    "latitude": 35.8566221572276,
+    "longitude": 128.537763972044,
+    "cached_at": 1754284934.802391,
+    "original_address": "달서구 죽전동 200-1"
+  },
+  "달성군다사읍문산리352cm": {
+    "status": "success",
+    "latitude": 35.8538397285058,
+    "longitude": 128.431184362577,
+    "cached_at": 1754284934.970176,
+    "original_address": "달성군 다사읍 문산리 352 CM"
+  },
+  "수성구황금동708-1우신종합자재": {
+    "status": "success",
+    "latitude": 35.8507517684063,
+    "longitude": 128.617072256458,
+    "cached_at": 1754284935.129332,
+    "original_address": "수성구 황금동 708-1 우신종합자재"
+  },
+  "서구평리동797-22": {
+    "status": "success",
+    "latitude": 35.8750184123453,
+    "longitude": 128.566349189345,
+    "cached_at": 1754284935.294424,
+    "original_address": "서구 평리동 797-22"
+  },
+  "달성군유가읍도의리1091-1": {
+    "status": "success",
+    "latitude": 35.6646408876659,
+    "longitude": 128.450847897214,
+    "cached_at": 1754284935.473061,
+    "original_address": "달성군 유가읍 도의리 1091-1"
+  },
+  "서구내당동923-47": {
+    "status": "success",
+    "latitude": 35.8656558447568,
+    "longitude": 128.567648722063,
+    "cached_at": 1754284935.646833,
+    "original_address": "서구 내당동 923-47"
+  },
+  "달성군가창면주리238": {
+    "status": "success",
+    "latitude": 35.7552856599324,
+    "longitude": 128.643231801336,
+    "cached_at": 1754284935.808817,
+    "original_address": "달성군 가창면 주리 238"
+  },
+  "수성구만촌동445-11": {
+    "status": "success",
+    "latitude": 35.8727797048038,
+    "longitude": 128.643046037669,
+    "cached_at": 1754284935.976757,
+    "original_address": "수성구 만촌동 445-11"
+  },
+  "수성구황금동890-1": {
+    "status": "success",
+    "latitude": 35.840795936439,
+    "longitude": 128.620616961165,
+    "cached_at": 1754284936.140136,
+    "original_address": "수성구 황금동 890-1"
+  },
+  "수성구중동321-1농협중앙회5층경영지원팀": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284936.283923,
+    "original_address": "수성구 중동 321-1 농협중앙회 5층 경영지원팀"
+  },
+  "수성구대흥동504": {
+    "status": "success",
+    "latitude": 35.8277910771265,
+    "longitude": 128.685163996759,
+    "cached_at": 1754284936.4403799,
+    "original_address": "수성구 대흥동 504"
+  },
+  "수성구지산동761-8녹원맨션5동(상가)": {
+    "status": "success",
+    "latitude": 35.8313995225006,
+    "longitude": 128.629073809372,
+    "cached_at": 1754284936.592712,
+    "original_address": "수성구 지산동 761-8 녹원맨션 5동(상가)"
+  },
+  "수성구범어동93-6": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284936.7465112,
+    "original_address": "수성구 범어동 93-6"
+  },
+  "달서구갈산동452-1": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284936.909583,
+    "original_address": "달서구 갈산동 452-1"
+  },
+  "남구대명동642-123": {
+    "status": "success",
+    "latitude": 35.8441902685989,
+    "longitude": 128.57331089778,
+    "cached_at": 1754284937.074177,
+    "original_address": "남구 대명동 642-123"
+  },
+  "달성군구지면창리새담길51-1/창리331-2번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284937.230137,
+    "original_address": "달성군 구지면  창리새담길 51-1 / 창리 331-2번지"
+  },
+  "달서구본리동352-5": {
+    "status": "success",
+    "latitude": 35.8377573206571,
+    "longitude": 128.537580132927,
+    "cached_at": 1754284937.399512,
+    "original_address": "달서구 본리동 352-5"
+  },
+  "수성구황금동798-15": {
+    "status": "success",
+    "latitude": 35.8449472339957,
+    "longitude": 128.620924117942,
+    "cached_at": 1754284937.559948,
+    "original_address": "수성구 황금동 798-15"
+  },
+  "달성군가창면정대리694": {
+    "status": "success",
+    "latitude": 35.7483157065196,
+    "longitude": 128.556007922197,
+    "cached_at": 1754284937.716762,
+    "original_address": "달성군 가창면 정대리 694"
+  },
+  "수성구신매동590-1": {
+    "status": "success",
+    "latitude": 35.8324072275355,
+    "longitude": 128.709652478324,
+    "cached_at": 1754284937.8749928,
+    "original_address": "수성구 신매동 590-1"
+  },
+  "수성구두산동712-2": {
+    "status": "success",
+    "latitude": 35.8263400771329,
+    "longitude": 128.624118906724,
+    "cached_at": 1754284938.0323358,
+    "original_address": "수성구 두산동 712-2"
+  },
+  "동구미대동248-2": {
+    "status": "success",
+    "latitude": 35.9598000011258,
+    "longitude": 128.668706731534,
+    "cached_at": 1754284938.195889,
+    "original_address": "동구 미대동 248-2"
+  },
+  "북구관음동126-1": {
+    "status": "success",
+    "latitude": 35.9466047742871,
+    "longitude": 128.543771645443,
+    "cached_at": 1754284938.36083,
+    "original_address": "북구 관음동 126-1"
+  },
+  "동구효목동453-4번지앞유량계실수선공사": {
+    "status": "success",
+    "latitude": 35.8773724719397,
+    "longitude": 128.638980781101,
+    "cached_at": 1754284938.524226,
+    "original_address": "동구 효목동 453-4번지 앞 유량계실 수선공사"
+  },
+  "수성구두산동103": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284938.6805031,
+    "original_address": "수성구 두산동 103"
+  },
+  "달서구상인동1582-17영천그릇": {
+    "status": "success",
+    "latitude": 35.8087396705474,
+    "longitude": 128.551131891363,
+    "cached_at": 1754284938.84564,
+    "original_address": "달서구 상인동 1582-17 영천그릇"
+  },
+  "달서구성당동701-8": {
+    "status": "success",
+    "latitude": 35.846369481331,
+    "longitude": 128.546335121254,
+    "cached_at": 1754284939.0146701,
+    "original_address": "달서구 성당동 701-8"
+  },
+  "서구비산동2008-158": {
+    "status": "success",
+    "latitude": 35.8864669601493,
+    "longitude": 128.552509508483,
+    "cached_at": 1754284939.177792,
+    "original_address": "서구 비산동 2008-158"
+  },
+  "북구산격동1404-61": {
+    "status": "success",
+    "latitude": 35.8908959129391,
+    "longitude": 128.602628702445,
+    "cached_at": 1754284939.3361511,
+    "original_address": "북구 산격동 1404-61"
+  },
+  "달서구감삼동357": {
+    "status": "success",
+    "latitude": 35.8475229742075,
+    "longitude": 128.537289732615,
+    "cached_at": 1754284939.489795,
+    "original_address": "달서구 감삼동 357"
+  },
+  "서구평리동1448-7": {
+    "status": "success",
+    "latitude": 35.8636620277069,
+    "longitude": 128.554427890396,
+    "cached_at": 1754284939.64668,
+    "original_address": "서구 평리동 1448-7"
+  },
+  "수성구수성동1가557": {
+    "status": "success",
+    "latitude": 35.8505174541041,
+    "longitude": 128.611319414192,
+    "cached_at": 1754284939.812834,
+    "original_address": "수성구 수성동1가 557"
+  },
+  "북구팔달동282장태실길16": {
+    "status": "success",
+    "latitude": 35.8963266974086,
+    "longitude": 128.536119054301,
+    "cached_at": 1754284939.972985,
+    "original_address": "북구 팔달동 282 장태실길16"
+  },
+  "수성구범어동189-41자인암소가든": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284940.127689,
+    "original_address": "수성구 범어동 189-41 자인암소가든"
+  },
+  "소구역(d249)유량계교체공사": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284940.272434,
+    "original_address": "소구역(D249) 유량계 교체 공사"
+  },
+  "신암동341-5번지앞유량계실수선공사": {
+    "status": "success",
+    "latitude": 35.88538951133,
+    "longitude": 128.632610412493,
+    "cached_at": 1754284940.433693,
+    "original_address": "신암동 341-5번지 앞 유량계실 수선공사"
+  },
+  "수성구파동133-11목련모자원": {
+    "status": "success",
+    "latitude": 35.8179231870906,
+    "longitude": 128.61564929929,
+    "cached_at": 1754284940.597569,
+    "original_address": "수성구 파동 133-11 목련모자원"
+  },
+  "수성구범어동418-46그리스빌201": {
+    "status": "success",
+    "latitude": 35.8642762020555,
+    "longitude": 128.637061624751,
+    "cached_at": 1754284940.75419,
+    "original_address": "수성구 범어동 418-46 그리스빌 201"
+  },
+  "동구신암동648-6": {
+    "status": "success",
+    "latitude": 35.8912754887646,
+    "longitude": 128.623902580671,
+    "cached_at": 1754284940.909167,
+    "original_address": "동구 신암동 648-6"
+  },
+  "중구남산동938-8부자식당": {
+    "status": "success",
+    "latitude": 35.8650065393706,
+    "longitude": 128.591694485347,
+    "cached_at": 1754284941.0702348,
+    "original_address": "중구 남산동 938-8 부자식당"
+  },
+  "북구산격동1312-60소피아": {
+    "status": "success",
+    "latitude": 35.8950312737366,
+    "longitude": 128.609080915355,
+    "cached_at": 1754284941.230967,
+    "original_address": "북구 산격동 1312-60 소피아"
+  },
+  "수성구황금동891-2": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284941.38514,
+    "original_address": "수성구 황금동 891-2"
+  },
+  "수성구만촌동859-17": {
+    "status": "success",
+    "latitude": 35.8548702509255,
+    "longitude": 128.652400000931,
+    "cached_at": 1754284941.551605,
+    "original_address": "수성구 만촌동 859-17"
+  },
+  "달성군가창면우록리491": {
+    "status": "success",
+    "latitude": 35.7212401858895,
+    "longitude": 128.641531824922,
+    "cached_at": 1754284941.7096949,
+    "original_address": "달성군 가창면 우록리 491"
+  },
+  "동구효목동212-10": {
+    "status": "success",
+    "latitude": 35.8840787612601,
+    "longitude": 128.644810557852,
+    "cached_at": 1754284941.872898,
+    "original_address": "동구 효목동 212-10"
+  },
+  "동구효목동133-3": {
+    "status": "success",
+    "latitude": 35.8841670377374,
+    "longitude": 128.642976536601,
+    "cached_at": 1754284942.044089,
+    "original_address": "동구 효목동 133-3"
+  },
+  "달서구월성동1394-2": {
+    "status": "success",
+    "latitude": 35.8196595189142,
+    "longitude": 128.523802170968,
+    "cached_at": 1754284942.2069042,
+    "original_address": "달서구 월성동 1394-2"
+  },
+  "서구내당동1028-30서문빌라102호": {
+    "status": "success",
+    "latitude": 35.8693124295851,
+    "longitude": 128.577874985602,
+    "cached_at": 1754284942.372705,
+    "original_address": "서구 내당동 1028-30 서문빌라 102호"
+  },
+  "서구평리동667-37": {
+    "status": "success",
+    "latitude": 35.8780078591835,
+    "longitude": 128.562123065354,
+    "cached_at": 1754284942.5480719,
+    "original_address": "서구 평리동 667-37"
+  },
+  "달성군다사읍죽곡리851-7(24b5l)": {
+    "status": "success",
+    "latitude": 35.8498395740844,
+    "longitude": 128.466164037257,
+    "cached_at": 1754284942.707566,
+    "original_address": "달성군 다사읍 죽곡리 851-7 (24B 5L)"
+  },
+  "달서구송현동2005-5": {
+    "status": "success",
+    "latitude": 35.8305264377327,
+    "longitude": 128.556145393895,
+    "cached_at": 1754284942.860605,
+    "original_address": "달서구 송현동 2005-5"
+  },
+  "서구평리동801-4": {
+    "status": "success",
+    "latitude": 35.8748232629111,
+    "longitude": 128.566332392629,
+    "cached_at": 1754284943.018077,
+    "original_address": "서구 평리동 801-4"
+  },
+  "서구내당동463-63": {
+    "status": "success",
+    "latitude": 35.8555665920397,
+    "longitude": 128.550219369139,
+    "cached_at": 1754284943.1779819,
+    "original_address": "서구 내당동 463-63"
+  },
+  "수성구수성동2가100-7청아스킨케어": {
+    "status": "success",
+    "latitude": 35.8522803328501,
+    "longitude": 128.615635560063,
+    "cached_at": 1754284943.341158,
+    "original_address": "수성구 수성동2가 100-7 청아스킨케어"
+  },
+  "수성구수성동4가1000-25동성빌라501호": {
+    "status": "success",
+    "latitude": 35.8603761420448,
+    "longitude": 128.620061734597,
+    "cached_at": 1754284943.5119948,
+    "original_address": "수성구 수성동4가 1000-25 동성빌라501호"
+  },
+  "수성구황금동62-1벤자민독서실": {
+    "status": "success",
+    "latitude": 35.8469575823833,
+    "longitude": 128.639657627887,
+    "cached_at": 1754284943.678761,
+    "original_address": "수성구 황금동 62-1 벤자민독서실"
+  },
+  "달서구두류동150-3(오피스텔)": {
+    "status": "success",
+    "latitude": 35.8579326579091,
+    "longitude": 128.558763418509,
+    "cached_at": 1754284943.840589,
+    "original_address": "달서구 두류동 150-3 (오피스텔)"
+  },
+  "달서구송현동1984-9": {
+    "status": "success",
+    "latitude": 35.8281047538897,
+    "longitude": 128.554726181748,
+    "cached_at": 1754284944.007638,
+    "original_address": "달서구 송현동 1984-9"
+  },
+  "달성군하빈면대평리259": {
+    "status": "success",
+    "latitude": 35.9358816125829,
+    "longitude": 128.463917098786,
+    "cached_at": 1754284944.16702,
+    "original_address": "달성군 하빈면 대평리 259"
+  },
+  "중구동산동181-51": {
+    "status": "success",
+    "latitude": 35.8694211492226,
+    "longitude": 128.585597215259,
+    "cached_at": 1754284944.3274062,
+    "original_address": "중구 동산동 181-51"
+  },
+  "중구동산동493": {
+    "status": "success",
+    "latitude": 35.8669887388496,
+    "longitude": 128.583407608849,
+    "cached_at": 1754284944.487933,
+    "original_address": "중구 동산동 493"
+  },
+  "북구복현동402-8": {
+    "status": "success",
+    "latitude": 35.8959584617099,
+    "longitude": 128.613458592958,
+    "cached_at": 1754284944.634699,
+    "original_address": "북구 복현동 402-8"
+  },
+  "달성군현풍읍원교리81-3": {
+    "status": "success",
+    "latitude": 35.6939309867361,
+    "longitude": 128.441365825549,
+    "cached_at": 1754284944.793331,
+    "original_address": "달성군 현풍읍 원교리 81-3"
+  },
+  "서구비산동290-4은빛하이빌b동402호": {
+    "status": "success",
+    "latitude": 35.8672317035705,
+    "longitude": 128.569434202387,
+    "cached_at": 1754284944.9616058,
+    "original_address": "서구 비산동 290-4 은빛하이빌 B동 402호"
+  },
+  "북구노원동2가51-1유엘테크": {
+    "status": "success",
+    "latitude": 35.8921080862109,
+    "longitude": 128.576594993819,
+    "cached_at": 1754284945.1249971,
+    "original_address": "북구 노원동2가 51-1 유엘테크"
+  },
+  "수성구범어동128-18": {
+    "status": "success",
+    "latitude": 35.866412872508,
+    "longitude": 128.631367103196,
+    "cached_at": 1754284945.288765,
+    "original_address": "수성구 범어동 128-18"
+  },
+  "달성군가창면우록리503": {
+    "status": "success",
+    "latitude": 35.7207884523589,
+    "longitude": 128.642626627377,
+    "cached_at": 1754284945.461849,
+    "original_address": "달성군 가창면 우록리 503"
+  },
+  "수성구대흥동358-1": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284945.6214888,
+    "original_address": "수성구 대흥동 358-1"
+  },
+  "수성구범어동200-21한우촌안동갈비": {
+    "status": "success",
+    "latitude": 35.8579668691912,
+    "longitude": 128.633561027812,
+    "cached_at": 1754284945.788942,
+    "original_address": "수성구 범어동 200-21 한우촌안동갈비"
+  },
+  "수성구연호동127": {
+    "status": "success",
+    "latitude": 35.844531651711,
+    "longitude": 128.67027652916,
+    "cached_at": 1754284945.949954,
+    "original_address": "수성구 연호동 127"
+  },
+  "달서구상인동1441-2": {
+    "status": "success",
+    "latitude": 35.816196041788,
+    "longitude": 128.533053134817,
+    "cached_at": 1754284946.105988,
+    "original_address": "달서구 상인동 1441-2"
+  },
+  "달서구성당동712-18": {
+    "status": "success",
+    "latitude": 35.845690766131,
+    "longitude": 128.549144538795,
+    "cached_at": 1754284946.258901,
+    "original_address": "달서구 성당동 712-18"
+  },
+  "달서구죽전동407": {
+    "status": "success",
+    "latitude": 35.8530288024949,
+    "longitude": 128.533979530647,
+    "cached_at": 1754284946.422027,
+    "original_address": "달서구 죽전동 407"
+  },
+  "달성군하빈면기곡리5": {
+    "status": "success",
+    "latitude": 35.9330308200175,
+    "longitude": 128.441318895014,
+    "cached_at": 1754284946.5704389,
+    "original_address": "달성군 하빈면 기곡리 5"
+  },
+  "서구달서천로83길9(원대동3가)/1216-8번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284946.722487,
+    "original_address": "서구 달서천로83길 9 (원대동3가) / 1216-8번지"
+  },
+  "동구방촌동806-32": {
+    "status": "success",
+    "latitude": 35.8824527961089,
+    "longitude": 128.668401871518,
+    "cached_at": 1754284946.880179,
+    "original_address": "동구 방촌동 806-32"
+  },
+  "동구방촌동806-41번지선노후배수관교체공사": {
+    "status": "success",
+    "latitude": 35.8823312359077,
+    "longitude": 128.668680576327,
+    "cached_at": 1754284947.06463,
+    "original_address": "동구 방촌동 806-41번지 선 노후 배수관 교체공사"
+  },
+  "달성군다사읍매곡리669": {
+    "status": "success",
+    "latitude": 35.8637365090012,
+    "longitude": 128.455997184559,
+    "cached_at": 1754284947.2328992,
+    "original_address": "달성군 다사읍 매곡리 669"
+  },
+  "달서구갈산동358-79": {
+    "status": "success",
+    "latitude": 35.8359548595125,
+    "longitude": 128.500843870125,
+    "cached_at": 1754284947.3882911,
+    "original_address": "달서구 갈산동 358-79"
+  },
+  "북구복현동402-8와와모텔": {
+    "status": "success",
+    "latitude": 35.8959584617099,
+    "longitude": 128.613458592958,
+    "cached_at": 1754284947.554037,
+    "original_address": "북구 복현동 402-8 와와모텔"
+  },
+  "수성구신매동588-12고희석영어": {
+    "status": "success",
+    "latitude": 35.833078558096,
+    "longitude": 128.708367280879,
+    "cached_at": 1754284947.709888,
+    "original_address": "수성구 신매동 588-12 고희석영어"
+  },
+  "달성군다사읍세천리1679-5": {
+    "status": "success",
+    "latitude": 35.8739179932031,
+    "longitude": 128.472879254426,
+    "cached_at": 1754284947.8745651,
+    "original_address": "달성군 다사읍 세천리 1679-5"
+  },
+  "수성구지산동6471": {
+    "status": "success",
+    "latitude": 35.8269725389476,
+    "longitude": 128.631008719086,
+    "cached_at": 1754284948.039327,
+    "original_address": "수성구 지산동 647 1"
+  },
+  "북구동천동926-2": {
+    "status": "success",
+    "latitude": 35.9379941767957,
+    "longitude": 128.558172890137,
+    "cached_at": 1754284948.208357,
+    "original_address": "북구 동천동 926-2"
+  },
+  "북구대현동24-3": {
+    "status": "success",
+    "latitude": 35.8849333440923,
+    "longitude": 128.613912350874,
+    "cached_at": 1754284948.363467,
+    "original_address": "북구 대현동 24-3"
+  },
+  "달성군옥포읍돌미로2서길31-1/강림리1201번지": {
+    "status": "success",
+    "latitude": 35.7777196233182,
+    "longitude": 128.436352796495,
+    "cached_at": 1754284948.523492,
+    "original_address": "달성군 옥포읍  돌미로2서길 31-1 / 강림리 1201번지"
+  },
+  "북구복현동479-2전주콩나물국밥": {
+    "status": "success",
+    "latitude": 35.8926527279818,
+    "longitude": 128.620992412833,
+    "cached_at": 1754284948.686933,
+    "original_address": "북구 복현동 479-2 전주콩나물국밥"
+  },
+  "북구노원동3가117": {
+    "status": "success",
+    "latitude": 35.8981443057216,
+    "longitude": 128.572925266076,
+    "cached_at": 1754284948.844023,
+    "original_address": "북구 노원동3가 117"
+  },
+  "북구동호동136-1": {
+    "status": "success",
+    "latitude": 35.9607357165524,
+    "longitude": 128.55905409649,
+    "cached_at": 1754284948.999269,
+    "original_address": "북구 동호동 136-1"
+  },
+  "북구대현동167-17": {
+    "status": "success",
+    "latitude": 35.8847931047562,
+    "longitude": 128.60779417958,
+    "cached_at": 1754284949.153623,
+    "original_address": "북구 대현동 167-17"
+  },
+  "동구송정동794": {
+    "status": "success",
+    "latitude": 35.9882122794678,
+    "longitude": 128.621520199806,
+    "cached_at": 1754284949.3129852,
+    "original_address": "동구 송정동 794"
+  },
+  "달성군가창면우록리144-4": {
+    "status": "success",
+    "latitude": 35.7241249175338,
+    "longitude": 128.649796687873,
+    "cached_at": 1754284949.482412,
+    "original_address": "달성군 가창면 우록리 144-4"
+  },
+  "동구율하동933-4": {
+    "status": "success",
+    "latitude": 35.8696754953619,
+    "longitude": 128.701816596514,
+    "cached_at": 1754284949.652482,
+    "original_address": "동구 율하동 933-4"
+  },
+  "서구비산동396-7": {
+    "status": "success",
+    "latitude": 35.8723209929154,
+    "longitude": 128.57319005311,
+    "cached_at": 1754284949.8098078,
+    "original_address": "서구 비산동 396-7"
+  },
+  "동구도동804-18": {
+    "status": "success",
+    "latitude": 35.9160341094349,
+    "longitude": 128.659708141742,
+    "cached_at": 1754284949.963414,
+    "original_address": "동구 도동 804-18"
+  },
+  "북구연경동565-2": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284950.1077602,
+    "original_address": "북구 연경동 565-2"
+  },
+  "동구불로동460-44앞중구역유량계실": {
+    "status": "success",
+    "latitude": 35.9115701966442,
+    "longitude": 128.641349897598,
+    "cached_at": 1754284950.272321,
+    "original_address": "동구 불로동 460-44 앞 중구역 유량계실"
+  },
+  "북구복현동426-1대구막창": {
+    "status": "success",
+    "latitude": 35.8959478787175,
+    "longitude": 128.616663821248,
+    "cached_at": 1754284950.433559,
+    "original_address": "북구 복현동 426-1 대구막창"
+  },
+  "수성구중동34-5301호": {
+    "status": "success",
+    "latitude": 35.84886990076,
+    "longitude": 128.613903435691,
+    "cached_at": 1754284950.586999,
+    "original_address": "수성구 중동 34-5 301호"
+  },
+  "달서구두류동776-35": {
+    "status": "success",
+    "latitude": 35.8571858054947,
+    "longitude": 128.573979488515,
+    "cached_at": 1754284950.7322319,
+    "original_address": "달서구 두류동 776-35"
+  },
+  "동구신평동760-43": {
+    "status": "success",
+    "latitude": 35.8795096450494,
+    "longitude": 128.675570782183,
+    "cached_at": 1754284950.888575,
+    "original_address": "동구 신평동 760-43"
+  },
+  "달성군현풍읍성하리402-9": {
+    "status": "success",
+    "latitude": 35.6980756435182,
+    "longitude": 128.442283153211,
+    "cached_at": 1754284951.052324,
+    "original_address": "달성군 현풍읍 성하리 402-9"
+  },
+  "북구구암동808": {
+    "status": "success",
+    "latitude": 35.9388364228287,
+    "longitude": 128.568842566736,
+    "cached_at": 1754284951.222543,
+    "original_address": "북구 구암동 808"
+  },
+  "북구대현동165-5": {
+    "status": "success",
+    "latitude": 35.8841885427398,
+    "longitude": 128.60731532416,
+    "cached_at": 1754284951.386676,
+    "original_address": "북구 대현동 165-5"
+  },
+  "달서구감삼동58-18": {
+    "status": "success",
+    "latitude": 35.8551768750514,
+    "longitude": 128.546210505032,
+    "cached_at": 1754284951.548845,
+    "original_address": "달서구 감삼동 58-18"
+  },
+  "달서구용산동416-2성산공원": {
+    "status": "success",
+    "latitude": 35.8567821385755,
+    "longitude": 128.517908886859,
+    "cached_at": 1754284951.713632,
+    "original_address": "달서구 용산동 416-2 성산공원"
+  },
+  "달서구도원동605": {
+    "status": "success",
+    "latitude": 35.8065742169117,
+    "longitude": 128.548970494615,
+    "cached_at": 1754284951.878413,
+    "original_address": "달서구 도원동 605"
+  },
+  "달서구용산동414-1": {
+    "status": "success",
+    "latitude": 35.8546908479677,
+    "longitude": 128.516780002984,
+    "cached_at": 1754284952.0330582,
+    "original_address": "달서구 용산동 414-1"
+  },
+  "수성구범어동197-1빠리바게트": {
+    "status": "success",
+    "latitude": 35.8584741581808,
+    "longitude": 128.63238498042,
+    "cached_at": 1754284952.207833,
+    "original_address": "수성구 범어동 197-1 빠리바게트"
+  },
+  "수성구만촌동414-17": {
+    "status": "success",
+    "latitude": 35.8680545416077,
+    "longitude": 128.632449967793,
+    "cached_at": 1754284952.377346,
+    "original_address": "수성구 만촌동 414-17"
+  },
+  "수성구지산동1250-16": {
+    "status": "success",
+    "latitude": 35.8231431160683,
+    "longitude": 128.628604298435,
+    "cached_at": 1754284952.535584,
+    "original_address": "수성구 지산동 1250-16"
+  },
+  "수성구만촌동685-8진성카": {
+    "status": "success",
+    "latitude": 35.8691562500627,
+    "longitude": 128.647124033163,
+    "cached_at": 1754284952.698501,
+    "original_address": "수성구 만촌동 685-8 진성카"
+  },
+  "동구미곡동296-3": {
+    "status": "success",
+    "latitude": 35.9602148776336,
+    "longitude": 128.685499903028,
+    "cached_at": 1754284952.859006,
+    "original_address": "동구 미곡동 296-3"
+  },
+  "달서구성당동370-7": {
+    "status": "success",
+    "latitude": 35.8391224700975,
+    "longitude": 128.553511413114,
+    "cached_at": 1754284953.019537,
+    "original_address": "달서구 성당동 370-7"
+  },
+  "달서구두류동804-23": {
+    "status": "success",
+    "latitude": 35.8585448071052,
+    "longitude": 128.572074776041,
+    "cached_at": 1754284953.17303,
+    "original_address": "달서구 두류동 804-23"
+  },
+  "수성구범어동227-1바동2호": {
+    "status": "success",
+    "latitude": 35.8599517311102,
+    "longitude": 128.637392119879,
+    "cached_at": 1754284953.339253,
+    "original_address": "수성구 범어동 227-1 바동2호"
+  },
+  "달성군하빈면무등리1321": {
+    "status": "success",
+    "latitude": 35.9083634936238,
+    "longitude": 128.458116359266,
+    "cached_at": 1754284953.501739,
+    "original_address": "달성군 하빈면 무등리 1321"
+  },
+  "북구태전동476-4불굴의곰장어아나고": {
+    "status": "success",
+    "latitude": 35.916466168709,
+    "longitude": 128.548789499448,
+    "cached_at": 1754284953.658918,
+    "original_address": "북구 태전동 476-4 불굴의곰장어아나고"
+  },
+  "수성구두산동133-1교촌치킨": {
+    "status": "success",
+    "latitude": 35.8351449792799,
+    "longitude": 128.62074867683,
+    "cached_at": 1754284953.8288388,
+    "original_address": "수성구 두산동 133-1 교촌치킨"
+  },
+  "수성구만촌동676-12": {
+    "status": "success",
+    "latitude": 35.8702631212106,
+    "longitude": 128.646433506438,
+    "cached_at": 1754284953.98954,
+    "original_address": "수성구 만촌동 676-12"
+  },
+  "동구신암동168-4휴대폰가게-t": {
+    "status": "success",
+    "latitude": 35.8817856933791,
+    "longitude": 128.618617303282,
+    "cached_at": 1754284954.164532,
+    "original_address": "동구 신암동 168-4 휴대폰가게-T"
+  },
+  "수성구범어동426-16": {
+    "status": "success",
+    "latitude": 35.8662908921811,
+    "longitude": 128.637622292329,
+    "cached_at": 1754284954.335822,
+    "original_address": "수성구 범어동 426-16"
+  },
+  "수성구매호동974-2아델스": {
+    "status": "success",
+    "latitude": 35.8446114524452,
+    "longitude": 128.707958878953,
+    "cached_at": 1754284954.489737,
+    "original_address": "수성구 매호동 974-2 아델스"
+  },
+  "북구노원동3가511코리아기공": {
+    "status": "success",
+    "latitude": 35.893348735492,
+    "longitude": 128.554167883902,
+    "cached_at": 1754284954.646324,
+    "original_address": "북구 노원동3가 511 코리아기공"
+  },
+  "북구관음동40양지마을": {
+    "status": "success",
+    "latitude": 35.9503322679498,
+    "longitude": 128.540537420018,
+    "cached_at": 1754284954.813717,
+    "original_address": "북구 관음동 40 양지마을"
+  },
+  "수성구황금동592-6": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284954.9524539,
+    "original_address": "수성구 황금동 592-6"
+  },
+  "북구산격동20-18": {
+    "status": "success",
+    "latitude": 35.911265194236,
+    "longitude": 128.608849472361,
+    "cached_at": 1754284955.121393,
+    "original_address": "북구 산격동 20-18"
+  },
+  "수성구파동110-88": {
+    "status": "success",
+    "latitude": 35.8200677064147,
+    "longitude": 128.615390150271,
+    "cached_at": 1754284955.281545,
+    "original_address": "수성구 파동 110-88"
+  },
+  "북구산격동724-12": {
+    "status": "success",
+    "latitude": 35.900449140835,
+    "longitude": 128.594989371171,
+    "cached_at": 1754284955.460615,
+    "original_address": "북구 산격동 724-12"
+  },
+  "달서구대곡동23-10": {
+    "status": "success",
+    "latitude": 35.8077604464612,
+    "longitude": 128.511753621597,
+    "cached_at": 1754284955.625973,
+    "original_address": "달서구 대곡동 23-10"
+  },
+  "수성구범어동128-2평광현대빌라가동": {
+    "status": "success",
+    "latitude": 35.8662364262618,
+    "longitude": 128.629800835024,
+    "cached_at": 1754284955.809511,
+    "original_address": "수성구 범어동 128-2 평광현대빌라 가동"
+  },
+  "서구중리동1060-3삼화실업": {
+    "status": "success",
+    "latitude": 35.8680885525508,
+    "longitude": 128.540699424382,
+    "cached_at": 1754284955.961604,
+    "original_address": "서구 중리동 1060-3 삼화실업"
+  },
+  "수성구만촌동884-16": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284956.11209,
+    "original_address": "수성구 만촌동 884-16"
+  },
+  "수성구연호동154-84": {
+    "status": "success",
+    "latitude": 35.8458751962886,
+    "longitude": 128.673782810037,
+    "cached_at": 1754284956.2776792,
+    "original_address": "수성구 연호동 154-84"
+  },
+  "달성군가창면단산리397주택": {
+    "status": "success",
+    "latitude": 35.7700307615554,
+    "longitude": 128.661075802117,
+    "cached_at": 1754284956.429418,
+    "original_address": "달성군 가창면 단산리 397 주택"
+  },
+  "수성구고모동492-2": {
+    "status": "success",
+    "latitude": 35.8582123430612,
+    "longitude": 128.673305058367,
+    "cached_at": 1754284956.589011,
+    "original_address": "수성구 고모동 492-2"
+  },
+  "북구칠성동2가101-12칠성로5길5-14/보쉬건설기계": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284956.748087,
+    "original_address": "북구 칠성동2가 101-12 칠성로5길5-14/보쉬건설기계"
+  },
+  "동구신암동603-18": {
+    "status": "success",
+    "latitude": 35.8844834115768,
+    "longitude": 128.621637669646,
+    "cached_at": 1754284956.9046452,
+    "original_address": "동구 신암동 603-18"
+  },
+  "수성구만촌동881": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284957.054646,
+    "original_address": "수성구 만촌동 881"
+  },
+  "수성구두산동191-3신우빌라트": {
+    "status": "success",
+    "latitude": 35.8327109299035,
+    "longitude": 128.621414261481,
+    "cached_at": 1754284957.232945,
+    "original_address": "수성구 두산동 191-3 신우빌라트"
+  },
+  "수성구시지동505-4동우크린키퍼": {
+    "status": "success",
+    "latitude": 35.8403966596665,
+    "longitude": 128.699560183336,
+    "cached_at": 1754284957.404556,
+    "original_address": "수성구 시지동 505-4 동우크린키퍼"
+  },
+  "수성구상동215-2": {
+    "status": "success",
+    "latitude": 35.8331972066108,
+    "longitude": 128.60845934101,
+    "cached_at": 1754284957.572072,
+    "original_address": "수성구 상동 215-2"
+  },
+  "수성구범어동400-7": {
+    "status": "success",
+    "latitude": 35.8621558167077,
+    "longitude": 128.63713491228,
+    "cached_at": 1754284957.7430131,
+    "original_address": "수성구 범어동 400-7"
+  },
+  "동구신평동760-47": {
+    "status": "success",
+    "latitude": 35.8793772333151,
+    "longitude": 128.675528131399,
+    "cached_at": 1754284957.901521,
+    "original_address": "동구 신평동 760-47"
+  },
+  "북구대현동226-11": {
+    "status": "success",
+    "latitude": 35.8847878518631,
+    "longitude": 128.605782465232,
+    "cached_at": 1754284958.069033,
+    "original_address": "북구 대현동 226-11"
+  },
+  "달서구두류동1192-13": {
+    "status": "success",
+    "latitude": 35.8606105446578,
+    "longitude": 128.573393404155,
+    "cached_at": 1754284958.227425,
+    "original_address": "달서구 두류동 1192-13"
+  },
+  "달서구두류동1253-13": {
+    "status": "success",
+    "latitude": 35.8547911586581,
+    "longitude": 128.569987466922,
+    "cached_at": 1754284958.405844,
+    "original_address": "달서구 두류동 1253-13"
+  },
+  "남구이천동577-17통4반": {
+    "status": "success",
+    "latitude": 35.8473044145614,
+    "longitude": 128.605221645369,
+    "cached_at": 1754284958.576661,
+    "original_address": "남구 이천동 577-17 통4반"
+  },
+  "동구신평동760-45": {
+    "status": "success",
+    "latitude": 35.879542714542,
+    "longitude": 128.675260891618,
+    "cached_at": 1754284958.7394738,
+    "original_address": "동구 신평동 760-45"
+  },
+  "달서구두류동1216-1": {
+    "status": "success",
+    "latitude": 35.8606374338261,
+    "longitude": 128.570946541617,
+    "cached_at": 1754284958.899124,
+    "original_address": "달서구 두류동 1216-1"
+  },
+  "달서구용산동513-6": {
+    "status": "success",
+    "latitude": 35.8579957862753,
+    "longitude": 128.522027556326,
+    "cached_at": 1754284959.060928,
+    "original_address": "달서구 용산동 513-6"
+  },
+  "달성군하빈면하산리1140-2": {
+    "status": "success",
+    "latitude": 35.873048180785,
+    "longitude": 128.399275076372,
+    "cached_at": 1754284959.2273412,
+    "original_address": "달성군 하빈면 하산리 1140-2"
+  },
+  "달서구상인동1512": {
+    "status": "success",
+    "latitude": 35.8178790985312,
+    "longitude": 128.539274198305,
+    "cached_at": 1754284959.380073,
+    "original_address": "달서구 상인동 1512"
+  },
+  "달서구진천동702-5": {
+    "status": "success",
+    "latitude": 35.8101997327472,
+    "longitude": 128.520752690603,
+    "cached_at": 1754284959.5447319,
+    "original_address": "달서구 진천동 702-5"
+  },
+  "달성군하빈면하산리293-2": {
+    "status": "success",
+    "latitude": 35.8920120189277,
+    "longitude": 128.416258938508,
+    "cached_at": 1754284959.70844,
+    "original_address": "달성군 하빈면 하산리 293-2"
+  },
+  "북구노원동3가449-4": {
+    "status": "success",
+    "latitude": 35.8934648783076,
+    "longitude": 128.557104305063,
+    "cached_at": 1754284959.867048,
+    "original_address": "북구 노원동3가 449-4"
+  },
+  "동구신기동3240": {
+    "status": "success",
+    "latitude": 35.8662751061931,
+    "longitude": 128.708106219638,
+    "cached_at": 1754284960.036961,
+    "original_address": "동구 신기동 324 0"
+  },
+  "달성군현풍읍현풍중앙로21길2/성하리402-9번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284960.187008,
+    "original_address": "달성군 현풍읍  현풍중앙로21길 2 / 성하리 402-9번지"
+  },
+  "중구달성동218-15경신오토바이": {
+    "status": "success",
+    "latitude": 35.8755113938524,
+    "longitude": 128.580500696486,
+    "cached_at": 1754284960.356182,
+    "original_address": "중구 달성동 218-15 경신오토바이"
+  },
+  "수성구만촌동80-5102동202호": {
+    "status": "success",
+    "latitude": 35.875493354074,
+    "longitude": 128.651628053876,
+    "cached_at": 1754284960.516343,
+    "original_address": "수성구 만촌동 80-5 102동202호"
+  },
+  "서구비산동1042-16새단장여관": {
+    "status": "success",
+    "latitude": 35.888402268909,
+    "longitude": 128.56830634642,
+    "cached_at": 1754284960.681368,
+    "original_address": "서구 비산동 1042-16 새단장여관"
+  },
+  "서구비산동119-22": {
+    "status": "success",
+    "latitude": 35.8755484954286,
+    "longitude": 128.573887762207,
+    "cached_at": 1754284960.8447921,
+    "original_address": "서구 비산동 119-22"
+  },
+  "달서구본동270-2": {
+    "status": "success",
+    "latitude": 35.8349578385513,
+    "longitude": 128.546571100844,
+    "cached_at": 1754284960.999191,
+    "original_address": "달서구 본동 270-2"
+  },
+  "서구평리동657-5": {
+    "status": "success",
+    "latitude": 35.879790336602,
+    "longitude": 128.566404732348,
+    "cached_at": 1754284961.158327,
+    "original_address": "서구 평리동 657-5"
+  },
+  "수성구만촌동991-13": {
+    "status": "success",
+    "latitude": 35.8651700040918,
+    "longitude": 128.647740194439,
+    "cached_at": 1754284961.3411012,
+    "original_address": "수성구 만촌동 991-13"
+  },
+  "달서구감삼동146-8": {
+    "status": "success",
+    "latitude": 35.8495314141594,
+    "longitude": 128.539763616095,
+    "cached_at": 1754284961.5073972,
+    "original_address": "달서구 감삼동 146-8"
+  },
+  "수성구신매동593-10문쌤수학": {
+    "status": "success",
+    "latitude": 35.8318236690875,
+    "longitude": 128.707572952167,
+    "cached_at": 1754284961.668045,
+    "original_address": "수성구 신매동 593-10 문쌤수학"
+  },
+  "북구칠성동2가101-5칠성로5길9-1": {
+    "status": "success",
+    "latitude": 35.8809246022716,
+    "longitude": 128.591660304845,
+    "cached_at": 1754284961.942333,
+    "original_address": "북구 칠성동2가 101-5 칠성로5길9-1"
+  },
+  "수성구성동167": {
+    "status": "success",
+    "latitude": 35.8526290452659,
+    "longitude": 128.718304536253,
+    "cached_at": 1754284962.1081018,
+    "original_address": "수성구 성동 167"
+  },
+  "수성구만촌동677-36": {
+    "status": "success",
+    "latitude": 35.8701020876728,
+    "longitude": 128.647537531997,
+    "cached_at": 1754284962.272171,
+    "original_address": "수성구 만촌동 677-36"
+  },
+  "수성구고모동88인근": {
+    "status": "success",
+    "latitude": 35.8694315769954,
+    "longitude": 128.667016358519,
+    "cached_at": 1754284962.455987,
+    "original_address": "수성구 고모동 88 인근"
+  },
+  "달서구두류동1211-43": {
+    "status": "success",
+    "latitude": 35.8586345732482,
+    "longitude": 128.569979246132,
+    "cached_at": 1754284962.6139069,
+    "original_address": "달서구 두류동 1211-43"
+  },
+  "달성군다사읍세천리1031-1": {
+    "status": "success",
+    "latitude": 35.8755371918863,
+    "longitude": 128.47510433645,
+    "cached_at": 1754284962.774252,
+    "original_address": "달성군 다사읍 세천리 1031-1"
+  },
+  "달성군다사읍세천리1673-3": {
+    "status": "success",
+    "latitude": 35.8753690247673,
+    "longitude": 128.464937538819,
+    "cached_at": 1754284962.933005,
+    "original_address": "달성군 다사읍 세천리 1673-3"
+  },
+  "서구달서천로352-11(비산동)/1101-30번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284963.086282,
+    "original_address": "서구 달서천로 352-11 (비산동) / 1101-30번지"
+  },
+  "북구산격동26-3유림공업": {
+    "status": "success",
+    "latitude": 35.9122041866557,
+    "longitude": 128.610622910247,
+    "cached_at": 1754284963.260173,
+    "original_address": "북구 산격동 26-3 유림공업"
+  },
+  "동구신암동167-14번지선노후배수관교체공사": {
+    "status": "success",
+    "latitude": 35.8811692427874,
+    "longitude": 128.617539207307,
+    "cached_at": 1754284963.429067,
+    "original_address": "동구 신암동 167-14번지선  노후배수관 교체공사"
+  },
+  "수성구범어동171-9": {
+    "status": "success",
+    "latitude": 35.8591512528432,
+    "longitude": 128.635453815562,
+    "cached_at": 1754284963.589449,
+    "original_address": "수성구 범어동 171-9"
+  },
+  "달서구두류동494-2(주)비에스티무역대구지점": {
+    "status": "success",
+    "latitude": 35.8551571792615,
+    "longitude": 128.551616884688,
+    "cached_at": 1754284963.75912,
+    "original_address": "달서구 두류동 494-2 (주)비에스티무역 대구지점"
+  },
+  "동구효목동126-47번지선노후배수관정비공사": {
+    "status": "success",
+    "latitude": 35.8832906073474,
+    "longitude": 128.640912765462,
+    "cached_at": 1754284963.9253051,
+    "original_address": "동구 효목동 126-47번지 선 노후 배수관 정비공사"
+  },
+  "동구효목동144-6번지선노후배수관정비공사": {
+    "status": "success",
+    "latitude": 35.8819796306156,
+    "longitude": 128.640444899513,
+    "cached_at": 1754284964.082416,
+    "original_address": "동구 효목동 144-6번지 선 노후 배수관 정비공사"
+  },
+  "수성구고모동462": {
+    "status": "success",
+    "latitude": 35.8581411114699,
+    "longitude": 128.674840471216,
+    "cached_at": 1754284964.251183,
+    "original_address": "수성구 고모동 462"
+  },
+  "수성구범어동64-23": {
+    "status": "success",
+    "latitude": 35.8561892476695,
+    "longitude": 128.642385970637,
+    "cached_at": 1754284964.413995,
+    "original_address": "수성구 범어동 64-23"
+  },
+  "수성구범어동620": {
+    "status": "success",
+    "latitude": 35.8511480513354,
+    "longitude": 128.626307230491,
+    "cached_at": 1754284964.568984,
+    "original_address": "수성구 범어동 620"
+  },
+  "수성구범어동136-2": {
+    "status": "success",
+    "latitude": 35.8658034648754,
+    "longitude": 128.633406913458,
+    "cached_at": 1754284964.7487612,
+    "original_address": "수성구 범어동 136-2"
+  },
+  "수성구만촌동1010-6": {
+    "status": "success",
+    "latitude": 35.8613655133612,
+    "longitude": 128.644102265616,
+    "cached_at": 1754284964.895236,
+    "original_address": "수성구 만촌동 1010-6"
+  },
+  "달성군다사읍죽곡리807-2": {
+    "status": "success",
+    "latitude": 35.8578625721569,
+    "longitude": 128.463951449314,
+    "cached_at": 1754284965.0637162,
+    "original_address": "달성군 다사읍 죽곡리 807-2"
+  },
+  "서구비산동434-11": {
+    "status": "success",
+    "latitude": 35.8753923842653,
+    "longitude": 128.572727736735,
+    "cached_at": 1754284965.237112,
+    "original_address": "서구 비산동 434-11"
+  },
+  "동구불로동1000-52번지선노후배수관정비공사": {
+    "status": "success",
+    "latitude": 35.8988946384191,
+    "longitude": 128.633074057094,
+    "cached_at": 1754284965.401982,
+    "original_address": "동구 불로동 1000-52번지 선 노후 배수관 정비공사"
+  },
+  "동구불로동527302호": {
+    "status": "success",
+    "latitude": 35.9105785130825,
+    "longitude": 128.644641215008,
+    "cached_at": 1754284965.57212,
+    "original_address": "동구 불로동 527 302호"
+  },
+  "수성구지산동990-1101": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284965.7350001,
+    "original_address": "수성구 지산동 990-1 101"
+  },
+  "수성구황금동851-18": {
+    "status": "success",
+    "latitude": 35.8420065345888,
+    "longitude": 128.622946620269,
+    "cached_at": 1754284965.9006379,
+    "original_address": "수성구 황금동 851-18"
+  },
+  "달서구상인동1118102-102": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284966.042367,
+    "original_address": "달서구 상인동 1118 102-102"
+  },
+  "수성구상동219-2사루비아": {
+    "status": "success",
+    "latitude": 35.832924708318,
+    "longitude": 128.60821635809,
+    "cached_at": 1754284966.2072241,
+    "original_address": "수성구 상동 219-2 사루비아"
+  },
+  "달성군다사읍죽곡리765-12": {
+    "status": "success",
+    "latitude": 35.8430629438329,
+    "longitude": 128.463382436278,
+    "cached_at": 1754284966.386571,
+    "original_address": "달성군 다사읍 죽곡리 765-12"
+  },
+  "서구내당동923-36": {
+    "status": "success",
+    "latitude": 35.8658997003646,
+    "longitude": 128.568131567757,
+    "cached_at": 1754284966.550646,
+    "original_address": "서구 내당동 923-36"
+  },
+  "달성군화원읍인흥2길40/본리리783번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284966.701087,
+    "original_address": "달성군 화원읍  인흥2길 40 / 본리리 783번지"
+  },
+  "북구대현동181-15": {
+    "status": "success",
+    "latitude": 35.8848948296004,
+    "longitude": 128.607997109356,
+    "cached_at": 1754284966.859175,
+    "original_address": "북구 대현동 181-15"
+  },
+  "수성구지산동1263-7": {
+    "status": "success",
+    "latitude": 35.8264426201902,
+    "longitude": 128.631981137994,
+    "cached_at": 1754284967.0100212,
+    "original_address": "수성구 지산동 1263-7"
+  },
+  "달성군다사읍죽곡리151-1": {
+    "status": "success",
+    "latitude": 35.8581085413252,
+    "longitude": 128.461424263811,
+    "cached_at": 1754284967.1869152,
+    "original_address": "달성군 다사읍 죽곡리 151-1"
+  },
+  "달서구성당동56-18": {
+    "status": "success",
+    "latitude": 35.8511451092765,
+    "longitude": 128.571248927292,
+    "cached_at": 1754284967.343883,
+    "original_address": "달서구 성당동 56-18"
+  },
+  "달서구죽전동253-4": {
+    "status": "success",
+    "latitude": 35.851864442527,
+    "longitude": 128.538853808088,
+    "cached_at": 1754284967.500469,
+    "original_address": "달서구 죽전동 253-4"
+  },
+  "중구남산동721-30": {
+    "status": "success",
+    "latitude": 35.8596008506233,
+    "longitude": 128.593732855733,
+    "cached_at": 1754284967.6607249,
+    "original_address": "중구 남산동 721-30"
+  },
+  "남구봉덕동1293-25": {
+    "status": "success",
+    "latitude": 35.8397391907321,
+    "longitude": 128.599933216503,
+    "cached_at": 1754284967.816865,
+    "original_address": "남구 봉덕동 1293-25"
+  },
+  "달서구두류동139-18": {
+    "status": "success",
+    "latitude": 35.8570961641455,
+    "longitude": 128.559426608261,
+    "cached_at": 1754284967.9786382,
+    "original_address": "달서구 두류동 139-18"
+  },
+  "달서구송현동1921-11": {
+    "status": "success",
+    "latitude": 35.8272339136167,
+    "longitude": 128.546790896225,
+    "cached_at": 1754284968.138478,
+    "original_address": "달서구 송현동 1921-11"
+  },
+  "수성구상동612-11": {
+    "status": "success",
+    "latitude": 35.828485776113,
+    "longitude": 128.610347423922,
+    "cached_at": 1754284968.3004642,
+    "original_address": "수성구 상동 612-11"
+  },
+  "북구동천동949함지초등학교": {
+    "status": "success",
+    "latitude": 35.9345097430237,
+    "longitude": 128.557929972676,
+    "cached_at": 1754284968.46941,
+    "original_address": "북구 동천동 949 함지초등학교"
+  },
+  "수성구황금동884-1": {
+    "status": "success",
+    "latitude": 35.8422902657852,
+    "longitude": 128.617041671237,
+    "cached_at": 1754284968.6334789,
+    "original_address": "수성구 황금동 884-1"
+  },
+  "서구비산동1007-8": {
+    "status": "success",
+    "latitude": 35.8850196724118,
+    "longitude": 128.56739306073,
+    "cached_at": 1754284968.803145,
+    "original_address": "서구 비산동 1007-8"
+  },
+  "서구평리동672-15": {
+    "status": "success",
+    "latitude": 35.8781314639595,
+    "longitude": 128.560448100299,
+    "cached_at": 1754284968.953372,
+    "original_address": "서구 평리동 672-15"
+  },
+  "달서구죽전동252-11": {
+    "status": "success",
+    "latitude": 35.8520556957524,
+    "longitude": 128.539547880097,
+    "cached_at": 1754284969.211404,
+    "original_address": "달서구 죽전동 252-11"
+  },
+  "동구율하동1569초이스": {
+    "status": "success",
+    "latitude": 35.8633462996607,
+    "longitude": 128.703986196684,
+    "cached_at": 1754284969.3810618,
+    "original_address": "동구 율하동 1569 초이스"
+  },
+  "동구서호동43-1": {
+    "status": "success",
+    "latitude": 35.869935061362,
+    "longitude": 128.710484946317,
+    "cached_at": 1754284969.5456052,
+    "original_address": "동구 서호동 43-1"
+  },
+  "동구효목동126-46번지선노후배수관정비공사": {
+    "status": "success",
+    "latitude": 35.8832565166802,
+    "longitude": 128.640776304554,
+    "cached_at": 1754284969.714033,
+    "original_address": "동구 효목동 126-46번지 선 노후 배수관 정비공사"
+  },
+  "동구효목동126-44번지선노후배수관정비공사": {
+    "status": "success",
+    "latitude": 35.8831744111875,
+    "longitude": 128.640447397682,
+    "cached_at": 1754284969.873539,
+    "original_address": "동구 효목동 126-44번지 선 노후 배수관 정비공사"
+  },
+  "수성구시지동250-8현대자동차": {
+    "status": "success",
+    "latitude": 35.8426004528125,
+    "longitude": 128.693850586751,
+    "cached_at": 1754284970.0555441,
+    "original_address": "수성구 시지동 250-8 현대자동차"
+  },
+  "수성구만촌동884-13": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284970.220253,
+    "original_address": "수성구 만촌동 884-13"
+  },
+  "북구노원동1가235-1s&tmoters(주)경북지원": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284970.3821561,
+    "original_address": "북구 노원동1가 235-1 S&TMOTERS(주)경북지원"
+  },
+  "달성군다사읍죽곡리124": {
+    "status": "success",
+    "latitude": 35.858446640857,
+    "longitude": 128.461358958218,
+    "cached_at": 1754284970.542472,
+    "original_address": "달성군 다사읍 죽곡리 124"
+  },
+  "달성군다사읍세천리858": {
+    "status": "success",
+    "latitude": 35.877114054721,
+    "longitude": 128.473576099991,
+    "cached_at": 1754284970.695219,
+    "original_address": "달성군 다사읍 세천리 858"
+  },
+  "북구노원동3가373-3": {
+    "status": "success",
+    "latitude": 35.8918566727487,
+    "longitude": 128.565187788405,
+    "cached_at": 1754284970.856184,
+    "original_address": "북구 노원동3가 373-3"
+  },
+  "북구노원동3가234-10": {
+    "status": "success",
+    "latitude": 35.8931443290878,
+    "longitude": 128.567728870345,
+    "cached_at": 1754284971.011261,
+    "original_address": "북구 노원동3가 234-10"
+  },
+  "달성군다사읍세천리1593-3": {
+    "status": "success",
+    "latitude": 35.8728816490653,
+    "longitude": 128.476872353857,
+    "cached_at": 1754284971.162015,
+    "original_address": "달성군 다사읍 세천리 1593-3"
+  },
+  "남구대명동337-2개다방,행복공인중개사": {
+    "status": "success",
+    "latitude": 35.839939153156,
+    "longitude": 128.5802690441,
+    "cached_at": 1754284971.3254411,
+    "original_address": "남구 대명동 337-2 개다방, 행복공인중개사"
+  },
+  "북구대현동173-13충현교회a동": {
+    "status": "success",
+    "latitude": 35.8859625764711,
+    "longitude": 128.606146368614,
+    "cached_at": 1754284971.4966972,
+    "original_address": "북구 대현동 173-13 충현교회 A동"
+  },
+  "동구신암동341-5소구역유량계교체공사": {
+    "status": "success",
+    "latitude": 35.88538951133,
+    "longitude": 128.632610412493,
+    "cached_at": 1754284971.653611,
+    "original_address": "동구 신암동 341-5 소구역 유량계 교체공사"
+  },
+  "동구효목동449용궁반점": {
+    "status": "success",
+    "latitude": 35.8778821595227,
+    "longitude": 128.637930208982,
+    "cached_at": 1754284971.813379,
+    "original_address": "동구 효목동 449 용궁반점"
+  },
+  "동구지저동720-5": {
+    "status": "success",
+    "latitude": 35.895563248474,
+    "longitude": 128.635674895346,
+    "cached_at": 1754284971.9622169,
+    "original_address": "동구 지저동 720-5"
+  },
+  "달성군다사읍매곡리671-2": {
+    "status": "success",
+    "latitude": 35.8636499217897,
+    "longitude": 128.456219008917,
+    "cached_at": 1754284972.120801,
+    "original_address": "달성군 다사읍 매곡리 671-2"
+  },
+  "달서구두류동1247-25": {
+    "status": "success",
+    "latitude": 35.8589392214503,
+    "longitude": 128.565140825215,
+    "cached_at": 1754284972.287297,
+    "original_address": "달서구 두류동 1247-25"
+  },
+  "동구신천동183-9": {
+    "status": "success",
+    "latitude": 35.8724399807732,
+    "longitude": 128.619934232851,
+    "cached_at": 1754284972.44985,
+    "original_address": "동구 신천동 183-9"
+  },
+  "북구서변동961-1": {
+    "status": "success",
+    "latitude": 35.9231236882381,
+    "longitude": 128.595643747335,
+    "cached_at": 1754284972.60584,
+    "original_address": "북구 서변동 961-1"
+  },
+  "북구검단동1233-1대일전산": {
+    "status": "success",
+    "latitude": 35.9140307939146,
+    "longitude": 128.628695499746,
+    "cached_at": 1754284972.7652779,
+    "original_address": "북구 검단동 1233-1 대일전산"
+  },
+  "북구노곡동1500": {
+    "status": "success",
+    "latitude": 35.9054043865174,
+    "longitude": 128.562910553856,
+    "cached_at": 1754284972.927854,
+    "original_address": "북구 노곡동 1500"
+  },
+  "북구태전동940우영펠리스": {
+    "status": "success",
+    "latitude": 35.9325219941981,
+    "longitude": 128.547999864195,
+    "cached_at": 1754284973.082665,
+    "original_address": "북구 태전동 940 우영펠리스"
+  },
+  "북구침산동266-7": {
+    "status": "success",
+    "latitude": 35.8882768791336,
+    "longitude": 128.592323068447,
+    "cached_at": 1754284973.2414541,
+    "original_address": "북구 침산동 266-7"
+  },
+  "수성구지산동1157-18아이나비": {
+    "status": "success",
+    "latitude": 35.826884362377,
+    "longitude": 128.628347571323,
+    "cached_at": 1754284973.411623,
+    "original_address": "수성구 지산동 1157-18 아이나비"
+  },
+  "달서구성당동830-31": {
+    "status": "success",
+    "latitude": 35.8375062583646,
+    "longitude": 128.55259763506,
+    "cached_at": 1754284973.572722,
+    "original_address": "달서구 성당동 830-31"
+  },
+  "달서구두류동825-12": {
+    "status": "success",
+    "latitude": 35.853833415417,
+    "longitude": 128.572819017585,
+    "cached_at": 1754284973.742857,
+    "original_address": "달서구 두류동 825-12"
+  },
+  "달성군가창면상원리421": {
+    "status": "success",
+    "latitude": 35.7780480496828,
+    "longitude": 128.664062963879,
+    "cached_at": 1754284973.9082801,
+    "original_address": "달성군 가창면 상원리 421"
+  },
+  "북구검단동187-1검단새1길455노목공예가구": {
+    "status": "success",
+    "latitude": 35.9199888361514,
+    "longitude": 128.62673959596,
+    "cached_at": 1754284974.071993,
+    "original_address": "북구 검단동 187-1 검단새1길455 노목공예가구"
+  },
+  "달서구신당동1860": {
+    "status": "success",
+    "latitude": 35.8496656382057,
+    "longitude": 128.499198415244,
+    "cached_at": 1754284974.2438111,
+    "original_address": "달서구 신당동 1860"
+  },
+  "수성구두산동133-4옛날따로국밥": {
+    "status": "success",
+    "latitude": 35.8350923292611,
+    "longitude": 128.619707904439,
+    "cached_at": 1754284974.4054148,
+    "original_address": "수성구 두산동 133-4 옛날따로국밥"
+  },
+  "수성구지산동1246": {
+    "status": "success",
+    "latitude": 35.8234159200841,
+    "longitude": 128.626666211759,
+    "cached_at": 1754284974.559693,
+    "original_address": "수성구 지산동 1246"
+  },
+  "달성군가창면삼산리326-4": {
+    "status": "success",
+    "latitude": 35.732049788793,
+    "longitude": 128.66172996423,
+    "cached_at": 1754284974.722759,
+    "original_address": "달성군 가창면 삼산리 326-4"
+  },
+  "달서구두류동1337-1": {
+    "status": "success",
+    "latitude": 35.8539847348098,
+    "longitude": 128.569662289572,
+    "cached_at": 1754284974.8855538,
+    "original_address": "달서구 두류동 1337-1"
+  },
+  "달서구대곡동1040": {
+    "status": "success",
+    "latitude": 35.803388214584,
+    "longitude": 128.517550925352,
+    "cached_at": 1754284975.041801,
+    "original_address": "달서구 대곡동 1040"
+  },
+  "달서구장동306-111대한통운": {
+    "status": "success",
+    "latitude": 35.8366283150497,
+    "longitude": 128.508132963021,
+    "cached_at": 1754284975.2023768,
+    "original_address": "달서구 장동 306-111 대한통운"
+  },
+  "서구북비산로31길13(평리동)/422-32번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284975.361578,
+    "original_address": "서구 북비산로31길 13 (평리동) / 422-32번지"
+  },
+  "북구구암동787-4": {
+    "status": "success",
+    "latitude": 35.9369061101121,
+    "longitude": 128.563448387527,
+    "cached_at": 1754284975.514673,
+    "original_address": "북구 구암동 787-4"
+  },
+  "동구효목동144-5번지선노후배수관정비공사": {
+    "status": "success",
+    "latitude": 35.8821191268137,
+    "longitude": 128.640715301656,
+    "cached_at": 1754284975.675949,
+    "original_address": "동구 효목동 144-5번지 선  노후 배수관 정비공사"
+  },
+  "서구북비산로65(이현동)/282-1번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284975.826541,
+    "original_address": "서구 북비산로 65 (이현동) / 282-1번지"
+  },
+  "수성구범어동800-3외91필지관리실": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284975.988419,
+    "original_address": "수성구 범어동 800-3 외91필지 관리실"
+  },
+  "북구침산동476-5": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284976.1420522,
+    "original_address": "북구 침산동 476-5"
+  },
+  "달성군하빈면봉촌리768-29": {
+    "status": "success",
+    "latitude": 35.8667916338688,
+    "longitude": 128.393702366534,
+    "cached_at": 1754284976.296194,
+    "original_address": "달성군 하빈면 봉촌리 768-29"
+  },
+  "동구신암동164-15": {
+    "status": "success",
+    "latitude": 35.8811178479309,
+    "longitude": 128.615539826668,
+    "cached_at": 1754284976.4628968,
+    "original_address": "동구 신암동 164-15"
+  },
+  "동구효목동50-12번지선노후배수관정비공사": {
+    "status": "success",
+    "latitude": 35.8830012803853,
+    "longitude": 128.639901462527,
+    "cached_at": 1754284976.627506,
+    "original_address": "동구 효목동 50-12번지 선 노후 배수관 정비공사"
+  },
+  "서구평리동635-11": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284976.777817,
+    "original_address": "서구 평리동 635-11"
+  },
+  "수성구중동7-7": {
+    "status": "success",
+    "latitude": 35.8508104925717,
+    "longitude": 128.614005528416,
+    "cached_at": 1754284976.92479,
+    "original_address": "수성구 중동 7-7"
+  },
+  "달성군가창면단산리922-2": {
+    "status": "success",
+    "latitude": 35.7615867297569,
+    "longitude": 128.660789089777,
+    "cached_at": 1754284977.0786319,
+    "original_address": "달성군 가창면 단산리 922-2"
+  },
+  "수성구만촌동1057-2": {
+    "status": "success",
+    "latitude": 35.8560098834884,
+    "longitude": 128.646575139745,
+    "cached_at": 1754284977.240059,
+    "original_address": "수성구 만촌동 1057-2"
+  },
+  "북구조야동253-2조야반점": {
+    "status": "success",
+    "latitude": 35.9109754651421,
+    "longitude": 128.576566992947,
+    "cached_at": 1754284977.416834,
+    "original_address": "북구 조야동 253-2 조야반점"
+  },
+  "북구검단동1024-8": {
+    "status": "success",
+    "latitude": 35.9118518168869,
+    "longitude": 128.626691267715,
+    "cached_at": 1754284977.584499,
+    "original_address": "북구 검단동 1024-8"
+  },
+  "달서구장기동825-5길우공원": {
+    "status": "success",
+    "latitude": 35.8423794497104,
+    "longitude": 128.528312499527,
+    "cached_at": 1754284977.7444448,
+    "original_address": "달서구 장기동 825-5 길우공원"
+  },
+  "달성군하빈면봉촌리34": {
+    "status": "success",
+    "latitude": 35.862734660597,
+    "longitude": 128.409926341712,
+    "cached_at": 1754284977.906118,
+    "original_address": "달성군 하빈면 봉촌리 34"
+  },
+  "달서구본동593": {
+    "status": "success",
+    "latitude": 35.8366874763812,
+    "longitude": 128.529042061046,
+    "cached_at": 1754284978.057535,
+    "original_address": "달서구 본동 593"
+  },
+  "달서구감삼동206-61": {
+    "status": "success",
+    "latitude": 35.8455259409292,
+    "longitude": 128.543859407205,
+    "cached_at": 1754284978.215851,
+    "original_address": "달서구 감삼동 206-61"
+  },
+  "달서구죽전동254-16": {
+    "status": "success",
+    "latitude": 35.8517914712085,
+    "longitude": 128.538711378751,
+    "cached_at": 1754284978.379651,
+    "original_address": "달서구 죽전동 254-16"
+  },
+  "달서구본동957": {
+    "status": "success",
+    "latitude": 35.8349476759934,
+    "longitude": 128.536553370531,
+    "cached_at": 1754284978.54243,
+    "original_address": "달서구 본동 957"
+  },
+  "서구이현동281-2": {
+    "status": "success",
+    "latitude": 35.8785566570243,
+    "longitude": 128.540489696571,
+    "cached_at": 1754284978.698486,
+    "original_address": "서구 이현동 281-2"
+  },
+  "동구효목동50-13번지선노후배수관정비공사": {
+    "status": "success",
+    "latitude": 35.8830855684308,
+    "longitude": 128.639885926398,
+    "cached_at": 1754284978.863783,
+    "original_address": "동구 효목동 50-13번지 선 노후 배수관 정비공사"
+  },
+  "동구효목동144-1번지선노후배수관교체공사": {
+    "status": "success",
+    "latitude": 35.8823780432484,
+    "longitude": 128.641564412038,
+    "cached_at": 1754284979.026706,
+    "original_address": "동구 효목동 144-1번지 선 노후 배수관 교체공사"
+  },
+  "동구효목동126-58번지선노후배수관정비공사": {
+    "status": "success",
+    "latitude": 35.8833327354161,
+    "longitude": 128.641120482386,
+    "cached_at": 1754284979.182255,
+    "original_address": "동구 효목동 126-58번지 선 노후 배수관 정비공사"
+  },
+  "북구복현동434-5태성빌a": {
+    "status": "success",
+    "latitude": 35.8932498903561,
+    "longitude": 128.618007460034,
+    "cached_at": 1754284979.3535318,
+    "original_address": "북구 복현동 434-5 태성빌A"
+  },
+  "북구칠성동2가101-14칠성로5길5-10": {
+    "status": "success",
+    "latitude": 35.8807227098072,
+    "longitude": 128.591554282885,
+    "cached_at": 1754284979.536226,
+    "original_address": "북구 칠성동2가 101-14 칠성로5길5-10"
+  },
+  "서구원대로55(원대동1가)/2-9번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284979.6944509,
+    "original_address": "서구 원대로 55 (원대동1가) / 2-9번지"
+  },
+  "동구신기동546": {
+    "status": "success",
+    "latitude": 35.8703315046728,
+    "longitude": 128.702084492737,
+    "cached_at": 1754284979.8589718,
+    "original_address": "동구 신기동 546"
+  },
+  "동구입석동976-3": {
+    "status": "success",
+    "latitude": 35.8930633906127,
+    "longitude": 128.64454967809,
+    "cached_at": 1754284980.026268,
+    "original_address": "동구 입석동 976-3"
+  },
+  "수성구만촌동445-23": {
+    "status": "success",
+    "latitude": 35.8732066635082,
+    "longitude": 128.642624383598,
+    "cached_at": 1754284980.185097,
+    "original_address": "수성구 만촌동 445-23"
+  },
+  "북구태전동401-2": {
+    "status": "success",
+    "latitude": 35.9253478026923,
+    "longitude": 128.547037362047,
+    "cached_at": 1754284980.352756,
+    "original_address": "북구 태전동 401-2"
+  },
+  "북구침산동476-50": {
+    "status": "success",
+    "latitude": 35.8911242148843,
+    "longitude": 128.586945445173,
+    "cached_at": 1754284980.51132,
+    "original_address": "북구 침산동 476-50"
+  },
+  "동구입석동966-5보길도낙지전문점": {
+    "status": "success",
+    "latitude": 35.8939103135379,
+    "longitude": 128.644915275525,
+    "cached_at": 1754284980.667934,
+    "original_address": "동구 입석동 966-5 보길도낙지전문점"
+  },
+  "달성군현풍읍대리485-2": {
+    "status": "success",
+    "latitude": 35.6667841178216,
+    "longitude": 128.434693327956,
+    "cached_at": 1754284980.8291981,
+    "original_address": "달성군 현풍읍 대리 485-2"
+  },
+  "달서구이곡동534-2현대카써비스": {
+    "status": "success",
+    "latitude": 35.8524872300638,
+    "longitude": 128.502453626649,
+    "cached_at": 1754284980.986686,
+    "original_address": "달서구 이곡동 534-2 현대카써비스"
+  },
+  "달서구대곡동4-1금강맨션관리사무소": {
+    "status": "success",
+    "latitude": 35.8067957391862,
+    "longitude": 128.510636468613,
+    "cached_at": 1754284981.1447601,
+    "original_address": "달서구 대곡동 4-1 금강맨션관리사무소"
+  },
+  "서구평리동1076-8": {
+    "status": "success",
+    "latitude": 35.8732100412185,
+    "longitude": 128.559177498951,
+    "cached_at": 1754284981.3038652,
+    "original_address": "서구 평리동 1076-8"
+  },
+  "서구중리동1044": {
+    "status": "success",
+    "latitude": 35.8644176530069,
+    "longitude": 128.534340055515,
+    "cached_at": 1754284981.4550688,
+    "original_address": "서구 중리동 1044"
+  },
+  "서구평리동1514-19": {
+    "status": "success",
+    "latitude": 35.8712564590553,
+    "longitude": 128.551277547112,
+    "cached_at": 1754284981.621378,
+    "original_address": "서구 평리동 1514-19"
+  },
+  "달성군가창면우록리1152주택": {
+    "status": "success",
+    "latitude": 35.7261024315458,
+    "longitude": 128.621353149267,
+    "cached_at": 1754284981.792704,
+    "original_address": "달성군 가창면 우록리 1152 주택"
+  },
+  "동구효목동348-11": {
+    "status": "success",
+    "latitude": 35.8794242456096,
+    "longitude": 128.640830119068,
+    "cached_at": 1754284981.965815,
+    "original_address": "동구 효목동 348-11"
+  },
+  "동구방촌동871-25재능교육(5층)": {
+    "status": "success",
+    "latitude": 35.8802661244075,
+    "longitude": 128.669042954124,
+    "cached_at": 1754284982.138077,
+    "original_address": "동구 방촌동 871-25 재능교육(5층)"
+  },
+  "북구침산동13-112골프인클럽": {
+    "status": "success",
+    "latitude": 35.8858185472142,
+    "longitude": 128.597975439011,
+    "cached_at": 1754284982.2966468,
+    "original_address": "북구 침산동 13-112 골프인클럽"
+  },
+  "북구노원동3가1032-21동": {
+    "status": "success",
+    "latitude": 35.8937161386692,
+    "longitude": 128.570815282331,
+    "cached_at": 1754284982.57334,
+    "original_address": "북구 노원동3가 1032-2 1동"
+  },
+  "달서구호산동76-4": {
+    "status": "success",
+    "latitude": 35.8525682598564,
+    "longitude": 128.486064248079,
+    "cached_at": 1754284982.740222,
+    "original_address": "달서구 호산동 76-4"
+  },
+  "달서구이곡동1306-3미소공원": {
+    "status": "success",
+    "latitude": 35.8575841016921,
+    "longitude": 128.510292627351,
+    "cached_at": 1754284982.907236,
+    "original_address": "달서구 이곡동 1306-3 미소공원"
+  },
+  "달성군다사읍서재리881-3": {
+    "status": "success",
+    "latitude": 35.8728935327776,
+    "longitude": 128.485583271223,
+    "cached_at": 1754284983.066754,
+    "original_address": "달성군 다사읍 서재리 881-3"
+  },
+  "북구침산남로7길1(노원동1가)/180-5번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284983.2388139,
+    "original_address": "북구 침산남로7길 1 (노원동1가) / 180-5번지"
+  },
+  "달서구상인동243-3": {
+    "status": "success",
+    "latitude": 35.8160868427415,
+    "longitude": 128.539396372637,
+    "cached_at": 1754284983.4055738,
+    "original_address": "달서구 상인동 243-3"
+  },
+  "달서구본동611-2": {
+    "status": "success",
+    "latitude": 35.8353301208694,
+    "longitude": 128.530113608288,
+    "cached_at": 1754284983.571572,
+    "original_address": "달서구 본동 611-2"
+  },
+  "달서구두류동610-5": {
+    "status": "success",
+    "latitude": 35.8544586403133,
+    "longitude": 128.552500109291,
+    "cached_at": 1754284983.8413901,
+    "original_address": "달서구 두류동 610-5"
+  },
+  "수성구신매동603-6짬뽕전문점": {
+    "status": "success",
+    "latitude": 35.8299194575622,
+    "longitude": 128.706426906074,
+    "cached_at": 1754284984.106983,
+    "original_address": "수성구 신매동 603-6 짬뽕전문점"
+  },
+  "북구산격동724-12매잠공원": {
+    "status": "success",
+    "latitude": 35.900449140835,
+    "longitude": 128.594989371171,
+    "cached_at": 1754284984.2736928,
+    "original_address": "북구 산격동 724-12 매잠공원"
+  },
+  "달서구신당동1671-6501호": {
+    "status": "success",
+    "latitude": 35.8601368010018,
+    "longitude": 128.496735984829,
+    "cached_at": 1754284984.4557152,
+    "original_address": "달서구 신당동 1671-6 501호"
+  },
+  "달성군가창면상원리194-2": {
+    "status": "success",
+    "latitude": 35.7786219727381,
+    "longitude": 128.659754984845,
+    "cached_at": 1754284984.620262,
+    "original_address": "달성군 가창면 상원리 194-2"
+  },
+  "수성구신매동369-6": {
+    "status": "success",
+    "latitude": 35.8404423244208,
+    "longitude": 128.707556498439,
+    "cached_at": 1754284984.7767081,
+    "original_address": "수성구 신매동 369-6"
+  },
+  "수성구상동623-1기아부품대리점": {
+    "status": "success",
+    "latitude": 35.8260179702434,
+    "longitude": 128.609400162804,
+    "cached_at": 1754284984.953643,
+    "original_address": "수성구 상동 623-1 기아부품대리점"
+  },
+  "수성구범어동270-2": {
+    "status": "success",
+    "latitude": 35.8554583292969,
+    "longitude": 128.636867105937,
+    "cached_at": 1754284985.1198049,
+    "original_address": "수성구 범어동 270-2"
+  },
+  "달성군가창면대일리429-1": {
+    "status": "success",
+    "latitude": 35.7694006112724,
+    "longitude": 128.644125245571,
+    "cached_at": 1754284985.278847,
+    "original_address": "달성군 가창면 대일리 429-1"
+  },
+  "달서구월성동500-3": {
+    "status": "success",
+    "latitude": 35.8238392874061,
+    "longitude": 128.533097004315,
+    "cached_at": 1754284985.441201,
+    "original_address": "달서구 월성동 500-3"
+  },
+  "달서구이곡동1330": {
+    "status": "success",
+    "latitude": 35.8603209572464,
+    "longitude": 128.508108588464,
+    "cached_at": 1754284985.596771,
+    "original_address": "달서구 이곡동 1330"
+  },
+  "수성구신매동366-4국시왕": {
+    "status": "success",
+    "latitude": 35.8402131949988,
+    "longitude": 128.708568652448,
+    "cached_at": 1754284985.76292,
+    "original_address": "수성구 신매동 366-4 국시왕"
+  },
+  "서구비산동1820-2일진진공사": {
+    "status": "success",
+    "latitude": 35.886520891555,
+    "longitude": 128.555222205069,
+    "cached_at": 1754284985.919762,
+    "original_address": "서구 비산동 1820-2 일진진공사"
+  },
+  "수성구두산동22-6": {
+    "status": "success",
+    "latitude": 35.839202555165,
+    "longitude": 128.619673167159,
+    "cached_at": 1754284986.0906901,
+    "original_address": "수성구 두산동 22-6"
+  },
+  "동구신암동708-93번지선노후배수관정비공사": {
+    "status": "success",
+    "latitude": 35.8851827860956,
+    "longitude": 128.616250160876,
+    "cached_at": 1754284986.244134,
+    "original_address": "동구 신암동 708-93번지 선 노후 배수관 정비공사"
+  },
+  "수성구만촌동883-35무열태권도": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284986.406066,
+    "original_address": "수성구 만촌동 883-35 무열 태권도"
+  },
+  "달서구본동884-1평화빌라402": {
+    "status": "success",
+    "latitude": 35.8362308511763,
+    "longitude": 128.534612758329,
+    "cached_at": 1754284986.570096,
+    "original_address": "달서구 본동 884-1 평화빌라 402"
+  },
+  "달서구월성동1540-4한올면옥": {
+    "status": "success",
+    "latitude": 35.8242097220688,
+    "longitude": 128.523725614044,
+    "cached_at": 1754284986.7340858,
+    "original_address": "달서구 월성동 1540-4 한올면옥"
+  },
+  "서구비산동711-8": {
+    "status": "success",
+    "latitude": 35.8815247929651,
+    "longitude": 128.568481211661,
+    "cached_at": 1754284986.9029078,
+    "original_address": "서구 비산동 711-8"
+  },
+  "서구비산동772-3": {
+    "status": "success",
+    "latitude": 35.8827032396371,
+    "longitude": 128.56580733925,
+    "cached_at": 1754284987.061387,
+    "original_address": "서구 비산동 772-3"
+  },
+  "서구평리동1048-3": {
+    "status": "success",
+    "latitude": 35.8748370510216,
+    "longitude": 128.565509891782,
+    "cached_at": 1754284987.214292,
+    "original_address": "서구 평리동 1048-3"
+  },
+  "서구평리동1050-4": {
+    "status": "success",
+    "latitude": 35.8734090186257,
+    "longitude": 128.56481038753,
+    "cached_at": 1754284987.379576,
+    "original_address": "서구 평리동 1050-4"
+  },
+  "동구각산동1072-1번지앞공기변철개수선공사": {
+    "status": "success",
+    "latitude": 35.879760946273,
+    "longitude": 128.7165784356,
+    "cached_at": 1754284987.5529642,
+    "original_address": "동구 각산동 1072-1번지 앞 공기변 철개 수선공사"
+  },
+  "북구대현동419-32": {
+    "status": "success",
+    "latitude": 35.884069214829,
+    "longitude": 128.604695497603,
+    "cached_at": 1754284987.709006,
+    "original_address": "북구 대현동 419-32"
+  },
+  "북구노곡동590": {
+    "status": "success",
+    "latitude": 35.8984572566075,
+    "longitude": 128.552376072388,
+    "cached_at": 1754284987.863091,
+    "original_address": "북구 노곡동 590"
+  },
+  "북구산격동815-3연암로32길26-5": {
+    "status": "success",
+    "latitude": 35.8993131736736,
+    "longitude": 128.596656589105,
+    "cached_at": 1754284988.032282,
+    "original_address": "북구 산격동 815-3 연암로32길26-5"
+  },
+  "북구산격동815-26연암로32길28-6": {
+    "status": "success",
+    "latitude": 35.8993413300596,
+    "longitude": 128.596538314334,
+    "cached_at": 1754284988.216618,
+    "original_address": "북구 산격동 815-26 연암로32길28-6"
+  },
+  "달서구본동756-23": {
+    "status": "success",
+    "latitude": 35.8358982925787,
+    "longitude": 128.538828776232,
+    "cached_at": 1754284988.378657,
+    "original_address": "달서구 본동 756-23"
+  },
+  "달서구용산동230-17외2필지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284988.527628,
+    "original_address": "달서구 용산동 230-17 외 2필지"
+  },
+  "달서구두류동140-14": {
+    "status": "success",
+    "latitude": 35.8570798149839,
+    "longitude": 128.560546762951,
+    "cached_at": 1754284988.689591,
+    "original_address": "달서구 두류동 140-14"
+  },
+  "달서구두류동848-7": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284988.832572,
+    "original_address": "달서구 두류동 848-7"
+  },
+  "달서구두류동1192-13우주문구": {
+    "status": "success",
+    "latitude": 35.8606105446578,
+    "longitude": 128.573393404155,
+    "cached_at": 1754284988.999319,
+    "original_address": "달서구 두류동 1192-13 우주문구"
+  },
+  "달서구본동706국가대표미용실": {
+    "status": "success",
+    "latitude": 35.8356236863112,
+    "longitude": 128.531933642097,
+    "cached_at": 1754284989.151382,
+    "original_address": "달서구 본동 706 국가대표미용실"
+  },
+  "달성군하빈면대평리176-5": {
+    "status": "success",
+    "latitude": 35.9358085976468,
+    "longitude": 128.468043027788,
+    "cached_at": 1754284989.3033862,
+    "original_address": "달성군 하빈면 대평리 176-5"
+  },
+  "달서구두류동140-3리치타운": {
+    "status": "success",
+    "latitude": 35.8571452553026,
+    "longitude": 128.560351226387,
+    "cached_at": 1754284989.483988,
+    "original_address": "달서구 두류동 140-3 리치타운"
+  },
+  "서구비산동29-12통6반": {
+    "status": "success",
+    "latitude": 35.87875068909,
+    "longitude": 128.574281529398,
+    "cached_at": 1754284989.6502888,
+    "original_address": "서구 비산동 29-12 통6반"
+  },
+  "서구비산동892-9": {
+    "status": "success",
+    "latitude": 35.8834396981715,
+    "longitude": 128.558412317255,
+    "cached_at": 1754284989.817232,
+    "original_address": "서구 비산동 892-9"
+  },
+  "서구평리동1090-16": {
+    "status": "success",
+    "latitude": 35.8719350211044,
+    "longitude": 128.556696350866,
+    "cached_at": 1754284989.989592,
+    "original_address": "서구 평리동 1090-16"
+  },
+  "서구비산동1821-1": {
+    "status": "success",
+    "latitude": 35.8863529534421,
+    "longitude": 128.555087253359,
+    "cached_at": 1754284990.1522229,
+    "original_address": "서구 비산동 1821-1"
+  },
+  "서구비산동1025-241": {
+    "status": "success",
+    "latitude": 35.8853894570197,
+    "longitude": 128.568114376615,
+    "cached_at": 1754284990.31307,
+    "original_address": "서구 비산동 1025-241"
+  },
+  "서구평리동956-9": {
+    "status": "success",
+    "latitude": 35.8764373793506,
+    "longitude": 128.559943184686,
+    "cached_at": 1754284990.4774091,
+    "original_address": "서구 평리동 956-9"
+  },
+  "달서구이곡동124-4402호": {
+    "status": "success",
+    "latitude": 35.8561019443493,
+    "longitude": 128.509670954682,
+    "cached_at": 1754284990.649096,
+    "original_address": "달서구 이곡동 124-4 402호"
+  },
+  "서구평리동697-3": {
+    "status": "success",
+    "latitude": 35.8773840192378,
+    "longitude": 128.560332788617,
+    "cached_at": 1754284990.810692,
+    "original_address": "서구 평리동 697-3"
+  },
+  "달서구감삼동280-7선화고철": {
+    "status": "success",
+    "latitude": 35.8449246960696,
+    "longitude": 128.537520596293,
+    "cached_at": 1754284990.9686909,
+    "original_address": "달서구 감삼동 280-7 선화고철"
+  },
+  "달성군다사읍매곡리682": {
+    "status": "success",
+    "latitude": 35.8639937902572,
+    "longitude": 128.457587344417,
+    "cached_at": 1754284991.129631,
+    "original_address": "달성군 다사읍 매곡리 682"
+  },
+  "동구효목동510-1아름다운치과": {
+    "status": "success",
+    "latitude": 35.8725013183274,
+    "longitude": 128.635256875562,
+    "cached_at": 1754284991.292895,
+    "original_address": "동구 효목동 510-1 아름다운치과"
+  },
+  "북구매천동515-6매천로15길14": {
+    "status": "success",
+    "latitude": 35.9034791642673,
+    "longitude": 128.539174764487,
+    "cached_at": 1754284991.452001,
+    "original_address": "북구 매천동 515-6 매천로15길14"
+  },
+  "달서구두류동631-7": {
+    "status": "success",
+    "latitude": 35.8518491662979,
+    "longitude": 128.550728775163,
+    "cached_at": 1754284991.6099699,
+    "original_address": "달서구 두류동 631-7"
+  },
+  "달성군하빈면묘리637": {
+    "status": "success",
+    "latitude": 35.9110720622326,
+    "longitude": 128.41667737118,
+    "cached_at": 1754284991.774648,
+    "original_address": "달성군 하빈면 묘리 637"
+  },
+  "달서구성당동223-7": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284991.925611,
+    "original_address": "달서구 성당동 223-7"
+  },
+  "달서구두류동101-1": {
+    "status": "success",
+    "latitude": 35.8591222293545,
+    "longitude": 128.562331542367,
+    "cached_at": 1754284992.088219,
+    "original_address": "달서구 두류동 101-1"
+  },
+  "달성군하빈면봉촌리380-1": {
+    "status": "success",
+    "latitude": 35.8739075185335,
+    "longitude": 128.407313391852,
+    "cached_at": 1754284992.2491279,
+    "original_address": "달성군 하빈면 봉촌리 380-1"
+  },
+  "달서구감삼동521우방드림시티관리사무소": {
+    "status": "success",
+    "latitude": 35.8452250813298,
+    "longitude": 128.534656661039,
+    "cached_at": 1754284992.419586,
+    "original_address": "달서구 감삼동 521 우방드림시티관리사무소"
+  },
+  "서구중리동1157-4": {
+    "status": "success",
+    "latitude": 35.8605698792267,
+    "longitude": 128.5382602397,
+    "cached_at": 1754284992.578547,
+    "original_address": "서구 중리동 1157-4"
+  },
+  "서구비산동1295-15": {
+    "status": "success",
+    "latitude": 35.8865321115097,
+    "longitude": 128.559214420559,
+    "cached_at": 1754284992.731571,
+    "original_address": "서구 비산동 1295-15"
+  },
+  "서구평리동678-8": {
+    "status": "success",
+    "latitude": 35.8775512874432,
+    "longitude": 128.559054864869,
+    "cached_at": 1754284992.8845382,
+    "original_address": "서구 평리동 678-8"
+  },
+  "서구상리동517-7": {
+    "status": "success",
+    "latitude": 35.8694596717483,
+    "longitude": 128.526887968807,
+    "cached_at": 1754284993.039904,
+    "original_address": "서구 상리동 517-7"
+  },
+  "동구신암동206-30": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284993.1845791,
+    "original_address": "동구 신암동 206-30"
+  },
+  "수성구지산동1157-7폴리파크": {
+    "status": "success",
+    "latitude": 35.8271189870169,
+    "longitude": 128.62773812402,
+    "cached_at": 1754284993.347646,
+    "original_address": "수성구 지산동 1157-7 폴리파크"
+  },
+  "서구비산동2295": {
+    "status": "success",
+    "latitude": 35.8795246258497,
+    "longitude": 128.576484056996,
+    "cached_at": 1754284993.514963,
+    "original_address": "서구 비산동 2295"
+  },
+  "서구비산동125-5": {
+    "status": "success",
+    "latitude": 35.8755436321711,
+    "longitude": 128.575969690902,
+    "cached_at": 1754284993.684553,
+    "original_address": "서구 비산동 125-5"
+  },
+  "서구평리동742-17": {
+    "status": "success",
+    "latitude": 35.876970153412,
+    "longitude": 128.5652057449,
+    "cached_at": 1754284993.838845,
+    "original_address": "서구 평리동 742-17"
+  },
+  "서구평리동1046-9": {
+    "status": "success",
+    "latitude": 35.8756120132746,
+    "longitude": 128.565407997453,
+    "cached_at": 1754284994.000174,
+    "original_address": "서구 평리동 1046-9"
+  },
+  "서구평리동1174-35": {
+    "status": "success",
+    "latitude": 35.8689934867205,
+    "longitude": 128.566559511597,
+    "cached_at": 1754284994.170843,
+    "original_address": "서구 평리동 1174-35"
+  },
+  "달서구상인동1417-8": {
+    "status": "success",
+    "latitude": 35.8140804330581,
+    "longitude": 128.539021960251,
+    "cached_at": 1754284994.3362272,
+    "original_address": "달서구 상인동 1417-8"
+  },
+  "달성군다사읍이천리472": {
+    "status": "success",
+    "latitude": 35.8898743591827,
+    "longitude": 128.46403461223,
+    "cached_at": 1754284994.499594,
+    "original_address": "달성군 다사읍 이천리 472"
+  },
+  "달성군다사읍세천리1560-11": {
+    "status": "success",
+    "latitude": 35.8781800154157,
+    "longitude": 128.476849691504,
+    "cached_at": 1754284994.661396,
+    "original_address": "달성군 다사읍 세천리 1560-11"
+  },
+  "달서구상인동460-2": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284994.818125,
+    "original_address": "달서구 상인동 460-2"
+  },
+  "달성군다사읍문산리429": {
+    "status": "success",
+    "latitude": 35.8520450203908,
+    "longitude": 128.429007002257,
+    "cached_at": 1754284994.9727979,
+    "original_address": "달성군 다사읍 문산리 429"
+  },
+  "달서구상인동1539-16": {
+    "status": "success",
+    "latitude": 35.8158625063083,
+    "longitude": 128.547748788491,
+    "cached_at": 1754284995.144151,
+    "original_address": "달서구 상인동 1539-16"
+  },
+  "달서구당산로24길58(성당동)/711-25번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754284995.293565,
+    "original_address": "달서구 당산로24길 58 (성당동) / 711-25번지"
+  },
+  "수성구사월동26더킹셀프세차장": {
+    "status": "success",
+    "latitude": 35.8403980430875,
+    "longitude": 128.722393995033,
+    "cached_at": 1754284995.454559,
+    "original_address": "수성구 사월동 26 더킹셀프세차장"
+  },
+  "북구복현동402-6꼬모모텔": {
+    "status": "success",
+    "latitude": 35.8961203022131,
+    "longitude": 128.613794129281,
+    "cached_at": 1754284995.629803,
+    "original_address": "북구 복현동 402-6 꼬모모텔"
+  },
+  "수성구신매동567-20": {
+    "status": "success",
+    "latitude": 35.8393238710399,
+    "longitude": 128.708517814449,
+    "cached_at": 1754284995.794385,
+    "original_address": "수성구 신매동 567-20"
+  },
+  "수성구만촌동1326-9": {
+    "status": "success",
+    "latitude": 35.8717392414372,
+    "longitude": 128.636188720756,
+    "cached_at": 1754284995.9608698,
+    "original_address": "수성구 만촌동 1326-9"
+  },
+  "수성구두산동65-5": {
+    "status": "success",
+    "latitude": 35.8359039005559,
+    "longitude": 128.6180424941,
+    "cached_at": 1754284996.1260118,
+    "original_address": "수성구 두산동 65-5"
+  },
+  "달성군가창면행정리923-4": {
+    "status": "success",
+    "latitude": 35.7795871952082,
+    "longitude": 128.656003570173,
+    "cached_at": 1754284996.3188322,
+    "original_address": "달성군 가창면 행정리 923-4"
+  },
+  "북구노원동3가86(급수중지15.01.28)": {
+    "status": "success",
+    "latitude": 35.8979524936429,
+    "longitude": 128.573190380401,
+    "cached_at": 1754284996.4828138,
+    "original_address": "북구 노원동3가 86 (급수중지 15.01.28)"
+  },
+  "수성구범어동784-2": {
+    "status": "success",
+    "latitude": 35.8566342657265,
+    "longitude": 128.623904195345,
+    "cached_at": 1754284996.651561,
+    "original_address": "수성구 범어동 784-2"
+  },
+  "수성구두산동739-7": {
+    "status": "success",
+    "latitude": 35.8270338512859,
+    "longitude": 128.626565222477,
+    "cached_at": 1754284996.815866,
+    "original_address": "수성구 두산동 739-7"
+  },
+  "남구이천동388-25": {
+    "status": "success",
+    "latitude": 35.854952994079,
+    "longitude": 128.599754621626,
+    "cached_at": 1754284996.9777012,
+    "original_address": "남구 이천동 388-25"
+  },
+  "서구비산동917-5": {
+    "status": "success",
+    "latitude": 35.8839826508787,
+    "longitude": 128.561616206167,
+    "cached_at": 1754284997.134994,
+    "original_address": "서구 비산동 917-5"
+  },
+  "서구비산동538-21": {
+    "status": "success",
+    "latitude": 35.8784779510947,
+    "longitude": 128.569728037077,
+    "cached_at": 1754284997.292874,
+    "original_address": "서구 비산동 538-21"
+  },
+  "서구비산동68-12": {
+    "status": "success",
+    "latitude": 35.8782318944637,
+    "longitude": 128.57225958781,
+    "cached_at": 1754284997.453141,
+    "original_address": "서구 비산동 68-12"
+  },
+  "달서구성당동827-14": {
+    "status": "success",
+    "latitude": 35.8383850871671,
+    "longitude": 128.551095691196,
+    "cached_at": 1754284997.611284,
+    "original_address": "달서구 성당동 827-14"
+  },
+  "동구미대동262-1": {
+    "status": "success",
+    "latitude": 35.9590836537893,
+    "longitude": 128.668619392376,
+    "cached_at": 1754284997.775928,
+    "original_address": "동구 미대동 262-1"
+  },
+  "달성군하빈면현내리886-7": {
+    "status": "success",
+    "latitude": 35.9013076976348,
+    "longitude": 128.44358994166,
+    "cached_at": 1754284997.939583,
+    "original_address": "달성군 하빈면 현내리 886-7"
+  },
+  "북구산격동750-3신세계마트,로얄세탁": {
+    "status": "success",
+    "latitude": 35.9002300337817,
+    "longitude": 128.596077365565,
+    "cached_at": 1754284998.114089,
+    "original_address": "북구 산격동 750-3 신세계마트,로얄세탁"
+  },
+  "달서구죽전동203-18서경명작빌101동302호": {
+    "status": "success",
+    "latitude": 35.8565000519072,
+    "longitude": 128.539825107531,
+    "cached_at": 1754284998.2775848,
+    "original_address": "달서구 죽전동 203-18 서경명작빌 101동 302호"
+  },
+  "달서구신당동528태양하이츠302호": {
+    "status": "success",
+    "latitude": 35.8578389274296,
+    "longitude": 128.496657355994,
+    "cached_at": 1754284998.438116,
+    "original_address": "달서구 신당동 528 태양하이츠 302호"
+  },
+  "남구봉덕동546-30": {
+    "status": "success",
+    "latitude": 35.8478271388674,
+    "longitude": 128.596391675282,
+    "cached_at": 1754284998.606969,
+    "original_address": "남구 봉덕동 546-30"
+  },
+  "서구평리동1051-18": {
+    "status": "success",
+    "latitude": 35.8725271855884,
+    "longitude": 128.564801236701,
+    "cached_at": 1754284998.7751381,
+    "original_address": "서구 평리동 1051-18"
+  },
+  "서구평리동1102-11": {
+    "status": "success",
+    "latitude": 35.8701792795552,
+    "longitude": 128.56371245664,
+    "cached_at": 1754284998.940625,
+    "original_address": "서구 평리동 1102-11"
+  },
+  "수성구수성동2가232-1이화수전통육개장수성점": {
+    "status": "success",
+    "latitude": 35.8570816366885,
+    "longitude": 128.614172959577,
+    "cached_at": 1754284999.0935318,
+    "original_address": "수성구 수성동2가 232-1 이화수전통육개장 수성점"
+  },
+  "달서구성당동228-13": {
+    "status": "success",
+    "latitude": 35.8381468615965,
+    "longitude": 128.556242666111,
+    "cached_at": 1754284999.261068,
+    "original_address": "달서구 성당동 228-13"
+  },
+  "달서구감삼동634-1": {
+    "status": "success",
+    "latitude": 35.8482709040376,
+    "longitude": 128.530933575642,
+    "cached_at": 1754284999.419996,
+    "original_address": "달서구 감삼동 634-1"
+  },
+  "달서구장기동810-4용산역": {
+    "status": "success",
+    "latitude": 35.8485775404923,
+    "longitude": 128.529959459931,
+    "cached_at": 1754284999.5795908,
+    "original_address": "달서구 장기동 810-4 용산역"
+  },
+  "달서구두류동777-9": {
+    "status": "success",
+    "latitude": 35.8554809038122,
+    "longitude": 128.573561449155,
+    "cached_at": 1754284999.740327,
+    "original_address": "달서구 두류동 777-9"
+  },
+  "달성군다사읍박곡리635": {
+    "status": "success",
+    "latitude": 35.8871463955613,
+    "longitude": 128.495739681115,
+    "cached_at": 1754284999.89906,
+    "original_address": "달성군 다사읍 박곡리 635"
+  },
+  "수성구만촌동658-17": {
+    "status": "success",
+    "latitude": 35.8688864384002,
+    "longitude": 128.642301369729,
+    "cached_at": 1754285000.064023,
+    "original_address": "수성구 만촌동 658-17"
+  },
+  "수성구시지동240-5": {
+    "status": "success",
+    "latitude": 35.8422622315296,
+    "longitude": 128.692739973368,
+    "cached_at": 1754285000.2228632,
+    "original_address": "수성구 시지동 240-5"
+  },
+  "동구신암동360-30번지선노후배수관정비공사": {
+    "status": "success",
+    "latitude": 35.8821629692502,
+    "longitude": 128.632797860023,
+    "cached_at": 1754285000.390122,
+    "original_address": "동구 신암동 360-30번지 선 노후 배수관 정비공사"
+  },
+  "동구효목동126-31번지선노후배수관정비공사": {
+    "status": "success",
+    "latitude": 35.8831307176491,
+    "longitude": 128.640268439516,
+    "cached_at": 1754285000.5519328,
+    "original_address": "동구 효목동 126-31번지 선 노후 배수관 정비공사"
+  },
+  "동구효목동962-1": {
+    "status": "success",
+    "latitude": 35.8854719912321,
+    "longitude": 128.635231105771,
+    "cached_at": 1754285000.71562,
+    "original_address": "동구 효목동 962-1"
+  },
+  "북구산격동20-15한불이엔지": {
+    "status": "success",
+    "latitude": 35.9124667771572,
+    "longitude": 128.610213166304,
+    "cached_at": 1754285000.8889759,
+    "original_address": "북구 산격동 20-15 한불이엔지"
+  },
+  "달서구장동306-53카미리": {
+    "status": "success",
+    "latitude": 35.8379025349758,
+    "longitude": 128.51222126102,
+    "cached_at": 1754285001.052959,
+    "original_address": "달서구 장동 306-53 카미리"
+  },
+  "달서구성당동353-1": {
+    "status": "success",
+    "latitude": 35.8388025734648,
+    "longitude": 128.553844936651,
+    "cached_at": 1754285001.2091641,
+    "original_address": "달서구 성당동 353-1"
+  },
+  "달서구감삼동169-9": {
+    "status": "success",
+    "latitude": 35.8474524215118,
+    "longitude": 128.538133996172,
+    "cached_at": 1754285001.367129,
+    "original_address": "달서구 감삼동 169-9"
+  },
+  "달서구달구벌대로378길23-18(두류동)/1215-16번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754285001.524163,
+    "original_address": "달서구 달구벌대로378길 23-18 (두류동) / 1215-16번지"
+  },
+  "수성구시지동485-4": {
+    "status": "success",
+    "latitude": 35.8410405811953,
+    "longitude": 128.692284712248,
+    "cached_at": 1754285001.69899,
+    "original_address": "수성구 시지동 485-4"
+  },
+  "달성군다사읍세천리258-1": {
+    "status": "success",
+    "latitude": 35.8792898359059,
+    "longitude": 128.472464599504,
+    "cached_at": 1754285001.8616772,
+    "original_address": "달성군 다사읍 세천리 258-1"
+  },
+  "달서구상인동824-1하모니어린이집": {
+    "status": "success",
+    "latitude": 35.8188214992404,
+    "longitude": 128.549116149117,
+    "cached_at": 1754285002.026765,
+    "original_address": "달서구 상인동 824-1 하모니어린이집"
+  },
+  "달성군논공읍북리1-96": {
+    "status": "success",
+    "latitude": 35.7313675457091,
+    "longitude": 128.468137401634,
+    "cached_at": 1754285002.193783,
+    "original_address": "달성군 논공읍 북리 1-96"
+  },
+  "수성구고모동492-1": {
+    "status": "success",
+    "latitude": 35.8581970288116,
+    "longitude": 128.673731582489,
+    "cached_at": 1754285002.3645408,
+    "original_address": "수성구 고모동 492-1"
+  },
+  "수성구만촌동863-38": {
+    "status": "success",
+    "latitude": 35.8530560139561,
+    "longitude": 128.651651385832,
+    "cached_at": 1754285002.5365472,
+    "original_address": "수성구 만촌동 863-38"
+  },
+  "수성구황금동93-4용춘빌딩": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754285002.685645,
+    "original_address": "수성구 황금동 93-4 용춘빌딩"
+  },
+  "달서구본리동424-3은하아파트102동201호": {
+    "status": "success",
+    "latitude": 35.8415758257406,
+    "longitude": 128.534870564308,
+    "cached_at": 1754285002.855965,
+    "original_address": "달서구 본리동 424-3 은하아파트 102동 201호"
+  },
+  "달성군하빈면하빈로118/감문리815번지": {
+    "status": "success",
+    "latitude": 35.8862069374882,
+    "longitude": 128.421351238375,
+    "cached_at": 1754285003.121057,
+    "original_address": "달성군 하빈면  하빈로 118 / 감문리 815번지"
+  },
+  "서구평리동684-19층": {
+    "status": "success",
+    "latitude": 35.875781767673,
+    "longitude": 128.557348377825,
+    "cached_at": 1754285003.284353,
+    "original_address": "서구 평리동 684-19 층"
+  },
+  "달성군가창면냉천리97": {
+    "status": "success",
+    "latitude": 35.7849048634871,
+    "longitude": 128.640742484439,
+    "cached_at": 1754285003.450497,
+    "original_address": "달성군 가창면 냉천리 97"
+  },
+  "북구대현동326-12": {
+    "status": "success",
+    "latitude": 35.8791514282017,
+    "longitude": 128.606723785959,
+    "cached_at": 1754285003.607594,
+    "original_address": "북구 대현동 326-12"
+  },
+  "북구대현동419-21": {
+    "status": "success",
+    "latitude": 35.8836946588512,
+    "longitude": 128.605345917095,
+    "cached_at": 1754285003.7708428,
+    "original_address": "북구 대현동 419-21"
+  },
+  "달서구갈산동358-35경창산업(주)": {
+    "status": "success",
+    "latitude": 35.8383027649455,
+    "longitude": 128.495349085585,
+    "cached_at": 1754285003.9339368,
+    "original_address": "달서구 갈산동 358-35 경창산업(주)"
+  },
+  "달서구두류동848-20": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754285004.089445,
+    "original_address": "달서구 두류동 848-20"
+  },
+  "달서구두류동848-1": {
+    "status": "success",
+    "latitude": 35.855214293602,
+    "longitude": 128.572271462845,
+    "cached_at": 1754285004.251998,
+    "original_address": "달서구 두류동 848-1"
+  },
+  "달성군다사읍서재리217": {
+    "status": "success",
+    "latitude": 35.8731761986744,
+    "longitude": 128.494592232413,
+    "cached_at": 1754285004.415663,
+    "original_address": "달성군 다사읍 서재리 217"
+  },
+  "달서구진천동248-33102동201호": {
+    "status": "success",
+    "latitude": 35.8134613173099,
+    "longitude": 128.526942300555,
+    "cached_at": 1754285004.583478,
+    "original_address": "달서구 진천동 248-33 102동201호"
+  },
+  "달성군다사읍매곡리885-1": {
+    "status": "success",
+    "latitude": 35.8617347923281,
+    "longitude": 128.454156737736,
+    "cached_at": 1754285004.752088,
+    "original_address": "달성군 다사읍 매곡리 885-1"
+  },
+  "달서구감삼동196-1": {
+    "status": "success",
+    "latitude": 35.8489192461816,
+    "longitude": 128.545372299757,
+    "cached_at": 1754285004.92726,
+    "original_address": "달서구 감삼동 196-1"
+  },
+  "수성구만촌동652-7": {
+    "status": "success",
+    "latitude": 35.8702218474716,
+    "longitude": 128.643248965276,
+    "cached_at": 1754285005.104759,
+    "original_address": "수성구 만촌동 652-7"
+  },
+  "서구이현동42-132송학맨션201호": {
+    "status": "success",
+    "latitude": 35.8777097877233,
+    "longitude": 128.544486560136,
+    "cached_at": 1754285005.273277,
+    "original_address": "서구 이현동 42-132 송학맨션 201호"
+  },
+  "서구비산동839-41": {
+    "status": "success",
+    "latitude": 35.8817937101703,
+    "longitude": 128.556435399225,
+    "cached_at": 1754285005.427636,
+    "original_address": "서구 비산동 839-41"
+  },
+  "달성군현풍읍현풍서로580/자모리859번지": {
+    "status": "success",
+    "latitude": 35.6979027058381,
+    "longitude": 128.380594010727,
+    "cached_at": 1754285005.588511,
+    "original_address": "달성군 현풍읍  현풍서로 580 / 자모리 859번지"
+  },
+  "서구평리동622-16": {
+    "status": "success",
+    "latitude": 35.8751923437209,
+    "longitude": 128.552147174492,
+    "cached_at": 1754285005.7538161,
+    "original_address": "서구 평리동 622-16"
+  },
+  "달서구송현동1943109동상가": {
+    "status": "success",
+    "latitude": 35.8256752718407,
+    "longitude": 128.548204674529,
+    "cached_at": 1754285005.9267619,
+    "original_address": "달서구 송현동 1943 109동상가"
+  },
+  "서구비산동592-2그린마트": {
+    "status": "success",
+    "latitude": 35.8819669414328,
+    "longitude": 128.570043051081,
+    "cached_at": 1754285006.094354,
+    "original_address": "서구 비산동 592-2 그린마트"
+  },
+  "서구평리동742-59": {
+    "status": "success",
+    "latitude": 35.8765952219757,
+    "longitude": 128.565887403667,
+    "cached_at": 1754285006.2611861,
+    "original_address": "서구 평리동 742-59"
+  },
+  "달성군가창면행정리884-1": {
+    "status": "success",
+    "latitude": 35.7801735650429,
+    "longitude": 128.656612358722,
+    "cached_at": 1754285006.4233139,
+    "original_address": "달성군 가창면 행정리 884-1"
+  },
+  "동구용수동653-1": {
+    "status": "success",
+    "latitude": 35.9773758828435,
+    "longitude": 128.675526289239,
+    "cached_at": 1754285006.590181,
+    "original_address": "동구 용수동 653-1"
+  },
+  "동구신평동760-48": {
+    "status": "success",
+    "latitude": 35.8793714003766,
+    "longitude": 128.675364909067,
+    "cached_at": 1754285006.758216,
+    "original_address": "동구 신평동 760-48"
+  },
+  "동구부동595-14": {
+    "status": "success",
+    "latitude": 35.8950259920833,
+    "longitude": 128.682582736842,
+    "cached_at": 1754285006.922534,
+    "original_address": "동구 부동 595-14"
+  },
+  "서구평리동652-12": {
+    "status": "success",
+    "latitude": 35.8795666325007,
+    "longitude": 128.56323338907,
+    "cached_at": 1754285007.087788,
+    "original_address": "서구 평리동 652-12"
+  },
+  "수성구황금동746": {
+    "status": "success",
+    "latitude": 35.8482819506832,
+    "longitude": 128.619972597432,
+    "cached_at": 1754285007.259968,
+    "original_address": "수성구 황금동 746"
+  },
+  "달서구월성동1536-4": {
+    "status": "success",
+    "latitude": 35.8223199237277,
+    "longitude": 128.520023566442,
+    "cached_at": 1754285007.427731,
+    "original_address": "달서구 월성동 1536-4"
+  },
+  "달성군하빈면봉촌리649": {
+    "status": "success",
+    "latitude": 35.8604052274834,
+    "longitude": 128.403670598397,
+    "cached_at": 1754285007.592151,
+    "original_address": "달성군 하빈면 봉촌리 649"
+  },
+  "서구비산동41-8": {
+    "status": "success",
+    "latitude": 35.8803908658279,
+    "longitude": 128.572362168263,
+    "cached_at": 1754285007.750056,
+    "original_address": "서구 비산동 41-8"
+  },
+  "달서구달서대로241-13(대천동)/699번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754285007.914856,
+    "original_address": "달서구 달서대로 241-13 (대천동) / 699번지"
+  },
+  "달서구본리동430-7": {
+    "status": "success",
+    "latitude": 35.8399118910669,
+    "longitude": 128.533518831321,
+    "cached_at": 1754285008.0736508,
+    "original_address": "달서구 본리동 430-7"
+  },
+  "달서구송현동1918": {
+    "status": "success",
+    "latitude": 35.8268458763441,
+    "longitude": 128.546664853247,
+    "cached_at": 1754285008.2352262,
+    "original_address": "달서구 송현동 1918"
+  },
+  "북구금호동209문주길2-7": {
+    "status": "success",
+    "latitude": 35.8982402141429,
+    "longitude": 128.525706760132,
+    "cached_at": 1754285008.398738,
+    "original_address": "북구 금호동 209 문주길2-7"
+  },
+  "남구대명동603-2": {
+    "status": "success",
+    "latitude": 35.8341663136726,
+    "longitude": 128.568293473798,
+    "cached_at": 1754285008.5723689,
+    "original_address": "남구 대명동 603-2"
+  },
+  "남구대명동634-11": {
+    "status": "success",
+    "latitude": 35.8344592948033,
+    "longitude": 128.574060368001,
+    "cached_at": 1754285008.7355928,
+    "original_address": "남구 대명동 634-11"
+  },
+  "중구남산동216-52": {
+    "status": "success",
+    "latitude": 35.8592693540341,
+    "longitude": 128.588028403544,
+    "cached_at": 1754285008.912704,
+    "original_address": "중구 남산동 216-52"
+  },
+  "남구대명동3056": {
+    "status": "success",
+    "latitude": 35.8470688409227,
+    "longitude": 128.572138300456,
+    "cached_at": 1754285009.0867689,
+    "original_address": "남구 대명동 3056"
+  },
+  "수성구만촌동1009-11": {
+    "status": "success",
+    "latitude": 35.862946032361,
+    "longitude": 128.644094618805,
+    "cached_at": 1754285009.239707,
+    "original_address": "수성구 만촌동 1009-11"
+  },
+  "수성구황금동754-3": {
+    "status": "success",
+    "latitude": 35.8477409690982,
+    "longitude": 128.617078299862,
+    "cached_at": 1754285009.3907788,
+    "original_address": "수성구 황금동 754-3"
+  },
+  "수성구만촌동642-4만촌아름빌": {
+    "status": "success",
+    "latitude": 35.8731286003025,
+    "longitude": 128.645535759747,
+    "cached_at": 1754285009.5530062,
+    "original_address": "수성구 만촌동 642-4 만촌아름빌"
+  },
+  "수성구황금동680-17": {
+    "status": "success",
+    "latitude": 35.8488916475928,
+    "longitude": 128.623685074733,
+    "cached_at": 1754285009.7180579,
+    "original_address": "수성구 황금동 680-17"
+  },
+  "달서구죽전동179-20": {
+    "status": "success",
+    "latitude": 35.8575831419558,
+    "longitude": 128.538109205276,
+    "cached_at": 1754285009.8870862,
+    "original_address": "달서구 죽전동 179-20"
+  },
+  "달서구상인동1511": {
+    "status": "success",
+    "latitude": 35.8181436504286,
+    "longitude": 128.539044189445,
+    "cached_at": 1754285010.0548742,
+    "original_address": "달서구 상인동 1511"
+  },
+  "달서구성당동656-6": {
+    "status": "success",
+    "latitude": 35.8435986717777,
+    "longitude": 128.551468379553,
+    "cached_at": 1754285010.2171142,
+    "original_address": "달서구 성당동 656-6"
+  },
+  "달서구호산동2-11대호원룸산": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754285010.378505,
+    "original_address": "달서구 호산동 2-11 대호원룸 산"
+  },
+  "북구침산동540-8": {
+    "status": "success",
+    "latitude": 35.8935630593867,
+    "longitude": 128.590915800696,
+    "cached_at": 1754285010.54962,
+    "original_address": "북구 침산동 540-8"
+  },
+  "수성구만촌동418-2": {
+    "status": "success",
+    "latitude": 35.8677866545602,
+    "longitude": 128.632534590571,
+    "cached_at": 1754285010.7159722,
+    "original_address": "수성구 만촌동 418-2"
+  },
+  "남구대명동2281-19": {
+    "status": "success",
+    "latitude": 35.8580234803993,
+    "longitude": 128.575329298816,
+    "cached_at": 1754285010.904796,
+    "original_address": "남구 대명동 2281-19"
+  },
+  "서구비산동1208-3": {
+    "status": "success",
+    "latitude": 35.8887801366591,
+    "longitude": 128.566537624174,
+    "cached_at": 1754285011.069246,
+    "original_address": "서구 비산동 1208-3"
+  },
+  "북구서변동1800": {
+    "status": "success",
+    "latitude": 35.9281132602952,
+    "longitude": 128.599280604266,
+    "cached_at": 1754285011.233023,
+    "original_address": "북구 서변동 1800"
+  },
+  "수성구연호동25-8": {
+    "status": "success",
+    "latitude": 35.8469137593013,
+    "longitude": 128.672941438487,
+    "cached_at": 1754285011.39987,
+    "original_address": "수성구 연호동 25-8"
+  },
+  "동구효목동961-3": {
+    "status": "success",
+    "latitude": 35.8854957355598,
+    "longitude": 128.63590929393,
+    "cached_at": 1754285011.5564291,
+    "original_address": "동구 효목동 961-3"
+  },
+  "서구중리동1088-4": {
+    "status": "success",
+    "latitude": 35.8667586982449,
+    "longitude": 128.544462420564,
+    "cached_at": 1754285011.7197142,
+    "original_address": "서구 중리동 1088-4"
+  },
+  "서구비산동220-1": {
+    "status": "success",
+    "latitude": 35.8693967963067,
+    "longitude": 128.573374146681,
+    "cached_at": 1754285011.8945012,
+    "original_address": "서구 비산동 220-1"
+  },
+  "서구상리동466-1": {
+    "status": "success",
+    "latitude": 35.8694413860324,
+    "longitude": 128.529904151162,
+    "cached_at": 1754285012.062452,
+    "original_address": "서구 상리동 466-1"
+  },
+  "서구비산동293-95통5반": {
+    "status": "success",
+    "latitude": 35.8679165024781,
+    "longitude": 128.569088005322,
+    "cached_at": 1754285012.2372081,
+    "original_address": "서구 비산동 293-95 통5반"
+  },
+  "동구지저동872-3": {
+    "status": "success",
+    "latitude": 35.890167850405,
+    "longitude": 128.642134641509,
+    "cached_at": 1754285012.397942,
+    "original_address": "동구 지저동 872-3"
+  },
+  "달서구송현동898-4효성초등학교": {
+    "status": "success",
+    "latitude": 35.8237603623931,
+    "longitude": 128.542777672631,
+    "cached_at": 1754285012.568502,
+    "original_address": "달서구 송현동 898-4 효성초등학교"
+  },
+  "달서구당산로24길106(성당동)/670-1번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754285012.8308759,
+    "original_address": "달서구 당산로24길 106 (성당동) / 670-1번지"
+  },
+  "달서구송현동2008-13": {
+    "status": "success",
+    "latitude": 35.8302530015218,
+    "longitude": 128.556947427571,
+    "cached_at": 1754285012.991363,
+    "original_address": "달서구 송현동 2008-13"
+  },
+  "수성구범어동806-74": {
+    "status": "success",
+    "latitude": 35.851152317001,
+    "longitude": 128.620904320684,
+    "cached_at": 1754285013.1931741,
+    "original_address": "수성구 범어동 806-74"
+  },
+  "서구중리동100-5도시관리과공원녹지계)": {
+    "status": "success",
+    "latitude": 35.8631568618657,
+    "longitude": 128.549202019776,
+    "cached_at": 1754285013.359435,
+    "original_address": "서구 중리동 100-5 도시관리과공원녹지계)"
+  },
+  "둔산동359번지앞이토변설치공사(d=40mm)": {
+    "status": "success",
+    "latitude": 35.9059841073009,
+    "longitude": 128.686457518015,
+    "cached_at": 1754285013.520288,
+    "original_address": "둔산동359번지 앞 이토변 설치 공사 (D=40mm)"
+  },
+  "수성구두산동52-8": {
+    "status": "success",
+    "latitude": 35.8359893882066,
+    "longitude": 128.619329070287,
+    "cached_at": 1754285013.688858,
+    "original_address": "수성구 두산동 52-8"
+  },
+  "달성군논공읍비슬로371길107/금포리536번지": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754285013.835584,
+    "original_address": "달성군 논공읍  비슬로371길 107 / 금포리 536번지"
+  },
+  "달서구진천동471-28칼라a하우스": {
+    "status": "success",
+    "latitude": 35.8109966536952,
+    "longitude": 128.522138970058,
+    "cached_at": 1754285013.9966989,
+    "original_address": "달서구 진천동 471-28 칼라A하우스"
+  },
+  "달성군다사읍매곡리1164-4강마루암소가든": {
+    "status": "success",
+    "latitude": 35.8501678053648,
+    "longitude": 128.446498866553,
+    "cached_at": 1754285014.17956,
+    "original_address": "달성군 다사읍 매곡리 1164-4 강마루암소가든"
+  },
+  "달성군하빈면현내리465": {
+    "status": "success",
+    "latitude": 35.9021829759718,
+    "longitude": 128.446339437398,
+    "cached_at": 1754285014.4483469,
+    "original_address": "달성군 하빈면 현내리 465"
+  },
+  "수성구상동60-6": {
+    "status": "success",
+    "latitude": 35.8355980702974,
+    "longitude": 128.612638650735,
+    "cached_at": 1754285014.611559,
+    "original_address": "수성구 상동 60-6"
+  },
+  "달성군가창면냉천리14-5": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754285014.760661,
+    "original_address": "달성군 가창면 냉천리 14-5"
+  },
+  "수성구범어동117-33": {
+    "status": "not_found",
+    "latitude": null,
+    "longitude": null,
+    "cached_at": 1754285014.921288,
+    "original_address": "수성구 범어동 117-33"
+  },
+  "수성구범어동64필립빌딩(문깡본사)": {
+    "status": "success",
+    "latitude": 35.8562631693531,
+    "longitude": 128.640913488279,
+    "cached_at": 1754285015.0888262,
+    "original_address": "수성구 범어동 64 필립빌딩(문깡본사)"
+  },
+  "달성군하빈면무등리1334": {
+    "status": "success",
+    "latitude": 35.9091667757128,
+    "longitude": 128.458932972854,
+    "cached_at": 1754285015.259205,
+    "original_address": "달성군 하빈면 무등리 1334"
+  },
+  "북구대현동484-4": {
+    "status": "success",
+    "latitude": 35.8833299183605,
+    "longitude": 128.604870929975,
+    "cached_at": 1754285015.427819,
+    "original_address": "북구 대현동 484-4"
+  },
+  "불로동323-2번지선노후관교체공사(d=100mm,l=100m)": {
+    "status": "success",
+    "latitude": 35.9155317783176,
+    "longitude": 128.643494642661,
+    "cached_at": 1754285015.6095092,
+    "original_address": "불로동 323-2번지선 노후관 교체공사(D=100mm,L=100m)"
+  },
+  "북구칠성동2가409-114칠성로98/4층": {
+    "status": "success",
+    "latitude": 35.878511859133,
+    "longitude": 128.600071065556,
+    "cached_at": 1754285015.774029,
+    "original_address": "북구 칠성동2가 409-114 칠성로98/4층"
+  },
+  "서구비산동816-18": {
+    "status": "success",
+    "latitude": 35.8814377735512,
+    "longitude": 128.560017777202,
+    "cached_at": 1754285015.935254,
+    "original_address": "서구 비산동 816-18"
+  },
+  "서구비산동391-7": {
+    "status": "success",
+    "latitude": 35.8731010373581,
+    "longitude": 128.571874523194,
+    "cached_at": 1754285016.103198,
+    "original_address": "서구 비산동 391-7"
+  },
+  "서구비산동1794": {
+    "status": "success",
+    "latitude": 35.8897234031685,
+    "longitude": 128.553257368294,
+    "cached_at": 1754285016.264839,
+    "original_address": "서구 비산동 1794"
+  },
+  "서구중리동1169-10": {
+    "status": "success",
+    "latitude": 35.8594935103494,
+    "longitude": 128.53502236476,
+    "cached_at": 1754285016.4221199,
+    "original_address": "서구 중리동 1169-10"
+  },
+  "서구평리동1369-4": {
+    "status": "success",
+    "latitude": 35.868523630251,
+    "longitude": 128.555632529984,
+    "cached_at": 1754285016.6317818,
+    "original_address": "서구 평리동 1369-4"
+  },
+  "동구신천동808-9": {
+    "status": "success",
+    "latitude": 35.8692804296612,
+    "longitude": 128.616400935976,
+    "cached_at": 1754285016.792575,
+    "original_address": "동구 신천동 808-9"
+  },
+  "동구효목동166-3": {
+    "status": "success",
+    "latitude": 35.8812455765816,
+    "longitude": 128.647356092526,
+    "cached_at": 1754285016.9603488,
+    "original_address": "동구 효목동 166-3"
+  },
+  "서구평리동435-56": {
+    "status": "success",
+    "latitude": 35.8795560855312,
+    "longitude": 128.548613274308,
+    "cached_at": 1754285017.125417,
+    "original_address": "서구 평리동 435-56"
+  },
+  "동구미대동100-1거창송이": {
+    "status": "success",
+    "latitude": 35.9574503418705,
+    "longitude": 128.671502541434,
+    "cached_at": 1754285017.2869902,
+    "original_address": "동구 미대동 100-1 거창송이"
+  },
+  "수성구지산동308-2": {
+    "status": "success",
+    "latitude": 35.8238915058029,
+    "longitude": 128.640021476031,
+    "cached_at": 1754285017.458127,
+    "original_address": "수성구 지산동 308-2"
+  },
+  "수성구만촌동855-40": {
+    "status": "success",
+    "latitude": 35.8556074010778,
+    "longitude": 128.650281243781,
+    "cached_at": 1754285017.628437,
+    "original_address": "수성구 만촌동 855-40"
+  },
+  "수성구범어동141-3": {
+    "status": "success",
+    "latitude": 35.8638695939134,
+    "longitude": 128.634760225061,
+    "cached_at": 1754285017.7967591,
+    "original_address": "수성구 범어동 141-3"
+  }
+}

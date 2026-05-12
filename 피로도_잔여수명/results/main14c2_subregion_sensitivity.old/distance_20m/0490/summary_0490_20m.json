@@ -1,0 +1,76 @@
+{
+  "region": "0490",
+  "distance": 20,
+  "execution_time": 5.848341941833496,
+  "matching_stats": {
+    "total_clusters": 226,
+    "matched_clusters": 226,
+    "matching_rate": 100.0,
+    "avg_pipes_per_cluster": 0.0,
+    "total_repairs": 306
+  },
+  "correlations": {
+    "STD_DIP": 0.0792880843793411,
+    "K_age": 0.0401392759882971,
+    "K_traffic": -0.10535451517279823,
+    "hoop_stress": 0.06354932168849048,
+    "K_stress": 0.0692302268011779,
+    "K_total": 0.15914086307127218,
+    "D_final": 0.15773092025845656,
+    "K_repair": 0.2764053780524668
+  },
+  "p_values": {
+    "STD_DIP": 0.23514016705535543,
+    "K_age": 0.5482919405316089,
+    "K_traffic": 0.11423474252857331,
+    "hoop_stress": 0.34159427219914007,
+    "K_stress": 0.30009428538173133,
+    "K_total": 0.016646448352928243,
+    "D_final": 0.017647119476031425,
+    "K_repair": 2.501727027098478e-05
+  },
+  "r_squared": {
+    "STD_DIP": 0.0062866003245455136,
+    "K_age": 0.001611161476864684,
+    "K_traffic": 0.011099573867295372,
+    "hoop_stress": 0.0040385162870672465,
+    "K_stress": 0.00479282430294253,
+    "K_total": 0.0253258142990694,
+    "D_final": 0.02487904320557958,
+    "K_repair": 0.0763999330163271
+  },
+  "strategies": {
+    "STD_DIP": "nearest",
+    "K_age": "nearest",
+    "K_traffic": "avg",
+    "hoop_stress": "avg",
+    "K_stress": "nearest",
+    "K_total": "avg",
+    "D_final": "avg",
+    "K_repair": "avg"
+  },
+  "significant_factors": [
+    {
+      "factor": "K_total",
+      "strategy": "avg",
+      "r": 0.15914086307127218,
+      "p": 0.016646448352928243,
+      "r_squared": 0.0253258142990694
+    },
+    {
+      "factor": "D_final",
+      "strategy": "avg",
+      "r": 0.15773092025845656,
+      "p": 0.017647119476031425,
+      "r_squared": 0.02487904320557958
+    },
+    {
+      "factor": "K_repair",
+      "strategy": "avg",
+      "r": 0.2764053780524668,
+      "p": 2.501727027098478e-05,
+      "r_squared": 0.0763999330163271
+    }
+  ],
+  "timestamp": "2025-08-25T16:43:48.141696"
+}

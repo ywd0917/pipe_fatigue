@@ -1,0 +1,354 @@
+[
+  {
+    "gap_days": 3,
+    "gap_length": 4320,
+    "low_true": {
+      "name": "Low True",
+      "cycles_count": 6,
+      "amplitude_mean": 0.018052460241696027,
+      "amplitude_std": 0.019505799293273788,
+      "amplitude_max": 0.04509966176634417,
+      "amplitude_min": 0.0003596126053594384,
+      "mean_value_mean": 1.9177073918302303,
+      "mean_value_std": 0.021753814744780442
+    },
+    "low_pred": {
+      "name": "Low Pred",
+      "cycles_count": 10,
+      "amplitude_mean": 0.009114110771803453,
+      "amplitude_std": 0.01611405242686892,
+      "amplitude_max": 0.056119357209034715,
+      "amplitude_min": 5.447639246281e-05,
+      "mean_value_mean": 1.8997919672057464,
+      "mean_value_std": 0.011856695668032855
+    },
+    "high_true": {
+      "name": "High True",
+      "cycles_count": 1198,
+      "amplitude_mean": 0.0761844082073781,
+      "amplitude_std": 0.06155764612504314,
+      "amplitude_max": 0.5574021970701515,
+      "amplitude_min": 1.1185498379612246e-07,
+      "mean_value_mean": 0.004156888874385945,
+      "mean_value_std": 0.052184647947125136
+    },
+    "high_pred": {
+      "name": "High Pred",
+      "cycles_count": 1440,
+      "amplitude_mean": 0.08261984819347794,
+      "amplitude_std": 0.059935873203369704,
+      "amplitude_max": 0.41468563883732246,
+      "amplitude_min": 0.0008172495951408454,
+      "mean_value_mean": -0.000935269489276012,
+      "mean_value_std": 0.054562994923610476
+    },
+    "total_true": {
+      "name": "Total True",
+      "cycles_count": 740,
+      "amplitude_mean": 0.05452702702702703,
+      "amplitude_std": 0.059358444599024715,
+      "amplitude_max": 0.45000000000000007,
+      "amplitude_min": 0.0,
+      "mean_value_mean": 1.9199324324324325,
+      "mean_value_std": 0.10464545432219924
+    },
+    "total_pred": {
+      "name": "Total Pred",
+      "cycles_count": 1441,
+      "amplitude_mean": 0.08257335543914085,
+      "amplitude_std": 0.05996005771290725,
+      "amplitude_max": 0.4132869352059707,
+      "amplitude_min": 6.334173742483795e-05,
+      "mean_value_mean": 1.9021504400504659,
+      "mean_value_std": 0.05352244766962156
+    },
+    "analysis": {
+      "cycle_decomposition": {
+        "low_true": 6,
+        "low_pred": 10,
+        "low_excess": 4,
+        "high_true": 1198,
+        "high_pred": 1440,
+        "high_excess": 242,
+        "total_true": 740,
+        "total_pred": 1441,
+        "total_excess": 701,
+        "interaction": 455
+      },
+      "ratios": {
+        "low_ratio": 1.6666666666666667,
+        "high_ratio": 1.2020033388981637,
+        "total_ratio": 1.9472972972972973
+      },
+      "contributions": {
+        "low_pct": 0.5706134094151213,
+        "high_pct": 34.52211126961483,
+        "interaction_pct": 64.90727532097004
+      }
+    }
+  },
+  {
+    "gap_days": 7,
+    "gap_length": 10080,
+    "low_true": {
+      "name": "Low True",
+      "cycles_count": 12,
+      "amplitude_mean": 0.01682632446079217,
+      "amplitude_std": 0.017595290085645345,
+      "amplitude_max": 0.049146903052503466,
+      "amplitude_min": 0.00035961235586634555,
+      "mean_value_mean": 1.9042236747441603,
+      "mean_value_std": 0.0224895206613031
+    },
+    "low_pred": {
+      "name": "Low Pred",
+      "cycles_count": 17,
+      "amplitude_mean": 0.008915664767163212,
+      "amplitude_std": 0.022144230023366768,
+      "amplitude_max": 0.09646168874014305,
+      "amplitude_min": 8.365521245701224e-05,
+      "mean_value_mean": 1.9394523056737687,
+      "mean_value_std": 0.025261174274541297
+    },
+    "high_true": {
+      "name": "High True",
+      "cycles_count": 2723,
+      "amplitude_mean": 0.07866338035604542,
+      "amplitude_std": 0.06294053899078883,
+      "amplitude_max": 0.557892391105697,
+      "amplitude_min": 1.1190574411915066e-07,
+      "mean_value_mean": 0.00393104496118528,
+      "mean_value_std": 0.05103083456306565
+    },
+    "high_pred": {
+      "name": "High Pred",
+      "cycles_count": 3447,
+      "amplitude_mean": 0.06948453782630157,
+      "amplitude_std": 0.05042544970228889,
+      "amplitude_max": 0.34513249170706795,
+      "amplitude_min": 4.4416914778772076e-05,
+      "mean_value_mean": -0.0007079899510771741,
+      "mean_value_std": 0.04353821621399072
+    },
+    "total_true": {
+      "name": "Total True",
+      "cycles_count": 1734,
+      "amplitude_mean": 0.05493079584775087,
+      "amplitude_std": 0.0585796005897017,
+      "amplitude_max": 0.45000000000000007,
+      "amplitude_min": 0.0,
+      "mean_value_mean": 1.905392156862745,
+      "mean_value_std": 0.1076167409715226
+    },
+    "total_pred": {
+      "name": "Total Pred",
+      "cycles_count": 3446,
+      "amplitude_mean": 0.069423684939102,
+      "amplitude_std": 0.05023313123036648,
+      "amplitude_max": 0.34006421979902546,
+      "amplitude_min": 2.0001553227677604e-05,
+      "mean_value_mean": 1.9423658516006517,
+      "mean_value_std": 0.05015630644627263
+    },
+    "analysis": {
+      "cycle_decomposition": {
+        "low_true": 12,
+        "low_pred": 17,
+        "low_excess": 5,
+        "high_true": 2723,
+        "high_pred": 3447,
+        "high_excess": 724,
+        "total_true": 1734,
+        "total_pred": 3446,
+        "total_excess": 1712,
+        "interaction": 983
+      },
+      "ratios": {
+        "low_ratio": 1.4166666666666667,
+        "high_ratio": 1.2658832170400294,
+        "total_ratio": 1.9873125720876585
+      },
+      "contributions": {
+        "low_pct": 0.29205607476635514,
+        "high_pct": 42.28971962616823,
+        "interaction_pct": 57.41822429906542
+      }
+    }
+  },
+  {
+    "gap_days": 14,
+    "gap_length": 20160,
+    "low_true": {
+      "name": "Low True",
+      "cycles_count": 27,
+      "amplitude_mean": 0.0174800178994818,
+      "amplitude_std": 0.016989507431045357,
+      "amplitude_max": 0.0532534460186701,
+      "amplitude_min": 6.342180018581445e-05,
+      "mean_value_mean": 1.8915915564014876,
+      "mean_value_std": 0.02106214446252644
+    },
+    "low_pred": {
+      "name": "Low Pred",
+      "cycles_count": 34,
+      "amplitude_mean": 0.004939934846156657,
+      "amplitude_std": 0.00931174488654498,
+      "amplitude_max": 0.055023314800735856,
+      "amplitude_min": 0.0017868957326041546,
+      "mean_value_mean": 1.8927592568878728,
+      "mean_value_std": 0.008023467900171428
+    },
+    "high_true": {
+      "name": "High True",
+      "cycles_count": 5418,
+      "amplitude_mean": 0.07677764655717562,
+      "amplitude_std": 0.06087209947795858,
+      "amplitude_max": 0.6351827361716236,
+      "amplitude_min": 7.503039127555077e-08,
+      "mean_value_mean": 0.0023545156866952533,
+      "mean_value_std": 0.046938285197115084
+    },
+    "high_pred": {
+      "name": "High Pred",
+      "cycles_count": 6935,
+      "amplitude_mean": 0.07719205040822533,
+      "amplitude_std": 0.056498617045042616,
+      "amplitude_max": 0.37002466320477334,
+      "amplitude_min": 0.001218256071661661,
+      "mean_value_mean": -0.0007512383727020897,
+      "mean_value_std": 0.04505246150952178
+    },
+    "total_true": {
+      "name": "Total True",
+      "cycles_count": 3394,
+      "amplitude_mean": 0.054095462581025336,
+      "amplitude_std": 0.0571444660748776,
+      "amplitude_max": 0.55,
+      "amplitude_min": 0.0,
+      "mean_value_mean": 1.8952857984678846,
+      "mean_value_std": 0.10424062862014316
+    },
+    "total_pred": {
+      "name": "Total Pred",
+      "cycles_count": 6928,
+      "amplitude_mean": 0.07690134144341569,
+      "amplitude_std": 0.055775518759201385,
+      "amplitude_max": 0.3802931016997957,
+      "amplitude_min": 0.0012272996855410279,
+      "mean_value_mean": 1.8923490822365585,
+      "mean_value_std": 0.04543708402521176
+    },
+    "analysis": {
+      "cycle_decomposition": {
+        "low_true": 27,
+        "low_pred": 34,
+        "low_excess": 7,
+        "high_true": 5418,
+        "high_pred": 6935,
+        "high_excess": 1517,
+        "total_true": 3394,
+        "total_pred": 6928,
+        "total_excess": 3534,
+        "interaction": 2010
+      },
+      "ratios": {
+        "low_ratio": 1.2592592592592593,
+        "high_ratio": 1.2799926172019196,
+        "total_ratio": 2.0412492634060104
+      },
+      "contributions": {
+        "low_pct": 0.19807583474816073,
+        "high_pct": 42.92586304470854,
+        "interaction_pct": 56.8760611205433
+      }
+    }
+  },
+  {
+    "gap_days": 24,
+    "gap_length": 34560,
+    "low_true": {
+      "name": "Low True",
+      "cycles_count": 42,
+      "amplitude_mean": 0.016199118929413486,
+      "amplitude_std": 0.017321176866747542,
+      "amplitude_max": 0.06171296930562442,
+      "amplitude_min": 9.202405411801173e-06,
+      "mean_value_mean": 1.8910899983436844,
+      "mean_value_std": 0.019305751424314534
+    },
+    "low_pred": {
+      "name": "Low Pred",
+      "cycles_count": 59,
+      "amplitude_mean": 0.0036718654906253926,
+      "amplitude_std": 0.007622229055645489,
+      "amplitude_max": 0.05741367635373695,
+      "amplitude_min": 0.00011108785585833836,
+      "mean_value_mean": 1.90274478141313,
+      "mean_value_std": 0.005526258561104541
+    },
+    "high_true": {
+      "name": "High True",
+      "cycles_count": 9234,
+      "amplitude_mean": 0.0762731411718983,
+      "amplitude_std": 0.05989687659748903,
+      "amplitude_max": 0.6351827362552382,
+      "amplitude_min": 3.795788119134421e-08,
+      "mean_value_mean": 0.002428996270772116,
+      "mean_value_std": 0.04629699246846824
+    },
+    "high_pred": {
+      "name": "High Pred",
+      "cycles_count": 12014,
+      "amplitude_mean": 0.07083013773638763,
+      "amplitude_std": 0.05200520292700999,
+      "amplitude_max": 0.33609554448374446,
+      "amplitude_min": 3.9893985376739886e-05,
+      "mean_value_mean": 0.0014892454495497077,
+      "mean_value_std": 0.04389433850273603
+    },
+    "total_true": {
+      "name": "Total True",
+      "cycles_count": 5754,
+      "amplitude_mean": 0.054005908932916236,
+      "amplitude_std": 0.05644146062447139,
+      "amplitude_max": 0.55,
+      "amplitude_min": 0.0,
+      "mean_value_mean": 1.8948123044838374,
+      "mean_value_std": 0.10270722610509318
+    },
+    "total_pred": {
+      "name": "Total Pred",
+      "cycles_count": 12013,
+      "amplitude_mean": 0.07083032263308708,
+      "amplitude_std": 0.0520065715260032,
+      "amplitude_max": 0.3363368795803273,
+      "amplitude_min": 0.00010587302100761864,
+      "mean_value_mean": 1.9047371137728615,
+      "mean_value_std": 0.04394735500583744
+    },
+    "analysis": {
+      "cycle_decomposition": {
+        "low_true": 42,
+        "low_pred": 59,
+        "low_excess": 17,
+        "high_true": 9234,
+        "high_pred": 12014,
+        "high_excess": 2780,
+        "total_true": 5754,
+        "total_pred": 12013,
+        "total_excess": 6259,
+        "interaction": 3462
+      },
+      "ratios": {
+        "low_ratio": 1.4047619047619047,
+        "high_ratio": 1.301061295213342,
+        "total_ratio": 2.0877650330205073
+      },
+      "contributions": {
+        "low_pct": 0.2716088832081802,
+        "high_pct": 44.41604090110241,
+        "interaction_pct": 55.312350215689406
+      }
+    }
+  }
+]

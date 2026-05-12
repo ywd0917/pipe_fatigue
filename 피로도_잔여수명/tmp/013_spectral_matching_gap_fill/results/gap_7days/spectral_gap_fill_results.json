@@ -1,0 +1,78 @@
+{
+  "area": "0243",
+  "gap_days": 7,
+  "gap_start": 92548,
+  "gap_end": 102628,
+  "gap_length": 10080,
+  "v_valley_minutes": 553.5,
+  "edge_window_low": 60,
+  "edge_window_high": 20,
+  "random_seed": 42,
+  "timestamp": "2025-12-11T11:55:32.333929",
+  "statistics": {
+    "gap_true": {
+      "mean": 1.8985218253968257,
+      "std": 0.09737016956171664,
+      "min": 1.1,
+      "max": 2.3
+    },
+    "gap_pred": {
+      "mean": 1.9437247043528534,
+      "std": 0.08956915285291822,
+      "min": 1.5372784220495723,
+      "max": 2.298017587849111
+    },
+    "comparison": {
+      "mean_diff": 0.0452028789560277,
+      "std_ratio": 0.9198828887336603,
+      "variance_ratio": 0.8461845289849836
+    }
+  },
+  "validation": {
+    "psd": {
+      "psd_correlation": 0.64310142175733,
+      "psd_pvalue": 2.077477105355464e-16,
+      "psd_similarity": 0.9193970333439262,
+      "energy_ratio": 0.8694583227793498,
+      "energy_preservation_pct": 86.94583227793498
+    },
+    "variance": {
+      "variance_true": 0.00948094992047745,
+      "variance_pred": 0.008022633142789429,
+      "variance_ratio": 0.8461845289849836,
+      "std_true": 0.09737016956171664,
+      "std_pred": 0.08956915285291822,
+      "std_ratio": 0.9198828887336603
+    },
+    "acf": {
+      "acf_correlation": 0.9457231329752331,
+      "acf_pvalue": 3.9783066534640838e-50,
+      "acf_rmse": 0.03250251364491167,
+      "nlags": 100
+    },
+    "rainflow": {
+      "rainflow_match": 0.7180812613297467,
+      "hist_correlation": 0.6708437257396482,
+      "hist_pvalue": 0.0016667080281067544,
+      "hist_similarity": 0.738325919439789,
+      "chi2_distance": 0.5819645386713242,
+      "cycles_true": 1734,
+      "cycles_pred": 3446,
+      "amplitude_mean_true": 0.05493079584775087,
+      "amplitude_mean_pred": 0.069423684939102,
+      "amplitude_std_true": 0.0585796005897017,
+      "amplitude_std_pred": 0.05023313123036648
+    },
+    "overall_judgment": {
+      "overall_score": 0.8294934435927273,
+      "scores": {
+        "psd": 0.9193970333439262,
+        "variance": 0.8461845289849836,
+        "acf": 0.9457231329752331,
+        "rainflow": 0.7180812613297467
+      },
+      "judgment": "FAIL",
+      "summary": "✗ 실패 - Gap 허용 정책 수립 필요"
+    }
+  }
+}

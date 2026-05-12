@@ -1,0 +1,76 @@
+{
+  "region": "0490",
+  "distance": 50,
+  "execution_time": 7.237124919891357,
+  "matching_stats": {
+    "total_clusters": 256,
+    "matched_clusters": 256,
+    "matching_rate": 100.0,
+    "avg_pipes_per_cluster": 44.4453125,
+    "total_repairs": 512
+  },
+  "correlations": {
+    "STD_DIP": -0.06645935590811278,
+    "K_age": 0.03907285454380681,
+    "K_traffic": -0.17620073211427117,
+    "hoop_stress": -0.04597092091216918,
+    "K_stress": -0.05625427750636067,
+    "K_total": 0.1070080956706465,
+    "D_final": 0.09340746633012606,
+    "K_repair": 0.22243799316903942
+  },
+  "p_values": {
+    "STD_DIP": 0.28945522864432066,
+    "K_age": 0.5337157361576066,
+    "K_traffic": 0.004690260575789745,
+    "hoop_stress": 0.46397179090235086,
+    "K_stress": 0.37005320579646767,
+    "K_total": 0.08751393424759951,
+    "D_final": 0.13610175223801213,
+    "K_repair": 0.00033498078553545637
+  },
+  "r_squared": {
+    "STD_DIP": 0.004416845987721204,
+    "K_age": 0.0015266879622014844,
+    "K_traffic": 0.031046697997605153,
+    "hoop_stress": 0.0021133255695129135,
+    "K_stress": 0.003164543737762636,
+    "K_total": 0.011450732539058234,
+    "D_final": 0.008724954766213634,
+    "K_repair": 0.04947866080506963
+  },
+  "strategies": {
+    "STD_DIP": "avg",
+    "K_age": "max",
+    "K_traffic": "avg",
+    "hoop_stress": "nearest",
+    "K_stress": "avg",
+    "K_total": "avg",
+    "D_final": "nearest",
+    "K_repair": "avg"
+  },
+  "significant_factors": [
+    {
+      "factor": "K_traffic",
+      "strategy": "avg",
+      "r": -0.17620073211427117,
+      "p": 0.004690260575789745,
+      "r_squared": 0.031046697997605153
+    },
+    {
+      "factor": "K_total",
+      "strategy": "avg",
+      "r": 0.1070080956706465,
+      "p": 0.08751393424759951,
+      "r_squared": 0.011450732539058234
+    },
+    {
+      "factor": "K_repair",
+      "strategy": "avg",
+      "r": 0.22243799316903942,
+      "p": 0.00033498078553545637,
+      "r_squared": 0.04947866080506963
+    }
+  ],
+  "timestamp": "2025-08-27T21:47:24.912532"
+}

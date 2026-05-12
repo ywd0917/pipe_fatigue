@@ -1,0 +1,48 @@
+{
+  "low": {
+    "component": "low",
+    "cycles_true": 59,
+    "cycles_pred": 68,
+    "CCR": 0.8676,
+    "ADS": 0.671,
+    "FDR": 29.9614,
+    "damage_true": 0.00046902022251977334,
+    "damage_pred": 0.014052483459844015,
+    "pass": false,
+    "amplitude_stats": {
+      "true_mean": 0.012063754132896449,
+      "true_std": 0.011196884684249096,
+      "true_max": 0.04888504050700071,
+      "pred_mean": 0.04792421797449167,
+      "pred_std": 0.023975498855928014,
+      "pred_max": 0.10900967356268043
+    }
+  },
+  "high": {
+    "component": "high",
+    "cycles_true": 9175,
+    "cycles_pred": 11744,
+    "CCR": 0.7812,
+    "ADS": 0.9673,
+    "FDR": 0.9737,
+    "damage_true": 11.853804059819552,
+    "damage_pred": 11.542517665854714,
+    "pass": false,
+    "amplitude_stats": {
+      "true_mean": 0.07606708711286889,
+      "true_std": 0.05009695102497802,
+      "true_max": 0.5000946484509469,
+      "pred_mean": 0.0776538914585942,
+      "pred_std": 0.044720626114534166,
+      "pred_max": 0.3211195093550144
+    }
+  },
+  "overall_pass": false,
+  "v_valley_minutes": 553.5,
+  "signal_length": 34560,
+  "evaluation_summary": {
+    "low_pass": false,
+    "high_pass": false,
+    "critical_component": "high"
+  }
+}
