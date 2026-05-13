@@ -12,7 +12,7 @@ from typing import Dict, Any, List, Tuple, Optional, cast
 
 # 기존 모듈 import
 from common.korean_font_utils import setup_korean_font
-from utils import interpolate_nan_values
+from utils import interpolate_nan_values, calculate_sampling_rate
 from pass_filter import pass_filter
 from rain_flow_counting import (
     rain_flow_counting,
@@ -55,11 +55,8 @@ def load_and_process_data(file_path: str) -> Tuple[np.ndarray, np.ndarray, np.nd
     )
 
     # 샘플링 주파수 (타임스탬프로부터 자동 감지)
-    if len(df) > 1:
-        interval_seconds = df["msrmt_dt"].diff().dropna().median().total_seconds()
-    else:
-        interval_seconds = 300  # 기본값 5분
-    sampling_rate = 1 / interval_seconds
+    sampling_rate = calculate_sampling_rate(df["msrmt_dt"])
+    interval_seconds = 1 / sampling_rate
     print(f"샘플링 간격: {interval_seconds:.0f}초 ({interval_seconds/60:.0f}분)")
     print(f"샘플링 주파수: {sampling_rate:.6f} Hz")
 
