@@ -54,8 +54,13 @@ def load_and_process_data(file_path: str) -> Tuple[np.ndarray, np.ndarray, np.nd
         np.array(df["wtrprsr"].values), pd.DatetimeIndex(df["msrmt_dt"])
     )
 
-    # 샘플링 주파수
-    sampling_rate = 1 / 300  # 5분 간격
+    # 샘플링 주파수 (타임스탬프로부터 자동 감지)
+    if len(df) > 1:
+        interval_seconds = df["msrmt_dt"].diff().dropna().median().total_seconds()
+    else:
+        interval_seconds = 300  # 기본값 5분
+    sampling_rate = 1 / interval_seconds
+    print(f"샘플링 간격: {interval_seconds:.0f}초 ({interval_seconds/60:.0f}분)")
     print(f"샘플링 주파수: {sampling_rate:.6f} Hz")
 
     # Pass Filter 적용
