@@ -125,8 +125,17 @@ def read_csv_common(
             print(f"\n청크 단위 데이터 읽기 (청크 크기: {chunksize:,}행):")
             print("=" * 60)
 
-        # 날짜 컬럼 파싱 설정
-        parse_dates = date_columns if date_columns else []
+        # 날짜 컬럼 파싱 설정 (존재하는 컬럼만 사용)
+        if date_columns:
+            header = pd.read_csv(file_path, nrows=0, encoding="utf-8")
+            available_cols = set(header.columns)
+            # utf-8 실패시 utf-8-sig 재시도
+            if not available_cols:
+                header = pd.read_csv(file_path, nrows=0, encoding="utf-8-sig")
+                available_cols = set(header.columns)
+            parse_dates = [c for c in date_columns if c in available_cols]
+        else:
+            parse_dates = []
 
         chunk_reader = pd.read_csv(
             file_path, chunksize=chunksize, encoding="utf-8", parse_dates=parse_dates

@@ -8,15 +8,18 @@ from typing import Dict
 from common.config import PROJECT_ROOT, C_REPAIR
 
 
-def load_k_repair_mapping() -> Dict[str, pd.DataFrame]:
+def load_k_repair_mapping(strict: bool = True) -> Dict[str, pd.DataFrame]:
     """
     K_repair 데이터를 로드하여 딕셔너리로 반환
 
+    Args:
+        strict: True이면 파일 없을 때 FileNotFoundError, False이면 경고 후 빈 DataFrame 반환
+
     Returns:
         Dict[str, pd.DataFrame]: PIPE_LM과 SPLY_LS의 K_repair 매핑 데이터
-    
+
     Raises:
-        FileNotFoundError: K_repair CSV 파일이 없을 때
+        FileNotFoundError: strict=True이고 K_repair CSV 파일이 없을 때
     """
     k_repair_dir = PROJECT_ROOT / "results" / "main13a_k_repair"
 
@@ -25,24 +28,28 @@ def load_k_repair_mapping() -> Dict[str, pd.DataFrame]:
     # PIPE_LM K_repair 로드
     pipe_lm_path = k_repair_dir / "repair_pipe_lm.csv"
     if not pipe_lm_path.exists():
-        raise FileNotFoundError(str(pipe_lm_path))
-    
-    df_pipe = pd.read_csv(pipe_lm_path)
-    # FTR_IDN을 인덱스로 설정
-    df_pipe.set_index("FTR_IDN", inplace=True)
-    repair_data["PIPE_LM"] = df_pipe
-    print(f"PIPE_LM K_repair 데이터 로드 완료: {len(df_pipe)} 건")
+        if strict:
+            raise FileNotFoundError(str(pipe_lm_path))
+        print(f"경고: PIPE_LM K_repair 파일 없음 ({pipe_lm_path}). K_repair=0으로 처리합니다.")
+        repair_data["PIPE_LM"] = pd.DataFrame(columns=["K_repair_per_m"])
+    else:
+        df_pipe = pd.read_csv(pipe_lm_path)
+        df_pipe.set_index("FTR_IDN", inplace=True)
+        repair_data["PIPE_LM"] = df_pipe
+        print(f"PIPE_LM K_repair 데이터 로드 완료: {len(df_pipe)} 건")
 
     # SPLY_LS K_repair 로드
     sply_ls_path = k_repair_dir / "repair_sply_ls.csv"
     if not sply_ls_path.exists():
-        raise FileNotFoundError(str(sply_ls_path))
-    
-    df_sply = pd.read_csv(sply_ls_path)
-    # FTR_IDN을 인덱스로 설정
-    df_sply.set_index("FTR_IDN", inplace=True)
-    repair_data["SPLY_LS"] = df_sply
-    print(f"SPLY_LS K_repair 데이터 로드 완료: {len(df_sply)} 건")
+        if strict:
+            raise FileNotFoundError(str(sply_ls_path))
+        print(f"경고: SPLY_LS K_repair 파일 없음 ({sply_ls_path}). K_repair=0으로 처리합니다.")
+        repair_data["SPLY_LS"] = pd.DataFrame(columns=["K_repair_per_m"])
+    else:
+        df_sply = pd.read_csv(sply_ls_path)
+        df_sply.set_index("FTR_IDN", inplace=True)
+        repair_data["SPLY_LS"] = df_sply
+        print(f"SPLY_LS K_repair 데이터 로드 완료: {len(df_sply)} 건")
 
     return repair_data
 

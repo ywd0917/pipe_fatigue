@@ -15,7 +15,7 @@ from typing import Dict, Any, List, Tuple, Optional
 from datetime import datetime
 
 # 기존 모듈 import
-from utils import interpolate_nan_values
+from utils import interpolate_nan_values, calculate_sampling_rate
 from pass_filter import pass_filter
 from rain_flow_counting import rain_flow_counting, analyze_rainflow_cycles
 from pipe_data import read_csv_pipe_lm, read_csv_sply_ls
@@ -129,8 +129,10 @@ def process_date_range_data(
         np.array(df["wtrprsr"].values), pd.DatetimeIndex(df["msrmt_dt"])
     )
 
-    # 샘플링 주파수
-    sampling_rate = 1 / 300  # 5분 간격
+    # 샘플링 주파수 (타임스탬프로부터 자동 감지)
+    sampling_rate = calculate_sampling_rate(pd.DatetimeIndex(df["msrmt_dt"]))
+    interval_seconds = 1 / sampling_rate
+    print(f"샘플링 간격: {interval_seconds:.0f}초 ({interval_seconds/60:.0f}분)")
     print(f"샘플링 주파수: {sampling_rate:.6f} Hz")
 
     # Pass Filter 적용
@@ -215,22 +217,28 @@ def analyze_date_range_rainflow(
     
     file_name = Path(file_path).name
 
-    # 기본값 설정
-    if start_date is None:
-        start_date = datetime(2023, 1, 1)
-    if end_date is None:
-        end_date = datetime(2023, 12, 31, 23, 59, 59)
-
     print(f"\n{'='*80}")
     print(f"날짜 범위 Rain Flow Counting 분석 시작: {file_name}")
-    print(
-        f"분석 기간: {start_date.strftime('%Y-%m-%d')} ~ {end_date.strftime('%Y-%m-%d')}"
-    )
     print(f"{'='*80}")
 
     try:
         # 1. 전체 데이터 로드
         full_df = load_full_data(file_path)
+
+        # 기본값 설정: 명시적 날짜 없으면 데이터 실제 범위에서 최근 1년 사용
+        if start_date is None or end_date is None:
+            data_end = full_df["msrmt_dt"].max()
+            data_start = full_df["msrmt_dt"].min()
+            if end_date is None:
+                end_date = data_end.to_pydatetime().replace(hour=23, minute=59, second=59)
+            if start_date is None:
+                # 최근 1년
+                candidate = end_date.replace(year=end_date.year - 1)
+                start_date = max(candidate, data_start.to_pydatetime())
+
+        print(
+            f"분석 기간: {start_date.strftime('%Y-%m-%d')} ~ {end_date.strftime('%Y-%m-%d')}"
+        )
 
         # 2. 지정된 날짜 범위 데이터 추출
         filtered_df = extract_date_range_data(full_df, start_date, end_date)
