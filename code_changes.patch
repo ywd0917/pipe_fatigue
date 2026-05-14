@@ -1,0 +1,670 @@
+From dbe65ff23d18d9630f198f180eb6a9613b26ec1c Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Wed, 13 May 2026 00:36:59 +0000
+Subject: [PATCH 1/4] feat: auto-detect sampling interval in main53_rainflow.py
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+기존 5분 간격 하드코딩을 타임스탬프 중앙값 기반 자동 감지로 변경.
+1분 간격 데이터(새 형식)와 5분 간격 데이터를 모두 정상 처리 가능.
+
+https://claude.ai/code/session_01MRLXBZwn3r1unkKmqtMuuL
+---
+ rainflow_src/main53_rainflow.py | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/rainflow_src/main53_rainflow.py b/rainflow_src/main53_rainflow.py
+index f06e15e..98430de 100644
+--- a/rainflow_src/main53_rainflow.py
++++ b/rainflow_src/main53_rainflow.py
+@@ -54,8 +54,13 @@ def load_and_process_data(file_path: str) -> Tuple[np.ndarray, np.ndarray, np.nd
+         np.array(df["wtrprsr"].values), pd.DatetimeIndex(df["msrmt_dt"])
+     )
+ 
+-    # 샘플링 주파수
+-    sampling_rate = 1 / 300  # 5분 간격
++    # 샘플링 주파수 (타임스탬프로부터 자동 감지)
++    if len(df) > 1:
++        interval_seconds = df["msrmt_dt"].diff().dropna().median().total_seconds()
++    else:
++        interval_seconds = 300  # 기본값 5분
++    sampling_rate = 1 / interval_seconds
++    print(f"샘플링 간격: {interval_seconds:.0f}초 ({interval_seconds/60:.0f}분)")
+     print(f"샘플링 주파수: {sampling_rate:.6f} Hz")
+ 
+     # Pass Filter 적용
+-- 
+2.43.0
+
+
+From 98914d678cce33af30028d202803936655d138aa Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Wed, 13 May 2026 00:41:07 +0000
+Subject: [PATCH 2/4] refactor: use existing calculate_sampling_rate() from
+ utils
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+인라인 interval_seconds 계산을 utils.py의 calculate_sampling_rate() 함수로 교체.
+
+https://claude.ai/code/session_01MRLXBZwn3r1unkKmqtMuuL
+---
+ rainflow_src/main53_rainflow.py | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/rainflow_src/main53_rainflow.py b/rainflow_src/main53_rainflow.py
+index 98430de..5a46a56 100644
+--- a/rainflow_src/main53_rainflow.py
++++ b/rainflow_src/main53_rainflow.py
+@@ -12,7 +12,7 @@ from typing import Dict, Any, List, Tuple, Optional, cast
+ 
+ # 기존 모듈 import
+ from common.korean_font_utils import setup_korean_font
+-from utils import interpolate_nan_values
++from utils import interpolate_nan_values, calculate_sampling_rate
+ from pass_filter import pass_filter
+ from rain_flow_counting import (
+     rain_flow_counting,
+@@ -55,11 +55,8 @@ def load_and_process_data(file_path: str) -> Tuple[np.ndarray, np.ndarray, np.nd
+     )
+ 
+     # 샘플링 주파수 (타임스탬프로부터 자동 감지)
+-    if len(df) > 1:
+-        interval_seconds = df["msrmt_dt"].diff().dropna().median().total_seconds()
+-    else:
+-        interval_seconds = 300  # 기본값 5분
+-    sampling_rate = 1 / interval_seconds
++    sampling_rate = calculate_sampling_rate(df["msrmt_dt"])
++    interval_seconds = 1 / sampling_rate
+     print(f"샘플링 간격: {interval_seconds:.0f}초 ({interval_seconds/60:.0f}분)")
+     print(f"샘플링 주파수: {sampling_rate:.6f} Hz")
+ 
+-- 
+2.43.0
+
+
+From 890b01881de0d26c1389050c8700fa368ab3cbbb Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Thu, 14 May 2026 01:10:20 +0000
+Subject: [PATCH 3/4] =?UTF-8?q?feat:=20add=200100(=EC=82=AC=EB=9D=BC?=
+ =?UTF-8?q?=EB=B4=89)=20fatigue=20CSV=20generation=20pipeline?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- src/tmp/make_0100_fatigue_csv.py: full pipeline from 상수관로/급수관로
+  shapefiles + 0100 pressure data to fatigue_merged_zone_fixed CSV
+  * reads DBF manually to handle Korean column names in 급수관로 shapefile
+  * maps PIP_LBL "/" format (DCIP→DTC, HI-3P→PE, SP→ST, CIP→CI)
+  * assigns zone=0100 to all pipes (single pressure sensor region)
+  * outputs results/tmp/0100_fatigue_merged_zone_fixed.csv
+
+- src/repair_loader_k.py: add strict=False mode that returns empty
+  DataFrames instead of raising FileNotFoundError when K_repair files
+  are missing (K_repair=0 → no effect on K_total)
+
+- src/rainflow_processing.py:
+  * auto-detect sampling rate instead of hardcoded 1/300 (5-min)
+  * auto-detect date range from actual data when no dates are specified
+    (uses last 1 year of available data, not hardcoded 2023)
+
+- src/pipe_data.py: filter parse_dates to existing columns only to
+  avoid pd.read_csv failure when date columns are absent in CSV
+
+- pyproject.toml: add scipy, scikit-learn, seaborn, statsmodels to
+  project dependencies so uv run installs them
+
+- results/tmp/: 0100 intermediate + final fatigue CSVs (1641 pipes)
+
+https://claude.ai/code/session_01MRLXBZwn3r1unkKmqtMuuL
+---
+ .../pyproject.toml"                           |   4 +
+ .../src/pipe_data.py"                         |  13 +-
+ .../src/rainflow_processing.py"               |  32 +-
+ .../src/repair_loader_k.py"                   |  41 ++-
+ .../src/tmp/make_0100_fatigue_csv.py"         | 310 ++++++++++++++++++
+ 5 files changed, 369 insertions(+), 31 deletions(-)
+ create mode 100644 "\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/src/tmp/make_0100_fatigue_csv.py"
+
+diff --git "a/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/pyproject.toml" "b/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/pyproject.toml"
+index cb7a98d..f40ecad 100644
+--- "a/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/pyproject.toml"
++++ "b/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/pyproject.toml"
+@@ -24,6 +24,10 @@ dependencies = [
+     "pandas>=1.3.0",
+     "numpy>=1.21.0",
+     "shapely>=2.0.0",
++    "scipy>=1.7.0",
++    "scikit-learn>=1.0.0",
++    "seaborn>=0.11.0",
++    "statsmodels>=0.13.0",
+ ]
+ 
+ [project.optional-dependencies]
+diff --git "a/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/src/pipe_data.py" "b/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/src/pipe_data.py"
+index 35251d6..5cff119 100644
+--- "a/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/src/pipe_data.py"
++++ "b/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/src/pipe_data.py"
+@@ -125,8 +125,17 @@ def read_csv_common(
+             print(f"\n청크 단위 데이터 읽기 (청크 크기: {chunksize:,}행):")
+             print("=" * 60)
+ 
+-        # 날짜 컬럼 파싱 설정
+-        parse_dates = date_columns if date_columns else []
++        # 날짜 컬럼 파싱 설정 (존재하는 컬럼만 사용)
++        if date_columns:
++            header = pd.read_csv(file_path, nrows=0, encoding="utf-8")
++            available_cols = set(header.columns)
++            # utf-8 실패시 utf-8-sig 재시도
++            if not available_cols:
++                header = pd.read_csv(file_path, nrows=0, encoding="utf-8-sig")
++                available_cols = set(header.columns)
++            parse_dates = [c for c in date_columns if c in available_cols]
++        else:
++            parse_dates = []
+ 
+         chunk_reader = pd.read_csv(
+             file_path, chunksize=chunksize, encoding="utf-8", parse_dates=parse_dates
+diff --git "a/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/src/rainflow_processing.py" "b/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/src/rainflow_processing.py"
+index 99b65b6..efe7e04 100644
+--- "a/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/src/rainflow_processing.py"
++++ "b/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/src/rainflow_processing.py"
+@@ -15,7 +15,7 @@ from typing import Dict, Any, List, Tuple, Optional
+ from datetime import datetime
+ 
+ # 기존 모듈 import
+-from utils import interpolate_nan_values
++from utils import interpolate_nan_values, calculate_sampling_rate
+ from pass_filter import pass_filter
+ from rain_flow_counting import rain_flow_counting, analyze_rainflow_cycles
+ from pipe_data import read_csv_pipe_lm, read_csv_sply_ls
+@@ -129,8 +129,10 @@ def process_date_range_data(
+         np.array(df["wtrprsr"].values), pd.DatetimeIndex(df["msrmt_dt"])
+     )
+ 
+-    # 샘플링 주파수
+-    sampling_rate = 1 / 300  # 5분 간격
++    # 샘플링 주파수 (타임스탬프로부터 자동 감지)
++    sampling_rate = calculate_sampling_rate(pd.DatetimeIndex(df["msrmt_dt"]))
++    interval_seconds = 1 / sampling_rate
++    print(f"샘플링 간격: {interval_seconds:.0f}초 ({interval_seconds/60:.0f}분)")
+     print(f"샘플링 주파수: {sampling_rate:.6f} Hz")
+ 
+     # Pass Filter 적용
+@@ -215,23 +217,29 @@ def analyze_date_range_rainflow(
+     
+     file_name = Path(file_path).name
+ 
+-    # 기본값 설정
+-    if start_date is None:
+-        start_date = datetime(2023, 1, 1)
+-    if end_date is None:
+-        end_date = datetime(2023, 12, 31, 23, 59, 59)
+-
+     print(f"\n{'='*80}")
+     print(f"날짜 범위 Rain Flow Counting 분석 시작: {file_name}")
+-    print(
+-        f"분석 기간: {start_date.strftime('%Y-%m-%d')} ~ {end_date.strftime('%Y-%m-%d')}"
+-    )
+     print(f"{'='*80}")
+ 
+     try:
+         # 1. 전체 데이터 로드
+         full_df = load_full_data(file_path)
+ 
++        # 기본값 설정: 명시적 날짜 없으면 데이터 실제 범위에서 최근 1년 사용
++        if start_date is None or end_date is None:
++            data_end = full_df["msrmt_dt"].max()
++            data_start = full_df["msrmt_dt"].min()
++            if end_date is None:
++                end_date = data_end.to_pydatetime().replace(hour=23, minute=59, second=59)
++            if start_date is None:
++                # 최근 1년
++                candidate = end_date.replace(year=end_date.year - 1)
++                start_date = max(candidate, data_start.to_pydatetime())
++
++        print(
++            f"분석 기간: {start_date.strftime('%Y-%m-%d')} ~ {end_date.strftime('%Y-%m-%d')}"
++        )
++
+         # 2. 지정된 날짜 범위 데이터 추출
+         filtered_df = extract_date_range_data(full_df, start_date, end_date)
+ 
+diff --git "a/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/src/repair_loader_k.py" "b/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/src/repair_loader_k.py"
+index 26eb6e4..dd3d14f 100644
+--- "a/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/src/repair_loader_k.py"
++++ "b/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/src/repair_loader_k.py"
+@@ -8,15 +8,18 @@ from typing import Dict
+ from common.config import PROJECT_ROOT, C_REPAIR
+ 
+ 
+-def load_k_repair_mapping() -> Dict[str, pd.DataFrame]:
++def load_k_repair_mapping(strict: bool = True) -> Dict[str, pd.DataFrame]:
+     """
+     K_repair 데이터를 로드하여 딕셔너리로 반환
+ 
++    Args:
++        strict: True이면 파일 없을 때 FileNotFoundError, False이면 경고 후 빈 DataFrame 반환
++
+     Returns:
+         Dict[str, pd.DataFrame]: PIPE_LM과 SPLY_LS의 K_repair 매핑 데이터
+-    
++
+     Raises:
+-        FileNotFoundError: K_repair CSV 파일이 없을 때
++        FileNotFoundError: strict=True이고 K_repair CSV 파일이 없을 때
+     """
+     k_repair_dir = PROJECT_ROOT / "results" / "main13a_k_repair"
+ 
+@@ -25,24 +28,28 @@ def load_k_repair_mapping() -> Dict[str, pd.DataFrame]:
+     # PIPE_LM K_repair 로드
+     pipe_lm_path = k_repair_dir / "repair_pipe_lm.csv"
+     if not pipe_lm_path.exists():
+-        raise FileNotFoundError(str(pipe_lm_path))
+-    
+-    df_pipe = pd.read_csv(pipe_lm_path)
+-    # FTR_IDN을 인덱스로 설정
+-    df_pipe.set_index("FTR_IDN", inplace=True)
+-    repair_data["PIPE_LM"] = df_pipe
+-    print(f"PIPE_LM K_repair 데이터 로드 완료: {len(df_pipe)} 건")
++        if strict:
++            raise FileNotFoundError(str(pipe_lm_path))
++        print(f"경고: PIPE_LM K_repair 파일 없음 ({pipe_lm_path}). K_repair=0으로 처리합니다.")
++        repair_data["PIPE_LM"] = pd.DataFrame(columns=["K_repair_per_m"])
++    else:
++        df_pipe = pd.read_csv(pipe_lm_path)
++        df_pipe.set_index("FTR_IDN", inplace=True)
++        repair_data["PIPE_LM"] = df_pipe
++        print(f"PIPE_LM K_repair 데이터 로드 완료: {len(df_pipe)} 건")
+ 
+     # SPLY_LS K_repair 로드
+     sply_ls_path = k_repair_dir / "repair_sply_ls.csv"
+     if not sply_ls_path.exists():
+-        raise FileNotFoundError(str(sply_ls_path))
+-    
+-    df_sply = pd.read_csv(sply_ls_path)
+-    # FTR_IDN을 인덱스로 설정
+-    df_sply.set_index("FTR_IDN", inplace=True)
+-    repair_data["SPLY_LS"] = df_sply
+-    print(f"SPLY_LS K_repair 데이터 로드 완료: {len(df_sply)} 건")
++        if strict:
++            raise FileNotFoundError(str(sply_ls_path))
++        print(f"경고: SPLY_LS K_repair 파일 없음 ({sply_ls_path}). K_repair=0으로 처리합니다.")
++        repair_data["SPLY_LS"] = pd.DataFrame(columns=["K_repair_per_m"])
++    else:
++        df_sply = pd.read_csv(sply_ls_path)
++        df_sply.set_index("FTR_IDN", inplace=True)
++        repair_data["SPLY_LS"] = df_sply
++        print(f"SPLY_LS K_repair 데이터 로드 완료: {len(df_sply)} 건")
+ 
+     return repair_data
+ 
+diff --git "a/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/src/tmp/make_0100_fatigue_csv.py" "b/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/src/tmp/make_0100_fatigue_csv.py"
+new file mode 100644
+index 0000000..51093e1
+--- /dev/null
++++ "b/\355\224\274\353\241\234\353\217\204_\354\236\224\354\227\254\354\210\230\353\252\205/src/tmp/make_0100_fatigue_csv.py"
+@@ -0,0 +1,310 @@
++"""
++0100 지역(사라봉) 피로도 CSV 생성 스크립트
++
++입력:
++  - data/raw/export_shp_20250704(0100)/상수관로_사라봉1.shp  (상수관로)
++  - data/raw/export_shp_20250704(0100)/급수관로_사라봉1.shp  (급수관로)
++  - data/raw/0100 소구역 압력 데이터.csv                     (압력 데이터)
++
++출력:
++  - results/tmp/0100_fatigue_merged_zone_fixed.csv
++
++의존성 없는 데이터:
++  - 공사이력(K_repair) 없음 → K_repair=0 (K_total에 영향 없음)
++  - 교통 정보 없음 → K_traffic=1.0 (fatigue_calculations.py에서 기본값)
++  - 지질 정보(K_soil) 없음 → K_soil=1.0 (기본값)
++"""
++
++import sys
++import struct
++from pathlib import Path
++from datetime import datetime
++
++import pandas as pd
++import numpy as np
++
++# 프로젝트 루트 및 src 경로 설정
++PROJECT_ROOT = Path(__file__).parent.parent.parent
++SRC_DIR = PROJECT_ROOT / "src"
++sys.path.insert(0, str(SRC_DIR))
++
++from common.config import RESULTS_DIR, RAW_DATA_DIR
++from rainflow_processing import process_pipe_data_with_age, calculate_rainflow_by_age
++from fatigue_calculations import add_K_material_to_dataframe, calculate_fatigue_damage_dataframe
++from repair_loader_k import load_k_repair_mapping, apply_k_repair_to_dataframe, print_k_repair_statistics
++from pipe_prop import read_pipe_properties
++
++# 경로 설정
++EXPORT_DIR = RAW_DATA_DIR / "export_shp_20250704(0100)"
++PRESSURE_FILE = RAW_DATA_DIR / "0100 소구역 압력 데이터.csv"
++PIPE_PROP_PATH = RAW_DATA_DIR / "PIPE_PROP.csv"
++OUTPUT_DIR = RESULTS_DIR / "tmp"
++REGION_CODE = "0100"
++
++# 임시 CSV 저장 경로
++TEMP_PIPE_LM_CSV = OUTPUT_DIR / "0100_PIPE_LM_temp.csv"
++TEMP_SPLY_LS_CSV = OUTPUT_DIR / "0100_SPLY_LS_temp.csv"
++
++
++def read_dbf_to_dataframe(dbf_path: Path) -> pd.DataFrame:
++    """DBF 파일을 읽어 DataFrame으로 반환 (ASCII 컬럼만 유지)"""
++    with open(dbf_path, "rb") as f:
++        f.read(4)
++        num_records = struct.unpack("<I", f.read(4))[0]
++        header_size = struct.unpack("<H", f.read(2))[0]
++        record_size = struct.unpack("<H", f.read(2))[0]
++        f.read(20)
++
++        fields = []
++        while True:
++            desc = f.read(32)
++            if desc[0:1] == b"\r":
++                break
++            name_bytes = desc[:11].replace(b"\x00", b"")
++            try:
++                name = name_bytes.decode("utf-8").strip()
++            except UnicodeDecodeError:
++                name = name_bytes.decode("latin-1").strip()
++            ftype = chr(desc[11])
++            length = desc[16]
++            fields.append((name, ftype, length))
++
++        f.seek(header_size)
++
++        rows = []
++        for _ in range(num_records):
++            record = f.read(record_size)
++            if not record or record[0:1] == b"\x1a":
++                break
++            pos = 1
++            row = {}
++            for fname, ftype, flen in fields:
++                val = record[pos : pos + flen]
++                try:
++                    decoded = val.decode("utf-8").strip()
++                except UnicodeDecodeError:
++                    decoded = val.decode("cp949", errors="replace").strip()
++                row[fname] = decoded
++                pos += flen
++            rows.append(row)
++
++    df = pd.DataFrame(rows)
++    # ASCII 컬럼만 유지 (한글 컬럼 제거)
++    ascii_cols = [c for c in df.columns if c.isascii()]
++    return df[ascii_cols]
++
++
++def convert_shp_to_pipe_csv(shp_path: Path, pipe_type: str, output_csv: Path) -> None:
++    """
++    Shapefile → 파이프 CSV 변환
++
++    Args:
++        shp_path: 입력 shapefile 경로 (.shp 확장자)
++        pipe_type: "PIPE_LM" 또는 "SPLY_LS"
++        output_csv: 출력 CSV 경로
++    """
++    dbf_path = shp_path.with_suffix(".dbf")
++    print(f"\n{pipe_type} shapefile → CSV 변환: {shp_path.name}")
++
++    df = read_dbf_to_dataframe(dbf_path)
++    print(f"  읽은 행 수: {len(df)}, 컬럼: {list(df.columns)}")
++
++    # 필요한 컬럼이 있으면 유지, 없으면 NaN으로 채움
++    required_cols = [
++        "FTR_CDE", "FTR_IDN", "HJD_CDE", "SHT_NUM", "MNG_CDE",
++        "MOP_CDE", "STD_DIP", "BYC_LEN", "JHT_CDE", "LOW_DEP", "HGH_DEP",
++        "CNT_NUM", "SYS_CHK", "PIP_LBL", "AVG_DEP", "IQT_CDE", "IST_YMD",
++    ]
++    for col in required_cols:
++        if col not in df.columns:
++            df[col] = None
++            print(f"  컬럼 없음 → NaN 추가: {col}")
++
++    # 숫자 컬럼 변환
++    for col in ["FTR_IDN", "STD_DIP", "BYC_LEN", "LOW_DEP", "HGH_DEP", "AVG_DEP"]:
++        if col in df.columns:
++            df[col] = pd.to_numeric(df[col], errors="coerce")
++
++    # fid 컬럼 제거
++    df = df.drop(columns=["fid"], errors="ignore")
++
++    output_csv.parent.mkdir(parents=True, exist_ok=True)
++    df.to_csv(output_csv, index=False, encoding="utf-8-sig")
++    print(f"  저장 완료: {output_csv} ({len(df)}행)")
++
++
++def run_fatigue_pipeline(
++    pipe_csv: Path,
++    pipe_type: str,
++    pipe_properties: pd.DataFrame,
++    repair_data: dict,
++) -> pd.DataFrame:
++    """
++    단일 파이프 CSV에 대해 전체 피로도 파이프라인 실행
++
++    Returns:
++        피로도 계산 결과 DataFrame
++    """
++    print(f"\n{'='*60}")
++    print(f"{pipe_type} 피로도 파이프라인 실행")
++    print(f"{'='*60}")
++
++    # 1. 파이프 데이터 읽기 + 나이 계산
++    pipe_df = process_pipe_data_with_age(str(pipe_csv), pipe_type)
++    if pipe_df.empty:
++        print(f"경고: {pipe_type} 데이터가 비어있습니다.")
++        return pd.DataFrame()
++
++    # 사라봉 shapefile PIP_LBL 포맷은 "YYYY/TYPE/..." (기존 "DIA-TYPE-YR" 포맷과 다름)
++    # → read_csv_pipe_lm이 "-" split으로 추출하면 NaN이 됨; "/" split으로 재추출
++    if "PIP_TYPE" in pipe_df.columns and pipe_df["PIP_TYPE"].isna().all():
++        if "PIP_LBL" in pipe_df.columns:
++            # PIP_LBL에서 "/" 구분자로 타입 추출 후 표준 코드로 매핑
++            _slash_type = pipe_df["PIP_LBL"].str.split("/").str[1].str.strip()
++            _type_map = {
++                "DCIP": "DTC",   # Ductile Cast Iron Pipe → 덕타일 주철관
++                "HI-3P": "PE",   # High-Impact Poly-3 pipe → 폴리에틸렌
++                "SP": "ST",      # Steel Pipe → 스틸
++                "CIP": "CI",     # Cast Iron Pipe → 주철
++                "PFP": "PFP",
++                "PE": "PE",
++            }
++            pipe_df["PIP_TYPE"] = _slash_type.map(_type_map)
++            valid_cnt = pipe_df["PIP_TYPE"].notna().sum()
++            print(f"  PIP_TYPE 재추출 완료: {valid_cnt}/{len(pipe_df)} 행")
++
++    # 2. Rain Flow Counting (0100 압력 데이터 사용)
++    pressure_files = [str(PRESSURE_FILE)]
++    result_df = calculate_rainflow_by_age(pipe_df, pipe_type, pressure_files)
++
++    # 3. K 계수 추가 (K_material, K_soil, K_traffic 등)
++    result_df = add_K_material_to_dataframe(result_df, pipe_properties, pipe_type)
++
++    # 4. K_repair 적용 (공사이력 없음 → K_repair=0)
++    result_df = apply_k_repair_to_dataframe(result_df, pipe_type, repair_data)
++    print_k_repair_statistics(result_df, pipe_type)
++
++    # 5. 피로도 계산 (0100 지역)
++    if f"{REGION_CODE}_high_total_cycles" in result_df.columns:
++        result_df = calculate_fatigue_damage_dataframe(
++            result_df, REGION_CODE, data_type="pressure", use_k_total=True
++        )
++
++        # 잔여 수명 계산
++        if f"{REGION_CODE}_D_final" in result_df.columns:
++            result_df[f"{REGION_CODE}_remaining_life_years"] = result_df.apply(
++                lambda row: (
++                    (1 - row[f"{REGION_CODE}_D_final"]) / row[f"{REGION_CODE}_D_final"]
++                    if 0 < row[f"{REGION_CODE}_D_final"] < 1
++                    else 0
++                ),
++                axis=1,
++            )
++
++        # intermediate 컬럼명 변경
++        for band in ["high", "low"]:
++            old_col = f"{REGION_CODE}_{band}_fatigue_intermediate"
++            new_col = f"{REGION_CODE}_{band}_fatigue_damage"
++            if old_col in result_df.columns:
++                result_df[new_col] = result_df[old_col]
++                del result_df[old_col]
++
++    # K_total_without_repair 제거
++    result_df = result_df.drop(columns=["K_total_without_repair"], errors="ignore")
++
++    # 중복 컬럼(.1 suffix) 제거
++    dup_cols = [c for c in result_df.columns if c.endswith(".1")]
++    if dup_cols:
++        result_df = result_df.drop(columns=dup_cols)
++
++    return result_df
++
++
++def apply_zone_and_rename(df: pd.DataFrame, pipe_type: str) -> pd.DataFrame:
++    """
++    zone=0100 설정 후 0100_ prefix 제거 (filter_zone_columns 역할)
++
++    Returns:
++        zone 컬럼이 추가되고 prefix가 제거된 DataFrame
++    """
++    df = df.copy()
++    df["zone"] = str(REGION_CODE)
++    df["DATA_SRC"] = pipe_type
++
++    # 0100_ prefix 제거
++    region_cols = {c: c.replace(f"{REGION_CODE}_", "") for c in df.columns if c.startswith(f"{REGION_CODE}_")}
++    df = df.rename(columns=region_cols)
++
++    # DATA_SRC, zone을 앞으로
++    cols = ["DATA_SRC", "zone"] + [c for c in df.columns if c not in ("DATA_SRC", "zone")]
++    df = df[cols]
++
++    return df
++
++
++def main() -> None:
++    print("0100 지역(사라봉) 피로도 CSV 생성")
++    print("=" * 80)
++
++    # 출력 디렉토리
++    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
++
++    # 입력 파일 확인
++    pipe_lm_shp = EXPORT_DIR / "상수관로_사라봉1.shp"
++    sply_ls_shp = EXPORT_DIR / "급수관로_사라봉1.shp"
++
++    for path in [pipe_lm_shp, sply_ls_shp, PRESSURE_FILE]:
++        if not path.exists():
++            raise FileNotFoundError(f"입력 파일 없음: {path}")
++    print(f"입력 파일 확인 완료")
++
++    # 1. Shapefile → CSV 변환
++    convert_shp_to_pipe_csv(pipe_lm_shp, "PIPE_LM", TEMP_PIPE_LM_CSV)
++    convert_shp_to_pipe_csv(sply_ls_shp, "SPLY_LS", TEMP_SPLY_LS_CSV)
++
++    # 2. 파이프 속성 로드
++    pipe_properties = read_pipe_properties(str(PIPE_PROP_PATH))
++    if pipe_properties.empty:
++        raise RuntimeError("파이프 속성 데이터를 로드할 수 없습니다.")
++
++    # 3. K_repair 데이터 로드 (공사이력 없음 → strict=False)
++    repair_data = load_k_repair_mapping(strict=False)
++
++    # 4. 피로도 파이프라인 실행
++    pipe_lm_result = run_fatigue_pipeline(TEMP_PIPE_LM_CSV, "PIPE_LM", pipe_properties, repair_data)
++    sply_ls_result = run_fatigue_pipeline(TEMP_SPLY_LS_CSV, "SPLY_LS", pipe_properties, repair_data)
++
++    results = []
++    if not pipe_lm_result.empty:
++        results.append(apply_zone_and_rename(pipe_lm_result, "PIPE_LM"))
++    if not sply_ls_result.empty:
++        results.append(apply_zone_and_rename(sply_ls_result, "SPLY_LS"))
++
++    if not results:
++        raise RuntimeError("피로도 계산 결과가 없습니다.")
++
++    merged = pd.concat(results, ignore_index=True)
++
++    # 5. SMZ_NUM 컬럼 없으면 zone 값으로 채움 (main59 호환)
++    if "SMZ_NUM" not in merged.columns:
++        merged["SMZ_NUM"] = merged["zone"]
++    else:
++        merged["SMZ_NUM"] = merged["SMZ_NUM"].fillna(merged["zone"])
++
++    # 6. 저장
++    output_file = OUTPUT_DIR / "0100_fatigue_merged_zone_fixed.csv"
++    merged.to_csv(output_file, index=False, encoding="utf-8-sig")
++
++    print(f"\n{'='*80}")
++    print(f"완료! 결과 저장: {output_file}")
++    print(f"  - 전체 행 수: {len(merged):,}")
++    print(f"  - 전체 컬럼 수: {len(merged.columns)}")
++    print(f"  - PIPE_LM: {(merged['DATA_SRC'] == 'PIPE_LM').sum():,}개")
++    print(f"  - SPLY_LS: {(merged['DATA_SRC'] == 'SPLY_LS').sum():,}개")
++    if "D_final" in merged.columns:
++        valid = merged["D_final"].dropna()
++        print(f"  - D_final 유효값: {len(valid):,}개, 평균: {valid.mean():.4f}")
++
++
++if __name__ == "__main__":
++    main()
+-- 
+2.43.0
+
+
+From 4a02e56d3db96672500d39e1e47bd10d197e8320 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Thu, 14 May 2026 01:14:16 +0000
+Subject: [PATCH 4/4] chore: add root .gitignore to exclude __pycache__,
+ egg-info, .venv
+
+https://claude.ai/code/session_01MRLXBZwn3r1unkKmqtMuuL
+---
+ .gitignore | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+ create mode 100644 .gitignore
+
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..9b37d4f
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,26 @@
++# Python
++__pycache__/
++*.py[cod]
++*.egg-info/
++*.egg
++.eggs/
++
++# Virtual environments
++.venv/
++venv/
++env/
++
++# Build
++build/
++dist/
++
++# IDE
++.idea/
++.vscode/
++
++# OS
++.DS_Store
++Thumbs.db
++
++# uv
++uv.lock
+-- 
+2.43.0
+
