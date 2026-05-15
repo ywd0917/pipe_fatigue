@@ -119,6 +119,8 @@ def load_traffic_data() -> Dict[str, Dict[int, Tuple[float, float]]]:
         ("0520_supply", "0520_sply_traffic.csv"),
         ("0903_pipe", "0903_pipe_traffic.csv"),
         ("0903_supply", "0903_sply_traffic.csv"),
+        ("0100_pipe", "0100_pipe_traffic.csv"),
+        ("0100_supply", "0100_sply_traffic.csv"),
     ]
 
     for key, filename in traffic_files:

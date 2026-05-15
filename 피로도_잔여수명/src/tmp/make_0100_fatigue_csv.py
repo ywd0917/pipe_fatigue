@@ -11,7 +11,7 @@
 
 의존성 없는 데이터:
   - 공사이력(K_repair) 없음 → K_repair=0 (K_total에 영향 없음)
-  - 교통 정보 없음 → K_traffic=1.0 (fatigue_calculations.py에서 기본값)
+  - 교통 정보: data/traffic/0100_pipe_traffic.csv, 0100_sply_traffic.csv
   - 지질 정보(K_soil) 없음 → K_soil=1.0 (기본값)
 """
 
