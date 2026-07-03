@@ -291,6 +291,12 @@ def main() -> None:
     else:
         merged["SMZ_NUM"] = merged["SMZ_NUM"].fillna(merged["zone"])
 
+    # 표준 파이프라인 호환 컬럼 추가 (shapefile에 없는 컬럼 → None)
+    for col in ["GIS_IDN", "FTC_CDE", "CLS_YMD", "GU_CDE",
+                "MDZ_NUM", "LGZ_NUM", "WTP_CDE", "FNS_YMD", "MET_IDN"]:
+        if col not in merged.columns:
+            merged[col] = None
+
     # 6. 저장
     output_file = OUTPUT_DIR / "0100_fatigue_merged_zone_fixed.csv"
     merged.to_csv(output_file, index=False, encoding="utf-8-sig")
