@@ -4,7 +4,7 @@
 입력:
   - data/raw/export_shp_20250704(0200)/상수관로_고성.shp  (상수관로)
   - data/raw/export_shp_20250704(0200)/급수관로_고성.shp  (급수관로)
-  - data/raw/0200_소블록_압력_데이터.csv                  (압력 데이터)
+  - DB: 61.85.1.119:4306 supply_meter (manage_id=300027, 0200 압력 데이터)
 
 출력:
   - results/tmp/0200_fatigue_merged_zone_fixed.csv
@@ -36,7 +36,6 @@ from pipe_prop import read_pipe_properties
 
 # 경로 설정
 EXPORT_DIR = RAW_DATA_DIR / "export_shp_20250704(0200)"
-PRESSURE_FILE = RAW_DATA_DIR / "0200_소블록_압력_데이터.csv"
 PIPE_PROP_PATH = RAW_DATA_DIR / "PIPE_PROP.csv"
 OUTPUT_DIR = RESULTS_DIR / "tmp"
 REGION_CODE = "0200"
@@ -138,7 +137,6 @@ def run_fatigue_pipeline(
         print(f"경고: {pipe_type} 데이터가 비어있습니다.")
         return pd.DataFrame()
 
-    # PIP_LBL이 "/" 구분자 포맷인 경우 PIP_TYPE 재추출
     if "PIP_TYPE" in pipe_df.columns and pipe_df["PIP_TYPE"].isna().all():
         if "PIP_LBL" in pipe_df.columns:
             _slash_type = pipe_df["PIP_LBL"].str.split("/").str[1].str.strip()
@@ -154,8 +152,7 @@ def run_fatigue_pipeline(
             valid_cnt = pipe_df["PIP_TYPE"].notna().sum()
             print(f"  PIP_TYPE 재추출 완료: {valid_cnt}/{len(pipe_df)} 행")
 
-    pressure_files = [str(PRESSURE_FILE)]
-    result_df = calculate_rainflow_by_age(pipe_df, pipe_type, pressure_files)
+    result_df = calculate_rainflow_by_age(pipe_df, pipe_type, ["0200"], use_db=True)
 
     result_df = add_K_material_to_dataframe(result_df, pipe_properties, pipe_type)
 
@@ -217,24 +214,20 @@ def main() -> None:
     pipe_lm_shp = EXPORT_DIR / "상수관로_고성.shp"
     sply_ls_shp = EXPORT_DIR / "급수관로_고성.shp"
 
-    for path in [pipe_lm_shp, sply_ls_shp, PRESSURE_FILE]:
+    for path in [pipe_lm_shp, sply_ls_shp]:
         if not path.exists():
             raise FileNotFoundError(f"입력 파일 없음: {path}")
     print("입력 파일 확인 완료")
 
-    # 1. Shapefile → CSV 변환
     convert_shp_to_pipe_csv(pipe_lm_shp, "PIPE_LM", TEMP_PIPE_LM_CSV)
     convert_shp_to_pipe_csv(sply_ls_shp, "SPLY_LS", TEMP_SPLY_LS_CSV)
 
-    # 2. 파이프 속성 로드
     pipe_properties = read_pipe_properties(str(PIPE_PROP_PATH))
     if pipe_properties.empty:
         raise RuntimeError("파이프 속성 데이터를 로드할 수 없습니다.")
 
-    # 3. K_repair 데이터 로드 (공사이력 없음)
     repair_data = load_k_repair_mapping(strict=False)
 
-    # 4. 피로도 파이프라인 실행
     pipe_lm_result = run_fatigue_pipeline(TEMP_PIPE_LM_CSV, "PIPE_LM", pipe_properties, repair_data)
     sply_ls_result = run_fatigue_pipeline(TEMP_SPLY_LS_CSV, "SPLY_LS", pipe_properties, repair_data)
 
@@ -254,7 +247,6 @@ def main() -> None:
     else:
         merged["SMZ_NUM"] = merged["SMZ_NUM"].fillna(merged["zone"])
 
-    # 표준 파이프라인 호환 컬럼 추가 (shapefile에 없는 컬럼 → None)
     for col in ["GIS_IDN", "FTC_CDE", "CLS_YMD", "GU_CDE",
                 "MDZ_NUM", "LGZ_NUM", "WTP_CDE", "FNS_YMD", "MET_IDN"]:
         if col not in merged.columns:

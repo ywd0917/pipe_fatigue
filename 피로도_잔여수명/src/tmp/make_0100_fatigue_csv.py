@@ -4,7 +4,7 @@
 입력:
   - data/raw/export_shp_20250704(0100)/상수관로_사라봉1.shp  (상수관로)
   - data/raw/export_shp_20250704(0100)/급수관로_사라봉1.shp  (급수관로)
-  - data/raw/0100 소구역 압력 데이터.csv                     (압력 데이터)
+  - DB: 61.85.1.119:4306 supply_meter (manage_id=300111, 0100 압력 데이터)
 
 출력:
   - results/tmp/0100_fatigue_merged_zone_fixed.csv
@@ -36,7 +36,6 @@ from pipe_prop import read_pipe_properties
 
 # 경로 설정
 EXPORT_DIR = RAW_DATA_DIR / "export_shp_20250704(0100)"
-PRESSURE_FILE = RAW_DATA_DIR / "0100 소구역 압력 데이터.csv"
 PIPE_PROP_PATH = RAW_DATA_DIR / "PIPE_PROP.csv"
 OUTPUT_DIR = RESULTS_DIR / "tmp"
 REGION_CODE = "0100"
@@ -97,11 +96,6 @@ def read_dbf_to_dataframe(dbf_path: Path) -> pd.DataFrame:
 def convert_shp_to_pipe_csv(shp_path: Path, pipe_type: str, output_csv: Path) -> None:
     """
     Shapefile → 파이프 CSV 변환
-
-    Args:
-        shp_path: 입력 shapefile 경로 (.shp 확장자)
-        pipe_type: "PIPE_LM" 또는 "SPLY_LS"
-        output_csv: 출력 CSV 경로
     """
     dbf_path = shp_path.with_suffix(".dbf")
     print(f"\n{pipe_type} shapefile → CSV 변환: {shp_path.name}")
@@ -109,7 +103,6 @@ def convert_shp_to_pipe_csv(shp_path: Path, pipe_type: str, output_csv: Path) ->
     df = read_dbf_to_dataframe(dbf_path)
     print(f"  읽은 행 수: {len(df)}, 컬럼: {list(df.columns)}")
 
-    # 필요한 컬럼이 있으면 유지, 없으면 NaN으로 채움
     required_cols = [
         "FTR_CDE", "FTR_IDN", "HJD_CDE", "SHT_NUM", "MNG_CDE",
         "MOP_CDE", "STD_DIP", "BYC_LEN", "JHT_CDE", "LOW_DEP", "HGH_DEP",
@@ -120,12 +113,10 @@ def convert_shp_to_pipe_csv(shp_path: Path, pipe_type: str, output_csv: Path) ->
             df[col] = None
             print(f"  컬럼 없음 → NaN 추가: {col}")
 
-    # 숫자 컬럼 변환
     for col in ["FTR_IDN", "STD_DIP", "BYC_LEN", "LOW_DEP", "HGH_DEP", "AVG_DEP"]:
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors="coerce")
 
-    # fid 컬럼 제거
     df = df.drop(columns=["fid"], errors="ignore")
 
     output_csv.parent.mkdir(parents=True, exist_ok=True)
@@ -141,31 +132,25 @@ def run_fatigue_pipeline(
 ) -> pd.DataFrame:
     """
     단일 파이프 CSV에 대해 전체 피로도 파이프라인 실행
-
-    Returns:
-        피로도 계산 결과 DataFrame
     """
     print(f"\n{'='*60}")
     print(f"{pipe_type} 피로도 파이프라인 실행")
     print(f"{'='*60}")
 
-    # 1. 파이프 데이터 읽기 + 나이 계산
     pipe_df = process_pipe_data_with_age(str(pipe_csv), pipe_type)
     if pipe_df.empty:
         print(f"경고: {pipe_type} 데이터가 비어있습니다.")
         return pd.DataFrame()
 
     # 사라봉 shapefile PIP_LBL 포맷은 "YYYY/TYPE/..." (기존 "DIA-TYPE-YR" 포맷과 다름)
-    # → read_csv_pipe_lm이 "-" split으로 추출하면 NaN이 됨; "/" split으로 재추출
     if "PIP_TYPE" in pipe_df.columns and pipe_df["PIP_TYPE"].isna().all():
         if "PIP_LBL" in pipe_df.columns:
-            # PIP_LBL에서 "/" 구분자로 타입 추출 후 표준 코드로 매핑
             _slash_type = pipe_df["PIP_LBL"].str.split("/").str[1].str.strip()
             _type_map = {
-                "DCIP": "DTC",   # Ductile Cast Iron Pipe → 덕타일 주철관
-                "HI-3P": "PE",   # High-Impact Poly-3 pipe → 폴리에틸렌
-                "SP": "ST",      # Steel Pipe → 스틸
-                "CIP": "CI",     # Cast Iron Pipe → 주철
+                "DCIP": "DTC",
+                "HI-3P": "PE",
+                "SP": "ST",
+                "CIP": "CI",
                 "PFP": "PFP",
                 "PE": "PE",
             }
@@ -173,24 +158,19 @@ def run_fatigue_pipeline(
             valid_cnt = pipe_df["PIP_TYPE"].notna().sum()
             print(f"  PIP_TYPE 재추출 완료: {valid_cnt}/{len(pipe_df)} 행")
 
-    # 2. Rain Flow Counting (0100 압력 데이터 사용)
-    pressure_files = [str(PRESSURE_FILE)]
-    result_df = calculate_rainflow_by_age(pipe_df, pipe_type, pressure_files)
+    # Rain Flow Counting (DB에서 0100 압력 데이터 조회)
+    result_df = calculate_rainflow_by_age(pipe_df, pipe_type, ["0100"], use_db=True)
 
-    # 3. K 계수 추가 (K_material, K_soil, K_traffic 등)
     result_df = add_K_material_to_dataframe(result_df, pipe_properties, pipe_type)
 
-    # 4. K_repair 적용 (공사이력 없음 → K_repair=0)
     result_df = apply_k_repair_to_dataframe(result_df, pipe_type, repair_data)
     print_k_repair_statistics(result_df, pipe_type)
 
-    # 5. 피로도 계산 (0100 지역)
     if f"{REGION_CODE}_high_total_cycles" in result_df.columns:
         result_df = calculate_fatigue_damage_dataframe(
             result_df, REGION_CODE, data_type="pressure", use_k_total=True
         )
 
-        # 잔여 수명 계산
         if f"{REGION_CODE}_D_final" in result_df.columns:
             result_df[f"{REGION_CODE}_remaining_life_years"] = result_df.apply(
                 lambda row: (
@@ -201,7 +181,6 @@ def run_fatigue_pipeline(
                 axis=1,
             )
 
-        # intermediate 컬럼명 변경
         for band in ["high", "low"]:
             old_col = f"{REGION_CODE}_{band}_fatigue_intermediate"
             new_col = f"{REGION_CODE}_{band}_fatigue_damage"
@@ -209,10 +188,8 @@ def run_fatigue_pipeline(
                 result_df[new_col] = result_df[old_col]
                 del result_df[old_col]
 
-    # K_total_without_repair 제거
     result_df = result_df.drop(columns=["K_total_without_repair"], errors="ignore")
 
-    # 중복 컬럼(.1 suffix) 제거
     dup_cols = [c for c in result_df.columns if c.endswith(".1")]
     if dup_cols:
         result_df = result_df.drop(columns=dup_cols)
@@ -221,21 +198,14 @@ def run_fatigue_pipeline(
 
 
 def apply_zone_and_rename(df: pd.DataFrame, pipe_type: str) -> pd.DataFrame:
-    """
-    zone=0100 설정 후 0100_ prefix 제거 (filter_zone_columns 역할)
-
-    Returns:
-        zone 컬럼이 추가되고 prefix가 제거된 DataFrame
-    """
+    """zone=0100 설정 후 0100_ prefix 제거"""
     df = df.copy()
     df["zone"] = str(REGION_CODE)
     df["DATA_SRC"] = pipe_type
 
-    # 0100_ prefix 제거
     region_cols = {c: c.replace(f"{REGION_CODE}_", "") for c in df.columns if c.startswith(f"{REGION_CODE}_")}
     df = df.rename(columns=region_cols)
 
-    # DATA_SRC, zone을 앞으로
     cols = ["DATA_SRC", "zone"] + [c for c in df.columns if c not in ("DATA_SRC", "zone")]
     df = df[cols]
 
@@ -246,31 +216,25 @@ def main() -> None:
     print("0100 지역(사라봉) 피로도 CSV 생성")
     print("=" * 80)
 
-    # 출력 디렉토리
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    # 입력 파일 확인
     pipe_lm_shp = EXPORT_DIR / "상수관로_사라봉1.shp"
     sply_ls_shp = EXPORT_DIR / "급수관로_사라봉1.shp"
 
-    for path in [pipe_lm_shp, sply_ls_shp, PRESSURE_FILE]:
+    for path in [pipe_lm_shp, sply_ls_shp]:
         if not path.exists():
             raise FileNotFoundError(f"입력 파일 없음: {path}")
     print(f"입력 파일 확인 완료")
 
-    # 1. Shapefile → CSV 변환
     convert_shp_to_pipe_csv(pipe_lm_shp, "PIPE_LM", TEMP_PIPE_LM_CSV)
     convert_shp_to_pipe_csv(sply_ls_shp, "SPLY_LS", TEMP_SPLY_LS_CSV)
 
-    # 2. 파이프 속성 로드
     pipe_properties = read_pipe_properties(str(PIPE_PROP_PATH))
     if pipe_properties.empty:
         raise RuntimeError("파이프 속성 데이터를 로드할 수 없습니다.")
 
-    # 3. K_repair 데이터 로드 (공사이력 없음 → strict=False)
     repair_data = load_k_repair_mapping(strict=False)
 
-    # 4. 피로도 파이프라인 실행
     pipe_lm_result = run_fatigue_pipeline(TEMP_PIPE_LM_CSV, "PIPE_LM", pipe_properties, repair_data)
     sply_ls_result = run_fatigue_pipeline(TEMP_SPLY_LS_CSV, "SPLY_LS", pipe_properties, repair_data)
 
@@ -285,19 +249,16 @@ def main() -> None:
 
     merged = pd.concat(results, ignore_index=True)
 
-    # 5. SMZ_NUM 컬럼 없으면 zone 값으로 채움 (main59 호환)
     if "SMZ_NUM" not in merged.columns:
         merged["SMZ_NUM"] = merged["zone"]
     else:
         merged["SMZ_NUM"] = merged["SMZ_NUM"].fillna(merged["zone"])
 
-    # 표준 파이프라인 호환 컬럼 추가 (shapefile에 없는 컬럼 → None)
     for col in ["GIS_IDN", "FTC_CDE", "CLS_YMD", "GU_CDE",
                 "MDZ_NUM", "LGZ_NUM", "WTP_CDE", "FNS_YMD", "MET_IDN"]:
         if col not in merged.columns:
             merged[col] = None
 
-    # 6. 저장
     output_file = OUTPUT_DIR / "0100_fatigue_merged_zone_fixed.csv"
     merged.to_csv(output_file, index=False, encoding="utf-8-sig")
 

@@ -3,12 +3,13 @@
 # 새 압력 데이터가 추가된 후 이 스크립트를 실행하여 피로도 CSV를 갱신합니다.
 #
 # 입력:
-#   data/raw/0243 소구역 압력 데이터.csv
-#   data/raw/0461 소구역 압력 데이터.csv
-#   data/raw/0470 소구역 압력 데이터.csv
-#   data/raw/0480 소구역 압력 데이터.csv
-#   data/raw/0490 소구역 압력 데이터.csv
-#   data/raw/0520 중구역 압력 데이터.csv
+#   DB: 59.25.253.40:4334 supply_meter
+#     - 0243 소구역 (manage_id=235)
+#     - 0461 소구역 (manage_id=39232)
+#     - 0470 소구역 (manage_id=39235)
+#     - 0480 소구역 (manage_id=39233)
+#     - 0490 소구역 (manage_id=39234)
+#     - 0520 중구역 (manage_id=39227)
 #
 # 출력:
 #   results/main56_calc_fatigure/fatigue_pipe_lm.csv

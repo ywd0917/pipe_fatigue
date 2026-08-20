@@ -41,12 +41,6 @@ from common.config import (
 def get_rainflow_summary(analysis_result: Dict[str, Any]) -> Dict[str, float]:
     """
     Rain Flow Counting 분석 결과에서 주요 값들을 추출
-
-    Args:
-        analysis_result: analyze_date_range_rainflow 함수의 결과
-
-    Returns:
-        Dict[str, float]: 주요 Rain Flow Counting 값들
     """
     if not analysis_result["success"]:
         return {
@@ -84,10 +78,6 @@ def process_all_pipe_data_with_rainflow_and_repair(
 ) -> None:
     """
     모든 파이프 데이터 파일을 처리하고 Rain Flow Counting, K 계수들, K_repair, 피로도 계산
-
-    Args:
-        pipe_properties: 파이프 속성 데이터프레임
-        repair_data: K_repair 매핑 데이터
     """
     print(f"\n{'='*80}")
     print("모든 파이프 데이터 처리 및 Rain Flow Counting with K_repair 계산")
@@ -97,13 +87,12 @@ def process_all_pipe_data_with_rainflow_and_repair(
     output_dir = PROJECT_ROOT / "results" / "main56_calc_fatigure"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # 압력 데이터 파일 목록
-    pressure_data_files = [str(path) for path in PRESSURE_DATA_FILES]
+    # 압력 데이터 소스 (DB 조회용 지역 코드)
+    pressure_data_files = ["0243", "0461", "0470", "0480", "0490", "0520"]
 
     # 파이프 데이터 파일 목록
     pipe_data_files = PIPE_DATA_FILES
 
-    # 모든 파이프 데이터 파일 처리
     total_processed = 0
     successful_files = 0
 
@@ -128,7 +117,7 @@ def process_all_pipe_data_with_rainflow_and_repair(
 
             # 2. 나이별 Rain Flow Counting 계산
             result_df = calculate_rainflow_by_age(
-                pipe_df, file_type, pressure_data_files
+                pipe_df, file_type, pressure_data_files, use_db=True
             )
 
             # 3. 재료계수(K_material), K 계수들, 피로한계 추가
@@ -143,13 +132,11 @@ def process_all_pipe_data_with_rainflow_and_repair(
             # 5. 각 지역별 피로도 계산
             regions = ["0243", "0461", "0470", "0480", "0490", "0520"]
             for region in regions:
-                # 해당 지역의 Rain Flow 컬럼이 있는지 확인
                 if f"{region}_high_total_cycles" in result_df.columns:
                     result_df = calculate_fatigue_damage_dataframe(
                         result_df, region, data_type="pressure", use_k_total=True
                     )
 
-                    # 각 지역별 잔여 수명 계산 (D_final 기반)
                     if f"{region}_D_final" in result_df.columns:
                         result_df[f"{region}_remaining_life_years"] = result_df.apply(
                             lambda row: (
@@ -162,7 +149,6 @@ def process_all_pipe_data_with_rainflow_and_repair(
                             axis=1,
                         )
 
-                    # intermediate 컬럼명을 fatigue_damage로 변경
                     if f"{region}_high_fatigue_intermediate" in result_df.columns:
                         result_df[f"{region}_high_fatigue_damage"] = result_df[
                             f"{region}_high_fatigue_intermediate"
@@ -175,41 +161,27 @@ def process_all_pipe_data_with_rainflow_and_repair(
                         ]
                         del result_df[f"{region}_low_fatigue_intermediate"]
 
-            # 6. 컬럼 순서 재정렬 (K_repair가 K_total 앞에 있도록)
-            # 먼저 중복 컬럼 제거 (.1로 끝나는 컬럼들 제거)
+            # 6. 컬럼 순서 재정렬
             duplicate_cols = [col for col in result_df.columns if col.endswith('.1')]
             if duplicate_cols:
                 result_df = result_df.drop(columns=duplicate_cols)
             
-            # 기본 컬럼들
             base_columns = [
                 col
                 for col in result_df.columns
                 if not col.startswith(("0243", "0461", "0470", "0480", "0490", "0520"))
             ]
 
-            # K 계수 컬럼 순서 조정
             k_columns = [
-                "K_diameter",
-                "K_age",
-                "K_soil",
-                "K_traffic",
-                "K_vibration",
-                "hoop_stress",
-                "K_stress",
-                "K_repair",
-                "K_total",
+                "K_diameter", "K_age", "K_soil", "K_traffic", "K_vibration",
+                "hoop_stress", "K_stress", "K_repair", "K_total",
             ]
             k_columns_present = [col for col in k_columns if col in base_columns]
             other_base_columns = [col for col in base_columns if col not in k_columns]
 
-            # 지역별 컬럼들을 순서대로 그룹화
             region_columns = []
             for region in ["0243", "0461", "0470", "0480", "0490", "0520"]:
-                region_cols = [
-                    col for col in result_df.columns if col.startswith(region)
-                ]
-                # 각 지역 내에서 원하는 순서로 정렬
+                region_cols = [col for col in result_df.columns if col.startswith(region)]
                 ordered_cols = [
                     f"{region}_low_total_cycles",
                     f"{region}_high_total_cycles",
@@ -220,20 +192,16 @@ def process_all_pipe_data_with_rainflow_and_repair(
                     f"{region}_D_final",
                     f"{region}_remaining_life_years",
                 ]
-                # 실제로 존재하는 컬럼만 추가
                 region_columns.extend(
                     [col for col in ordered_cols if col in region_cols]
                 )
 
-            # 최종 컬럼 순서
             final_columns = other_base_columns + k_columns_present + region_columns
             result_df = result_df[final_columns]
 
-            # K_total_without_repair 컬럼 제거 (계산에만 사용, CSV 출력에서 제외)
             result_df = result_df.drop(columns=['K_total_without_repair'], errors='ignore')
 
             # 7. 결과 저장
-            # 파일명 생성 (_by_age 제거)
             if file_type == "PIPE_LM":
                 output_filename = "fatigue_pipe_lm.csv"
             elif file_type == "SPLY_LS":
@@ -251,20 +219,15 @@ def process_all_pipe_data_with_rainflow_and_repair(
             print(f"  - 총 레코드 수: {len(result_df):,}")
             print(f"  - 총 컬럼 수: {len(result_df.columns)}")
 
-            # K_repair 적용 결과 요약
             if "K_repair" in result_df.columns:
                 k_repair_applied = (result_df["K_repair"] > 0).sum()
-                print(
-                    f"  - K_repair 적용된 레코드: {k_repair_applied:,} / {len(result_df):,}"
-                )
+                print(f"  - K_repair 적용된 레코드: {k_repair_applied:,} / {len(result_df):,}")
 
         except Exception as e:
             print(f"오류 발생 ({file_path}): {e!s}")
             import traceback
-
             traceback.print_exc()
 
-    # 최종 요약
     print(f"\n{'='*80}")
     print("파이프 데이터 처리 완료")
     print(f"{'='*80}")
@@ -279,28 +242,17 @@ def main(
     process_pipes: bool = True,
     process_rainflow: bool = True,
 ) -> None:
-    """
-    메인 실행 함수
-
-    Args:
-        start_date: 분석 시작 날짜 (None이면 2023-01-01 사용)
-        end_date: 분석 종료 날짜 (None이면 2023-12-31 사용)
-        process_pipes: 파이프 데이터 처리 여부 (Rain Flow Counting, K 계수들, K_repair, 피로도 포함)
-        process_rainflow: 기본 Rain Flow Counting 분석 여부 (압력 데이터만)
-    """
     print(
         "통합 데이터 분석 프로그램 with K_repair (나이 기반 Rain Flow Counting, K 계수들 및 피로도 포함)"
     )
     print("=" * 80)
     
     try:
-        # K_repair 데이터 로드
         repair_data = {}
         if process_pipes:
             print("\nK_repair 데이터 로드 중...")
             repair_data = load_k_repair_mapping()
 
-        # 파이프 속성 데이터 로드
         pipe_properties = None
         if process_pipes:
             pipe_properties = read_pipe_properties(str(PIPE_PROP_PATH))
@@ -308,11 +260,8 @@ def main(
                 print("파이프 속성 데이터를 로드할 수 없어 프로그램을 종료합니다.")
                 return
 
-        # 1. 파이프 데이터 처리 및 나이 기반 Rain Flow Counting 계산 (K 계수들, K_repair 및 피로도 포함)
         if process_pipes:
-            print(
-                "\n[1단계] 파이프 데이터 처리, Rain Flow Counting, K 계수들, K_repair 및 피로도 계산"
-            )
+            print("\n[1단계] 파이프 데이터 처리, Rain Flow Counting, K 계수들, K_repair 및 피로도 계산")
             if pipe_properties is not None:
                 process_all_pipe_data_with_rainflow_and_repair(pipe_properties, repair_data)
     
@@ -322,22 +271,16 @@ def main(
         print(f"누락된 파일: {missing_file}")
         sys.exit(1)
 
-    # 2. 기본 Rain Flow Counting 분석 (압력 데이터만)
     if process_rainflow:
         print("\n[2단계] 기본 Rain Flow Counting 분석")
 
-        # 기본값 설정
         if start_date is None:
             start_date = datetime(2023, 1, 1)
         if end_date is None:
             end_date = datetime(2023, 12, 31, 23, 59, 59)
 
-        print(
-            f"분석 기간: {start_date.strftime('%Y-%m-%d')} ~ {end_date.strftime('%Y-%m-%d')}"
-        )
+        print(f"분석 기간: {start_date.strftime('%Y-%m-%d')} ~ {end_date.strftime('%Y-%m-%d')}")
 
-        # 데이터 파일 경로 (0470, 0520 파일 선택)
-        # 파일명에서 지역 코드를 확인하여 선택
         data_files = []
         for file_path in PRESSURE_DATA_FILES:
             file_name = file_path.name
@@ -346,15 +289,11 @@ def main(
 
         all_results = []
 
-        # 각 파일 분석
         for file_path in data_files:
             if Path(file_path).exists():
-                result = analyze_date_range_rainflow(
-                    str(file_path), start_date, end_date
-                )
+                result = analyze_date_range_rainflow(str(file_path), start_date, end_date)
                 all_results.append(result)
 
-                # 주요 Rain Flow Counting 값 출력
                 if result["success"]:
                     summary = get_rainflow_summary(result)
                     print(f"\n{'-'*50}")
@@ -362,58 +301,29 @@ def main(
                     print(f"{'-'*50}")
                     print(f"고주파 총 사이클: {summary['high_total_cycles']:.1f}")
                     print(f"저주파 총 사이클: {summary['low_total_cycles']:.1f}")
-                    print(f"고주파 전체 사이클: {summary['high_full_cycles']:.0f}개")
-                    print(f"저주파 전체 사이클: {summary['low_full_cycles']:.0f}개")
-                    print(f"고주파 반 사이클: {summary['high_half_cycles']:.0f}개")
-                    print(f"저주파 반 사이클: {summary['low_half_cycles']:.0f}개")
-                    print(f"고주파 평균 범위: {summary['high_mean_range']:.3f}")
-                    print(f"저주파 평균 범위: {summary['low_mean_range']:.3f}")
             else:
                 print(f"파일을 찾을 수 없습니다: {file_path}")
-                all_results.append(
-                    {
-                        "file_path": file_path,
-                        "file_name": Path(file_path).name,
-                        "error": "File not found",
-                        "success": False,
-                    }
-                )
+                all_results.append({"file_path": file_path, "file_name": Path(file_path).name, "error": "File not found", "success": False})
 
-        # 결과 비교
         if all_results:
-            # 최종 요약
             successful_count = sum(1 for r in all_results if r["success"])
             total_count = len(all_results)
-
             print(f"\n{'='*80}")
             print("기본 Rain Flow Counting 분석 완료")
-            print(f"{'='*80}")
-            print(f"총 파일 수: {total_count}")
-            print(f"성공적으로 분석된 파일 수: {successful_count}")
-            print(f"실패한 파일 수: {total_count - successful_count}")
-
-            if successful_count > 0:
-                print("\n분석 결과:")
-                print(
-                    f"  - {start_date.strftime('%Y-%m-%d')} ~ {end_date.strftime('%Y-%m-%d')} 기간 데이터 Rain Flow Counting 계산 완료"
-                )
-                print("  - High Pass와 Low Pass 필터 적용하여 주파수별 분석")
-                print("  - Rain Flow Counting을 통한 사이클 기반 분석")
+            print(f"총 파일 수: {total_count}, 성공: {successful_count}")
 
     print(f"\n{'='*80}")
     print("전체 프로그램 실행 완료")
     print(f"{'='*80}")
 
-    # 생성된 파일 목록 출력
     results_dir = Path("results/main56_calc_fatigure")
     if results_dir.exists():
         print("\n생성된 결과 파일:")
         result_files = list(results_dir.glob("*.csv"))
         for i, file_path in enumerate(sorted(result_files), 1):
-            file_size = file_path.stat().st_size / 1024  # KB
+            file_size = file_path.stat().st_size / 1024
             print(f"  {i:2d}. {file_path.name} ({file_size:.1f} KB)")
 
-    # 매핑되지 않은 도로 정보 출력
     if process_pipes:
         print_unmapped_roads_summary()
 

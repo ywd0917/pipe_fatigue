@@ -490,8 +490,95 @@ def process_pipe_data_with_age(
         return pd.DataFrame()
 
 
+def analyze_rainflow_from_df(
+    pressure_df: pd.DataFrame,
+    region_code: str,
+    start_date: Optional[datetime] = None,
+    end_date: Optional[datetime] = None,
+) -> Dict[str, Any]:
+    """
+    DataFrame으로부터 Rain Flow Counting 분석 (DB 조회 결과 등에서 직접 사용)
+
+    Args:
+        pressure_df: 압력 데이터 DataFrame (columns: msrmt_dt, wtrprsr)
+        region_code: 구역 코드 (예: "0520")
+        start_date: 분석 시작일 (None이면 최근 1년)
+        end_date: 분석 종료일 (None이면 데이터 최대일)
+
+    Returns:
+        analyze_date_range_rainflow()와 동일한 구조의 결과 dict
+    """
+    label = f"{region_code} DB"
+
+    print(f"\n{'='*80}")
+    print(f"Rain Flow Counting 분석 시작: {label}")
+    print(f"{'='*80}")
+
+    try:
+        full_df = pressure_df.copy()
+        full_df["msrmt_dt"] = pd.to_datetime(full_df["msrmt_dt"])
+        full_df = full_df.sort_values("msrmt_dt").reset_index(drop=True)
+
+        print(f"데이터 크기: {full_df.shape}")
+        print(f"데이터 기간: {full_df['msrmt_dt'].min()} ~ {full_df['msrmt_dt'].max()}")
+        print(f"NaN 개수: {full_df['wtrprsr'].isna().sum()}")
+
+        # 날짜 범위 결정
+        data_end = full_df["msrmt_dt"].max()
+        data_start = full_df["msrmt_dt"].min()
+        if end_date is None:
+            end_date = data_end.to_pydatetime().replace(hour=23, minute=59, second=59)
+        if start_date is None:
+            candidate = end_date.replace(year=end_date.year - 1)
+            start_date = max(candidate, data_start.to_pydatetime())
+
+        print(f"분석 기간: {start_date.strftime('%Y-%m-%d')} ~ {end_date.strftime('%Y-%m-%d')}")
+
+        filtered_df = extract_date_range_data(full_df, start_date, end_date)
+
+        # process_date_range_data는 file_path를 pass filter 설정에 사용하므로
+        # 구역코드를 파일명처럼 전달
+        original_data, low_pass_data, high_pass_data = process_date_range_data(
+            filtered_df, region_code
+        )
+
+        results = {
+            "original": calculate_rainflow_counting(original_data, "original"),
+            "low_pass": calculate_rainflow_counting(low_pass_data, "low_pass"),
+            "high_pass": calculate_rainflow_counting(high_pass_data, "high_pass"),
+        }
+
+        print(f"\n{'='*60}")
+        print(f"분석 완료: {label}")
+        print(f"{'='*60}")
+
+        return {
+            "file_path": label,
+            "file_name": label,
+            "start_date": start_date,
+            "end_date": end_date,
+            "data_count": len(filtered_df),
+            "results": results,
+            "success": True,
+        }
+
+    except Exception as e:
+        print(f"{label} 분석 중 오류 발생: {e}")
+        import traceback
+        traceback.print_exc()
+        return {
+            "file_path": label,
+            "file_name": label,
+            "error": str(e),
+            "success": False,
+        }
+
+
 def calculate_rainflow_by_age(
-    pipe_df: pd.DataFrame, pipe_type: str, pressure_data_files: List[str]
+    pipe_df: pd.DataFrame,
+    pipe_type: str,
+    pressure_data_files: List[str],
+    use_db: bool = False,
 ) -> pd.DataFrame:
     """
     파이프 데이터의 나이에 비례하여 Rain Flow Counting 값을 계산
@@ -499,7 +586,9 @@ def calculate_rainflow_by_age(
     Args:
         pipe_df: 파이프 데이터 DataFrame
         pipe_type: 파이프 타입 ("PIPE_LM" 또는 "SPLY_LS")
-        pressure_data_files: 압력 데이터 파일 경로 리스트
+        pressure_data_files: 압력 데이터 파일 경로 리스트 (use_db=False 시 사용)
+                             use_db=True 시 구역코드 문자열 리스트로 사용
+        use_db: True이면 DB에서 압력 데이터 조회, False이면 CSV 파일 사용
 
     Returns:
         pd.DataFrame: Rain Flow Counting 값이 추가된 데이터프레임
@@ -508,32 +597,41 @@ def calculate_rainflow_by_age(
     print(f"나이별 Rain Flow Counting 계산 시작: {pipe_type}")
     print(f"{'='*80}")
 
-    # 나이 정보가 있는지 확인
     if "YEARS_SINCE_BEG" not in pipe_df.columns:
         print("오류: YEARS_SINCE_BEG 컬럼이 없습니다.")
         return pipe_df
 
-    # 결과 DataFrame 생성
     result_df = pipe_df.copy()
 
-    # 각 압력 데이터 파일에서 Rain Flow Counting 계산
-    for pressure_file in pressure_data_files:
-        if not Path(pressure_file).exists():
-            print(f"경고: 압력 데이터 파일을 찾을 수 없습니다: {pressure_file}")
-            continue
+    for pressure_source in pressure_data_files:
+        if use_db:
+            # DB 모드: pressure_source는 구역코드 문자열
+            region_code = str(pressure_source)
+            try:
+                from pressure_db_loader import load_pressure_from_db
+                pressure_df = load_pressure_from_db(region_code)
+                if pressure_df.empty:
+                    print(f"경고: {region_code} 구역 DB 데이터가 비어있습니다.")
+                    continue
+                rainflow_result = analyze_rainflow_from_df(pressure_df, region_code)
+            except Exception as e:
+                print(f"경고: {region_code} 구역 DB 조회 실패: {e}")
+                continue
+        else:
+            # CSV 모드: pressure_source는 파일 경로 문자열
+            pressure_file = str(pressure_source)
+            if not Path(pressure_file).exists():
+                print(f"경고: 압력 데이터 파일을 찾을 수 없습니다: {pressure_file}")
+                continue
 
-        file_name = Path(pressure_file).name
-        print(f"\n압력 데이터 파일 처리: {file_name}")
+            file_name = Path(pressure_file).name
+            print(f"\n압력 데이터 파일 처리: {file_name}")
 
-        # 파일명에서 지역 코드 추출 (예: 0470 소구역 압력 데이터.csv -> 0470)
-        # 파일명의 첫 4자리가 지역 코드
-        region_code = file_name[:4] if len(file_name) >= 4 else file_name.split("_")[0]
-
-        # 최근 1년 데이터로 Rain Flow Counting 계산
-        rainflow_result = analyze_date_range_rainflow(pressure_file)
+            # 파일명에서 지역 코드 추출 (예: 0470 소구역 압력 데이터.csv -> 0470)
+            region_code = file_name[:4] if len(file_name) >= 4 else file_name.split("_")[0]
+            rainflow_result = analyze_date_range_rainflow(pressure_file)
 
         if rainflow_result["success"]:
-            # High와 Low 주파수의 총 사이클 수 추출
             high_cycles = rainflow_result["results"]["high_pass"]["analysis"].get(
                 "total_cycles", 0
             )
@@ -544,19 +642,9 @@ def calculate_rainflow_by_age(
             print(f"  - High 주파수 총 사이클: {high_cycles:.1f}")
             print(f"  - Low 주파수 총 사이클: {low_cycles:.1f}")
 
-            # 연간 사이클 수를 직접 저장
-            # 주의: 컬럼명은 'total_cycles'이지만 실제로는 연간(annual) 사이클 수를 저장함
-            # 이는 csv 파일 데이터 포맷의 호환성을 유지하기 위함
-            result_df[f"{region_code}_high_total_cycles"] = (
-                high_cycles  # 연간 high 사이클 수
-            )
-            result_df[f"{region_code}_low_total_cycles"] = (
-                low_cycles  # 연간 low 사이클 수
-            )
+            result_df[f"{region_code}_high_total_cycles"] = high_cycles
+            result_df[f"{region_code}_low_total_cycles"] = low_cycles
 
-            # 불필요한 컬럼들은 생성하지 않음 (full_cycles, half_cycles, mean_range, max_range, max_pressure)
-
-    # 추가된 Rain Flow 컬럼 개수 확인
     rainflow_columns = [col for col in result_df.columns if "_total_cycles" in col]
     print(f"\n추가된 Rain Flow 관련 컬럼 수: {len(rainflow_columns)}")
     if rainflow_columns:

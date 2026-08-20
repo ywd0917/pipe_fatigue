@@ -5,7 +5,7 @@
 # 입력:
 #   data/raw/export_shp_20250704(0100)/상수관로_사라봉1.shp
 #   data/raw/export_shp_20250704(0100)/급수관로_사라봉1.shp
-#   data/raw/0100 소구역 압력 데이터.csv
+#   DB: 61.85.1.119:4306 supply_meter (manage_id=300111)
 #
 # 출력:
 #   results/tmp/0100_fatigue_merged_zone_fixed.csv
