@@ -96,6 +96,7 @@ def process_all_pipe_data_with_rainflow_and_repair(
 
     total_processed = 0
     successful_files = 0
+    all_results: list[pd.DataFrame] = []
 
     for file_path, file_type in pipe_data_files:
         file_path = Path(file_path)
@@ -213,9 +214,7 @@ def process_all_pipe_data_with_rainflow_and_repair(
             output_path = output_dir / output_filename
             result_df.to_csv(output_path, index=False, encoding="utf-8-sig")
 
-            # DB 저장 (0520 지역 구역별)
-            write_0520_to_db(result_df)
-
+            all_results.append(result_df)
             total_processed += 1
             successful_files += 1
 
@@ -238,6 +237,11 @@ def process_all_pipe_data_with_rainflow_and_repair(
     print(f"총 처리 파일 수: {total_processed}")
     print(f"성공적으로 처리된 파일 수: {successful_files}")
     print(f"실패한 파일 수: {total_processed - successful_files}")
+
+    # DB 저장: 모든 파일 결과를 합쳐서 구역별로 한 번씩만 저장
+    if all_results:
+        combined_df = pd.concat(all_results, ignore_index=True)
+        write_0520_to_db(combined_df)
 
 
 def main(
