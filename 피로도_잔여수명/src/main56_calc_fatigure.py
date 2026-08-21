@@ -28,6 +28,7 @@ from repair_loader_k import (
     apply_k_repair_to_dataframe,
     print_k_repair_statistics,
 )
+from fatigue_db_writer import write_0520_to_db
 
 # 공통 설정 import
 from common.config import (
@@ -211,6 +212,9 @@ def process_all_pipe_data_with_rainflow_and_repair(
 
             output_path = output_dir / output_filename
             result_df.to_csv(output_path, index=False, encoding="utf-8-sig")
+
+            # DB 저장 (0520 지역 구역별)
+            write_0520_to_db(result_df)
 
             total_processed += 1
             successful_files += 1

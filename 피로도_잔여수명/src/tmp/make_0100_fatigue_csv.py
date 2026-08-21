@@ -33,6 +33,7 @@ from rainflow_processing import process_pipe_data_with_age, calculate_rainflow_b
 from fatigue_calculations import add_K_material_to_dataframe, calculate_fatigue_damage_dataframe
 from repair_loader_k import load_k_repair_mapping, apply_k_repair_to_dataframe, print_k_repair_statistics
 from pipe_prop import read_pipe_properties
+from fatigue_db_writer import write_0100_to_db
 
 # 경로 설정
 EXPORT_DIR = RAW_DATA_DIR / "export_shp_20250704(0100)"
@@ -261,6 +262,8 @@ def main() -> None:
 
     output_file = OUTPUT_DIR / "0100_fatigue_merged_zone_fixed.csv"
     merged.to_csv(output_file, index=False, encoding="utf-8-sig")
+
+    write_0100_to_db(merged)
 
     print(f"\n{'='*80}")
     print(f"완료! 결과 저장: {output_file}")
