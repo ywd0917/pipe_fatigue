@@ -26,7 +26,7 @@ import pymysql
 
 _DB_0520 = {
     "host": "59.25.253.40",
-    "port": 4334,
+    "port": 3334,
     "database": "waterdt",
     "user": "root",
     "password": "water338!@",
