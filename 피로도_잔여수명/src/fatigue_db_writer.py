@@ -243,10 +243,18 @@ def write_zone_to_db(
         print(f"  경고: {d_final_col} 컬럼이 없습니다. 건너뜁니다.")
         return
 
-    # D_final 이 null 이 아닌 행만 저장
-    valid_df = df[df[d_final_col].notna()].copy()
+    # D_final 및 모든 K 계수가 non-null인 행만 저장
+    _K_COLS = [
+        "K_material", "K_diameter", "K_age", "K_soil",
+        "K_traffic", "K_vibration", "K_stress", "K_repair", "K_total",
+    ]
+    cols_to_check = [d_final_col] + [c for c in _K_COLS if c in df.columns]
+    valid_df = df[df[cols_to_check].notna().all(axis=1)].copy()
+    excluded = len(df) - len(valid_df)
+    if excluded:
+        print(f"  제외된 행 (K 계수 또는 D_final null): {excluded:,}행")
     if valid_df.empty:
-        print(f"  경고: 유효한 D_final 값이 없습니다. 건너뜁니다.")
+        print(f"  경고: 유효한 행이 없습니다. 건너뜁니다.")
         return
 
     conn = _build_conn(db_cfg)
