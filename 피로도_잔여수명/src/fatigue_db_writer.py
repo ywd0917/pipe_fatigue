@@ -112,12 +112,13 @@ def _delete_existing(conn: pymysql.Connection, smz_num: int, mdz_num: int) -> in
 
 
 def _to_none(val) -> Optional[float]:
-    """NaN / None → None (DB NULL)"""
+    """NaN / inf / None → None (DB NULL)"""
     if val is None:
         return None
     try:
         import math
-        if math.isnan(float(val)):
+        f = float(val)
+        if math.isnan(f) or math.isinf(f):
             return None
         return val
     except (TypeError, ValueError):
