@@ -240,7 +240,11 @@ def add_K_material_to_dataframe(
 
         # K_diameter 컬럼 추가 (STD_DIP 필요)
         if "STD_DIP" in result_df.columns:
-            result_df["K_diameter"] = 1 + 0.05 * np.log(result_df["STD_DIP"] / 100)
+            invalid_mask = result_df["STD_DIP"].isna() | (result_df["STD_DIP"] <= 0)
+            if invalid_mask.any():
+                print(f"경고: STD_DIP <= 0 또는 NaN인 행 {invalid_mask.sum():,}개 — K_diameter를 NaN으로 처리")
+            dip = result_df["STD_DIP"].where(~invalid_mask)
+            result_df["K_diameter"] = 1 + 0.05 * np.log(dip / 100)
             print(
                 f"K_diameter 컬럼 추가 완료: {result_df['K_diameter'].notna().sum():,}개 행에 K_diameter 계산됨"
             )
