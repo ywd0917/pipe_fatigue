@@ -1,0 +1,6 @@
+PATH=/home/waterdt/.local/bin:/usr/local/bin:/usr/bin:/bin
+
+# 매달 1일 03:00 — 0100(사라봉) + 0200(고성) 지역 관로 피로도 업데이트
+# 설치 방법: crontab -e 후 이 파일 내용 붙여넣기
+#            또는: crontab /home/waterdt/data/pipe_fatigue/피로도_잔여수명/cron_0100_0200.txt
+0 3 1 * * /bin/bash /home/waterdt/data/pipe_fatigue/피로도_잔여수명/run_0100_pipeline.sh >> /home/waterdt/data/pipe_fatigue/피로도_잔여수명/logs/cron_0100_0200.log 2>&1
