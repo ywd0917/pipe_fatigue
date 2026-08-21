@@ -158,9 +158,14 @@ def _build_insert_rows(
         def get_fatigue(col):
             return _to_none(row.get(f"{zone_prefix}{col}"))
 
+        try:
+            manage_no_str = str(int(float(manage_no)))
+        except (ValueError, TypeError):
+            manage_no_str = str(manage_no)
+
         rows.append((
             ftr_idn,
-            str(manage_no) if manage_no is not None else None,
+            manage_no_str,
             get("K_material"),
             get("fatigue_limit"),
             get("K_diameter"),
