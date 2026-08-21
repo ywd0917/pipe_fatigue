@@ -149,7 +149,7 @@ def _build_insert_rows(
             return _to_none(row.get(src_col))
 
         ftr_idn = _to_none(row.get("FTR_IDN"))
-        manage_no = _to_none(row.get("MNG_CDE"))
+        manage_no = ftr_idn  # MNG_CDE는 구역 코드(동일값)이므로 FTR_IDN을 manage_no로 사용
 
         if manage_no is None:
             continue
