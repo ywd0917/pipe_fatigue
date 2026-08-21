@@ -150,6 +150,9 @@ def _build_insert_rows(
         ftr_idn = _to_none(row.get("FTR_IDN"))
         manage_no = _to_none(row.get("MNG_CDE"))
 
+        if manage_no is None:
+            continue
+
         # 피로도 결과 컬럼 (prefix 적용)
         def get_fatigue(col):
             return _to_none(row.get(f"{zone_prefix}{col}"))
