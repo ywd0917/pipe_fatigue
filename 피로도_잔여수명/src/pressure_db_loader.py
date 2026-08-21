@@ -13,9 +13,6 @@ DB 구성:
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Optional
-
 import pandas as pd
 import pymysql
 
@@ -53,18 +50,12 @@ REGION_DB_MAP: dict[str, tuple[int, dict]] = {
 }
 
 
-def load_pressure_from_db(
-    region_code: str,
-    start_date: Optional[datetime] = None,
-    end_date: Optional[datetime] = None,
-) -> pd.DataFrame:
+def load_pressure_from_db(region_code: str) -> pd.DataFrame:
     """
-    DB에서 압력 데이터를 조회하여 DataFrame으로 반환
+    DB에서 압력 데이터 전체를 조회하여 DataFrame으로 반환
 
     Args:
         region_code: 구역 코드 (예: "0520", "0100")
-        start_date: 조회 시작일 (None이면 최근 1년)
-        end_date: 조회 종료일 (None이면 현재)
 
     Returns:
         DataFrame with columns: manage_id, msrmt_dt, wtrprsr
@@ -82,22 +73,14 @@ def load_pressure_from_db(
 
     manage_id, db_cfg = REGION_DB_MAP[region_code]
 
-    # 날짜 기본값 설정
-    if end_date is None:
-        end_date = datetime.now()
-    if start_date is None:
-        start_date = end_date.replace(year=end_date.year - 1)
-
-    print(f"\n[DB] {region_code} 구역 압력 데이터 조회")
+    print(f"\n[DB] {region_code} 구역 압력 데이터 전체 조회")
     print(f"  manage_id : {manage_id}")
     print(f"  host      : {db_cfg['host']}:{db_cfg['port']}")
-    print(f"  기간      : {start_date.strftime('%Y-%m-%d')} ~ {end_date.strftime('%Y-%m-%d')}")
 
     query = """
         SELECT manage_id, msrmt_dt, wtrprsr
         FROM supply_meter
         WHERE manage_id = %s
-          AND msrmt_dt BETWEEN %s AND %s
           AND wtrprsr IS NOT NULL
         ORDER BY msrmt_dt
     """
@@ -115,7 +98,7 @@ def load_pressure_from_db(
         df = pd.read_sql(
             query,
             conn,
-            params=(manage_id, start_date, end_date),
+            params=(manage_id,),
             parse_dates=["msrmt_dt"],
         )
     finally:
